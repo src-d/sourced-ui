@@ -119,6 +119,7 @@ const config = {
     sqllab: addPreamble('/src/SqlLab/index.jsx'),
     welcome: addPreamble('/src/welcome/index.jsx'),
     profile: addPreamble('/src/profile/index.jsx'),
+    uast: addPreamble('/src/uast/index.jsx'),
   },
   output,
   optimization: {
@@ -178,6 +179,15 @@ const config = {
         exclude: /node_modules/,
         include: APP_DIR,
         loader: 'babel-loader',
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules\/bblfsh-web\/node_modules/,
+        include: /node_modules\/bblfsh-web/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-react', '@babel/preset-env'],
+        },
       },
       {
         // handle symlinked modules

@@ -1,0 +1,24 @@
+// remove superset padding-bottom of the header
+// becase bblfsh header already has paddings
+.bblfsh-app__wrap {
+  top: -18px;
+}
+
+// remove styling for the header to make it look less foreign
+.bblfsh-header__container {
+  background: transparent;
+  box-shadow: none;
+  // original styling has value 9999 which breaks menu, no sure why we need it
+  // change to 998 which is still big but less than z-index of menu popups
+  z-index: 998;
+}
+
+// hide bblfsh-web logo
+.bblfsh-header__title {
+  display: none;
+}
+
+// superset replaces default checkboxes, align text to them
+.bblfsh-options__label {
+  padding-top: 8px;
+}

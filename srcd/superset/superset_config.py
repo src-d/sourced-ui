@@ -66,3 +66,10 @@ GITBASE_DATABASE_URI = 'mysql://%s:%s@%s:%s/%s' % (GITBASE_USER,
                                                    GITBASE_HOST,
                                                    GITBASE_PORT,
                                                    GITBASE_DB)
+
+
+def mutator(f):
+    from superset.bblfsh import views  # noqa
+
+
+FLASK_APP_MUTATOR = mutator
