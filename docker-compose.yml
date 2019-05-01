@@ -17,6 +17,12 @@ services:
     volumes:
       - ${GITBASE_REPOS_DIR}:/opt/repos
 
+  bblfsh-web:
+    image: bblfsh/web:v0.11.0
+    command: -bblfsh-addr bblfsh:9432
+    ports:
+      - 9999:8080
+
   redis:
     image: redis:3.2
     restart: unless-stopped
@@ -38,7 +44,7 @@ services:
       - postgres:/var/lib/postgresql/data
 
   superset:
-    image: smacker/superset:demo
+    image: smacker/superset:demo-with-bblfsh
     restart: unless-stopped
     environment:
       POSTGRES_DB: superset
@@ -59,8 +65,6 @@ services:
     depends_on:
       - postgres
       - redis
-    volumes:
-      - ./superset_config.py:/home/superset/superset/superset_config.py
 
 volumes:
   postgres:
