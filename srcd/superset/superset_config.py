@@ -3,6 +3,8 @@ import os
 from werkzeug.contrib.cache import RedisCache
 
 
+# Helper functions
+
 def get_env_variable(var_name, default=None):
     """Get the environment variable or raise exception."""
     try:
@@ -15,33 +17,29 @@ def get_env_variable(var_name, default=None):
                         .format(var_name)
             raise EnvironmentError(error_msg)
 
+# Branding
+
+APP_NAME = 'Source{d}'
+APP_ICON = '/static/assets/images/sourced-logo-2x.png'
+APP_ICON_WIDTH = 126
+
+# Main DB settings
 
 POSTGRES_USER = get_env_variable('POSTGRES_USER')
 POSTGRES_PASSWORD = get_env_variable('POSTGRES_PASSWORD')
 POSTGRES_HOST = get_env_variable('POSTGRES_HOST')
 POSTGRES_PORT = get_env_variable('POSTGRES_PORT')
 POSTGRES_DB = get_env_variable('POSTGRES_DB')
-
-# The SQLAlchemy connection string.
 SQLALCHEMY_DATABASE_URI = 'postgresql://%s:%s@%s:%s/%s' % (POSTGRES_USER,
                                                            POSTGRES_PASSWORD,
                                                            POSTGRES_HOST,
                                                            POSTGRES_PORT,
                                                            POSTGRES_DB)
 
+# Cache settings
+
 REDIS_HOST = get_env_variable('REDIS_HOST')
 REDIS_PORT = get_env_variable('REDIS_PORT')
-
-
-class CeleryConfig(object):
-    BROKER_URL = 'redis://%s:%s/0' % (REDIS_HOST, REDIS_PORT)
-    CELERY_IMPORTS = ('superset.sql_lab', 'superset.tasks')
-    CELERY_RESULT_BACKEND = 'redis://%s:%s/1' % (REDIS_HOST, REDIS_PORT)
-    CELERY_ANNOTATIONS = {'tasks.add': {'rate_limit': '10/s'}}
-    CELERY_TASK_PROTOCOL = 1
-
-
-CELERY_CONFIG = CeleryConfig
 
 CACHE_CONFIG = {
     'CACHE_TYPE': 'redis',
@@ -53,8 +51,24 @@ CACHE_CONFIG = {
 RESULTS_BACKEND = RedisCache(
     host=REDIS_HOST, port=REDIS_PORT, key_prefix='superset_results')
 
-SUPERSET_WEBSERVER_TIMEOUT = 300
+# Celery configuration. CeleryConfig doesn't inherit defaults from superset/config.
 
+class CeleryConfig(object):
+    BROKER_URL = 'redis://%s:%s/0' % (REDIS_HOST, REDIS_PORT)
+    CELERY_IMPORTS = ('superset.sql_lab', 'superset.tasks')
+    CELERY_RESULT_BACKEND = 'redis://%s:%s/1' % (REDIS_HOST, REDIS_PORT)
+    CELERYD_LOG_LEVEL = 'INFO'
+    CELERYD_PREFETCH_MULTIPLIER = 1
+    CELERY_ACKS_LATE = True
+    CELERY_ANNOTATIONS = {
+        'sql_lab.get_sql_results': {
+            'rate_limit': '100/s',
+        },
+    }
+
+CELERY_CONFIG = CeleryConfig
+
+# Gitbase configuration
 
 GITBASE_USER = get_env_variable('GITBASE_USER')
 GITBASE_PASSWORD = get_env_variable('GITBASE_PASSWORD', '')
@@ -67,9 +81,15 @@ GITBASE_DATABASE_URI = 'mysql://%s:%s@%s:%s/%s' % (GITBASE_USER,
                                                    GITBASE_PORT,
                                                    GITBASE_DB)
 
+SQLLAB_DEFAULT_DBID = 2  # set gitbase as default DB in SQL Lab
+
+# Log Settings
+
+LOG_LEVEL = 'INFO'
+
+# Alter flask application
 
 def mutator(f):
     from superset.bblfsh import views  # noqa
-
 
 FLASK_APP_MUTATOR = mutator
