@@ -119,6 +119,7 @@ const config = {
     sqllab: addPreamble('/src/SqlLab/index.jsx'),
     welcome: addPreamble('/src/welcome/index.jsx'),
     profile: addPreamble('/src/profile/index.jsx'),
+    uast: addPreamble('/src/uast/index.jsx'),
   },
   output,
   optimization: {
@@ -140,6 +141,7 @@ const config = {
       src: path.resolve(APP_DIR, './src'),
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    symlinks: false,
   },
   context: APP_DIR, // to automatically find tsconfig.json
   module: {
@@ -175,11 +177,39 @@ const config = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
+        include: APP_DIR,
         loader: 'babel-loader',
       },
       {
+        test: /\.jsx?$/,
+        exclude: /node_modules\/bblfsh-web\/node_modules/,
+        include: /node_modules\/bblfsh-web/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-react', '@babel/preset-env'],
+        },
+      },
+      {
+        // handle symlinked modules
+        // for debugging @superset-ui packages via npm link
+        test: /\.jsx?$/,
+        include: /node_modules\/[@]superset[-]ui.+\/src/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['airbnb', '@babel/preset-react', '@babel/preset-env'],
+              plugins: ['lodash', '@babel/plugin-syntax-dynamic-import', 'react-hot-loader/babel'],
+            },
+          },
+        ],
+      },
+      {
         test: /\.css$/,
-        include: APP_DIR,
+        include: [
+          APP_DIR,
+          /superset[-]ui.+\/src/,
+        ],
         use: [
           isDevMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
@@ -250,7 +280,7 @@ const config = {
 if (!isDevMode) {
   config.optimization.minimizer = [
     new TerserPlugin({
-      cache: true,
+      cache: '.terser-plugin-cache/',
       parallel: true,
       extractComments: true,
     }),
