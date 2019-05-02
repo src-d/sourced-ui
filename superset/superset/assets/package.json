@@ -63,6 +63,7 @@
     "@vx/responsive": "0.0.172",
     "@vx/scale": "^0.0.165",
     "abortcontroller-polyfill": "^1.1.9",
+    "bblfsh-web": "git+https://github.com/bblfsh/web.git#v0.11.0",
     "bignumber.js": "^8.1.1",
     "bootstrap": "^3.3.6",
     "bootstrap-slider": "^10.0.0",
