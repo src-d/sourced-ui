@@ -21,6 +21,7 @@ import logging
 from time import sleep
 import uuid
 
+from bblfsh import decode
 from celery.exceptions import SoftTimeLimitExceeded
 from contextlib2 import contextmanager
 from flask_babel import lazy_gettext as _
@@ -285,6 +286,18 @@ def execute_sql_statements(
         'columns': cdf.columns if cdf.columns else [],
         'query': query.to_dict(),
     })
+
+    # go over each row, find bytes columns that start with the magic UAST
+    # sequence b'\x00bgr', and replace it with a string containing the
+    # UAST in JSON
+    for row in payload['data']:
+        for k, v in row.items():
+            if isinstance(v, bytes) and len(v) > 4 and v[0:4] == b'\x00bgr':
+                try:
+                    ctx = decode(v, format=0)
+                    row[k] = json.dumps(ctx.load())
+                except Exception:
+                    pass
 
     if store_results:
         key = str(uuid.uuid4())
