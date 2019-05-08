@@ -28,6 +28,8 @@ import {
 } from 'react-virtualized';
 import { getTextWidth } from '../../modules/visUtils';
 
+import { cellRenderer, isUAST } from './CellRenderer';
+
 const propTypes = {
   orderedColumnKeys: PropTypes.array.isRequired,
   data: PropTypes.array.isRequired,
@@ -80,7 +82,14 @@ export default class FilterableTable extends PureComponent {
     const widthsByColumnKey = {};
     this.props.orderedColumnKeys.forEach((key) => {
       const colWidths = this.list
-        .map(d => getTextWidth(d[key]) + PADDING) // get width for each value for a key
+        .map((d) => {
+          // TODO hardcoded, implement a better way
+          if (isUAST(d[key])) {
+            return 150;
+          }
+
+          return getTextWidth(d[key]) + PADDING;
+        }) // get width for each value for a key
         .push(getTextWidth(key) + PADDING); // add width of column key to end of list
       // set max width as value for key
       widthsByColumnKey[key] = Math.max(...colWidths);
@@ -201,6 +210,7 @@ export default class FilterableTable extends PureComponent {
                 dataKey={columnKey}
                 disableSort={false}
                 headerRenderer={this.headerRenderer}
+                cellRenderer={cellRenderer}
                 width={this.widthsForColumnsByKey[columnKey]}
                 label={columnKey}
                 key={columnKey}
