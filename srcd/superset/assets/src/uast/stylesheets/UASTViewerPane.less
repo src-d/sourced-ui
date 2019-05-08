@@ -1,0 +1,31 @@
+.uast-viewer-pane {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .show-locations-wrapper {
+        flex: 0 0 auto;
+
+        min-height: 45px;
+        padding: 5px 0px 5px 20px;
+        background: white;
+        border-bottom: solid 1px fade(gray, 50%);
+
+        label {
+            font-weight: normal;
+            margin-right: 40px;
+
+            span {
+                margin-left: 10px;
+            }
+
+            &:last-of-type {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .uast-viewer {
+        flex: 1 1 auto;
+    }
+}
