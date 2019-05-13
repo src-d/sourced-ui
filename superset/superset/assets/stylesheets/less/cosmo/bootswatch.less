@@ -41,7 +41,7 @@
 .navbar-inverse .navbar-nav > li > a:focus,
 .navbar-inverse .navbar-nav > li.active > a {
   background: transparent;
-  border-bottom: 3px solid @brand-primary;
+  border-bottom: 3px solid @brand-secondary;
   margin-bottom: -3px;
 }
 
@@ -110,7 +110,14 @@
   margin-right: 6px;
 }
 
+.nav.navbar-nav.navbar-right .btn-primary {
+  background-color: @brand-tertiary;
+  border-color: @brand-tertiary;
+}
 
+.nav.navbar-nav.navbar-right .btn-primary:hover {
+  background-color: darken(@brand-tertiary, 5%);
+}
 
 
 
@@ -411,7 +418,7 @@ a.list-group-item {
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   background-color: #fff;
   font-weight: bold;
-  border-top: 3px solid @brand-primary;
+  border-top: 3px solid @brand-secondary;
 }
 
 // Tables ==============================================================
