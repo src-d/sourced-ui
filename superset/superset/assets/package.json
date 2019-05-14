@@ -70,6 +70,7 @@
     "brace": "^0.11.1",
     "classnames": "^2.2.5",
     "d3": "^3.5.17",
+    "codemirror": "^5.46.0",
     "d3-array": "^1.2.4",
     "d3-cloud": "^1.2.1",
     "d3-color": "^1.2.0",
@@ -103,6 +104,7 @@
     "react-bootstrap": "^0.31.5",
     "react-bootstrap-dialog": "^0.10.0",
     "react-bootstrap-slider": "2.1.5",
+    "react-codemirror2": "^5.1.0",
     "react-color": "^2.13.8",
     "react-datetime": "^2.14.0",
     "react-dnd": "^2.5.4",
@@ -133,6 +135,7 @@
     "shortid": "^2.2.6",
     "srcdoc-polyfill": "^1.0.0",
     "supercluster": "^4.1.1",
+    "uast-viewer": "^0.4.0",
     "underscore": "^1.8.3",
     "urijs": "^1.18.10",
     "viewport-mercator-project": "^5.0.0"
