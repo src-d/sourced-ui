@@ -414,6 +414,16 @@ class BaseEngineSpec(object):
         """
         return label
 
+    @classmethod
+    def get_connection_id(cls, cursor):
+        """ Returns connection id for a cursor """
+        return None
+
+    @classmethod
+    def cancel_query(cls, cursor, query):
+        """ Cancels query in the underlying database """
+        pass
+
 
 class PostgresBaseEngineSpec(BaseEngineSpec):
     """ Abstract class for Postgres 'like' databases """
@@ -725,6 +735,17 @@ class MySQLEngineSpec(BaseEngineSpec):
         except Exception:
             pass
         return message
+
+    @classmethod
+    def get_connection_id(cls, cursor):
+        cursor.execute('SELECT CONNECTION_ID()')
+        row = cursor.fetchone()
+        return row[0]
+
+    @classmethod
+    def cancel_query(cls, cursor, query):
+        if query.connection_id:
+            cursor.execute('KILL CONNECTION %d' % query.connection_id)
 
 
 class PrestoEngineSpec(BaseEngineSpec):
