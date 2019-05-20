@@ -64,6 +64,8 @@ const plugins = [
   // expose mode variable to other modules
   new webpack.DefinePlugin({
     'process.env.WEBPACK_MODE': JSON.stringify(mode),
+    // set server url for UAST Lab
+    'process.env.REACT_APP_SERVER_URL': '"../api"',
   }),
 
   // runs type checking on a separate process to speed up the build
