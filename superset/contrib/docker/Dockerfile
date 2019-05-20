@@ -53,7 +53,8 @@ RUN pip install --upgrade setuptools pip \
 COPY --chown=superset:superset superset superset
 
 ENV PATH=/home/superset/superset/bin:$PATH \
-    PYTHONPATH=/home/superset/superset/:$PYTHONPATH
+    PYTHONPATH=/home/superset/:$PYTHONPATH \
+    SUPERSET_CONFIG_PATH=/home/superset/superset/superset_config.py
 
 USER superset
 
@@ -63,7 +64,9 @@ RUN cd superset/assets \
     && npm run build \
     && rm -rf node_modules
 
+COPY contrib/docker/superset_config.py ./superset/
 COPY contrib/docker/docker-init.sh .
+COPY contrib/docker/add_gitbase.py .
 COPY contrib/docker/docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 

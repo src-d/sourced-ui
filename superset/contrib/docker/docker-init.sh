@@ -30,3 +30,6 @@ fi
 
 # Create default roles and permissions
 superset init
+
+# Add gitbase
+python add_gitbase.py
