@@ -367,7 +367,7 @@ class BaseColumn(AuditMixinNullable, ImportMixin):
         'LONG', 'REAL', 'NUMERIC', 'DECIMAL', 'MONEY',
     )
     date_types = ('DATE', 'TIME', 'DATETIME')
-    str_types = ('VARCHAR', 'STRING', 'CHAR')
+    str_types = ('VARCHAR', 'STRING', 'CHAR', 'TEXT')
 
     @property
     def is_num(self):
