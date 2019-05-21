@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"time"
 
 	"github.com/src-d/superset-compose/cmd/sandbox-ce/compose"
 )
@@ -11,19 +12,16 @@ type installCmd struct {
 }
 
 func (c *installCmd) Execute(args []string) error {
-	err := compose.Run(context.Background(),
-		"run", "--rm", "superset", "./docker-init.sh")
-
-	if err != nil {
+	if err := compose.Run(context.Background(),
+		"run", "--rm", "superset", "./docker-init.sh"); err != nil {
 		return err
 	}
 
-	err = compose.Run(context.Background(), "up", "--detach")
-	if err != nil {
+	if err := compose.Run(context.Background(), "up", "--detach"); err != nil {
 		return err
 	}
 
-	return nil
+	return OpenUI(30 * time.Second)
 }
 
 func init() {
