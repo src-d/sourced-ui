@@ -87,9 +87,17 @@ SQLLAB_DEFAULT_DBID = 2  # set gitbase as default DB in SQL Lab
 
 LOG_LEVEL = 'INFO'
 
+# Bblfsh-web configuration
+
+BBLFSH_WEB_HOST = get_env_variable('BBLFSH_WEB_HOST')
+BBLFSH_WEB_PORT = get_env_variable('BBLFSH_WEB_PORT')
+BBLFSH_WEB_ADDRESS = 'http://%s:%s' % (BBLFSH_WEB_HOST, BBLFSH_WEB_PORT)
+WTF_CSRF_EXEMPT_LIST = ['superset.bblfsh.views.api']
+
 # Alter flask application
 
 def mutator(f):
     from superset.bblfsh import views  # noqa
 
 FLASK_APP_MUTATOR = mutator
+
