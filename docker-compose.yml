@@ -7,7 +7,7 @@ services:
       - 9432:9432
 
   gitbase:
-    image: srcd/gitbase:v0.20.0-beta4
+    image: srcd/gitbase:v0.20.0-rc3
     ports:
       - 3306:3306
     environment:
