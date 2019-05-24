@@ -51,6 +51,7 @@ RUN pip install --upgrade setuptools pip \
     && rm -rf /root/.cache/pip
 
 COPY --chown=superset:superset superset superset
+COPY --chown=superset:superset dashboards dashboards
 
 ENV PATH=/home/superset/superset/bin:$PATH \
     PYTHONPATH=/home/superset/:$PYTHONPATH \
