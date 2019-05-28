@@ -17,6 +17,10 @@
 #
 set -ex
 
+if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
+    source "/home/superset/docker-init.sh"
+fi
+
 if [ "$#" -ne 0 ]; then
     exec "$@"
 elif [ "$SUPERSET_ENV" = "development" ]; then
