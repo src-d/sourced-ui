@@ -34,3 +34,6 @@ superset init
 
 # Add gitbase
 python add_gitbase.py
+
+# Add dashboards
+superset import_dashboards --recursive --path /home/superset/dashboards
