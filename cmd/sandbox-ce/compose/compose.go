@@ -10,7 +10,7 @@ import (
 	"runtime"
 	"strings"
 
-	composefile "github.com/src-d/superset-compose/cmd/sandbox-ce/compose/file"
+	"github.com/src-d/superset-compose/cmd/sandbox-ce/compose/workdir"
 	"github.com/src-d/superset-compose/cmd/sandbox-ce/dir"
 
 	"github.com/pkg/errors"
@@ -23,9 +23,7 @@ const composeContainerURL = "https://github.com/docker/compose/releases/download
 var envKeys = []string{"GITBASE_REPOS_DIR"}
 
 type Compose struct {
-	bin    string
-	name   string
-	config string
+	bin string
 }
 
 func (c *Compose) Run(ctx context.Context, arg ...string) error {
@@ -34,8 +32,14 @@ func (c *Compose) Run(ctx context.Context, arg ...string) error {
 
 func (c *Compose) RunWithIO(ctx context.Context, stdin io.Reader,
 	stdout, stderr io.Writer, arg ...string) error {
-	arg = append([]string{"--file", c.config, "--project-name", c.name}, arg...)
 	cmd := exec.CommandContext(ctx, c.bin, arg...)
+
+	dir, err := workdir.Active()
+	if err != nil {
+		return err
+	}
+
+	cmd.Dir = dir
 
 	var compOpts []string
 	for _, key := range envKeys {
@@ -62,9 +66,7 @@ func NewCompose() (*Compose, error) {
 		return nil, err
 	}
 
-	defaultFilePath, err := composefile.InitDefault()
-
-	return &Compose{bin: bin, name: "srcd", config: defaultFilePath}, nil
+	return &Compose{bin: bin}, nil
 }
 
 func getOrInstallComposeBinary() (string, error) {
