@@ -68,6 +68,7 @@ def handle_query_error(msg, query, session, payload=None):
     query.error_message = msg
     query.status = QueryStatus.FAILED
     query.tmp_table_name = None
+    query.connection_id = None
     session.commit()
     payload.update({
         'status': query.status,
@@ -248,6 +249,8 @@ def execute_sql_statements(
     # execution of all statements (if many)
     with closing(engine.raw_connection()) as conn:
         with closing(conn.cursor()) as cursor:
+            query.connection_id = db_engine_spec.get_connection_id(cursor)
+
             statement_count = len(statements)
             for i, statement in enumerate(statements):
                 # TODO CHECK IF STOPPED
@@ -271,6 +274,7 @@ def execute_sql_statements(
     query.progress = 100
     query.set_extra_json_key('progress', None)
     query.status = QueryStatus.SUCCESS
+    query.connection_id = None
     if query.select_as_cta:
         query.select_sql = database.select_star(
             query.tmp_table_name,
@@ -314,3 +318,21 @@ def execute_sql_statements(
 
     if return_results:
         return payload
+
+
+def cancel_query(query, user_name):
+    if not query.connection_id:
+        return
+
+    database = query.database
+    engine = database.get_sqla_engine(
+        schema=query.schema,
+        nullpool=True,
+        user_name=user_name,
+        source=sources.get('sql_lab', None),
+    )
+    db_engine_spec = database.db_engine_spec
+
+    with closing(engine.raw_connection()) as conn:
+        with closing(conn.cursor()) as cursor:
+            db_engine_spec.cancel_query(cursor, query)
