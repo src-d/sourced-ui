@@ -8,7 +8,7 @@
 
 ### Setup local environment
 
-Run dependencies using docker-compose:
+Download the `docker-compose.yml` file from [`src-d/sourced-ce`](https://github.com/src-d/sourced-ce), and run the dependencies:
 ```
 docker-compose up gitbase bblfsh-web
 ```
@@ -49,10 +49,4 @@ To see diff with upstream, run:
 
 ```
 make diff
-```
-
-To merge updated upsteam into subdirectory:
-
-```
-make merge
 ```

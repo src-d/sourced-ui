@@ -1,16 +1,16 @@
 # Package configuration
-PROJECT = sandbox-ce
+PROJECT = sourced-ui
 
 # superset upstream configuration
 SUPERSET_REPO = https://github.com/apache/incubator-superset.git
-SUPERSET_VERSION = release--0.32
+SUPERSET_VERSION = 0.32.0rc2
 SUPERSET_REMOTE = superset
 # directory to sync superset upstream with
 SUPERSET_DIR = superset
 # directory with custom code to copy into SUPERSET_DIR
 PATCH_SOURCE_DIR = srcd
 # name of the superset docker image to build
-SUPERSET_IMAGE_NAME = srcd/superset
+SUPERSET_IMAGE_NAME = srcd/sourced-ui
 
 # Including ci Makefile
 CI_REPOSITORY ?= https://github.com/src-d/ci.git
@@ -78,17 +78,12 @@ superset-remote-add:
 # Prints list of changed files in local superset and upstream
 .PHONY: diff-stat
 diff-stat: superset-remote-add
-	git diff-tree --stat $(SUPERSET_REMOTE)/$(SUPERSET_VERSION) HEAD:$(SUPERSET_DIR)/
+	git diff-tree --stat $(SUPERSET_VERSION) HEAD:$(SUPERSET_DIR)/
 
 # Prints unified diff of local superset  and upstream
 .PHONY: diff
 diff: superset-remote-add
-	git diff-tree -p $(SUPERSET_REMOTE)/$(SUPERSET_VERSION) HEAD:$(SUPERSET_DIR)/
-
-# Merge remote superset into SUPERSET_DIR as squashed commit
-.PHONY: merge
-merge: superset-remote-add
-	git merge --squash -s subtree --no-commit remotes/$(SUPERSET_REMOTE)/$(SUPERSET_VERSION)
+	git diff-tree -p $(SUPERSET_VERSION) HEAD:$(SUPERSET_DIR)/
 
 build: superset-build
 clean: superset-clean
