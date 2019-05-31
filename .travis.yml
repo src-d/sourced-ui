@@ -1,0 +1,25 @@
+branches:
+  only:
+    - master
+    - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
+
+dist: xenial
+sudo: required
+
+matrix:
+  fast_finish: true
+
+services:
+  - docker
+
+stages:
+  - name: tests
+  - name: release
+    if: tag IS present
+
+jobs:
+  include:
+    - stage: release
+      name: 'Release to Docker Hub'
+      script:
+        - make superset-docker-push-latest-release
