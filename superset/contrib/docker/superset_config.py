@@ -17,6 +17,7 @@ def get_env_variable(var_name, default=None):
                         .format(var_name)
             raise EnvironmentError(error_msg)
 
+
 # Branding
 
 APP_NAME = 'Source{d}'
@@ -51,6 +52,7 @@ CACHE_CONFIG = {
 RESULTS_BACKEND = RedisCache(
     host=REDIS_HOST, port=REDIS_PORT, key_prefix='superset_results')
 
+
 # Celery configuration. CeleryConfig doesn't inherit defaults from superset/config.
 
 class CeleryConfig(object):
@@ -66,6 +68,7 @@ class CeleryConfig(object):
         },
     }
 
+
 CELERY_CONFIG = CeleryConfig
 
 # Gitbase configuration
@@ -79,7 +82,10 @@ GITBASE_DB = get_env_variable('GITBASE_DB')
 GITBASE_PREFIX = 'sparksql' if IS_EE else 'mysql'
 GITBASE_AUTH = ''
 if GITBASE_USER:
-    GITBASE_AUTH = '%s%s@' % (GITBASE_USER, ':%s' % GITBASE_PASSWORD if GITBASE_PASSWORD else '')
+    GITBASE_AUTH = GITBASE_USER
+    if GITBASE_PASSWORD:
+        GITBASE_AUTH += ':%s' % GITBASE_PASSWORD
+    GITBASE_AUTH += '@'
 GITBASE_DATABASE_URI = '%s://%s%s:%s/%s' % (GITBASE_PREFIX,
                                             GITBASE_AUTH,
                                             GITBASE_HOST,
@@ -99,10 +105,11 @@ BBLFSH_WEB_PORT = get_env_variable('BBLFSH_WEB_PORT')
 BBLFSH_WEB_ADDRESS = 'http://%s:%s' % (BBLFSH_WEB_HOST, BBLFSH_WEB_PORT)
 WTF_CSRF_EXEMPT_LIST = ['superset.bblfsh.views.api']
 
+
 # Alter flask application
 
 def mutator(f):
     from superset.bblfsh import views  # noqa
 
-FLASK_APP_MUTATOR = mutator
 
+FLASK_APP_MUTATOR = mutator

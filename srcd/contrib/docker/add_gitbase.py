@@ -1,6 +1,6 @@
 from superset import conf, db
-from superset.models import core as models
 from superset.connectors.connector_registry import ConnectorRegistry
+from superset.models import core as models
 
 
 def get_or_create_gitbase_db():
