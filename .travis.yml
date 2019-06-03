@@ -3,7 +3,6 @@ branches:
     - master
     - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 
-dist: xenial
 sudo: required
 
 matrix:
