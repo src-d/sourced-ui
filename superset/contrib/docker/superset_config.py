@@ -71,18 +71,20 @@ CELERY_CONFIG = CeleryConfig
 # Gitbase configuration
 
 IS_EE = get_env_variable('MODE', 'Community') == 'Enterprise'
-GITBASE_USER = get_env_variable('GITBASE_USER')
+GITBASE_USER = get_env_variable('GITBASE_USER', '')
 GITBASE_PASSWORD = get_env_variable('GITBASE_PASSWORD', '')
 GITBASE_HOST = get_env_variable('GITBASE_HOST')
 GITBASE_PORT = get_env_variable('GITBASE_PORT')
 GITBASE_DB = get_env_variable('GITBASE_DB')
 GITBASE_PREFIX = 'sparksql' if IS_EE else 'mysql'
-GITBASE_DATABASE_URI = '%s://%s:%s@%s:%s/%s' % (GITBASE_PREFIX,
-                                                GITBASE_USER,
-                                                GITBASE_PASSWORD,
-                                                GITBASE_HOST,
-                                                GITBASE_PORT,
-                                                GITBASE_DB)
+GITBASE_AUTH = ''
+if GITBASE_USER:
+    GITBASE_AUTH = '%s%s@' % (GITBASE_USER, ':%s' % GITBASE_PASSWORD if GITBASE_PASSWORD else '')
+GITBASE_DATABASE_URI = '%s://%s%s:%s/%s' % (GITBASE_PREFIX,
+                                            GITBASE_AUTH,
+                                            GITBASE_HOST,
+                                            GITBASE_PORT,
+                                            GITBASE_DB)
 
 SQLLAB_DEFAULT_DBID = 2  # set gitbase as default DB in SQL Lab
 

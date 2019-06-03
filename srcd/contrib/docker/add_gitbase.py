@@ -22,13 +22,14 @@ def get_or_create_gitbase_db():
 
 
 def add_gitbase_tables():
+    schema = conf.get('GITBASE_DB')
     dbobj = get_or_create_gitbase_db()
     TBL = ConnectorRegistry.sources['table']
-    for table in dbobj.all_table_names_in_schema('gitbase'):
+    for table in dbobj.all_table_names_in_schema(schema):
         # table_name should match the one in the datasource for fetch_metadata to work
         if db.session.query(TBL).filter_by(table_name=table).first():
             continue
-        if db.session.query(TBL).filter_by(table_name='gitbase.' + table).first():
+        if db.session.query(TBL).filter_by(table_name='%s.%s' % (schema, table)).first():
             continue
 
         # create table with original name and fetch columns
@@ -39,7 +40,7 @@ def add_gitbase_tables():
         tbl.fetch_metadata()
 
         # rename with prefix and set source
-        tbl.table_name = 'gitbase.' + table
+        tbl.table_name = '%s.%s' % (schema, table)
         tbl.sql = 'select * from ' + table
         db.session.add(dbobj)
         db.session.commit()
