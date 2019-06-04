@@ -184,21 +184,19 @@ class ExploreResultsButton extends React.PureComponent {
   render() {
     const allowsSubquery = this.props.database && this.props.database.allows_subquery;
     return (
-      <React.Fragment>
-        <Button
-          bsSize="small"
-          onClick={this.onClick}
-          disabled={!allowsSubquery}
-          tooltip={t('Explore the result set in the data exploration view')}
-        >
-          <InfoTooltipWithTrigger icon="line-chart" placement="top" label="explore" /> {t('Explore')}
-        </Button>
+      <Button
+        bsSize="small"
+        onClick={this.onClick}
+        disabled={!allowsSubquery}
+        tooltip={t('Explore the result set in the data exploration view')}
+      >
         <Dialog
           ref={(el) => {
             this.dialog = el;
           }}
         />
-      </React.Fragment>
+        <InfoTooltipWithTrigger icon="line-chart" placement="top" label="explore" /> {t('Explore')}
+      </Button>
     );
   }
 }

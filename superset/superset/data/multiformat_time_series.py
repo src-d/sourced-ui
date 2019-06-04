@@ -14,6 +14,8 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+import gzip
+import os
 
 import pandas as pd
 from sqlalchemy import BigInteger, Date, DateTime, String
@@ -22,7 +24,7 @@ from superset import db
 from superset.utils import core as utils
 from .helpers import (
     config,
-    get_example_data,
+    DATA_FOLDER,
     get_slice_json,
     merge_slice,
     misc_dash_slices,
@@ -33,9 +35,8 @@ from .helpers import (
 
 def load_multiformat_time_series():
     """Loading time series data from a zip file in the repo"""
-    data = get_example_data('multiformat_time_series.json.gz')
-    pdf = pd.read_json(data)
-
+    with gzip.open(os.path.join(DATA_FOLDER, 'multiformat_time_series.json.gz')) as f:
+        pdf = pd.read_json(f)
     pdf.ds = pd.to_datetime(pdf.ds, unit='s')
     pdf.ds2 = pd.to_datetime(pdf.ds2, unit='s')
     pdf.to_sql(

@@ -19,7 +19,6 @@
 /* eslint camelcase: 0 */
 import URI from 'urijs';
 import { availableDomains } from '../utils/hostNamesConfig';
-import { safeStringify } from '../utils/safeStringify';
 
 const MAX_URL_LENGTH = 8000;
 
@@ -72,7 +71,7 @@ export function getExploreLongUrl(formData, endpointType, allowOverflow = true, 
   Object.keys(extraSearch).forEach((key) => {
     search[key] = extraSearch[key];
   });
-  search.form_data = safeStringify(formData);
+  search.form_data = JSON.stringify(formData);
   if (endpointType === 'standalone') {
     search.standalone = 'true';
   }

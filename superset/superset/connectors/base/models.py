@@ -86,7 +86,7 @@ class BaseDatasource(AuditMixinNullable, ImportMixin):
 
     @property
     def column_names(self):
-        return sorted([c.column_name for c in self.columns], key=lambda x: x or '')
+        return sorted([c.column_name for c in self.columns])
 
     @property
     def columns_types(self):
@@ -166,9 +166,7 @@ class BaseDatasource(AuditMixinNullable, ImportMixin):
     def data(self):
         """Data representation of the datasource sent to the frontend"""
         order_by_choices = []
-        # self.column_names return sorted column_names
-        for s in self.column_names:
-            s = str(s or '')
+        for s in sorted(self.column_names):
             order_by_choices.append((json.dumps([s, True]), s + ' [asc]'))
             order_by_choices.append((json.dumps([s, False]), s + ' [desc]'))
 

@@ -1164,6 +1164,10 @@ class NVD3TimeSeriesViz(NVD3Viz):
             dfs.sort_values(ascending=False, inplace=True)
             df = df[dfs.index]
 
+        if fd.get('contribution'):
+            dft = df.T
+            df = (dft / dft.sum()).T
+
         rolling_type = fd.get('rolling_type')
         rolling_periods = int(fd.get('rolling_periods') or 0)
         min_periods = int(fd.get('min_periods') or 0)
@@ -1182,10 +1186,6 @@ class NVD3TimeSeriesViz(NVD3Viz):
             df = df.cumsum()
         if min_periods:
             df = df[min_periods:]
-
-        if fd.get('contribution'):
-            dft = df.T
-            df = (dft / dft.sum()).T
 
         return df
 
@@ -1254,9 +1254,7 @@ class NVD3TimeSeriesViz(NVD3Viz):
                     self.to_series(
                         diff, classed='time-shift-{}'.format(i), title_suffix=label))
 
-        if not self.sort_series:
-            chart_data = sorted(chart_data, key=lambda x: tuple(x['key']))
-        return chart_data
+        return sorted(chart_data, key=lambda x: tuple(x['key']))
 
 
 class MultiLineViz(NVD3Viz):
@@ -1818,10 +1816,7 @@ class FilterBoxViz(BaseViz):
             metric = flt.get('metric')
             df = self.dataframes.get(col)
             if metric:
-                df = df.sort_values(
-                    utils.get_metric_name(metric),
-                    ascending=flt.get('asc'),
-                )
+                df = df.sort_values(metric, ascending=flt.get('asc'))
                 d[col] = [{
                     'id': row[0],
                     'text': row[0],

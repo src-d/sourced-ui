@@ -38,11 +38,6 @@ describe('SqlEditor', () => {
     defaultQueryLimit: 1000,
     maxRow: 100000,
   };
-
-  beforeAll(() => {
-    jest.spyOn(SqlEditor.prototype, 'getSqlEditorHeight').mockImplementation(() => 500);
-  });
-
   it('is valid', () => {
     expect(
       React.isValidElement(<SqlEditor {...mockedProps} />),

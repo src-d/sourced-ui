@@ -641,15 +641,15 @@ function nvd3Vis(element, props) {
         // If x bounds are shown, we need a right margin
         margins.right = Math.max(20, maxXAxisLabelHeight / 2) + marginPad;
       }
-      if (xLabelRotation === 45) {
+      if (staggerLabels) {
+        margins.bottom = 40;
+      } else {
         margins.bottom = (
           maxXAxisLabelHeight * Math.sin(Math.PI * xLabelRotation / 180)
         ) + marginPad;
         margins.right = (
           maxXAxisLabelHeight * Math.cos(Math.PI * xLabelRotation / 180)
         ) + marginPad;
-      } else if (staggerLabels) {
-        margins.bottom = 40;
       }
 
       if (isVizTypes(['dual_line', 'line_multi'])) {
@@ -711,9 +711,8 @@ function nvd3Vis(element, props) {
         .attr('height', height)
         .call(chart);
 
-      // On scroll, hide (not remove) tooltips so they can reappear on hover.
-      // Throttle to only 4x/second.
-      window.addEventListener('scroll', throttle(() => hideTooltips(false), 250));
+      // on scroll, hide tooltips. throttle to only 4x/second.
+      window.addEventListener('scroll', throttle(hideTooltips, 250));
 
       // The below code should be run AFTER rendering because chart is updated in call()
       if (isTimeSeries && activeAnnotationLayers.length > 0) {
@@ -934,10 +933,10 @@ function nvd3Vis(element, props) {
     return chart;
   };
 
-  // Remove tooltips before rendering chart, if the chart is being re-rendered sometimes
+  // hide tooltips before rendering chart, if the chart is being re-rendered sometimes
   // there are left over tooltips in the dom,
   // this will clear them before rendering the chart again.
-  hideTooltips(true);
+  hideTooltips();
 
   nv.addGraph(drawGraph);
 }

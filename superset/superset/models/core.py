@@ -48,7 +48,6 @@ from superset import app, db, db_engine_specs, security_manager
 from superset.connectors.connector_registry import ConnectorRegistry
 from superset.legacy import update_time_range
 from superset.models.helpers import AuditMixinNullable, ImportMixin
-from superset.models.tags import ChartUpdater, DashboardUpdater, FavStarUpdater
 from superset.models.user_attributes import UserAttribute
 from superset.utils import (
     cache as cache_util,
@@ -163,7 +162,7 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
                      'viz_type', 'params', 'cache_timeout')
 
     def __repr__(self):
-        return self.slice_name or str(self.id)
+        return self.slice_name
 
     @property
     def cls_model(self):
@@ -292,13 +291,9 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
         return '/chart/edit/{}'.format(self.id)
 
     @property
-    def chart(self):
-        return self.slice_name or '<empty>'
-
-    @property
     def slice_link(self):
         url = self.slice_url
-        name = escape(self.chart)
+        name = escape(self.slice_name)
         return Markup(f'<a href="{url}">{name}</a>')
 
     def get_viz(self, force=False):
@@ -364,13 +359,6 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
         session.flush()
         return slc_to_import.id
 
-    @property
-    def url(self):
-        return (
-            '/superset/explore/?form_data=%7B%22slice_id%22%3A%20{0}%7D'
-            .format(self.id)
-        )
-
 
 sqla.event.listen(Slice, 'before_insert', set_related_perm)
 sqla.event.listen(Slice, 'before_update', set_related_perm)
@@ -411,7 +399,7 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
                      'description', 'css', 'slug')
 
     def __repr__(self):
-        return self.dashboard_title or str(self.id)
+        return self.dashboard_title
 
     @property
     def table_names(self):
@@ -441,17 +429,13 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
         return {slc.datasource for slc in self.slices}
 
     @property
-    def charts(self):
-        return [slc.chart for slc in self.slices]
-
-    @property
     def sqla_metadata(self):
         # pylint: disable=no-member
         metadata = MetaData(bind=self.get_sqla_engine())
         return metadata.reflect()
 
     def dashboard_link(self):
-        title = escape(self.dashboard_title or '<empty>')
+        title = escape(self.dashboard_title)
         return Markup(f'<a href="{self.url}">{title}</a>')
 
     @property
@@ -1267,14 +1251,3 @@ class DatasourceAccessRequest(Model, AuditMixinNullable):
                 href = '{} Role'.format(r.name)
             action_list = action_list + '<li>' + href + '</li>'
         return '<ul>' + action_list + '</ul>'
-
-
-# events for updating tags
-sqla.event.listen(Slice, 'after_insert', ChartUpdater.after_insert)
-sqla.event.listen(Slice, 'after_update', ChartUpdater.after_update)
-sqla.event.listen(Slice, 'after_delete', ChartUpdater.after_delete)
-sqla.event.listen(Dashboard, 'after_insert', DashboardUpdater.after_insert)
-sqla.event.listen(Dashboard, 'after_update', DashboardUpdater.after_update)
-sqla.event.listen(Dashboard, 'after_delete', DashboardUpdater.after_delete)
-sqla.event.listen(FavStar, 'after_insert', FavStarUpdater.after_insert)
-sqla.event.listen(FavStar, 'after_delete', FavStarUpdater.after_delete)

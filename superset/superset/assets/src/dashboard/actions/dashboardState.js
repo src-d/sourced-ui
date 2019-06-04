@@ -253,10 +253,7 @@ export function addSliceToDashboard(id) {
         ),
       );
     }
-    const form_data = {
-      ...selectedSlice.form_data,
-      slice_id: selectedSlice.slice_id,
-    };
+    const form_data = selectedSlice.form_data;
     const newChart = {
       ...initChart,
       id,

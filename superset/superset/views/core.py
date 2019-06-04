@@ -378,7 +378,7 @@ class CsvToDatabaseView(SimpleFormView):
             except OSError:
                 pass
             message = 'Table name {} already exists. Please pick another'.format(
-                form.name.data) if isinstance(e, IntegrityError) else str(e)
+                form.name.data) if isinstance(e, IntegrityError) else e
             flash(
                 message,
                 'danger')
@@ -572,7 +572,7 @@ class DashboardModelView(SupersetModelView, DeleteMixin):  # noqa
     edit_columns = [
         'dashboard_title', 'slug', 'owners', 'position_json', 'css',
         'json_metadata']
-    show_columns = edit_columns + ['table_names', 'charts']
+    show_columns = edit_columns + ['table_names', 'slices']
     search_columns = ('dashboard_title', 'slug', 'owners')
     add_columns = edit_columns
     base_order = ('changed_on', 'desc')
@@ -599,7 +599,7 @@ class DashboardModelView(SupersetModelView, DeleteMixin):  # noqa
         'dashboard_link': _('Dashboard'),
         'dashboard_title': _('Title'),
         'slug': _('Slug'),
-        'charts': _('Charts'),
+        'slices': _('Charts'),
         'owners': _('Owners'),
         'creator': _('Creator'),
         'modified': _('Modified'),
@@ -610,9 +610,8 @@ class DashboardModelView(SupersetModelView, DeleteMixin):  # noqa
     }
 
     def pre_add(self, obj):
-        obj.slug = obj.slug or None
+        obj.slug = obj.slug.strip() or None
         if obj.slug:
-            obj.slug = obj.slug.strip()
             obj.slug = obj.slug.replace(' ', '-')
             obj.slug = re.sub(r'[^\w\-]+', '', obj.slug)
         if g.user not in obj.owners:
@@ -1089,7 +1088,7 @@ class Superset(BaseSupersetView):
         if not slc:
             abort(404)
         endpoint = '/superset/explore/?form_data={}'.format(
-            parse.quote(json.dumps({'slice_id': slice_id})),
+            parse.quote(json.dumps(form_data)),
         )
         if request.args.get('standalone') == 'true':
             endpoint += '&standalone=true'
@@ -1525,17 +1524,12 @@ class Superset(BaseSupersetView):
             db.session
             .query(models.Database)
             .filter_by(id=db_id)
-            .first()
+            .one()
         )
-        if database:
-            schemas = database.all_schema_names(
-                cache=database.schema_cache_enabled,
-                cache_timeout=database.schema_cache_timeout,
-                force=force_refresh)
-            schemas = security_manager.schemas_accessible_by_user(database, schemas)
-        else:
-            schemas = []
-
+        schemas = database.all_schema_names(cache=database.schema_cache_enabled,
+                                            cache_timeout=database.schema_cache_timeout,
+                                            force=force_refresh)
+        schemas = security_manager.schemas_accessible_by_user(database, schemas)
         return Response(
             json.dumps({'schemas': schemas}),
             mimetype='application/json')
@@ -2515,7 +2509,7 @@ class Superset(BaseSupersetView):
             limit=min(lim for lim in limits if lim is not None),
             sql=sql,
             schema=schema,
-            select_as_cta=select_as_cta,
+            select_as_cta=request.form.get('select_as_cta') == 'true',
             start_time=now_as_float(),
             tab_name=request.form.get('tab'),
             status=QueryStatus.PENDING if async_ else QueryStatus.RUNNING,

@@ -110,7 +110,6 @@ APP_NAME = 'Superset'
 
 # Uncomment to setup an App icon
 APP_ICON = '/static/assets/images/superset-logo@2x.png'
-APP_ICON_WIDTH = 126
 
 # Druid query timezone
 # tz.tzutc() : Using utc timezone
@@ -325,9 +324,6 @@ DEFAULT_SQLLAB_LIMIT = 1000
 
 # Maximum number of tables/views displayed in the dropdown window in SQL Lab.
 MAX_TABLE_NAMES = 3000
-
-# Adds a warning message on sqllab save query modal.
-SQLLAB_SAVE_WARNING_MESSAGE = None
 
 # If defined, shows this text in an alert-warning box in the navbar
 # one example use case may be "STAGING" to make it clear that this is
@@ -561,9 +557,6 @@ WEBDRIVER_CONFIGURATION = {}
 
 # The base URL to query for accessing the user interface
 WEBDRIVER_BASEURL = 'http://0.0.0.0:8080/'
-
-# Send user to a link where they can report bugs
-BUG_REPORT_URL = None
 
 
 try:
