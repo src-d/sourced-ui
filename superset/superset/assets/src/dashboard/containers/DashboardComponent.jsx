@@ -33,6 +33,8 @@ import {
   handleComponentDrop,
 } from '../actions/dashboardLayout';
 
+import { logEvent } from '../../logger/actions';
+
 const propTypes = {
   component: componentShape.isRequired,
   parentComponent: componentShape.isRequired,
@@ -40,6 +42,12 @@ const propTypes = {
   deleteComponent: PropTypes.func.isRequired,
   updateComponents: PropTypes.func.isRequired,
   handleComponentDrop: PropTypes.func.isRequired,
+  logEvent: PropTypes.func.isRequired,
+  directPathToChild: PropTypes.arrayOf(PropTypes.string),
+};
+
+const defaultProps = {
+  directPathToChild: [],
 };
 
 function mapStateToProps(
@@ -53,6 +61,8 @@ function mapStateToProps(
     component,
     parentComponent: dashboardLayout[parentId],
     editMode: dashboardState.editMode,
+    filters: dashboardState.filters,
+    directPathToChild: dashboardState.directPathToChild,
   };
 
   // rows and columns need more data about their child dimensions
@@ -80,6 +90,7 @@ function mapDispatchToProps(dispatch) {
       deleteComponent,
       updateComponents,
       handleComponentDrop,
+      logEvent,
     },
     dispatch,
   );
@@ -94,6 +105,7 @@ class DashboardComponent extends React.PureComponent {
 }
 
 DashboardComponent.propTypes = propTypes;
+DashboardComponent.defaultProps = defaultProps;
 
 export default connect(
   mapStateToProps,

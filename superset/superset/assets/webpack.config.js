@@ -207,6 +207,21 @@ const config = {
         ],
       },
       {
+        // handle symlinked modules
+        // for debugging @superset-ui packages via npm link
+        test: /\.jsx?$/,
+        include: /node_modules\/[@]superset[-]ui.+\/src/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['airbnb', '@babel/preset-react', '@babel/preset-env'],
+              plugins: ['lodash', '@babel/plugin-syntax-dynamic-import', 'react-hot-loader/babel'],
+            },
+          },
+        ],
+      },
+      {
         test: /\.css$/,
         include: [
           APP_DIR,

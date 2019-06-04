@@ -35,7 +35,7 @@ little bit helps, and credit will always be given.
 - [Pull Request Guidelines](#pull-request-guidelines)
   - [Protocol](#protocol)
 - [Managing Issues and PRs](#managing-issues-and-prs)
-- [Local development](#local-development)
+- [Setup Local Environment for Development](#setup-local-environment-for-development)
   - [Documentation](#documentation)
   - [Flask server](#flask-server)
   - [Frontend assets](#frontend-assets)
@@ -52,6 +52,7 @@ little bit helps, and credit will always be given.
   - [Creating a new visualization type](#creating-a-new-visualization-type)
   - [Adding a DB migration](#adding-a-db-migration)
   - [Merging DB migrations](#merging-db-migrations)
+  - [SQL Lab Async](#sql-lab-async)
 
 ## Types of Contributions
 
@@ -96,7 +97,12 @@ articles. See [Documentation](#documentation) for more details.
 
 ### Add Translations
 
-If you are proficient in a non-English language, you can help translate text strings from Superset's UI. You can jump in to the existing language dictionaries at `superset/translations/<language_code>/LC_MESSAGES/messages.po`, or even create a dictionary for a new language altogether. See [Translating](#translating) for more details.
+If you are proficient in a non-English language, you can help translate
+text strings from Superset's UI. You can jump in to the existing
+language dictionaries at
+`superset/translations/<language_code>/LC_MESSAGES/messages.po`, or
+even create a dictionary for a new language altogether.
+See [Translating](#translating) for more details.
 
 ### Ask Questions
 
@@ -384,9 +390,6 @@ npm run dev
 
 # Compile the Javascript and CSS in production/optimized mode for official releases
 npm run prod
-
-# Copy a conf file from the frontend to the backend
-npm run sync-backend
 ```
 
 #### Updating NPM packages
@@ -410,6 +413,10 @@ export enum FeatureFlag {
 }
 ```
 
+`superset/config.py` contains `DEFAULT_FEATURE_FLAGS` which will be overwritten by
+those specified under FEATURE_FLAGS in `superset_config.py`. For example, `DEFAULT_FEATURE_FLAGS = { 'FOO': True, 'BAR': False }` in `superset/config.py` and `FEATURE_FLAGS = { 'BAR': True, 'BAZ': True }` in `superset_config.py` will result
+in combined feature flags of `{ 'FOO': True, 'BAR': True, 'BAZ': True }`.
+
 ## Linting
 
 Lint the project with:
@@ -428,9 +435,9 @@ npm run lint
 
 ### Python Testing
 
-All python tests are carried out in [tox](http://tox.readthedocs.io/en/latest/index.html)
+All python tests are carried out in [tox](https://tox.readthedocs.io/en/latest/index.html)
 a standardized testing framework.
-All python tests can be run with any of the tox [environments](http://tox.readthedocs.io/en/latest/example/basic.html#a-simple-tox-ini-default-environments), via,
+All python tests can be run with any of the tox [environments](https://tox.readthedocs.io/en/latest/example/basic.html#a-simple-tox-ini-default-environments), via,
 
 ```bash
 tox -e <environment>
@@ -458,9 +465,38 @@ Note that the test environment uses a temporary directory for defining the
 SQLite databases which will be cleared each time before the group of test
 commands are invoked.
 
+#### Typing
+
+To ensure clarity, consistency, all readability, _all_ new functions should use
+[type hints](https://docs.python.org/3/library/typing.html) and include a
+docstring using Sphinx documentation.
+
+Note per [PEP-484](https://www.python.org/dev/peps/pep-0484/#exceptions) no
+syntax for listing explicitly raised exceptions is proposed and thus the
+recommendation is to put this information in a docstring, i.e.,
+
+
+```python
+import math
+from typing import Union
+
+
+def sqrt(x: Union[float, int]) -> Union[float, int]:
+    """
+    Return the square root of x.
+
+    :param x: A number
+    :returns: The square root of the given number
+    :raises ValueError: If the number is negative
+    """
+
+    return math.sqrt(x)
+```
+
+
 ### JavaScript Testing
 
-We use [Jest](https://jestjs.io/) and [Enzyme](http://airbnb.io/enzyme/) to test Javascript. Tests can be run with:
+We use [Jest](https://jestjs.io/) and [Enzyme](https://airbnb.io/enzyme/) to test Javascript. Tests can be run with:
 
 ```bash
 cd superset/assets
@@ -490,16 +526,23 @@ npm run cypress run
 
 ## Translating
 
-We use [Babel](http://babel.pocoo.org/en/latest/) to translate Superset. In Python files, we import the magic `_` function using:
+We use [Babel](http://babel.pocoo.org/en/latest/) to translate Superset.
+In Python files, we import the magic `_` function using:
 
 ```python
 from flask_babel import lazy_gettext as _
 ```
 
-then wrap our translatable strings with it, e.g. `_('Translate me')`. During extraction, string literals passed to `_` will be added to the generated `.po` file for each language for later translation.
-At runtime, the `_` function will return the translation of the given string for the current language, or the given string itself if no translation is available.
+then wrap our translatable strings with it, e.g. `_('Translate me')`.
+During extraction, string literals passed to `_` will be added to the
+generated `.po` file for each language for later translation.
 
-In JavaScript, the technique is similar: we import `t` (simple translation), `tn` (translation containing a number).
+At runtime, the `_` function will return the translation of the given
+string for the current language, or the given string itself
+if no translation is available.
+
+In JavaScript, the technique is similar:
+we import `t` (simple translation), `tn` (translation containing a number).
 
 ```javascript
 import { t, tn } from '@superset-ui/translation';
@@ -653,3 +696,29 @@ To fix it:
     ```bash
     superset db upgrade
     ```
+
+### SQL Lab Async
+
+It's possible to configure a local database to operate in `async` mode,
+to work on `async` related features.
+
+To do this, you'll need to:
+* Add an additional database entry. We recommend you copy the connection
+  string from the database labeled `main`, and then enable `SQL Lab` and the 
+  features you want to use. Don't forget to check the `Async` box
+* Configure a results backend, here's a local `FileSystemCache` example,
+  not recommended for production,
+  but perfect for testing (stores cache in `/tmp`)
+    ```python
+    from werkzeug.contrib.cache import FileSystemCache
+    RESULTS_BACKEND = FileSystemCache('/tmp/sqllab')
+    ```
+
+Note that:
+* for changes that affect the worker logic, you'll have to
+  restart the `celery worker` process for the changes to be reflected.
+* The message queue used is a `sqlite` database using the `SQLAlchemy`
+  experimental broker. Ok for testing, but not recommended in production
+* In some cases, you may want to create a context that is more aligned
+  to your production environment, and use the similar broker as well as
+  results backend configuration

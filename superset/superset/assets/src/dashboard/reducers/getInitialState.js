@@ -63,7 +63,11 @@ export default function(bootstrapData) {
 
   // dashboard layout
   const { position_json: positionJson } = dashboard;
-  const layout = positionJson || getEmptyLayout();
+  // new dash: positionJson could be {} or null
+  const layout =
+    positionJson && Object.keys(positionJson).length > 0
+      ? positionJson
+      : getEmptyLayout();
 
   // create a lookup to sync layout names with slice names
   const chartIdToLayoutId = {};
@@ -155,6 +159,14 @@ export default function(bootstrapData) {
     future: [],
   };
 
+  // find direct link component and path from root
+  const directLinkComponentId = (window.location.hash || '#').substring(1);
+  let directPathToChild = [];
+  if (layout[directLinkComponentId]) {
+    directPathToChild = (layout[directLinkComponentId].parents || []).slice();
+    directPathToChild.push(directLinkComponentId);
+  }
+
   return {
     datasources,
     sliceEntities: { ...initSliceEntities, slices, isLoading: false },
@@ -174,6 +186,7 @@ export default function(bootstrapData) {
       dash_edit_perm: dashboard.dash_edit_perm,
       dash_save_perm: dashboard.dash_save_perm,
       superset_can_explore: dashboard.superset_can_explore,
+      superset_can_csv: dashboard.superset_can_csv,
       slice_can_edit: dashboard.slice_can_edit,
       common: {
         flash_messages: common.flash_messages,
@@ -184,7 +197,9 @@ export default function(bootstrapData) {
       sliceIds: Array.from(sliceIds),
       refresh: false,
       filters,
+      directPathToChild,
       expandedSlices: dashboard.metadata.expanded_slices || {},
+      refreshFrequency: dashboard.metadata.refresh_frequency || 0,
       css: dashboard.css || '',
       editMode: dashboard.dash_edit_perm && editMode,
       showBuilderPane: dashboard.dash_edit_perm && editMode,
