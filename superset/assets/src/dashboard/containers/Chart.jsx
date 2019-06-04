@@ -23,9 +23,11 @@ import {
   changeFilter as addFilter,
   toggleExpandSlice,
 } from '../actions/dashboardState';
-import { refreshChart } from '../../chart/chartAction';
-import getFormDataWithExtraFilters from '../util/charts/getFormDataWithExtraFilters';
 import { updateComponents } from '../actions/dashboardLayout';
+import { addDangerToast } from '../../messageToasts/actions';
+import { refreshChart } from '../../chart/chartAction';
+import { logEvent } from '../../logger/actions';
+import getFormDataWithExtraFilters from '../util/charts/getFormDataWithExtraFilters';
 import Chart from '../components/gridComponents/Chart';
 
 const EMPTY_FILTERS = {};
@@ -62,6 +64,7 @@ function mapStateToProps(
     editMode: dashboardState.editMode,
     isExpanded: !!dashboardState.expandedSlices[id],
     supersetCanExplore: !!dashboardInfo.superset_can_explore,
+    supersetCanCSV: !!dashboardInfo.superset_can_csv,
     sliceCanEdit: !!dashboardInfo.slice_can_edit,
   };
 }
@@ -70,9 +73,11 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
       updateComponents,
+      addDangerToast,
       toggleExpandSlice,
       addFilter,
       refreshChart,
+      logEvent,
     },
     dispatch,
   );

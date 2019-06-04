@@ -190,7 +190,11 @@ class TableElement extends React.PureComponent {
         </div>
         <div className="pull-right">
           {table.isMetadataLoading || table.isExtraMetadataLoading ?
-            <Loading size={50} />
+            <Loading
+              size={50}
+              position="normal"
+              className="margin-zero"
+            />
             :
             this.renderControls()
           }
@@ -204,7 +208,16 @@ class TableElement extends React.PureComponent {
     if (table.columns) {
       cols = table.columns.slice();
       if (this.state.sortColumns) {
-        cols.sort((a, b) => a.name.toUpperCase() > b.name.toUpperCase());
+        cols.sort((a, b) => {
+          const colA = a.name.toUpperCase();
+          const colB = b.name.toUpperCase();
+          if (colA < colB) {
+            return -1;
+          } else if (colA > colB) {
+            return 1;
+          }
+          return 0;
+        });
       }
     }
     const metadata = (
@@ -230,7 +243,6 @@ class TableElement extends React.PureComponent {
       <Collapse
         in={this.state.expanded}
         timeout={this.props.timeout}
-        transitionAppear
         onExited={this.removeFromStore.bind(this)}
       >
         <div className="TableElement table-schema m-b-10">

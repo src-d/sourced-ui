@@ -25,10 +25,12 @@ import DragHandle from '../dnd/DragHandle';
 import DashboardComponent from '../../containers/DashboardComponent';
 import DeleteComponentButton from '../DeleteComponentButton';
 import HoverMenu from '../menu/HoverMenu';
+import findTabIndexByComponentId from '../../util/findTabIndexByComponentId';
 import { componentShape } from '../../util/propShapes';
 import { NEW_TAB_ID, DASHBOARD_ROOT_ID } from '../../util/constants';
 import { RENDER_TAB, RENDER_TAB_CONTENT } from './Tab';
 import { TAB_TYPE } from '../../util/componentTypes';
+import { LOG_ACTIONS_SELECT_DASHBOARD_TAB } from '../../../logger/LogUtils';
 
 const NEW_TAB_INDEX = -1;
 const MAX_TAB_COUNT = 7;
@@ -43,6 +45,8 @@ const propTypes = {
   renderTabContent: PropTypes.bool, // whether to render tabs + content or just tabs
   editMode: PropTypes.bool.isRequired,
   renderHoverMenu: PropTypes.bool,
+  logEvent: PropTypes.func.isRequired,
+  directPathToChild: PropTypes.arrayOf(PropTypes.string),
 
   // grid related
   availableColumnCount: PropTypes.number,
@@ -65,6 +69,7 @@ const defaultProps = {
   renderHoverMenu: true,
   availableColumnCount: 0,
   columnWidth: 0,
+  directPathToChild: [],
   onChangeTab() {},
   onResizeStart() {},
   onResize() {},
@@ -74,8 +79,13 @@ const defaultProps = {
 class Tabs extends React.PureComponent {
   constructor(props) {
     super(props);
+    const tabIndex = findTabIndexByComponentId({
+      currentComponent: props.component,
+      directPathToChild: props.directPathToChild,
+    });
+
     this.state = {
-      tabIndex: 0,
+      tabIndex,
     };
     this.handleClickTab = this.handleClickTab.bind(this);
     this.handleDeleteComponent = this.handleDeleteComponent.bind(this);
@@ -106,6 +116,11 @@ class Tabs extends React.PureComponent {
         },
       });
     } else if (tabIndex !== this.state.tabIndex) {
+      this.props.logEvent(LOG_ACTIONS_SELECT_DASHBOARD_TAB, {
+        tab_id: component.id,
+        index: tabIndex,
+      });
+
       this.setState(() => ({ tabIndex }));
       this.props.onChangeTab({ tabIndex, tabId: component.children[tabIndex] });
     }
