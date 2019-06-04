@@ -9,7 +9,7 @@ matrix:
   fast_finish: true
 
 stages:
-  - name: tests
+  - name: test
   - name: release
     if: tag IS present
 
