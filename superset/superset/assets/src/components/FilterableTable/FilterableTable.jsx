@@ -27,6 +27,7 @@ import {
   SortIndicator,
 } from 'react-virtualized';
 import { getTextDimension } from '@superset-ui/dimension';
+import { cellRenderer, isUAST } from './CellRenderer';
 
 function getTextWidth(text, font = '12px Roboto') {
   return getTextDimension({ text, style: { font } }).width;
@@ -34,7 +35,6 @@ function getTextWidth(text, font = '12px Roboto') {
 
 const SCROLL_BAR_HEIGHT = 15;
 
-import { cellRenderer, isUAST } from './CellRenderer';
 
 const propTypes = {
   orderedColumnKeys: PropTypes.array.isRequired,
