@@ -63,5 +63,7 @@ jobs:
       name: 'Release to Docker Hub'
       services:
         - docker
+      install: skip
+      after_success: skip
       script:
         - make superset-docker-push-latest-release
