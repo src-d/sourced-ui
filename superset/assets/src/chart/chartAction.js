@@ -152,13 +152,6 @@ export function updateQueryFormData(value, key) {
   return { type: UPDATE_QUERY_FORM_DATA, value, key };
 }
 
-// in the sql lab -> explore flow, user can inline edit chart title,
-// then the chart will be assigned a new slice_id
-export const UPDATE_CHART_ID = 'UPDATE_CHART_ID';
-export function updateChartId(newId, key = 0) {
-  return { type: UPDATE_CHART_ID, newId, key };
-}
-
 export const ADD_CHART = 'ADD_CHART';
 export function addChart(chart, key) {
   return { type: ADD_CHART, chart, key };
@@ -246,10 +239,7 @@ export function runQuery(formData, force = false, timeout = 60, key) {
 export function redirectSQLLab(formData) {
   return (dispatch) => {
     const { url } = getExploreUrlAndPayload({ formData, endpointType: 'query' });
-    return SupersetClient.post({
-      url,
-      postPayload: { form_data: formData },
-    })
+    return SupersetClient.get({ url })
       .then(({ json }) => {
         const redirectUrl = new URL(window.location);
         redirectUrl.pathname = '/superset/sqllab';

@@ -14,22 +14,24 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
+import gzip
 import json
+import os
 
 import pandas as pd
 from sqlalchemy import String, Text
 
 from superset import db
 from superset.utils import core as utils
-from .helpers import TBL, get_example_data
+from .helpers import DATA_FOLDER, TBL
 
 
 def load_paris_iris_geojson():
     tbl_name = 'paris_iris_mapping'
 
-    data = get_example_data('paris_iris.json.gz')
-    df = pd.read_json(data)
-    df['features'] = df.features.map(json.dumps)
+    with gzip.open(os.path.join(DATA_FOLDER, 'paris_iris.json.gz')) as f:
+        df = pd.read_json(f)
+        df['features'] = df.features.map(json.dumps)
 
     df.to_sql(
         tbl_name,

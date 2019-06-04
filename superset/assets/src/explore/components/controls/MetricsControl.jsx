@@ -60,21 +60,6 @@ function isDictionaryForAdhocMetric(value) {
   return value && !(value instanceof AdhocMetric) && value.expressionType;
 }
 
-function columnsContainAllMetrics(value, nextProps) {
-  const columnNames = new Set(
-    [...nextProps.columns, ...nextProps.savedMetrics]
-    // eslint-disable-next-line camelcase
-      .map(({ column_name, metric_name }) => (column_name || metric_name)),
-  );
-
-  return (Array.isArray(value) ? value : [value])
-    .filter(metric => metric)
-    // find column names
-    .map(metric => metric.column ? metric.column.column_name : metric.column_name || metric)
-    .filter(name => name)
-    .every(name => columnNames.has(name));
-}
-
 // adhoc metrics are stored as dictionaries in URL params. We convert them back into the
 // AdhocMetric class for typechecking, consistency and instance method access.
 function coerceAdhocMetrics(value) {
@@ -150,22 +135,14 @@ export default class MetricsControl extends React.PureComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { value } = this.props;
     if (
-      !isEqual(this.props.columns, nextProps.columns) ||
-      !isEqual(this.props.savedMetrics, nextProps.savedMetrics)
+      isEqual(this.props.columns) !== isEqual(nextProps.columns) ||
+      isEqual(this.props.savedMetrics) !== isEqual(nextProps.savedMetrics)
     ) {
-
       this.setState({ options: this.optionsForSelect(nextProps) });
-
-      // Remove metrics if selected value no longer a column
-      const containsAllMetrics = columnsContainAllMetrics(value, nextProps);
-
-      if (!containsAllMetrics) {
-        this.props.onChange([]);
-      }
+      this.props.onChange([]);
     }
-    if (value !== nextProps.value) {
+    if (this.props.value !== nextProps.value) {
       this.setState({ value: coerceAdhocMetrics(nextProps.value) });
     }
   }

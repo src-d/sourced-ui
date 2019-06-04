@@ -24,7 +24,7 @@ import { shallow } from 'enzyme';
 
 import { STATUS_OPTIONS } from '../../../src/SqlLab/constants';
 import { initialState } from './fixtures';
-import SouthPaneContainer, { SouthPane } from '../../../src/SqlLab/components/SouthPane';
+import SouthPane from '../../../src/SqlLab/components/SouthPane';
 
 describe('SouthPane', () => {
   const middlewares = [thunk];
@@ -42,16 +42,11 @@ describe('SouthPane', () => {
   };
 
   const getWrapper = () => (
-    shallow(<SouthPaneContainer {...mockedProps} />, {
+    shallow(<SouthPane {...mockedProps} />, {
       context: { store },
     }).dive());
 
   let wrapper;
-
-  beforeAll(() => {
-    jest.spyOn(SouthPane.prototype, 'getSouthPaneHeight').mockImplementation(() => 500);
-  });
-
   it('should render offline when the state is offline', () => {
     wrapper = getWrapper();
     wrapper.setProps({ offline: true });

@@ -84,7 +84,7 @@ class App extends React.PureComponent {
       content = (
         <div>
           <QueryAutoRefresh />
-          <TabbedSqlEditors />
+          <TabbedSqlEditors getHeight={this.getHeight} />
         </div>
       );
     }

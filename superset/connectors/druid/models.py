@@ -280,7 +280,7 @@ class DruidColumn(Model, BaseColumn):
     export_parent = 'datasource'
 
     def __repr__(self):
-        return self.column_name or str(self.id)
+        return self.column_name
 
     @property
     def expression(self):
@@ -1144,9 +1144,7 @@ class DruidDatasource(Model, BaseDatasource):
                     pre_qry['aggregations'] = aggs_dict
                     pre_qry['post_aggregations'] = post_aggs_dict
             else:
-                agg_keys = qry['aggregations'].keys()
-                order_by = list(agg_keys)[0] if agg_keys else None
-
+                order_by = list(qry['aggregations'].keys())[0]
             # Limit on the number of timeseries, doing a two-phases query
             pre_qry['granularity'] = 'all'
             pre_qry['threshold'] = min(row_limit,

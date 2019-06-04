@@ -28,7 +28,6 @@ from flask_compress import Compress
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
 from werkzeug.contrib.fixers import ProxyFix
-import wtforms_json
 
 from superset import config
 from superset.connectors.connector_registry import ConnectorRegistry
@@ -36,15 +35,13 @@ from superset.security import SupersetSecurityManager
 from superset.utils.core import (
     get_update_perms_flag, pessimistic_connection_handling, setup_cache)
 
-wtforms_json.init()
-
 APP_DIR = os.path.dirname(__file__)
 CONFIG_MODULE = os.environ.get('SUPERSET_CONFIG', 'superset.config')
 
 if not os.path.exists(config.DATA_DIR):
     os.makedirs(config.DATA_DIR)
 
-with open(APP_DIR + '/static/assets/backendSync.json', 'r', encoding='utf-8') as f:
+with open(APP_DIR + '/static/assets/backendSync.json', 'r') as f:
     frontend_config = json.load(f)
 
 app = Flask(__name__)

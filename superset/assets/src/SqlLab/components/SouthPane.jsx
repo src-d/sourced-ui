@@ -48,24 +48,7 @@ const defaultProps = {
   offline: false,
 };
 
-export class SouthPane extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      height: props.height,
-    };
-    this.southPaneRef = React.createRef();
-    this.getSouthPaneHeight = this.getSouthPaneHeight.bind(this);
-    this.switchTab = this.switchTab.bind(this);
-  }
-  componentWillReceiveProps() {
-    // south pane expands the entire height of the tab content on mount
-    this.setState({ height: this.getSouthPaneHeight() });
-  }
-  // One layer of abstraction for easy spying in unit tests
-  getSouthPaneHeight() {
-    return this.southPaneRef.current ? this.southPaneRef.current.clientHeight : 0;
-  }
+class SouthPane extends React.PureComponent {
   switchTab(id) {
     this.props.actions.setActiveSouthPaneTab(id);
   }
@@ -76,7 +59,7 @@ export class SouthPane extends React.PureComponent {
           { STATUS_OPTIONS.offline }
         </Label>);
     }
-    const innerTabHeight = this.state.height - 55;
+    const innerTabHeight = this.props.height - 55;
     let latestQuery;
     const props = this.props;
     if (props.editorQueries.length > 0) {
@@ -115,12 +98,12 @@ export class SouthPane extends React.PureComponent {
     ));
 
     return (
-      <div className="SouthPane" ref={this.southPaneRef}>
+      <div className="SouthPane">
         <Tabs
           bsStyle="tabs"
           id={shortid.generate()}
           activeKey={this.props.activeSouthPaneTab}
-          onSelect={this.switchTab}
+          onSelect={this.switchTab.bind(this)}
         >
           <Tab
             title={t('Results')}

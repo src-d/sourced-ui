@@ -49,8 +49,10 @@ class DatasourceModal extends React.PureComponent {
     super(props);
     this.state = {
       errors: [],
+      showDatasource: false,
       datasource: props.datasource,
     };
+    this.toggleShowDatasource = this.toggleShowDatasource.bind(this);
     this.setSearchRef = this.setSearchRef.bind(this);
     this.onDatasourceChange = this.onDatasourceChange.bind(this);
     this.onClickSave = this.onClickSave.bind(this);
@@ -107,6 +109,10 @@ class DatasourceModal extends React.PureComponent {
 
   setDialogRef(ref) {
     this.dialog = ref;
+  }
+
+  toggleShowDatasource() {
+    this.setState({ showDatasource: !this.state.showDatasource });
   }
 
   renderSaveDialog() {

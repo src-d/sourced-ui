@@ -20,6 +20,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { t } from '@superset-ui/translation';
+
 import TableElement from './TableElement';
 import TableSelector from '../../components/TableSelector';
 
@@ -105,7 +106,7 @@ export default class SqlEditorLeftBar extends React.PureComponent {
     const tableMetaDataHeight = this.props.height - 130; // 130 is the height of the selects above
     const qe = this.props.queryEditor;
     return (
-      <div className="sqlEditorLeftBar">
+      <div className="clearfix">
         <TableSelector
           dbId={qe.dbId}
           schema={qe.schema}
