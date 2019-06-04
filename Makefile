@@ -3,7 +3,7 @@ PROJECT = sourced-ui
 
 # superset upstream configuration
 SUPERSET_REPO = https://github.com/apache/incubator-superset.git
-SUPERSET_VERSION = 0.32.0rc2
+SUPERSET_VERSION = 0.33.0rc1
 SUPERSET_REMOTE = superset
 # directory to sync superset upstream with
 SUPERSET_DIR = superset
