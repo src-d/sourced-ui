@@ -1,14 +1,14 @@
-import simplejson as json
-import requests
-
+# pylint: disable=C,R,W
 from flask import request, Response
-from flask_babel import lazy_gettext as _
 from flask_appbuilder import expose
 from flask_appbuilder.security.decorators import has_access
+from flask_babel import lazy_gettext as _
+import requests
+import simplejson as json
 
-from superset.views.base import BaseSupersetView
 from superset import appbuilder
 from superset.config import BBLFSH_WEB_ADDRESS
+from superset.views.base import BaseSupersetView
 
 
 class Bblfsh(BaseSupersetView):
@@ -49,5 +49,5 @@ class Bblfsh(BaseSupersetView):
         return response
 
 
-appbuilder.add_view(Bblfsh, "UAST", label=_('UAST'),
+appbuilder.add_view(Bblfsh, 'UAST', label=_('UAST'),
                     category_icon='fa-steam', icon='fa-steam')
