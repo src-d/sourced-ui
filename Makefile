@@ -27,13 +27,13 @@ all: superset-remote-add
 
 # Copy src-d files in the superset repository
 .PHONY: patch
-patch: clean
+patch: superset-clean
 	cp -r $(PATCH_SOURCE_DIR)/* $(SUPERSET_DIR)/
 
 # Copy src-d files in the superset repository using symlinks. it's useful for development.
 # Allows to run flask locally and work only inside superset directory.
 .PHONY: patch-dev
-patch-dev: clean
+patch-dev: superset-clean
 	@diff=`diff -r $(PATCH_SOURCE_DIR) $(SUPERSET_DIR) | grep "$(PATCH_SOURCE_DIR)" | awk '{gsub(/: /,"/");print $$3}'`; \
 	for file in $${diff}; do \
 		to=`echo $${file} | cut -d'/' -f2-`; \
