@@ -21,14 +21,6 @@
 
 @datasource-sql-expression-width: 450px;
 
-body {
-    margin: 0 !important;
-}
-
-.caret {
-    border-top: 4px solid;
-}
-
 .emph {
   font-weight: bold !important;
 }
@@ -299,11 +291,59 @@ table.table-no-hover tr:hover {
   cursor: text;
 }
 
+.anchor-link-container {
+  position: absolute;
+  z-index: 5;
+
+  .btn.btn-sm, .btn.btn-sm:active {
+    border: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .fa.fa-link {
+    position: relative;
+    top: 2px;
+    right: 0;
+    visibility: hidden;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+.nav.nav-tabs li .anchor-link-container {
+  top: 0;
+  right: -32px;
+}
+
+.dashboard-component.dashboard-component-header .anchor-link-container {
+  .fa.fa-link {
+    font-size: 16px;
+  }
+}
+
+.nav.nav-tabs li:hover,
+.dashboard-component.dashboard-component-header:hover {
+  .anchor-link-container {
+    cursor: pointer;
+
+    .fa.fa-link {
+      visibility: visible;
+    }
+  }
+}
+
 .m-r-5 {
   margin-right: 5px;
 }
 .m-r-3 {
   margin-right: 3px;
+}
+.m-t-4 {
+  margin-top: 4px;
 }
 .m-t-5 {
   margin-top: 5px;
@@ -410,6 +450,13 @@ table.table-no-hover tr:hover {
     display: inline;
 }
 
+.form-actions-container button {
+  display: flex;
+  .caret {
+    margin: 0 8px;
+  }
+}
+
 .list-container .filter-action {
     margin: 10px 10px 0 10px;
     padding-bottom: 15px;
@@ -475,20 +522,17 @@ g.annotation-container {
     position:relative;
     padding-right: 40px;
 }
-
-.reactable-header-sortable::before{
+.reactable-header-sortable::after {
     font: normal normal normal 14px/1 FontAwesome;
     content: "\f0dc";
-    position: absolute;
-    top: 6px;
-    right: 5px;
+    margin-left: 10px;
     color: @brand-primary;
 }
-.reactable-header-sort-asc::before{
+.reactable-header-sort-asc::after{
     content: "\f0de";
     color: @brand-primary;
 }
-.reactable-header-sort-desc::before{
+.reactable-header-sort-desc::after{
     content: "\f0dd";
     color: @brand-primary;
 }

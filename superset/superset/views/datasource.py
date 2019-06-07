@@ -24,7 +24,7 @@ from flask_appbuilder.security.decorators import has_access_api
 from superset import appbuilder, db
 from superset.connectors.connector_registry import ConnectorRegistry
 from superset.models.core import Database
-from .base import BaseSupersetView
+from .base import BaseSupersetView, json_error_response
 
 
 class Datasource(BaseSupersetView):
@@ -45,6 +45,25 @@ class Datasource(BaseSupersetView):
         data = orm_datasource.data
         db.session.commit()
         return self.json_response(data)
+
+    @expose('/get/<datasource_type>/<datasource_id>/')
+    @has_access_api
+    def get(self, datasource_type, datasource_id):
+        orm_datasource = ConnectorRegistry.get_datasource(
+            datasource_type, datasource_id, db.session)
+
+        if not orm_datasource:
+            return json_error_response(
+                'This datasource does not exist',
+                status='400',
+            )
+        elif not orm_datasource.data:
+            return json_error_response(
+                'Error fetching datasource data.',
+                status='500',
+            )
+
+        return self.json_response(orm_datasource.data)
 
     @expose('/external_metadata/<datasource_type>/<datasource_id>/')
     @has_access_api

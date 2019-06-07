@@ -16,6 +16,7 @@
 # under the License.
 # pylint: disable=C,R,W
 """Package's main module!"""
+from copy import deepcopy
 import json
 import logging
 from logging.handlers import TimedRotatingFileHandler
@@ -43,9 +44,6 @@ CONFIG_MODULE = os.environ.get('SUPERSET_CONFIG', 'superset.config')
 
 if not os.path.exists(config.DATA_DIR):
     os.makedirs(config.DATA_DIR)
-
-with open(APP_DIR + '/static/assets/backendSync.json', 'r', encoding='utf-8') as f:
-    frontend_config = json.load(f)
 
 app = Flask(__name__)
 app.config.from_object(CONFIG_MODULE)
@@ -210,6 +208,23 @@ appbuilder = AppBuilder(
 security_manager = appbuilder.sm
 
 results_backend = app.config.get('RESULTS_BACKEND')
+
+# Merge user defined feature flags with default feature flags
+_feature_flags = app.config.get('DEFAULT_FEATURE_FLAGS') or {}
+_feature_flags.update(app.config.get('FEATURE_FLAGS') or {})
+
+
+def get_feature_flags():
+    GET_FEATURE_FLAGS_FUNC = app.config.get('GET_FEATURE_FLAGS_FUNC')
+    if GET_FEATURE_FLAGS_FUNC:
+        return GET_FEATURE_FLAGS_FUNC(deepcopy(_feature_flags))
+    return _feature_flags
+
+
+def is_feature_enabled(feature):
+    """Utility function for checking whether a feature is turned on"""
+    return get_feature_flags().get(feature)
+
 
 # Registering sources
 module_datasource_map = app.config.get('DEFAULT_MODULE_DS_MAP')

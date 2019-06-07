@@ -43,7 +43,7 @@ import withToasts from '../messageToasts/enhancers/withToasts';
 import './main.css';
 
 const checkboxGenerator = (d, onChange) => <CheckboxControl value={d} onChange={onChange} />;
-const DATA_TYPES = ['STRING', 'NUMBER', 'DATETIME'];
+const DATA_TYPES = ['STRING', 'NUMERIC', 'DATETIME'];
 
 function CollectionTabTitle({ title, collection }) {
   return (
@@ -83,11 +83,16 @@ function ColumnCollectionTable({
               label={t('Label')}
               control={<TextControl />}
             />
+            <Field
+              fieldKey="description"
+              label={t('Description')}
+              control={<TextControl />}
+            />
             {allowEditDataType &&
               <Field
                 fieldKey="type"
                 label={t('Data Type')}
-                control={<SelectControl choices={DATA_TYPES} name="type" />}
+                control={<SelectControl choices={DATA_TYPES} name="type" freeForm />}
               />}
             <Field
               fieldKey="python_date_format"
@@ -510,6 +515,11 @@ export class DatasourceEditor extends React.PureComponent {
         expandFieldset={
           <FormContainer>
             <Fieldset>
+              <Field
+                fieldKey="verbose_name"
+                label={t('Label')}
+                control={<TextControl />}
+              />
               <Field
                 fieldKey="description"
                 label={t('Description')}

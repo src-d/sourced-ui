@@ -117,6 +117,10 @@ export default class ResultSet extends React.PureComponent {
   }
   renderControls() {
     if (this.props.search || this.props.visualize || this.props.csv) {
+      let data = this.props.query.results.data;
+      if (this.props.cache && this.props.query.cached) {
+        data = this.state.data;
+      }
       return (
         <div className="ResultSetControls">
           <div className="clearfix">
@@ -134,7 +138,7 @@ export default class ResultSet extends React.PureComponent {
                   </Button>}
 
                 <CopyToClipboard
-                  text={prepareCopyToClipboardTabularData(this.props.query.results.data)}
+                  text={prepareCopyToClipboardTabularData(data)}
                   wrapped={false}
                   copyNode={
                     <Button bsSize="small">
@@ -149,8 +153,9 @@ export default class ResultSet extends React.PureComponent {
                 <input
                   type="text"
                   onChange={this.changeSearch.bind(this)}
+                  value={this.state.searchText}
                   className="form-control input-sm"
-                  placeholder={t('Search Results')}
+                  placeholder={t('Filter Results')}
                 />
               }
             </div>
@@ -203,7 +208,7 @@ export default class ResultSet extends React.PureComponent {
       }
       if (data && data.length > 0) {
         return (
-          <div>
+          <React.Fragment>
             {this.renderControls.bind(this)()}
             {sql}
             <FilterableTable
@@ -212,10 +217,10 @@ export default class ResultSet extends React.PureComponent {
               height={height}
               filterText={this.state.searchText}
             />
-          </div>
+          </React.Fragment>
         );
       } else if (data && data.length === 0) {
-        return <Alert bsStyle="warning">The query returned no data</Alert>;
+        return <Alert bsStyle="warning">{t('The query returned no data')}</Alert>;
       }
     }
     if (query.cached) {

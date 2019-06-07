@@ -19,6 +19,9 @@ set -ex
 
 if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN && [ "$SUPERSET_NO_DB_INIT" != "true" ]; then
     source "/home/superset/docker-init.sh"
+else
+    # always run migrations
+    superset db upgrade
 fi
 
 if [ "$#" -ne 0 ]; then
@@ -26,9 +29,9 @@ if [ "$#" -ne 0 ]; then
 elif [ "$SUPERSET_ENV" = "development" ]; then
     celery worker --app=superset.sql_lab:celery_app --pool=gevent -Ofair &
     # needed by superset runserver
-    (cd superset/assets/ && npm ci && npm run sync-backend)
+    (cd superset/assets/ && npm ci)
     (cd superset/assets/ && npm run dev) &
-    FLASK_APP=superset:app flask run -p 8088 --with-threads --reload --debugger --host=0.0.0.0
+    FLASK_ENV=development FLASK_APP=superset:app flask run -p 8088 --with-threads --reload --debugger --host=0.0.0.0
 elif [ "$SUPERSET_ENV" = "production" ]; then
     celery worker --app=superset.sql_lab:celery_app --pool=gevent -Ofair &
     gunicorn --bind  0.0.0.0:8088 \
