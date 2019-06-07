@@ -7,6 +7,10 @@
     Click to see more.
   </summary>
 
+  ### Bug Fixes
+
+  - Fix incorrect timeout value for charts ([#95](https://github.com/src-d/sourced-ui/issues/95)).
+
 </details>
 
 ## [v0.1.0](https://github.com/src-d/sourced-ui/releases/tag/v0.1.0) - 2019-06-03
