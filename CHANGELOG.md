@@ -7,11 +7,12 @@
     Click to see more.
   </summary>
 
-  ### Bug Fixes
-
-  - Fix incorrect timeout value for charts ([#95](https://github.com/src-d/sourced-ui/issues/95)).
-
 </details>
+
+## [v0.2.0](https://github.com/src-d/sourced-ui/releases/tag/v0.2.0) - 2019-06-07
+
+- Update superset to v0.33 ([#89](https://github.com/src-d/sourced-ui/issues/89))
+- Fix incorrect timeout value for charts ([#95](https://github.com/src-d/sourced-ui/issues/95)).
 
 ## [v0.1.0](https://github.com/src-d/sourced-ui/releases/tag/v0.1.0) - 2019-06-03
 
