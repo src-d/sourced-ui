@@ -17,7 +17,7 @@
 #
 set -ex
 
-if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
+if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN && [ "$SUPERSET_NO_DB_INIT" != "true" ]; then
     source "/home/superset/docker-init.sh"
 fi
 
