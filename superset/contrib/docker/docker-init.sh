@@ -17,23 +17,27 @@
 #
 set -ex
 
-# Create an admin user
-fabmanager create-admin \
-    --app superset \
-    --username $ADMIN_LOGIN \
-    --firstname $ADMIN_FIRST_NAME \
-    --lastname $ADMIN_LAST_NAME \
-    --email $ADMIN_EMAIL \
-    --password $ADMIN_PASSWORD
-
-# Initialize the database
+# always run migrations
 superset db upgrade
 
-# Create default roles and permissions
-superset init
+# initialize database if empty
+if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
+    # Create an admin user
+    fabmanager create-admin \
+        --app superset \
+        --username $ADMIN_LOGIN \
+        --firstname $ADMIN_FIRST_NAME \
+        --lastname $ADMIN_LAST_NAME \
+        --email $ADMIN_EMAIL \
+        --password $ADMIN_PASSWORD
+    
+    # Create default roles and permissions
+    superset init
+    
+    # Add gitbase
+    python add_gitbase.py
 
-# Add gitbase
-python add_gitbase.py
+    # Add dashboards
+    superset import_dashboards --recursive --path /home/superset/dashboards
+fi
 
-# Add dashboards
-superset import_dashboards --recursive --path /home/superset/dashboards
