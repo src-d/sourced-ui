@@ -92,7 +92,7 @@ Database Support
 
 Superset speaks many SQL dialects through SQLAlchemy, a Python
 ORM that is compatible with
-[most common databases](http://docs.sqlalchemy.org/en/rel_1_0/core/engines.html).
+[most common databases](https://docs.sqlalchemy.org/en/rel_1_2/core/engines.html).
 
 Superset can be used to visualize data out of most databases:
 * MySQL
@@ -112,6 +112,7 @@ Superset can be used to visualize data out of most databases:
 * Redshift
 * Clickhouse
 * Apache Kylin
+* Google BigQuery
 * **more!** look for the availability of a SQLAlchemy dialect for your database
   to find out whether it will work with Superset
 
@@ -177,6 +178,7 @@ the world know they are using Superset. Join our growing community!
  1. [Brilliant.org](https://brilliant.org/)
  1. [Capital Service S.A.](http://capitalservice.pl)
  1. [Clark.de](http://clark.de/)
+ 1. [Cloudsmith](https://cloudsmith.io)
  1. [CnOvit](http://www.cnovit.com/)
  1. [Dial Once](https://www.dial-once.com/en/)
  1. [Digit Game Studios](https://www.digitgaming.com/)
@@ -187,6 +189,7 @@ the world know they are using Superset. Join our growing community!
  1. [Fordeal](http://www.fordeal.com)
  1. [GfK Data Lab](http://datalab.gfk.com)
  1. [Grassroot](https://www.grassrootinstitute.org/)
+ 1. [Hostnfly](https://www.hostnfly.com/)
  1. [HuiShouBao](http://www.huishoubao.com/)
  1. [jampp](https://jampp.com/)
  1. [Konfío](http://konfio.mx)
@@ -195,11 +198,13 @@ the world know they are using Superset. Join our growing community!
  1. [Lyft](https://www.lyft.com/)
  1. [Maieutical Labs](https://maieuticallabs.it)
  1. [Myra Labs](http://www.myralabs.com/)
+ 1. [Now](https://www.now.vn/)
  1. [PeopleDoc](https://www.people-doc.com)
  1. [Ona](https://ona.io)
  1. [Pronto Tools](http://www.prontotools.io)
  1. [QPID Health](http://www.qpidhealth.com/    )
  1. [Qunar](https://www.qunar.com/)
+ 1. [Scoot](https://scoot.co/)
  1. [ScopeAI](https://www.getscopeai.com)
  1. [Shopee](https://shopee.sg)
  1. [Shopkick](https://www.shopkick.com)

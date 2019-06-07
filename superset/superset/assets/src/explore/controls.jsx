@@ -120,6 +120,7 @@ const sortAxisChoices = [
 const groupByControl = {
   type: 'SelectControl',
   multi: true,
+  freeForm: true,
   label: t('Group by'),
   default: [],
   includeTime: false,
@@ -127,10 +128,12 @@ const groupByControl = {
   optionRenderer: c => <ColumnOption column={c} showType />,
   valueRenderer: c => <ColumnOption column={c} />,
   valueKey: 'column_name',
+  allowAll: true,
   filterOption: (opt, text) => (
-    (opt.column_name && opt.column_name.toLowerCase().indexOf(text) >= 0) ||
-    (opt.verbose_name && opt.verbose_name.toLowerCase().indexOf(text) >= 0)
+    (opt.column_name && opt.column_name.toLowerCase().indexOf(text.toLowerCase()) >= 0) ||
+    (opt.verbose_name && opt.verbose_name.toLowerCase().indexOf(text.toLowerCase()) >= 0)
   ),
+  promptTextCreator: label => label,
   mapStateToProps: (state, control) => {
     const newState = {};
     if (state.datasource) {
@@ -141,6 +144,7 @@ const groupByControl = {
     }
     return newState;
   },
+  commaChoosesOption: false,
 };
 
 const metrics = {
@@ -542,6 +546,7 @@ export const controls = {
     choices: [
       'Belgium',
       'Brazil',
+      'Bulgaria',
       'China',
       'Egypt',
       'France',
@@ -625,9 +630,12 @@ export const controls = {
     optionRenderer: c => <ColumnOption column={c} showType />,
     valueRenderer: c => <ColumnOption column={c} />,
     valueKey: 'column_name',
+    allowAll: true,
     mapStateToProps: state => ({
       options: (state.datasource) ? state.datasource.columns : [],
     }),
+    commaChoosesOption: false,
+    freeForm: true,
   },
 
   spatial: {
@@ -1292,10 +1300,11 @@ export const controls = {
 
   rotation: {
     type: 'SelectControl',
-    label: t('Rotation'),
+    label: t('Word Rotation'),
     choices: formatSelectOptions(['random', 'flat', 'square']),
     renderTrigger: true,
-    default: 'flat',
+    default: 'square',
+    clearable: false,
     description: t('Rotation to apply to words in the cloud'),
   },
 
@@ -1343,7 +1352,7 @@ export const controls = {
       'mean',
       'min',
       'max',
-      'stdev',
+      'std',
       'var',
     ]),
     default: 'sum',
@@ -1377,7 +1386,7 @@ export const controls = {
   size_from: {
     type: 'TextControl',
     isInt: true,
-    label: t('Font Size From'),
+    label: t('Minimum Font Size'),
     renderTrigger: true,
     default: '20',
     description: t('Font size for the smallest value in the list'),
@@ -1386,7 +1395,7 @@ export const controls = {
   size_to: {
     type: 'TextControl',
     isInt: true,
-    label: t('Font Size To'),
+    label: t('Maximum Font Size'),
     renderTrigger: true,
     default: '150',
     description: t('Font size for the biggest value in the list'),
@@ -1959,7 +1968,7 @@ export const controls = {
     default: null,
     description: '',
     mapStateToProps: state => ({
-      columns: state.datasource ? state.datasource.columns : [],
+      columns: state.datasource ? state.datasource.columns.filter(c => c.filterable) : [],
       savedMetrics: state.datasource ? state.datasource.metrics : [],
       datasource: state.datasource,
     }),
@@ -2313,7 +2322,6 @@ export const controls = {
     description: t('Filter configuration for the filter box'),
     validators: [],
     controlName: 'FilterBoxItemControl',
-    passthroughProps: ['datasource'],
     mapStateToProps: ({ datasource }) => ({ datasource }),
   },
 

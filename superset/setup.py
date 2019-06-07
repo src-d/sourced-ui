@@ -72,13 +72,13 @@ setup(
         'bblfsh>=3.0.3',
         'bleach>=3.0.2, <4.0.0',
         'celery>=4.2.0, <5.0.0',
-        'click>=6.0, <7.0.0',  # click >=7 forces "-" instead of "_"
+        'click>=6.0, <7.0.0',  # `click`>=7 forces "-" instead of "_"
         'colorama',
         'contextlib2',
         'croniter>=0.3.28',
         'cryptography>=2.4.2',
         'flask>=1.0.0, <2.0.0',
-        'flask-appbuilder==1.12.1',
+        'flask-appbuilder>=1.12.5, <2.0.0',
         'flask-caching',
         'flask-compress',
         'flask-migrate',
@@ -89,7 +89,7 @@ setup(
         'idna',
         'isodate',
         'markdown>=3.0',
-        'pandas>=0.18.0',
+        'pandas>=0.18.0, <0.24.0',  # `pandas`>=0.24.0 changes datetimelike API
         'parsedatetime',
         'pathlib2',
         'polyline',
@@ -111,17 +111,15 @@ setup(
         'cors': ['flask-cors>=2.0.0'],
         'console_log': ['console_log==0.2.10'],
         'hive': [
-            'pyhive>=0.4.0',
+            'pyhive[hive]>=0.6.1',
             'tableschema',
-            'thrift-sasl>=0.2.1',
-            'thrift>=0.9.3',
         ],
-        'presto': ['pyhive>=0.4.0'],
+        'presto': ['pyhive[presto]>=0.4.0'],
         'gsheets': ['gsheetsdb>=0.1.9'],
     },
     author='Apache Software Foundation',
     author_email='dev@superset.incubator.apache.org',
-    url='http://superset.apache.org/',
+    url='https://superset.apache.org/',
     download_url=(
         'https://dist.apache.org/repos/dist/release/superset/' + version_string
     ),

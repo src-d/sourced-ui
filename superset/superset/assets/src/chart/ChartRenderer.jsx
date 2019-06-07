@@ -20,10 +20,9 @@ import dompurify from 'dompurify';
 import { snakeCase } from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { ChartProps } from '@superset-ui/chart';
+import { ChartProps, SuperChart } from '@superset-ui/chart';
 import { Tooltip } from 'react-bootstrap';
-import { Logger, LOG_ACTIONS_RENDER_CHART } from '../logger';
-import SuperChart from '../visualizations/core/components/SuperChart';
+import { Logger, LOG_ACTIONS_RENDER_CHART } from '../logger/LogUtils';
 import transformBigNumber from './transformBigNumber';
 
 const propTypes = {
@@ -63,6 +62,7 @@ class ChartRenderer extends React.Component {
     this.state = {};
 
     this.createChartProps = ChartProps.createSelector();
+    this.hasQueryResponseChange = false;
 
     this.setTooltip = this.setTooltip.bind(this);
     this.handleAddFilter = this.handleAddFilter.bind(this);
@@ -72,19 +72,24 @@ class ChartRenderer extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    if (
+    const resultsReady =
       nextProps.queryResponse &&
       ['success', 'rendered'].indexOf(nextProps.chartStatus) > -1 &&
       !nextProps.queryResponse.error &&
-      !nextProps.refreshOverlayVisible &&
-      (nextProps.annotationData !== this.props.annotationData ||
-        nextProps.queryResponse !== this.props.queryResponse ||
+      !nextProps.refreshOverlayVisible;
+
+    if (resultsReady) {
+      this.hasQueryResponseChange =
+        nextProps.queryResponse !== this.props.queryResponse;
+
+      if (this.hasQueryResponseChange ||
+        nextProps.annotationData !== this.props.annotationData ||
         nextProps.height !== this.props.height ||
         nextProps.width !== this.props.width ||
         nextState.tooltip !== this.state.tooltip ||
-        nextProps.triggerRender)
-    ) {
-      return true;
+        nextProps.triggerRender) {
+        return true;
+      }
     }
     return false;
   }
@@ -130,12 +135,17 @@ class ChartRenderer extends React.Component {
       actions.chartRenderingSucceeded(chartId);
     }
 
-    Logger.append(LOG_ACTIONS_RENDER_CHART, {
-      slice_id: chartId,
-      viz_type: vizType,
-      start_offset: this.renderStartTime,
-      duration: Logger.getTimestamp() - this.renderStartTime,
-    });
+    // only log chart render time which is triggered by query results change
+    // currently we don't log chart re-render time, like window resize etc
+    if (this.hasQueryResponseChange) {
+      actions.logEvent(LOG_ACTIONS_RENDER_CHART, {
+        slice_id: chartId,
+        viz_type: vizType,
+        start_offset: this.renderStartTime,
+        ts: new Date().getTime(),
+        duration: Logger.getTimestamp() - this.renderStartTime,
+      });
+    }
   }
 
   handleRenderFailure(error, info) {
@@ -143,13 +153,17 @@ class ChartRenderer extends React.Component {
     console.warn(error); // eslint-disable-line
     actions.chartRenderingFailed(error.toString(), chartId, info ? info.componentStack : null);
 
-    Logger.append(LOG_ACTIONS_RENDER_CHART, {
-      slice_id: chartId,
-      has_err: true,
-      error_details: error.toString(),
-      start_offset: this.renderStartTime,
-      duration: Logger.getTimestamp() - this.renderStartTime,
-    });
+    // only trigger render log when query is changed
+    if (this.hasQueryResponseChange) {
+      actions.logEvent(LOG_ACTIONS_RENDER_CHART, {
+        slice_id: chartId,
+        has_err: true,
+        error_details: error.toString(),
+        start_offset: this.renderStartTime,
+        ts: new Date().getTime(),
+        duration: Logger.getTimestamp() - this.renderStartTime,
+      });
+    }
   }
 
   preTransformProps(chartProps) {
@@ -193,6 +207,7 @@ class ChartRenderer extends React.Component {
       chartAlert,
       chartStatus,
       vizType,
+      chartId,
     } = this.props;
 
     const isLoading = chartStatus === 'loading';
@@ -204,6 +219,7 @@ class ChartRenderer extends React.Component {
       <React.Fragment>
         {this.renderTooltip()}
         <SuperChart
+          id={`chart-id-${chartId}`}
           className={`${snakeCase(vizType)}`}
           chartType={vizType}
           chartProps={skipChartRendering ? null : this.prepareChartProps()}

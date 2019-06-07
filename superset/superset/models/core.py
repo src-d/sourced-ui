@@ -817,7 +817,9 @@ class Database(Model, AuditMixinNullable, ImportMixin):
                 self.impersonate_user,
                 effective_username))
         if configuration:
-            params['connect_args'] = {'configuration': configuration}
+            d = params.get('connect_args', {})
+            d['configuration'] = configuration
+            params['connect_args'] = d
 
         DB_CONNECTION_MUTATOR = config.get('DB_CONNECTION_MUTATOR')
         if DB_CONNECTION_MUTATOR:
@@ -831,7 +833,7 @@ class Database(Model, AuditMixinNullable, ImportMixin):
     def get_quoter(self):
         return self.get_dialect().identifier_preparer.quote
 
-    def get_df(self, sql, schema):
+    def get_df(self, sql, schema, mutator=None):
         sqls = [str(s).strip().strip(';') for s in sqlparse.parse(sql)]
         source_key = None
         if request and request.referrer:
@@ -874,6 +876,9 @@ class Database(Model, AuditMixinNullable, ImportMixin):
                     columns=columns,
                     coerce_float=True,
                 )
+
+                if mutator:
+                    df = mutator(df)
 
                 for k, v in df.dtypes.items():
                     if v.type == numpy.object_ and needs_conversion(df[k]):
