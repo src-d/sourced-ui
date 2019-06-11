@@ -17,11 +17,8 @@
 #
 set -ex
 
-if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
+if [ "$SUPERSET_NO_DB_INIT" != "true" ]; then
     source "/home/superset/docker-init.sh"
-else
-    # always run migrations
-    superset db upgrade
 fi
 
 if [ "$#" -ne 0 ]; then
