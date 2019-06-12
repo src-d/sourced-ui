@@ -18,10 +18,212 @@
  */
 // Forked Cosmo 3.3.7
 
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+@gray-base:              #000;
+@gray-darker:            lighten(@gray-base, 13.5%);
+@gray-dark:              lighten(@gray-base, 20%);
+@gray:                   lighten(@gray-base, 33.5%);
+@gray-light:             lighten(@gray-base, 70%);
+@gray-lighter:           lighten(@gray-base, 95%);
+
+@brand-primary:         #00A699;
+@brand-success:         #4AC15F;
+@brand-info:            lighten(#2AB7CA, 15%);
+@brand-warning:         #FED766;
+@brand-danger:          #FE4A49;
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+@body-bg:               #f5f5f5;
+//** Global text color on `<body>`.
+@text-color:            @gray-dark;
+
+//** Global textual link color.
+@link-color:            @brand-primary;
+//** Link hover color set via `darken()` function.
+@link-hover-color:      darken(@link-color, 15%);
+//** Link hover decoration.
+@link-hover-decoration: underline;
+
+//== Soft-Branding 
+ 
 @brand-primary:         #00b491;
 @brand-secondary:       #8719cb;
 @brand-tertiary:       	#f89c30;
 
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+@font-face {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  src: url('../fonts/SourceSansPro-Regular.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'Source Code Pro', 'Helvetica Neue', Arial, sans-serif;
+  src: url('../fonts/SourceCodePro-Regular.ttf')  format('truetype');
+}
+
+@font-family-sans-serif:  'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base:        @font-family-sans-serif;
+
+@font-size-base:          16px;
+@font-size-large:         ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small:         ceil((@font-size-base * 0.85)); // ~12px
+
+@font-size-h1:            floor((@font-size-base * 2.6)); // ~36px
+@font-size-h2:            floor((@font-size-base * 2.15)); // ~30px
+@font-size-h3:            ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h4:            ceil((@font-size-base * 1.25)); // ~18px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil((@font-size-base * 0.85)); // ~12px
+
+//** Unit-less `line-height` for use in components like buttons.
+@line-height-base:        1.428571429; // 20/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // ~20px
+
+//** By default, this inherits from the `<body>`.
+@headings-font-family:    @font-family-base;
+@headings-font-weight:    300;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
+
+
+//== Typography overwrite
+
+body {
+	font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+	font-size: 16px;
+}
+
+.table-condensed {
+	font-size: 14px !important;
+}
+
+h2 {
+	font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+	font-size: @font-size-h2;
+	font-weight: 600; 
+}
+
+h2:after {
+	content: "";
+    position: absolute;
+    width: 76px;
+    height: 1px;
+    bottom: -4px;
+    left: 10px;
+    border-bottom: 4px solid @brand-secondary;
+}
+
+h3 {
+	font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+	font-size: @font-size-h3;
+	font-weight: 300;
+	position: relative;
+	margin-bottom: 22px;
+}
+
+h3:after {
+	content: "";
+    position: absolute;
+    width: 76px;
+    height: 1px;
+    bottom: -8px;
+    left: 1px;
+    border-bottom: 4px solid @brand-tertiary;
+}
+
+h4,
+h4.panel-title {
+	font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+	font-size: @font-size-h2;
+	font-weight: 600;
+	border: none !important;
+	padding-left: 8px;
+	position: relative;
+}
+
+h4:after {
+	content: "";
+    position: absolute;
+    width: 76px;
+    height: 1px;
+    bottom: -4px;
+    left: 10px;
+    border-bottom: 4px solid @brand-secondary;
+}
+
+.dashboard-component-header {
+	position: relative;
+	padding: 26px 0;
+
+	.fave-unfave-icon .fa-star, .fave-unfave-icon .fa-star-o, .fave-unfave-icon .fa-star-o:active, .fave-unfave-icon .fa-star-o:hover, .fave-unfave-icon .fa-star:active, .fave-unfave-icon .fa-star:hover {
+	color: @brand-primary;
+	}
+}
+
+.dashboard-header {
+	padding-top: 24px;	
+}
+
+.dashboard-header .editable-title:after {
+	content: "";
+    position: absolute;
+    width: 76px;
+    height: 1px;
+    bottom: 9px;
+    left: 1px;
+    border-bottom: 4px solid @brand-secondary;
+}
+
+.chart-header .header .editable-title input[type=button] {
+	font-size: 22px;
+    font-weight: 100;
+}
+
+.chart-header span.editable-title {
+	font-size: 26px;
+    font-weight: 600;
+}
+
+.chart-header span.editable-title:after {
+    content: "";
+    position: absolute;
+    width: 76px;
+    height: 1px;
+    bottom: -7px;
+    left: 1px;
+    border-bottom: 4px solid @brand-tertiary;
+}
+
+.dashboard-header .dashboard-component-header {
+	font-weight: 600 !important;
+}
+
+.ace_editor {
+	font-family: 'Source Code Pro', 'Helvetica Neue', Arial, sans-serif !important;
+	font-size: 14px !important;
+}
+
+.chart-header .header {
+	margin-bottom: 20px;
+}
+
+//== Soft-Branding 
 
 .nav.navbar-nav .fa {
 	color: @brand-tertiary;
@@ -51,4 +253,3 @@
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   border-top: 3px solid @brand-secondary;
 }
- 
