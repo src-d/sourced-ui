@@ -20,6 +20,9 @@ set -ex
 # always run migrations
 superset db upgrade
 
+# always gitbase script to update datasource if it was changed in env var
+python add_gitbase.py
+
 # initialize database if empty
 if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
     # Create an admin user
@@ -33,9 +36,6 @@ if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
     
     # Create default roles and permissions
     superset init
-    
-    # Add gitbase
-    python add_gitbase.py
 
     # Add dashboards
     superset import_dashboards --recursive --path /home/superset/dashboards
