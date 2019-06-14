@@ -513,9 +513,9 @@
                         "datasource_type": "table",
                         "slice_name": "Number of contributions per organization",
                         "changed_on": {
-                            "__datetime__": "2019-06-14T13:57:02"
+                            "__datetime__": "2019-06-14T14:38:42"
                         },
-                        "changed_by_fk": 1,
+                        "changed_by_fk": null,
                         "cache_timeout": null,
                         "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"27__table\", \"donut\": false, \"granularity_sqla\": null, \"groupby\": [\"domain\"], \"labels_outside\": true, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"database_expression\": null, \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 106, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_g4rpo9wf9ew_ujjshbhz88\", \"sqlExpression\": null}, \"number_format\": \".3s\", \"pie_label_type\": \"key\", \"row_limit\": 1000, \"show_labels\": true, \"show_legend\": false, \"slice_id\": 18, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"pie\", \"remote_id\": 18, \"datasource_name\": \"null.admin admin-Untitled Query-tEO1Ih2Uu\", \"schema\": \"null.admin admin-Untitled Query-tEO1Ih2Uu\", \"database_name\": \"gitbase\"}",
                         "datasource_name": "null.admin admin-Untitled Query-tEO1Ih2Uu",
@@ -559,9 +559,9 @@
                         "datasource_type": "table",
                         "slice_name": "Organization wordcloud",
                         "changed_on": {
-                            "__datetime__": "2019-06-14T13:57:02"
+                            "__datetime__": "2019-06-14T14:38:42"
                         },
-                        "changed_by_fk": 1,
+                        "changed_by_fk": null,
                         "cache_timeout": null,
                         "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"29__table\", \"granularity_sqla\": null, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"database_expression\": null, \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 110, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_1yxqanppn5b_vz0jq5if73j\", \"sqlExpression\": null}, \"rotation\": \"square\", \"row_limit\": 250, \"series\": \"domain\", \"size_from\": 18, \"size_to\": 70, \"slice_id\": 19, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"word_cloud\", \"remote_id\": 19, \"datasource_name\": \"null.admin admin-Untitled Query-UnJl1GKQ8\", \"schema\": \"null.admin admin-Untitled Query-UnJl1GKQ8\", \"database_name\": \"gitbase\"}",
                         "datasource_name": "null.admin admin-Untitled Query-UnJl1GKQ8",
@@ -783,1267 +783,21 @@
                 "schema": "gitbase",
                 "offset": 0,
                 "created_on": {
-                    "__datetime__": "2019-06-13T10:25:33"
-                },
-                "sql": "SELECT \r\n    SUM(changelog != 0) / COUNT(changelog)  as changelog, \r\n    SUM(readme != 0)  / COUNT(changelog) as readme, \r\n    SUM(notice != 0)  / COUNT(changelog) as notice, \r\n    SUM(license != 0) / COUNT(changelog) as license,\r\n    SUM(contributing != 0) / COUNT(changelog) as contributing,\r\n    SUM(travis != 0) / COUNT(changelog) as travis, \r\n    SUM(ci != 0) / COUNT(changelog) as ci, \r\n    SUM(dockerfile != 0) / COUNT(changelog) as dockerfile \r\nFROM (\r\n    SELECT \r\n        SUM(changelog) as changelog, \r\n        SUM(readme) as readme, \r\n        SUM(notice) as notice, \r\n        SUM(license) as license,\r\n        SUM(contributing) as contributing,\r\n        SUM(travis) as travis,\r\n        SUM(ci) as ci,\r\n        SUM(dockerfile) as dockerfile\r\n    FROM (\r\n        SELECT \r\n            refs.repository_id, \r\n            CASE WHEN file_path REGEXP '(?i)^CHANGELOG(|\\.MD)' THEN 1 ELSE 0 END AS changelog,\r\n            CASE WHEN file_path REGEXP '(?i)^README(|\\.MD)' THEN 1 ELSE 0 END AS readme,\r\n            CASE WHEN file_path REGEXP '(?i)^NOTICE(|\\.MD)' THEN 1 ELSE 0 END AS notice,\r\n            CASE WHEN file_path REGEXP '(?i)^LICENSE(|\\.MD)' THEN 1 ELSE 0 END AS license,\r\n            CASE WHEN file_path REGEXP '(?i)^CONTRIBUTING(|\\.MD)' THEN 1 ELSE 0 END AS contributing,\r\n            CASE WHEN file_path REGEXP '(?i)^\\.TRAVIS\\.YML' THEN 1 ELSE 0 END AS travis,\r\n            CASE WHEN file_path REGEXP '(?i)^CI' THEN 1 ELSE 0 END AS ci,\r\n            CASE WHEN file_path REGEXP '(?i)^DOCKERFILE$' THEN 1 ELSE 0 END AS dockerfile\r\n        FROM refs\r\n        JOIN commit_files \r\n        ON refs.commit_hash = commit_files.commit_hash \r\n        WHERE ref_name = \"refs/heads/master\" \r\n    ) q\r\n    GROUP BY repository_id\r\n) q2",
-                "cache_timeout": null,
-                "changed_on": {
-                    "__datetime__": "2019-06-13T10:25:33"
-                },
-                "is_sqllab_view": false,
-                "params": "{\"remote_id\": 12, \"database_name\": \"gitbase\", \"import_time\": 1560421533}",
-                "id": 12,
-                "template_params": "{}",
-                "perm": "[gitbase].[admin admin-compliance_score-ReDkKHp6n](id:12)",
-                "description": null,
-                "created_by_fk": 1,
-                "table_name": "admin admin-compliance_score-ReDkKHp6n",
-                "default_endpoint": null,
-                "changed_by_fk": 1,
-                "main_dttm_col": null,
-                "is_featured": false,
-                "database_id": 2,
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "database": {
-                    "__Database__": {
-                        "allow_csv_upload": false,
-                        "verbose_name": null,
-                        "created_by_fk": null,
-                        "allow_ctas": false,
-                        "database_name": "gitbase",
-                        "changed_by_fk": null,
-                        "allow_dml": true,
-                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
-                        "force_ctas_schema": null,
-                        "password": null,
-                        "allow_multi_schema_metadata_fetch": false,
-                        "cache_timeout": null,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
-                        "select_as_create_table_as": false,
-                        "perm": "[gitbase].(id:2)",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "expose_in_sqllab": true,
-                        "id": 2,
-                        "impersonate_user": false,
-                        "allow_run_async": true
-                    }
-                },
-                "columns": [{
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "expression": "",
-                            "table_id": 12,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "changelog",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 53,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "expression": "",
-                            "table_id": 12,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "readme",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 54,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "expression": "",
-                            "table_id": 12,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "notice",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 55,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "expression": "",
-                            "table_id": 12,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "license",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 56,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "expression": "",
-                            "table_id": 12,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "contributing",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 57,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "expression": "",
-                            "table_id": 12,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "travis",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 58,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "expression": "",
-                            "table_id": 12,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "ci",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 59,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "expression": "",
-                            "table_id": 12,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "dockerfile",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 60,
-                            "changed_by_fk": 1
-                        }
-                    }
-                ],
-                "metrics": [{
-                        "__SqlMetric__": {
-                            "changed_by_fk": 1,
-                            "expression": "count(*)",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "metric_type": null,
-                            "verbose_name": null,
-                            "id": 12,
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "created_by_fk": 1,
-                            "table_id": 12,
-                            "d3format": null,
-                            "description": null,
-                            "metric_name": "count",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            }
-                        }
-                    },
-                    {
-                        "__SqlMetric__": {
-                            "changed_by_fk": 1,
-                            "expression": "(changelog + 3 * readme + 3 * notice + 3 * license + contributing + travis + ci + Dockerfile) / 14.0",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "metric_type": null,
-                            "verbose_name": "compliance",
-                            "id": 13,
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            },
-                            "created_by_fk": 1,
-                            "table_id": 12,
-                            "d3format": null,
-                            "description": null,
-                            "metric_name": "compliance",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:33"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "schema": "null",
-                "offset": 0,
-                "created_on": {
-                    "__datetime__": "2019-06-14T13:18:14"
-                },
-                "sql": "SELECT repository_id, COUNT(commit_author_name) as collaborators_count FROM (\nSELECT DISTINCT commit_author_name, repository_id\nFROM commits\n) q1\nGROUP BY repository_id\nORDER BY collaborators_count DESC",
-                "cache_timeout": null,
-                "changed_on": {
-                    "__datetime__": "2019-06-14T13:18:14"
-                },
-                "is_sqllab_view": true,
-                "params": "{\"remote_id\": 33, \"database_name\": \"gitbase\"}",
-                "id": 33,
-                "template_params": "{}",
-                "perm": "[None].[admin admin-Untitled Query-CmGNVca6-](id:33)",
-                "description": null,
-                "created_by_fk": 1,
-                "table_name": "admin admin-Untitled Query-CmGNVca6-",
-                "default_endpoint": null,
-                "changed_by_fk": 1,
-                "main_dttm_col": null,
-                "is_featured": false,
-                "database_id": 2,
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "database": {
-                    "__Database__": {
-                        "allow_csv_upload": false,
-                        "verbose_name": null,
-                        "created_by_fk": null,
-                        "allow_ctas": false,
-                        "database_name": "gitbase",
-                        "changed_by_fk": null,
-                        "allow_dml": true,
-                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
-                        "force_ctas_schema": null,
-                        "password": null,
-                        "allow_multi_schema_metadata_fetch": false,
-                        "cache_timeout": null,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
-                        "select_as_create_table_as": false,
-                        "perm": "[gitbase].(id:2)",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "expose_in_sqllab": true,
-                        "id": 2,
-                        "impersonate_user": false,
-                        "allow_run_async": true
-                    }
-                },
-                "columns": [{
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-14T13:18:14"
-                            },
-                            "expression": "",
-                            "table_id": 33,
-                            "filterable": true,
-                            "type": "BLOB",
-                            "database_expression": null,
-                            "column_name": "repository_id",
-                            "changed_on": {
-                                "__datetime__": "2019-06-14T13:18:14"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 117,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-14T13:18:14"
-                            },
-                            "expression": "",
-                            "table_id": 33,
-                            "filterable": true,
-                            "type": "LONGLONG",
-                            "database_expression": null,
-                            "column_name": "collaborators_count",
-                            "changed_on": {
-                                "__datetime__": "2019-06-14T13:18:14"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 118,
-                            "changed_by_fk": 1
-                        }
-                    }
-                ],
-                "metrics": [{
-                    "__SqlMetric__": {
-                        "changed_by_fk": 1,
-                        "expression": "count(*)",
-                        "warning_text": null,
-                        "is_restricted": false,
-                        "metric_type": null,
-                        "verbose_name": null,
-                        "id": 34,
-                        "created_on": {
-                            "__datetime__": "2019-06-14T13:18:14"
-                        },
-                        "created_by_fk": 1,
-                        "table_id": 33,
-                        "d3format": null,
-                        "description": null,
-                        "metric_name": "count",
-                        "changed_on": {
-                            "__datetime__": "2019-06-14T13:18:14"
-                        }
-                    }
-                }]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "schema": "null",
-                "offset": 0,
-                "created_on": {
-                    "__datetime__": "2019-06-13T15:09:33"
-                },
-                "sql": "SELECT lang, SUM(n) as sum_n\nFROM (\nSELECT lang, SUM(lines) as n\nFROM (\nSELECT f.repository_id, LANGUAGE(cf.file_path, f.blob_content) as lang,\nARRAY_LENGTH(SPLIT(f.blob_content, '\\n')) as lines\nFROM files AS f\nNATURAL JOIN commit_files cf\nNATURAL JOIN refs\nWHERE ref_name = 'HEAD'\nAND file_path NOT LIKE 'vendor/%%'\n) AS t\nWHERE lang IS NOT NULL\nGROUP BY repository_id, lang\n) AS t\nGROUP by lang\nORDER BY n DESC",
-                "cache_timeout": null,
-                "changed_on": {
-                    "__datetime__": "2019-06-13T15:09:33"
-                },
-                "is_sqllab_view": true,
-                "params": "{\"remote_id\": 26, \"database_name\": \"gitbase\"}",
-                "id": 26,
-                "template_params": "{}",
-                "perm": "[None].[admin admin-Untitled Query-ykYJeoJJn](id:26)",
-                "description": null,
-                "created_by_fk": 1,
-                "table_name": "admin admin-Untitled Query-ykYJeoJJn",
-                "default_endpoint": null,
-                "changed_by_fk": 1,
-                "main_dttm_col": null,
-                "is_featured": false,
-                "database_id": 2,
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "database": {
-                    "__Database__": {
-                        "allow_csv_upload": false,
-                        "verbose_name": null,
-                        "created_by_fk": null,
-                        "allow_ctas": false,
-                        "database_name": "gitbase",
-                        "changed_by_fk": null,
-                        "allow_dml": true,
-                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
-                        "force_ctas_schema": null,
-                        "password": null,
-                        "allow_multi_schema_metadata_fetch": false,
-                        "cache_timeout": null,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
-                        "select_as_create_table_as": false,
-                        "perm": "[gitbase].(id:2)",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "expose_in_sqllab": true,
-                        "id": 2,
-                        "impersonate_user": false,
-                        "allow_run_async": true
-                    }
-                },
-                "columns": [{
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T15:09:33"
-                            },
-                            "expression": "",
-                            "table_id": 26,
-                            "filterable": true,
-                            "type": "BLOB",
-                            "database_expression": null,
-                            "column_name": "lang",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T15:09:33"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 103,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T15:09:33"
-                            },
-                            "expression": "",
-                            "table_id": 26,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "sum_n",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T15:09:33"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 104,
-                            "changed_by_fk": 1
-                        }
-                    }
-                ],
-                "metrics": [{
-                    "__SqlMetric__": {
-                        "changed_by_fk": 1,
-                        "expression": "count(*)",
-                        "warning_text": null,
-                        "is_restricted": false,
-                        "metric_type": null,
-                        "verbose_name": null,
-                        "id": 27,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T15:09:33"
-                        },
-                        "created_by_fk": 1,
-                        "table_id": 26,
-                        "d3format": null,
-                        "description": null,
-                        "metric_name": "count",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T15:09:33"
-                        }
-                    }
-                }]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "schema": "null",
-                "offset": 0,
-                "created_on": {
-                    "__datetime__": "2019-06-13T15:35:41"
-                },
-                "sql": "SELECT committer_email, COUNT(*) as n\nFROM commits\nWHERE committer_email <> 'noreply@github.com'\nGROUP BY committer_email\nORDER BY n DESC",
-                "cache_timeout": null,
-                "changed_on": {
-                    "__datetime__": "2019-06-14T12:51:53"
-                },
-                "is_sqllab_view": true,
-                "params": "{\"remote_id\": 32, \"database_name\": \"gitbase\"}",
-                "id": 32,
-                "template_params": "{}",
-                "perm": "[gitbase].[admin admin-Untitled Query-JJ5b9O0Hc](id:32)",
-                "description": null,
-                "created_by_fk": 1,
-                "table_name": "admin admin-Untitled Query-JJ5b9O0Hc",
-                "default_endpoint": null,
-                "changed_by_fk": 1,
-                "main_dttm_col": null,
-                "is_featured": false,
-                "database_id": 2,
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "database": {
-                    "__Database__": {
-                        "allow_csv_upload": false,
-                        "verbose_name": null,
-                        "created_by_fk": null,
-                        "allow_ctas": false,
-                        "database_name": "gitbase",
-                        "changed_by_fk": null,
-                        "allow_dml": true,
-                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
-                        "force_ctas_schema": null,
-                        "password": null,
-                        "allow_multi_schema_metadata_fetch": false,
-                        "cache_timeout": null,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
-                        "select_as_create_table_as": false,
-                        "perm": "[gitbase].(id:2)",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "expose_in_sqllab": true,
-                        "id": 2,
-                        "impersonate_user": false,
-                        "allow_run_async": true
-                    }
-                },
-                "columns": [{
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T15:35:41"
-                            },
-                            "expression": "",
-                            "table_id": 32,
-                            "filterable": true,
-                            "type": "BLOB",
-                            "database_expression": null,
-                            "column_name": "committer_email",
-                            "changed_on": {
-                                "__datetime__": "2019-06-14T12:51:53"
-                            },
-                            "is_active": null,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 115,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T15:35:41"
-                            },
-                            "expression": "",
-                            "table_id": 32,
-                            "filterable": true,
-                            "type": "LONGLONG",
-                            "database_expression": null,
-                            "column_name": "n",
-                            "changed_on": {
-                                "__datetime__": "2019-06-14T12:51:53"
-                            },
-                            "is_active": null,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 116,
-                            "changed_by_fk": 1
-                        }
-                    }
-                ],
-                "metrics": [{
-                    "__SqlMetric__": {
-                        "changed_by_fk": 1,
-                        "expression": "count(*)",
-                        "warning_text": null,
-                        "is_restricted": null,
-                        "metric_type": null,
-                        "verbose_name": null,
-                        "id": 33,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T15:35:41"
-                        },
-                        "created_by_fk": 1,
-                        "table_id": 32,
-                        "d3format": null,
-                        "description": null,
-                        "metric_name": "count",
-                        "changed_on": {
-                            "__datetime__": "2019-06-14T12:51:53"
-                        }
-                    }
-                }]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "schema": "null",
-                "offset": 0,
-                "created_on": {
-                    "__datetime__": "2019-06-13T14:11:19"
-                },
-                "sql": "SELECT commit_author_when,\nCOUNT(*) as n\nFROM ref_commits\nNATURAL JOIN commits\nWHERE ref_name = 'HEAD'\nGROUP BY commit_author_when\nORDER BY commit_author_when",
-                "cache_timeout": null,
-                "changed_on": {
-                    "__datetime__": "2019-06-13T14:11:19"
-                },
-                "is_sqllab_view": true,
-                "params": "{\"remote_id\": 21, \"database_name\": \"gitbase\"}",
-                "id": 21,
-                "template_params": "{}",
-                "perm": "[None].[admin admin-Untitled Query-0scA3HaD5](id:21)",
-                "description": null,
-                "created_by_fk": 1,
-                "table_name": "admin admin-Untitled Query-0scA3HaD5",
-                "default_endpoint": null,
-                "changed_by_fk": 1,
-                "main_dttm_col": null,
-                "is_featured": false,
-                "database_id": 2,
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "database": {
-                    "__Database__": {
-                        "allow_csv_upload": false,
-                        "verbose_name": null,
-                        "created_by_fk": null,
-                        "allow_ctas": false,
-                        "database_name": "gitbase",
-                        "changed_by_fk": null,
-                        "allow_dml": true,
-                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
-                        "force_ctas_schema": null,
-                        "password": null,
-                        "allow_multi_schema_metadata_fetch": false,
-                        "cache_timeout": null,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
-                        "select_as_create_table_as": false,
-                        "perm": "[gitbase].(id:2)",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "expose_in_sqllab": true,
-                        "id": 2,
-                        "impersonate_user": false,
-                        "allow_run_async": true
-                    }
-                },
-                "columns": [{
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T14:11:19"
-                            },
-                            "expression": "",
-                            "table_id": 21,
-                            "filterable": true,
-                            "type": "TIMESTAMP",
-                            "database_expression": null,
-                            "column_name": "commit_author_when",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T14:11:19"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 92,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T14:11:19"
-                            },
-                            "expression": "",
-                            "table_id": 21,
-                            "filterable": true,
-                            "type": "LONGLONG",
-                            "database_expression": null,
-                            "column_name": "n",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T14:11:19"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 93,
-                            "changed_by_fk": 1
-                        }
-                    }
-                ],
-                "metrics": [{
-                    "__SqlMetric__": {
-                        "changed_by_fk": 1,
-                        "expression": "count(*)",
-                        "warning_text": null,
-                        "is_restricted": false,
-                        "metric_type": null,
-                        "verbose_name": null,
-                        "id": 22,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T14:11:19"
-                        },
-                        "created_by_fk": 1,
-                        "table_id": 21,
-                        "d3format": null,
-                        "description": null,
-                        "metric_name": "count",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T14:11:19"
-                        }
-                    }
-                }]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "schema": "null",
-                "offset": 0,
-                "created_on": {
-                    "__datetime__": "2019-06-13T15:32:28"
-                },
-                "sql": "SELECT committer_email, COUNT(*) as n\nFROM commits\nWHERE committer_email <> 'noreply@github.com'\nGROUP BY committer_email\nORDER BY n DESC",
-                "cache_timeout": null,
-                "changed_on": {
-                    "__datetime__": "2019-06-14T12:50:46"
-                },
-                "is_sqllab_view": true,
-                "params": "{\"remote_id\": 30, \"database_name\": \"gitbase\"}",
-                "id": 30,
-                "template_params": "{}",
-                "perm": "[gitbase].[admin admin-Untitled Query-boJAIGUPS](id:30)",
-                "description": null,
-                "created_by_fk": 1,
-                "table_name": "admin admin-Untitled Query-boJAIGUPS",
-                "default_endpoint": null,
-                "changed_by_fk": 1,
-                "main_dttm_col": null,
-                "is_featured": false,
-                "database_id": 2,
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "database": {
-                    "__Database__": {
-                        "allow_csv_upload": false,
-                        "verbose_name": null,
-                        "created_by_fk": null,
-                        "allow_ctas": false,
-                        "database_name": "gitbase",
-                        "changed_by_fk": null,
-                        "allow_dml": true,
-                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
-                        "force_ctas_schema": null,
-                        "password": null,
-                        "allow_multi_schema_metadata_fetch": false,
-                        "cache_timeout": null,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
-                        "select_as_create_table_as": false,
-                        "perm": "[gitbase].(id:2)",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "expose_in_sqllab": true,
-                        "id": 2,
-                        "impersonate_user": false,
-                        "allow_run_async": true
-                    }
-                },
-                "columns": [{
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T15:32:28"
-                            },
-                            "expression": "",
-                            "table_id": 30,
-                            "filterable": true,
-                            "type": "BLOB",
-                            "database_expression": null,
-                            "column_name": "committer_email",
-                            "changed_on": {
-                                "__datetime__": "2019-06-14T12:50:46"
-                            },
-                            "is_active": null,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 111,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T15:32:28"
-                            },
-                            "expression": "",
-                            "table_id": 30,
-                            "filterable": true,
-                            "type": "LONGLONG",
-                            "database_expression": null,
-                            "column_name": "n",
-                            "changed_on": {
-                                "__datetime__": "2019-06-14T12:50:46"
-                            },
-                            "is_active": null,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 112,
-                            "changed_by_fk": 1
-                        }
-                    }
-                ],
-                "metrics": [{
-                    "__SqlMetric__": {
-                        "changed_by_fk": 1,
-                        "expression": "count(*)",
-                        "warning_text": null,
-                        "is_restricted": null,
-                        "metric_type": null,
-                        "verbose_name": null,
-                        "id": 31,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T15:32:28"
-                        },
-                        "created_by_fk": 1,
-                        "table_id": 30,
-                        "d3format": null,
-                        "description": null,
-                        "metric_name": "count",
-                        "changed_on": {
-                            "__datetime__": "2019-06-14T12:50:46"
-                        }
-                    }
-                }]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "schema": "null",
-                "offset": 0,
-                "created_on": {
-                    "__datetime__": "2019-06-13T15:16:04"
-                },
-                "sql": "SELECT REPLACE(JSON_EXTRACT(SPLIT(committer_email, '@'), '$[1]'),'\"', '') as domain, COUNT(*) as n\nFROM commits\nWHERE committer_email LIKE '%%@%%'\nGROUP BY domain\nORDER BY n DESC",
-                "cache_timeout": null,
-                "changed_on": {
-                    "__datetime__": "2019-06-14T12:48:25"
-                },
-                "is_sqllab_view": true,
-                "params": "{\"remote_id\": 27, \"database_name\": \"gitbase\"}",
-                "id": 27,
-                "template_params": "{}",
-                "perm": "[gitbase].[admin admin-Untitled Query-tEO1Ih2Uu](id:27)",
-                "description": null,
-                "created_by_fk": 1,
-                "table_name": "admin admin-Untitled Query-tEO1Ih2Uu",
-                "default_endpoint": null,
-                "changed_by_fk": 1,
-                "main_dttm_col": null,
-                "is_featured": false,
-                "database_id": 2,
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "database": {
-                    "__Database__": {
-                        "allow_csv_upload": false,
-                        "verbose_name": null,
-                        "created_by_fk": null,
-                        "allow_ctas": false,
-                        "database_name": "gitbase",
-                        "changed_by_fk": null,
-                        "allow_dml": true,
-                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
-                        "force_ctas_schema": null,
-                        "password": null,
-                        "allow_multi_schema_metadata_fetch": false,
-                        "cache_timeout": null,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
-                        "select_as_create_table_as": false,
-                        "perm": "[gitbase].(id:2)",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "expose_in_sqllab": true,
-                        "id": 2,
-                        "impersonate_user": false,
-                        "allow_run_async": true
-                    }
-                },
-                "columns": [{
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T15:16:04"
-                            },
-                            "expression": "",
-                            "table_id": 27,
-                            "filterable": true,
-                            "type": "STRING",
-                            "database_expression": null,
-                            "column_name": "domain",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T15:26:10"
-                            },
-                            "is_active": null,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 105,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T15:16:04"
-                            },
-                            "expression": "",
-                            "table_id": 27,
-                            "filterable": true,
-                            "type": "LONGLONG",
-                            "database_expression": null,
-                            "column_name": "n",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T15:26:10"
-                            },
-                            "is_active": null,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 106,
-                            "changed_by_fk": 1
-                        }
-                    }
-                ],
-                "metrics": [{
-                    "__SqlMetric__": {
-                        "changed_by_fk": 1,
-                        "expression": "count(*)",
-                        "warning_text": null,
-                        "is_restricted": null,
-                        "metric_type": null,
-                        "verbose_name": null,
-                        "id": 28,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T15:16:04"
-                        },
-                        "created_by_fk": 1,
-                        "table_id": 27,
-                        "d3format": null,
-                        "description": null,
-                        "metric_name": "count",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T15:26:10"
-                        }
-                    }
-                }]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "schema": "null",
-                "offset": 0,
-                "created_on": {
-                    "__datetime__": "2019-06-13T13:37:01"
-                },
-                "sql": "SELECT repository_id, commit_author_when as date,\nCOUNT(*) as n\nFROM refs\nNATURAL JOIN commits\nWHERE ref_name LIKE 'refs/tags/v%.%.%'\nGROUP BY repository_id\nORDER BY repository_id",
-                "cache_timeout": null,
-                "changed_on": {
-                    "__datetime__": "2019-06-13T13:37:01"
-                },
-                "is_sqllab_view": true,
-                "params": "{\"remote_id\": 20, \"database_name\": \"gitbase\"}",
-                "id": 20,
-                "template_params": "{}",
-                "perm": "[None].[admin admin-Untitled Query-LUNdDHhhu](id:20)",
-                "description": null,
-                "created_by_fk": 1,
-                "table_name": "admin admin-Untitled Query-LUNdDHhhu",
-                "default_endpoint": null,
-                "changed_by_fk": 1,
-                "main_dttm_col": null,
-                "is_featured": false,
-                "database_id": 2,
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "database": {
-                    "__Database__": {
-                        "allow_csv_upload": false,
-                        "verbose_name": null,
-                        "created_by_fk": null,
-                        "allow_ctas": false,
-                        "database_name": "gitbase",
-                        "changed_by_fk": null,
-                        "allow_dml": true,
-                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
-                        "force_ctas_schema": null,
-                        "password": null,
-                        "allow_multi_schema_metadata_fetch": false,
-                        "cache_timeout": null,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
-                        "select_as_create_table_as": false,
-                        "perm": "[gitbase].(id:2)",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "expose_in_sqllab": true,
-                        "id": 2,
-                        "impersonate_user": false,
-                        "allow_run_async": true
-                    }
-                },
-                "columns": [{
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T13:37:01"
-                            },
-                            "expression": "",
-                            "table_id": 20,
-                            "filterable": true,
-                            "type": "BLOB",
-                            "database_expression": null,
-                            "column_name": "repository_id",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T13:37:01"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 89,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T13:37:01"
-                            },
-                            "expression": "",
-                            "table_id": 20,
-                            "filterable": true,
-                            "type": "TIMESTAMP",
-                            "database_expression": null,
-                            "column_name": "date",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T13:37:01"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 90,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T13:37:01"
-                            },
-                            "expression": "",
-                            "table_id": 20,
-                            "filterable": true,
-                            "type": "LONGLONG",
-                            "database_expression": null,
-                            "column_name": "n",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T13:37:01"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 91,
-                            "changed_by_fk": 1
-                        }
-                    }
-                ],
-                "metrics": [{
-                    "__SqlMetric__": {
-                        "changed_by_fk": 1,
-                        "expression": "count(*)",
-                        "warning_text": null,
-                        "is_restricted": false,
-                        "metric_type": null,
-                        "verbose_name": null,
-                        "id": 21,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T13:37:01"
-                        },
-                        "created_by_fk": 1,
-                        "table_id": 20,
-                        "d3format": null,
-                        "description": null,
-                        "metric_name": "count",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T13:37:01"
-                        }
-                    }
-                }]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "schema": "gitbase",
-                "offset": 0,
-                "created_on": {
                     "__datetime__": "2019-06-13T10:25:34"
                 },
-                "sql": "SELECT repository_id, lang\r\nFROM (\r\n    SELECT\r\n        repository_id,\r\n        LANGUAGE(file_path) as lang\r\n    FROM refs\r\n    NATURAL JOIN commit_files\r\n    WHERE ref_name = 'HEAD'\r\n) AS q\r\nWHERE lang NOT IN ('', 'Ignore List')",
+                "sql": "SELECT repository_id, COUNT(file_path) as files_count\r\nFROM refs\r\nNATURAL JOIN commit_files\r\nWHERE ref_name = 'HEAD'\r\nGROUP BY repository_id\r\nORDER BY files_count DESC",
                 "cache_timeout": null,
                 "changed_on": {
                     "__datetime__": "2019-06-13T10:25:34"
                 },
                 "is_sqllab_view": false,
-                "params": "{\"remote_id\": 15, \"database_name\": \"gitbase\", \"import_time\": 1560421533}",
-                "id": 15,
+                "params": "{\"remote_id\": 14, \"database_name\": \"gitbase\", \"import_time\": 1560421533}",
+                "id": 14,
                 "template_params": "{}",
-                "perm": "[gitbase].[admin admin-head_repo_languages-FJfWO1kQ4](id:15)",
+                "perm": "[gitbase].[admin admin-repo_files_count-XXcl9_d2Y](id:14)",
                 "description": null,
                 "created_by_fk": 1,
-                "table_name": "admin admin-head_repo_languages-FJfWO1kQ4",
+                "table_name": "admin admin-repo_files_count-XXcl9_d2Y",
                 "default_endpoint": null,
                 "changed_by_fk": 1,
                 "main_dttm_col": null,
@@ -2086,7 +840,7 @@
                                 "__datetime__": "2019-06-13T10:25:34"
                             },
                             "expression": "",
-                            "table_id": 15,
+                            "table_id": 14,
                             "filterable": true,
                             "type": "BLOB",
                             "database_expression": null,
@@ -2101,7 +855,7 @@
                             "groupby": true,
                             "created_by_fk": 1,
                             "verbose_name": null,
-                            "id": 72,
+                            "id": 70,
                             "changed_by_fk": 1
                         }
                     },
@@ -2111,11 +865,11 @@
                                 "__datetime__": "2019-06-13T10:25:34"
                             },
                             "expression": "",
-                            "table_id": 15,
+                            "table_id": 14,
                             "filterable": true,
-                            "type": "BLOB",
+                            "type": "LONGLONG",
                             "database_expression": null,
-                            "column_name": "lang",
+                            "column_name": "files_count",
                             "changed_on": {
                                 "__datetime__": "2019-06-13T10:25:34"
                             },
@@ -2126,7 +880,7 @@
                             "groupby": true,
                             "created_by_fk": 1,
                             "verbose_name": null,
-                            "id": 73,
+                            "id": 71,
                             "changed_by_fk": 1
                         }
                     }
@@ -2139,12 +893,12 @@
                         "is_restricted": false,
                         "metric_type": null,
                         "verbose_name": null,
-                        "id": 16,
+                        "id": 15,
                         "created_on": {
                             "__datetime__": "2019-06-13T10:25:34"
                         },
                         "created_by_fk": 1,
-                        "table_id": 15,
+                        "table_id": 14,
                         "d3format": null,
                         "description": null,
                         "metric_name": "count",
@@ -2162,10 +916,10 @@
                 "created_on": {
                     "__datetime__": "2019-06-13T15:22:56"
                 },
-                "sql": "SELECT REPLACE(JSON_EXTRACT(SPLIT(committer_email, '@'), '$[1]'),'\"', '') as domain, COUNT(*) as n\nFROM commits\nWHERE committer_email LIKE '%%@%%'\nGROUP BY domain\nORDER BY n DESC",
+                "sql": "SELECT REPLACE(JSON_EXTRACT(SPLIT(committer_email, '@'), '$[1]'),'\"', '') as domain, COUNT(*) as n\nFROM commits\nWHERE committer_email LIKE '%%@%%' and committer_email NOT LIKE '%%@github.com'\nGROUP BY domain\nORDER BY n DESC",
                 "cache_timeout": null,
                 "changed_on": {
-                    "__datetime__": "2019-06-14T13:24:52"
+                    "__datetime__": "2019-06-14T14:36:25"
                 },
                 "is_sqllab_view": true,
                 "params": "{\"remote_id\": 29, \"database_name\": \"gitbase\"}",
@@ -2281,6 +1035,111 @@
                         "metric_name": "count",
                         "changed_on": {
                             "__datetime__": "2019-06-14T13:24:52"
+                        }
+                    }
+                }]
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "schema": null,
+                "offset": 0,
+                "created_on": {
+                    "__datetime__": "2019-06-13T10:43:17"
+                },
+                "sql": "SELECT commit_author_name\nFROM commits\nGROUP BY commit_author_name\nORDER BY commit_author_name",
+                "cache_timeout": null,
+                "changed_on": {
+                    "__datetime__": "2019-06-13T10:43:17"
+                },
+                "is_sqllab_view": true,
+                "params": "{\"remote_id\": 19, \"database_name\": \"gitbase\"}",
+                "id": 19,
+                "template_params": "{}",
+                "perm": "[None].[admin admin-Untitled Query-mW48VqXdL](id:19)",
+                "description": null,
+                "created_by_fk": 1,
+                "table_name": "admin admin-Untitled Query-mW48VqXdL",
+                "default_endpoint": null,
+                "changed_by_fk": 1,
+                "main_dttm_col": null,
+                "is_featured": false,
+                "database_id": 2,
+                "filter_select_enabled": false,
+                "fetch_values_predicate": null,
+                "database": {
+                    "__Database__": {
+                        "allow_csv_upload": false,
+                        "verbose_name": null,
+                        "created_by_fk": null,
+                        "allow_ctas": false,
+                        "database_name": "gitbase",
+                        "changed_by_fk": null,
+                        "allow_dml": true,
+                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
+                        "force_ctas_schema": null,
+                        "password": null,
+                        "allow_multi_schema_metadata_fetch": false,
+                        "cache_timeout": null,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
+                        "select_as_create_table_as": false,
+                        "perm": "[gitbase].(id:2)",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "expose_in_sqllab": true,
+                        "id": 2,
+                        "impersonate_user": false,
+                        "allow_run_async": true
+                    }
+                },
+                "columns": [{
+                    "__TableColumn__": {
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:43:17"
+                        },
+                        "expression": "",
+                        "table_id": 19,
+                        "filterable": true,
+                        "type": "BLOB",
+                        "database_expression": null,
+                        "column_name": "commit_author_name",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:43:17"
+                        },
+                        "is_active": true,
+                        "python_date_format": null,
+                        "is_dttm": false,
+                        "description": null,
+                        "groupby": true,
+                        "created_by_fk": 1,
+                        "verbose_name": null,
+                        "id": 88,
+                        "changed_by_fk": 1
+                    }
+                }],
+                "metrics": [{
+                    "__SqlMetric__": {
+                        "changed_by_fk": 1,
+                        "expression": "count(*)",
+                        "warning_text": null,
+                        "is_restricted": false,
+                        "metric_type": null,
+                        "verbose_name": null,
+                        "id": 20,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:43:17"
+                        },
+                        "created_by_fk": 1,
+                        "table_id": 19,
+                        "d3format": null,
+                        "description": null,
+                        "metric_name": "count",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:43:17"
                         }
                     }
                 }]
@@ -2444,24 +1303,24 @@
         },
         {
             "__SqlaTable__": {
-                "schema": null,
+                "schema": "null",
                 "offset": 0,
                 "created_on": {
-                    "__datetime__": "2019-06-13T10:16:00"
+                    "__datetime__": "2019-06-13T14:55:41"
                 },
-                "sql": "select * from repositories",
+                "sql": "SELECT lang, COUNT(*) as n\nFROM (\nSELECT LANGUAGE(cf.file_path, f.blob_content) as lang\nFROM files AS f\nNATURAL JOIN commit_files cf\nNATURAL JOIN refs\nWHERE ref_name = 'HEAD'\nAND file_path NOT LIKE 'vendor/%%'\n) AS t\nWHERE lang is not null\nGROUP BY lang\nORDER BY 2 DESC",
                 "cache_timeout": null,
                 "changed_on": {
-                    "__datetime__": "2019-06-13T10:25:34"
+                    "__datetime__": "2019-06-13T14:55:41"
                 },
-                "is_sqllab_view": false,
-                "params": "{\"remote_id\": 10, \"database_name\": \"gitbase\", \"import_time\": 1560421533}",
-                "id": 10,
-                "template_params": null,
-                "perm": "[gitbase].[gitbase.repositories](id:10)",
+                "is_sqllab_view": true,
+                "params": "{\"remote_id\": 24, \"database_name\": \"gitbase\"}",
+                "id": 24,
+                "template_params": "{}",
+                "perm": "[None].[admin admin-Untitled Query-Kmw5frZ_b](id:24)",
                 "description": null,
-                "created_by_fk": null,
-                "table_name": "gitbase.repositories",
+                "created_by_fk": 1,
+                "table_name": "admin admin-Untitled Query-Kmw5frZ_b",
                 "default_endpoint": null,
                 "changed_by_fk": 1,
                 "main_dttm_col": null,
@@ -2499,49 +1358,75 @@
                     }
                 },
                 "columns": [{
-                    "__TableColumn__": {
-                        "created_on": {
-                            "__datetime__": "2019-06-13T10:16:00"
-                        },
-                        "expression": "",
-                        "table_id": 10,
-                        "filterable": false,
-                        "type": "TEXT",
-                        "database_expression": null,
-                        "column_name": "repository_id",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T10:16:06"
-                        },
-                        "is_active": true,
-                        "python_date_format": null,
-                        "is_dttm": false,
-                        "description": null,
-                        "groupby": false,
-                        "created_by_fk": null,
-                        "verbose_name": null,
-                        "id": 47,
-                        "changed_by_fk": null
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T14:55:41"
+                            },
+                            "expression": "",
+                            "table_id": 24,
+                            "filterable": true,
+                            "type": "BLOB",
+                            "database_expression": null,
+                            "column_name": "lang",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T14:55:41"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 99,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T14:55:41"
+                            },
+                            "expression": "",
+                            "table_id": 24,
+                            "filterable": true,
+                            "type": "LONGLONG",
+                            "database_expression": null,
+                            "column_name": "n",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T14:55:41"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 100,
+                            "changed_by_fk": 1
+                        }
                     }
-                }],
+                ],
                 "metrics": [{
                     "__SqlMetric__": {
-                        "changed_by_fk": null,
-                        "expression": "COUNT(*)",
+                        "changed_by_fk": 1,
+                        "expression": "count(*)",
                         "warning_text": null,
                         "is_restricted": false,
-                        "metric_type": "count",
-                        "verbose_name": "COUNT(*)",
-                        "id": 10,
+                        "metric_type": null,
+                        "verbose_name": null,
+                        "id": 25,
                         "created_on": {
-                            "__datetime__": "2019-06-13T10:16:00"
+                            "__datetime__": "2019-06-13T14:55:41"
                         },
-                        "created_by_fk": null,
-                        "table_id": 10,
+                        "created_by_fk": 1,
+                        "table_id": 24,
                         "d3format": null,
                         "description": null,
                         "metric_name": "count",
                         "changed_on": {
-                            "__datetime__": "2019-06-13T10:16:00"
+                            "__datetime__": "2019-06-13T14:55:41"
                         }
                     }
                 }]
@@ -2673,6 +1558,268 @@
                         "metric_name": "count",
                         "changed_on": {
                             "__datetime__": "2019-06-13T14:43:03"
+                        }
+                    }
+                }]
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "schema": "null",
+                "offset": 0,
+                "created_on": {
+                    "__datetime__": "2019-06-13T14:11:19"
+                },
+                "sql": "SELECT commit_author_when,\nCOUNT(*) as n\nFROM ref_commits\nNATURAL JOIN commits\nWHERE ref_name = 'HEAD'\nGROUP BY commit_author_when\nORDER BY commit_author_when",
+                "cache_timeout": null,
+                "changed_on": {
+                    "__datetime__": "2019-06-13T14:11:19"
+                },
+                "is_sqllab_view": true,
+                "params": "{\"remote_id\": 21, \"database_name\": \"gitbase\"}",
+                "id": 21,
+                "template_params": "{}",
+                "perm": "[None].[admin admin-Untitled Query-0scA3HaD5](id:21)",
+                "description": null,
+                "created_by_fk": 1,
+                "table_name": "admin admin-Untitled Query-0scA3HaD5",
+                "default_endpoint": null,
+                "changed_by_fk": 1,
+                "main_dttm_col": null,
+                "is_featured": false,
+                "database_id": 2,
+                "filter_select_enabled": false,
+                "fetch_values_predicate": null,
+                "database": {
+                    "__Database__": {
+                        "allow_csv_upload": false,
+                        "verbose_name": null,
+                        "created_by_fk": null,
+                        "allow_ctas": false,
+                        "database_name": "gitbase",
+                        "changed_by_fk": null,
+                        "allow_dml": true,
+                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
+                        "force_ctas_schema": null,
+                        "password": null,
+                        "allow_multi_schema_metadata_fetch": false,
+                        "cache_timeout": null,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
+                        "select_as_create_table_as": false,
+                        "perm": "[gitbase].(id:2)",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "expose_in_sqllab": true,
+                        "id": 2,
+                        "impersonate_user": false,
+                        "allow_run_async": true
+                    }
+                },
+                "columns": [{
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T14:11:19"
+                            },
+                            "expression": "",
+                            "table_id": 21,
+                            "filterable": true,
+                            "type": "TIMESTAMP",
+                            "database_expression": null,
+                            "column_name": "commit_author_when",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T14:11:19"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": true,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 92,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T14:11:19"
+                            },
+                            "expression": "",
+                            "table_id": 21,
+                            "filterable": true,
+                            "type": "LONGLONG",
+                            "database_expression": null,
+                            "column_name": "n",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T14:11:19"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 93,
+                            "changed_by_fk": 1
+                        }
+                    }
+                ],
+                "metrics": [{
+                    "__SqlMetric__": {
+                        "changed_by_fk": 1,
+                        "expression": "count(*)",
+                        "warning_text": null,
+                        "is_restricted": false,
+                        "metric_type": null,
+                        "verbose_name": null,
+                        "id": 22,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T14:11:19"
+                        },
+                        "created_by_fk": 1,
+                        "table_id": 21,
+                        "d3format": null,
+                        "description": null,
+                        "metric_name": "count",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T14:11:19"
+                        }
+                    }
+                }]
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "schema": "null",
+                "offset": 0,
+                "created_on": {
+                    "__datetime__": "2019-06-13T15:09:33"
+                },
+                "sql": "SELECT lang, SUM(n) as sum_n\nFROM (\nSELECT lang, SUM(lines) as n\nFROM (\nSELECT f.repository_id, LANGUAGE(cf.file_path, f.blob_content) as lang,\nARRAY_LENGTH(SPLIT(f.blob_content, '\\n')) as lines\nFROM files AS f\nNATURAL JOIN commit_files cf\nNATURAL JOIN refs\nWHERE ref_name = 'HEAD'\nAND file_path NOT LIKE 'vendor/%%'\n) AS t\nWHERE lang IS NOT NULL\nGROUP BY repository_id, lang\n) AS t\nGROUP by lang\nORDER BY n DESC",
+                "cache_timeout": null,
+                "changed_on": {
+                    "__datetime__": "2019-06-13T15:09:33"
+                },
+                "is_sqllab_view": true,
+                "params": "{\"remote_id\": 26, \"database_name\": \"gitbase\"}",
+                "id": 26,
+                "template_params": "{}",
+                "perm": "[None].[admin admin-Untitled Query-ykYJeoJJn](id:26)",
+                "description": null,
+                "created_by_fk": 1,
+                "table_name": "admin admin-Untitled Query-ykYJeoJJn",
+                "default_endpoint": null,
+                "changed_by_fk": 1,
+                "main_dttm_col": null,
+                "is_featured": false,
+                "database_id": 2,
+                "filter_select_enabled": false,
+                "fetch_values_predicate": null,
+                "database": {
+                    "__Database__": {
+                        "allow_csv_upload": false,
+                        "verbose_name": null,
+                        "created_by_fk": null,
+                        "allow_ctas": false,
+                        "database_name": "gitbase",
+                        "changed_by_fk": null,
+                        "allow_dml": true,
+                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
+                        "force_ctas_schema": null,
+                        "password": null,
+                        "allow_multi_schema_metadata_fetch": false,
+                        "cache_timeout": null,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
+                        "select_as_create_table_as": false,
+                        "perm": "[gitbase].(id:2)",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "expose_in_sqllab": true,
+                        "id": 2,
+                        "impersonate_user": false,
+                        "allow_run_async": true
+                    }
+                },
+                "columns": [{
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T15:09:33"
+                            },
+                            "expression": "",
+                            "table_id": 26,
+                            "filterable": true,
+                            "type": "BLOB",
+                            "database_expression": null,
+                            "column_name": "lang",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T15:09:33"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 103,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T15:09:33"
+                            },
+                            "expression": "",
+                            "table_id": 26,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "sum_n",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T15:09:33"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 104,
+                            "changed_by_fk": 1
+                        }
+                    }
+                ],
+                "metrics": [{
+                    "__SqlMetric__": {
+                        "changed_by_fk": 1,
+                        "expression": "count(*)",
+                        "warning_text": null,
+                        "is_restricted": false,
+                        "metric_type": null,
+                        "verbose_name": null,
+                        "id": 27,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T15:09:33"
+                        },
+                        "created_by_fk": 1,
+                        "table_id": 26,
+                        "d3format": null,
+                        "description": null,
+                        "metric_name": "count",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T15:09:33"
                         }
                     }
                 }]
@@ -2841,19 +1988,19 @@
                 "created_on": {
                     "__datetime__": "2019-06-13T10:25:34"
                 },
-                "sql": "SELECT repository_id, COUNT(file_path) as files_count\r\nFROM refs\r\nNATURAL JOIN commit_files\r\nWHERE ref_name = 'HEAD'\r\nGROUP BY repository_id\r\nORDER BY files_count DESC",
+                "sql": "SELECT repository_id, lang\r\nFROM (\r\n    SELECT\r\n        repository_id,\r\n        LANGUAGE(file_path) as lang\r\n    FROM refs\r\n    NATURAL JOIN commit_files\r\n    WHERE ref_name = 'HEAD'\r\n) AS q\r\nWHERE lang NOT IN ('', 'Ignore List')",
                 "cache_timeout": null,
                 "changed_on": {
                     "__datetime__": "2019-06-13T10:25:34"
                 },
                 "is_sqllab_view": false,
-                "params": "{\"remote_id\": 14, \"database_name\": \"gitbase\", \"import_time\": 1560421533}",
-                "id": 14,
+                "params": "{\"remote_id\": 15, \"database_name\": \"gitbase\", \"import_time\": 1560421533}",
+                "id": 15,
                 "template_params": "{}",
-                "perm": "[gitbase].[admin admin-repo_files_count-XXcl9_d2Y](id:14)",
+                "perm": "[gitbase].[admin admin-head_repo_languages-FJfWO1kQ4](id:15)",
                 "description": null,
                 "created_by_fk": 1,
-                "table_name": "admin admin-repo_files_count-XXcl9_d2Y",
+                "table_name": "admin admin-head_repo_languages-FJfWO1kQ4",
                 "default_endpoint": null,
                 "changed_by_fk": 1,
                 "main_dttm_col": null,
@@ -2896,7 +2043,7 @@
                                 "__datetime__": "2019-06-13T10:25:34"
                             },
                             "expression": "",
-                            "table_id": 14,
+                            "table_id": 15,
                             "filterable": true,
                             "type": "BLOB",
                             "database_expression": null,
@@ -2911,7 +2058,7 @@
                             "groupby": true,
                             "created_by_fk": 1,
                             "verbose_name": null,
-                            "id": 70,
+                            "id": 72,
                             "changed_by_fk": 1
                         }
                     },
@@ -2921,11 +2068,11 @@
                                 "__datetime__": "2019-06-13T10:25:34"
                             },
                             "expression": "",
-                            "table_id": 14,
+                            "table_id": 15,
                             "filterable": true,
-                            "type": "LONGLONG",
+                            "type": "BLOB",
                             "database_expression": null,
-                            "column_name": "files_count",
+                            "column_name": "lang",
                             "changed_on": {
                                 "__datetime__": "2019-06-13T10:25:34"
                             },
@@ -2936,7 +2083,7 @@
                             "groupby": true,
                             "created_by_fk": 1,
                             "verbose_name": null,
-                            "id": 71,
+                            "id": 73,
                             "changed_by_fk": 1
                         }
                     }
@@ -2949,293 +2096,12 @@
                         "is_restricted": false,
                         "metric_type": null,
                         "verbose_name": null,
-                        "id": 15,
+                        "id": 16,
                         "created_on": {
                             "__datetime__": "2019-06-13T10:25:34"
                         },
                         "created_by_fk": 1,
-                        "table_id": 14,
-                        "d3format": null,
-                        "description": null,
-                        "metric_name": "count",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T10:25:34"
-                        }
-                    }
-                }]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "schema": "gitbase",
-                "offset": 0,
-                "created_on": {
-                    "__datetime__": "2019-06-13T10:25:34"
-                },
-                "sql": "SELECT \r\n    SUM(1-changelog) as changelog, \r\n    SUM(1-readme) as readme, \r\n    SUM(1-notice) as notice, \r\n    SUM(1-license) as license,\r\n    SUM(1-contributing) as contributing,\r\n    SUM(1-travis) as travis,\r\n    SUM(1-ci) as ci,\r\n    SUM(1-dockerfile) as dockerfile\r\nFROM (\r\n\tSELECT \r\n\t    repository_id, \r\n\t    SUM(changelog) != 0 as changelog, \r\n        SUM(readme) != 0 as readme, \r\n        SUM(notice) != 0 as notice, \r\n        SUM(license) != 0 as license,\r\n        SUM(contributing) != 0 as contributing,\r\n        SUM(travis) != 0 as travis,\r\n        SUM(ci) != 0 as ci,\r\n    \tSUM(dockerfile) != 0 as dockerfile\r\n\tFROM (\r\n\t    SELECT \r\n\t        refs.repository_id, \r\n\t        CASE WHEN file_path REGEXP '(?i)^CHANGELOG(|\\.MD)' THEN 1 ELSE 0 END AS changelog,\r\n            CASE WHEN file_path REGEXP '(?i)^README(|\\.MD)' THEN 1 ELSE 0 END AS readme,\r\n            CASE WHEN file_path REGEXP '(?i)^NOTICE(|\\.MD)' THEN 1 ELSE 0 END AS notice,\r\n            CASE WHEN file_path REGEXP '(?i)^LICENSE(|\\.MD)' THEN 1 ELSE 0 END AS license,\r\n            CASE WHEN file_path REGEXP '(?i)^CONTRIBUTING(|\\.MD)' THEN 1 ELSE 0 END AS contributing,\r\n            CASE WHEN file_path REGEXP '(?i)^\\.TRAVIS\\.YML' THEN 1 ELSE 0 END AS travis,\r\n            CASE WHEN file_path REGEXP '(?i)^CI' THEN 1 ELSE 0 END AS ci,\r\n            CASE WHEN file_path REGEXP '(?i)^DOCKERFILE$' THEN 1 ELSE 0 END AS dockerfile\r\n\t    FROM refs\r\n\t    JOIN commit_files \r\n\t    ON refs.commit_hash = commit_files.commit_hash \r\n\t    WHERE ref_name = \"refs/heads/master\" \r\n\t) q\r\n\tGROUP BY repository_id\r\n) q2\r",
-                "cache_timeout": null,
-                "changed_on": {
-                    "__datetime__": "2019-06-13T10:25:34"
-                },
-                "is_sqllab_view": false,
-                "params": "{\"remote_id\": 18, \"database_name\": \"gitbase\", \"import_time\": 1560421533}",
-                "id": 18,
-                "template_params": "{}",
-                "perm": "[gitbase].[admin admin-missing_files_summary-YqNVbLHqJ](id:18)",
-                "description": null,
-                "created_by_fk": 1,
-                "table_name": "admin admin-missing_files_summary-YqNVbLHqJ",
-                "default_endpoint": null,
-                "changed_by_fk": 1,
-                "main_dttm_col": null,
-                "is_featured": false,
-                "database_id": 2,
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "database": {
-                    "__Database__": {
-                        "allow_csv_upload": false,
-                        "verbose_name": null,
-                        "created_by_fk": null,
-                        "allow_ctas": false,
-                        "database_name": "gitbase",
-                        "changed_by_fk": null,
-                        "allow_dml": true,
-                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
-                        "force_ctas_schema": null,
-                        "password": null,
-                        "allow_multi_schema_metadata_fetch": false,
-                        "cache_timeout": null,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
-                        "select_as_create_table_as": false,
-                        "perm": "[gitbase].(id:2)",
-                        "changed_on": {
-                            "__datetime__": "2019-06-13T10:15:58"
-                        },
-                        "expose_in_sqllab": true,
-                        "id": 2,
-                        "impersonate_user": false,
-                        "allow_run_async": true
-                    }
-                },
-                "columns": [{
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "expression": "",
-                            "table_id": 18,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "changelog",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 80,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "expression": "",
-                            "table_id": 18,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "readme",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 81,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "expression": "",
-                            "table_id": 18,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "notice",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 82,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "expression": "",
-                            "table_id": 18,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "license",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 83,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "expression": "",
-                            "table_id": 18,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "contributing",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 84,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "expression": "",
-                            "table_id": 18,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "travis",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 85,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "expression": "",
-                            "table_id": 18,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "ci",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 86,
-                            "changed_by_fk": 1
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "expression": "",
-                            "table_id": 18,
-                            "filterable": true,
-                            "type": "DOUBLE",
-                            "database_expression": null,
-                            "column_name": "dockerfile",
-                            "changed_on": {
-                                "__datetime__": "2019-06-13T10:25:34"
-                            },
-                            "is_active": true,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "created_by_fk": 1,
-                            "verbose_name": null,
-                            "id": 87,
-                            "changed_by_fk": 1
-                        }
-                    }
-                ],
-                "metrics": [{
-                    "__SqlMetric__": {
-                        "changed_by_fk": 1,
-                        "expression": "count(*)",
-                        "warning_text": null,
-                        "is_restricted": false,
-                        "metric_type": null,
-                        "verbose_name": null,
-                        "id": 19,
-                        "created_on": {
-                            "__datetime__": "2019-06-13T10:25:34"
-                        },
-                        "created_by_fk": 1,
-                        "table_id": 18,
+                        "table_id": 15,
                         "d3format": null,
                         "description": null,
                         "metric_name": "count",
@@ -3251,21 +2117,21 @@
                 "schema": "null",
                 "offset": 0,
                 "created_on": {
-                    "__datetime__": "2019-06-13T14:55:41"
+                    "__datetime__": "2019-06-13T15:32:28"
                 },
-                "sql": "SELECT lang, COUNT(*) as n\nFROM (\nSELECT LANGUAGE(cf.file_path, f.blob_content) as lang\nFROM files AS f\nNATURAL JOIN commit_files cf\nNATURAL JOIN refs\nWHERE ref_name = 'HEAD'\nAND file_path NOT LIKE 'vendor/%%'\n) AS t\nWHERE lang is not null\nGROUP BY lang\nORDER BY 2 DESC",
+                "sql": "SELECT committer_email, COUNT(*) as n\nFROM commits\nWHERE committer_email <> 'noreply@github.com'\nGROUP BY committer_email\nORDER BY n DESC",
                 "cache_timeout": null,
                 "changed_on": {
-                    "__datetime__": "2019-06-13T14:55:41"
+                    "__datetime__": "2019-06-14T12:50:46"
                 },
                 "is_sqllab_view": true,
-                "params": "{\"remote_id\": 24, \"database_name\": \"gitbase\"}",
-                "id": 24,
+                "params": "{\"remote_id\": 30, \"database_name\": \"gitbase\"}",
+                "id": 30,
                 "template_params": "{}",
-                "perm": "[None].[admin admin-Untitled Query-Kmw5frZ_b](id:24)",
+                "perm": "[gitbase].[admin admin-Untitled Query-boJAIGUPS](id:30)",
                 "description": null,
                 "created_by_fk": 1,
-                "table_name": "admin admin-Untitled Query-Kmw5frZ_b",
+                "table_name": "admin admin-Untitled Query-boJAIGUPS",
                 "default_endpoint": null,
                 "changed_by_fk": 1,
                 "main_dttm_col": null,
@@ -3305,50 +2171,50 @@
                 "columns": [{
                         "__TableColumn__": {
                             "created_on": {
-                                "__datetime__": "2019-06-13T14:55:41"
+                                "__datetime__": "2019-06-13T15:32:28"
                             },
                             "expression": "",
-                            "table_id": 24,
+                            "table_id": 30,
                             "filterable": true,
                             "type": "BLOB",
                             "database_expression": null,
-                            "column_name": "lang",
+                            "column_name": "committer_email",
                             "changed_on": {
-                                "__datetime__": "2019-06-13T14:55:41"
+                                "__datetime__": "2019-06-14T12:50:46"
                             },
-                            "is_active": true,
+                            "is_active": null,
                             "python_date_format": null,
                             "is_dttm": false,
                             "description": null,
                             "groupby": true,
                             "created_by_fk": 1,
                             "verbose_name": null,
-                            "id": 99,
+                            "id": 111,
                             "changed_by_fk": 1
                         }
                     },
                     {
                         "__TableColumn__": {
                             "created_on": {
-                                "__datetime__": "2019-06-13T14:55:41"
+                                "__datetime__": "2019-06-13T15:32:28"
                             },
                             "expression": "",
-                            "table_id": 24,
+                            "table_id": 30,
                             "filterable": true,
                             "type": "LONGLONG",
                             "database_expression": null,
                             "column_name": "n",
                             "changed_on": {
-                                "__datetime__": "2019-06-13T14:55:41"
+                                "__datetime__": "2019-06-14T12:50:46"
                             },
-                            "is_active": true,
+                            "is_active": null,
                             "python_date_format": null,
                             "is_dttm": false,
                             "description": null,
                             "groupby": true,
                             "created_by_fk": 1,
                             "verbose_name": null,
-                            "id": 100,
+                            "id": 112,
                             "changed_by_fk": 1
                         }
                     }
@@ -3358,20 +2224,20 @@
                         "changed_by_fk": 1,
                         "expression": "count(*)",
                         "warning_text": null,
-                        "is_restricted": false,
+                        "is_restricted": null,
                         "metric_type": null,
                         "verbose_name": null,
-                        "id": 25,
+                        "id": 31,
                         "created_on": {
-                            "__datetime__": "2019-06-13T14:55:41"
+                            "__datetime__": "2019-06-13T15:32:28"
                         },
                         "created_by_fk": 1,
-                        "table_id": 24,
+                        "table_id": 30,
                         "d3format": null,
                         "description": null,
                         "metric_name": "count",
                         "changed_on": {
-                            "__datetime__": "2019-06-13T14:55:41"
+                            "__datetime__": "2019-06-14T12:50:46"
                         }
                     }
                 }]
@@ -3688,6 +2554,574 @@
                 "schema": "null",
                 "offset": 0,
                 "created_on": {
+                    "__datetime__": "2019-06-13T13:37:01"
+                },
+                "sql": "SELECT repository_id, commit_author_when as date,\nCOUNT(*) as n\nFROM refs\nNATURAL JOIN commits\nWHERE ref_name LIKE 'refs/tags/v%.%.%'\nGROUP BY repository_id\nORDER BY repository_id",
+                "cache_timeout": null,
+                "changed_on": {
+                    "__datetime__": "2019-06-13T13:37:01"
+                },
+                "is_sqllab_view": true,
+                "params": "{\"remote_id\": 20, \"database_name\": \"gitbase\"}",
+                "id": 20,
+                "template_params": "{}",
+                "perm": "[None].[admin admin-Untitled Query-LUNdDHhhu](id:20)",
+                "description": null,
+                "created_by_fk": 1,
+                "table_name": "admin admin-Untitled Query-LUNdDHhhu",
+                "default_endpoint": null,
+                "changed_by_fk": 1,
+                "main_dttm_col": null,
+                "is_featured": false,
+                "database_id": 2,
+                "filter_select_enabled": false,
+                "fetch_values_predicate": null,
+                "database": {
+                    "__Database__": {
+                        "allow_csv_upload": false,
+                        "verbose_name": null,
+                        "created_by_fk": null,
+                        "allow_ctas": false,
+                        "database_name": "gitbase",
+                        "changed_by_fk": null,
+                        "allow_dml": true,
+                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
+                        "force_ctas_schema": null,
+                        "password": null,
+                        "allow_multi_schema_metadata_fetch": false,
+                        "cache_timeout": null,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
+                        "select_as_create_table_as": false,
+                        "perm": "[gitbase].(id:2)",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "expose_in_sqllab": true,
+                        "id": 2,
+                        "impersonate_user": false,
+                        "allow_run_async": true
+                    }
+                },
+                "columns": [{
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T13:37:01"
+                            },
+                            "expression": "",
+                            "table_id": 20,
+                            "filterable": true,
+                            "type": "BLOB",
+                            "database_expression": null,
+                            "column_name": "repository_id",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T13:37:01"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 89,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T13:37:01"
+                            },
+                            "expression": "",
+                            "table_id": 20,
+                            "filterable": true,
+                            "type": "TIMESTAMP",
+                            "database_expression": null,
+                            "column_name": "date",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T13:37:01"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": true,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 90,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T13:37:01"
+                            },
+                            "expression": "",
+                            "table_id": 20,
+                            "filterable": true,
+                            "type": "LONGLONG",
+                            "database_expression": null,
+                            "column_name": "n",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T13:37:01"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 91,
+                            "changed_by_fk": 1
+                        }
+                    }
+                ],
+                "metrics": [{
+                    "__SqlMetric__": {
+                        "changed_by_fk": 1,
+                        "expression": "count(*)",
+                        "warning_text": null,
+                        "is_restricted": false,
+                        "metric_type": null,
+                        "verbose_name": null,
+                        "id": 21,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T13:37:01"
+                        },
+                        "created_by_fk": 1,
+                        "table_id": 20,
+                        "d3format": null,
+                        "description": null,
+                        "metric_name": "count",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T13:37:01"
+                        }
+                    }
+                }]
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "schema": "gitbase",
+                "offset": 0,
+                "created_on": {
+                    "__datetime__": "2019-06-13T10:25:34"
+                },
+                "sql": "SELECT \r\n    SUM(1-changelog) as changelog, \r\n    SUM(1-readme) as readme, \r\n    SUM(1-notice) as notice, \r\n    SUM(1-license) as license,\r\n    SUM(1-contributing) as contributing,\r\n    SUM(1-travis) as travis,\r\n    SUM(1-ci) as ci,\r\n    SUM(1-dockerfile) as dockerfile\r\nFROM (\r\n\tSELECT \r\n\t    repository_id, \r\n\t    SUM(changelog) != 0 as changelog, \r\n        SUM(readme) != 0 as readme, \r\n        SUM(notice) != 0 as notice, \r\n        SUM(license) != 0 as license,\r\n        SUM(contributing) != 0 as contributing,\r\n        SUM(travis) != 0 as travis,\r\n        SUM(ci) != 0 as ci,\r\n    \tSUM(dockerfile) != 0 as dockerfile\r\n\tFROM (\r\n\t    SELECT \r\n\t        refs.repository_id, \r\n\t        CASE WHEN file_path REGEXP '(?i)^CHANGELOG(|\\.MD)' THEN 1 ELSE 0 END AS changelog,\r\n            CASE WHEN file_path REGEXP '(?i)^README(|\\.MD)' THEN 1 ELSE 0 END AS readme,\r\n            CASE WHEN file_path REGEXP '(?i)^NOTICE(|\\.MD)' THEN 1 ELSE 0 END AS notice,\r\n            CASE WHEN file_path REGEXP '(?i)^LICENSE(|\\.MD)' THEN 1 ELSE 0 END AS license,\r\n            CASE WHEN file_path REGEXP '(?i)^CONTRIBUTING(|\\.MD)' THEN 1 ELSE 0 END AS contributing,\r\n            CASE WHEN file_path REGEXP '(?i)^\\.TRAVIS\\.YML' THEN 1 ELSE 0 END AS travis,\r\n            CASE WHEN file_path REGEXP '(?i)^CI' THEN 1 ELSE 0 END AS ci,\r\n            CASE WHEN file_path REGEXP '(?i)^DOCKERFILE$' THEN 1 ELSE 0 END AS dockerfile\r\n\t    FROM refs\r\n\t    JOIN commit_files \r\n\t    ON refs.commit_hash = commit_files.commit_hash \r\n\t    WHERE ref_name = \"refs/heads/master\" \r\n\t) q\r\n\tGROUP BY repository_id\r\n) q2\r",
+                "cache_timeout": null,
+                "changed_on": {
+                    "__datetime__": "2019-06-13T10:25:34"
+                },
+                "is_sqllab_view": false,
+                "params": "{\"remote_id\": 18, \"database_name\": \"gitbase\", \"import_time\": 1560421533}",
+                "id": 18,
+                "template_params": "{}",
+                "perm": "[gitbase].[admin admin-missing_files_summary-YqNVbLHqJ](id:18)",
+                "description": null,
+                "created_by_fk": 1,
+                "table_name": "admin admin-missing_files_summary-YqNVbLHqJ",
+                "default_endpoint": null,
+                "changed_by_fk": 1,
+                "main_dttm_col": null,
+                "is_featured": false,
+                "database_id": 2,
+                "filter_select_enabled": false,
+                "fetch_values_predicate": null,
+                "database": {
+                    "__Database__": {
+                        "allow_csv_upload": false,
+                        "verbose_name": null,
+                        "created_by_fk": null,
+                        "allow_ctas": false,
+                        "database_name": "gitbase",
+                        "changed_by_fk": null,
+                        "allow_dml": true,
+                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
+                        "force_ctas_schema": null,
+                        "password": null,
+                        "allow_multi_schema_metadata_fetch": false,
+                        "cache_timeout": null,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
+                        "select_as_create_table_as": false,
+                        "perm": "[gitbase].(id:2)",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "expose_in_sqllab": true,
+                        "id": 2,
+                        "impersonate_user": false,
+                        "allow_run_async": true
+                    }
+                },
+                "columns": [{
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "expression": "",
+                            "table_id": 18,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "changelog",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 80,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "expression": "",
+                            "table_id": 18,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "readme",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 81,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "expression": "",
+                            "table_id": 18,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "notice",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 82,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "expression": "",
+                            "table_id": 18,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "license",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 83,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "expression": "",
+                            "table_id": 18,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "contributing",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 84,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "expression": "",
+                            "table_id": 18,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "travis",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 85,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "expression": "",
+                            "table_id": 18,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "ci",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 86,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "expression": "",
+                            "table_id": 18,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "dockerfile",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:34"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 87,
+                            "changed_by_fk": 1
+                        }
+                    }
+                ],
+                "metrics": [{
+                    "__SqlMetric__": {
+                        "changed_by_fk": 1,
+                        "expression": "count(*)",
+                        "warning_text": null,
+                        "is_restricted": false,
+                        "metric_type": null,
+                        "verbose_name": null,
+                        "id": 19,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:25:34"
+                        },
+                        "created_by_fk": 1,
+                        "table_id": 18,
+                        "d3format": null,
+                        "description": null,
+                        "metric_name": "count",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:25:34"
+                        }
+                    }
+                }]
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "schema": "null",
+                "offset": 0,
+                "created_on": {
+                    "__datetime__": "2019-06-14T13:18:14"
+                },
+                "sql": "SELECT repository_id, COUNT(commit_author_name) as collaborators_count FROM (\nSELECT DISTINCT commit_author_name, repository_id\nFROM commits\n) q1\nGROUP BY repository_id\nORDER BY collaborators_count DESC",
+                "cache_timeout": null,
+                "changed_on": {
+                    "__datetime__": "2019-06-14T13:18:14"
+                },
+                "is_sqllab_view": true,
+                "params": "{\"remote_id\": 33, \"database_name\": \"gitbase\"}",
+                "id": 33,
+                "template_params": "{}",
+                "perm": "[None].[admin admin-Untitled Query-CmGNVca6-](id:33)",
+                "description": null,
+                "created_by_fk": 1,
+                "table_name": "admin admin-Untitled Query-CmGNVca6-",
+                "default_endpoint": null,
+                "changed_by_fk": 1,
+                "main_dttm_col": null,
+                "is_featured": false,
+                "database_id": 2,
+                "filter_select_enabled": false,
+                "fetch_values_predicate": null,
+                "database": {
+                    "__Database__": {
+                        "allow_csv_upload": false,
+                        "verbose_name": null,
+                        "created_by_fk": null,
+                        "allow_ctas": false,
+                        "database_name": "gitbase",
+                        "changed_by_fk": null,
+                        "allow_dml": true,
+                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
+                        "force_ctas_schema": null,
+                        "password": null,
+                        "allow_multi_schema_metadata_fetch": false,
+                        "cache_timeout": null,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
+                        "select_as_create_table_as": false,
+                        "perm": "[gitbase].(id:2)",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "expose_in_sqllab": true,
+                        "id": 2,
+                        "impersonate_user": false,
+                        "allow_run_async": true
+                    }
+                },
+                "columns": [{
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-14T13:18:14"
+                            },
+                            "expression": "",
+                            "table_id": 33,
+                            "filterable": true,
+                            "type": "BLOB",
+                            "database_expression": null,
+                            "column_name": "repository_id",
+                            "changed_on": {
+                                "__datetime__": "2019-06-14T13:18:14"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 117,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-14T13:18:14"
+                            },
+                            "expression": "",
+                            "table_id": 33,
+                            "filterable": true,
+                            "type": "LONGLONG",
+                            "database_expression": null,
+                            "column_name": "collaborators_count",
+                            "changed_on": {
+                                "__datetime__": "2019-06-14T13:18:14"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 118,
+                            "changed_by_fk": 1
+                        }
+                    }
+                ],
+                "metrics": [{
+                    "__SqlMetric__": {
+                        "changed_by_fk": 1,
+                        "expression": "count(*)",
+                        "warning_text": null,
+                        "is_restricted": false,
+                        "metric_type": null,
+                        "verbose_name": null,
+                        "id": 34,
+                        "created_on": {
+                            "__datetime__": "2019-06-14T13:18:14"
+                        },
+                        "created_by_fk": 1,
+                        "table_id": 33,
+                        "d3format": null,
+                        "description": null,
+                        "metric_name": "count",
+                        "changed_on": {
+                            "__datetime__": "2019-06-14T13:18:14"
+                        }
+                    }
+                }]
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "schema": "null",
+                "offset": 0,
+                "created_on": {
                     "__datetime__": "2019-06-13T14:25:37"
                 },
                 "sql": "SELECT repository_id as repo,\ncommit_author_when commit_date,\nCOUNT(*) as n\nFROM commits\nWHERE commit_author_when <= now()\nGROUP BY repo, commit_date\nORDER BY repo, commit_date",
@@ -3841,24 +3275,459 @@
         },
         {
             "__SqlaTable__": {
+                "schema": "gitbase",
+                "offset": 0,
+                "created_on": {
+                    "__datetime__": "2019-06-13T10:25:33"
+                },
+                "sql": "SELECT \r\n    SUM(changelog != 0) / COUNT(changelog)  as changelog, \r\n    SUM(readme != 0)  / COUNT(changelog) as readme, \r\n    SUM(notice != 0)  / COUNT(changelog) as notice, \r\n    SUM(license != 0) / COUNT(changelog) as license,\r\n    SUM(contributing != 0) / COUNT(changelog) as contributing,\r\n    SUM(travis != 0) / COUNT(changelog) as travis, \r\n    SUM(ci != 0) / COUNT(changelog) as ci, \r\n    SUM(dockerfile != 0) / COUNT(changelog) as dockerfile \r\nFROM (\r\n    SELECT \r\n        SUM(changelog) as changelog, \r\n        SUM(readme) as readme, \r\n        SUM(notice) as notice, \r\n        SUM(license) as license,\r\n        SUM(contributing) as contributing,\r\n        SUM(travis) as travis,\r\n        SUM(ci) as ci,\r\n        SUM(dockerfile) as dockerfile\r\n    FROM (\r\n        SELECT \r\n            refs.repository_id, \r\n            CASE WHEN file_path REGEXP '(?i)^CHANGELOG(|\\.MD)' THEN 1 ELSE 0 END AS changelog,\r\n            CASE WHEN file_path REGEXP '(?i)^README(|\\.MD)' THEN 1 ELSE 0 END AS readme,\r\n            CASE WHEN file_path REGEXP '(?i)^NOTICE(|\\.MD)' THEN 1 ELSE 0 END AS notice,\r\n            CASE WHEN file_path REGEXP '(?i)^LICENSE(|\\.MD)' THEN 1 ELSE 0 END AS license,\r\n            CASE WHEN file_path REGEXP '(?i)^CONTRIBUTING(|\\.MD)' THEN 1 ELSE 0 END AS contributing,\r\n            CASE WHEN file_path REGEXP '(?i)^\\.TRAVIS\\.YML' THEN 1 ELSE 0 END AS travis,\r\n            CASE WHEN file_path REGEXP '(?i)^CI' THEN 1 ELSE 0 END AS ci,\r\n            CASE WHEN file_path REGEXP '(?i)^DOCKERFILE$' THEN 1 ELSE 0 END AS dockerfile\r\n        FROM refs\r\n        JOIN commit_files \r\n        ON refs.commit_hash = commit_files.commit_hash \r\n        WHERE ref_name = \"refs/heads/master\" \r\n    ) q\r\n    GROUP BY repository_id\r\n) q2",
+                "cache_timeout": null,
+                "changed_on": {
+                    "__datetime__": "2019-06-13T10:25:33"
+                },
+                "is_sqllab_view": false,
+                "params": "{\"remote_id\": 12, \"database_name\": \"gitbase\", \"import_time\": 1560421533}",
+                "id": 12,
+                "template_params": "{}",
+                "perm": "[gitbase].[admin admin-compliance_score-ReDkKHp6n](id:12)",
+                "description": null,
+                "created_by_fk": 1,
+                "table_name": "admin admin-compliance_score-ReDkKHp6n",
+                "default_endpoint": null,
+                "changed_by_fk": 1,
+                "main_dttm_col": null,
+                "is_featured": false,
+                "database_id": 2,
+                "filter_select_enabled": false,
+                "fetch_values_predicate": null,
+                "database": {
+                    "__Database__": {
+                        "allow_csv_upload": false,
+                        "verbose_name": null,
+                        "created_by_fk": null,
+                        "allow_ctas": false,
+                        "database_name": "gitbase",
+                        "changed_by_fk": null,
+                        "allow_dml": true,
+                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
+                        "force_ctas_schema": null,
+                        "password": null,
+                        "allow_multi_schema_metadata_fetch": false,
+                        "cache_timeout": null,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
+                        "select_as_create_table_as": false,
+                        "perm": "[gitbase].(id:2)",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "expose_in_sqllab": true,
+                        "id": 2,
+                        "impersonate_user": false,
+                        "allow_run_async": true
+                    }
+                },
+                "columns": [{
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "expression": "",
+                            "table_id": 12,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "changelog",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 53,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "expression": "",
+                            "table_id": 12,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "readme",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 54,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "expression": "",
+                            "table_id": 12,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "notice",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 55,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "expression": "",
+                            "table_id": 12,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "license",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 56,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "expression": "",
+                            "table_id": 12,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "contributing",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 57,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "expression": "",
+                            "table_id": 12,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "travis",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 58,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "expression": "",
+                            "table_id": 12,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "ci",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 59,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "expression": "",
+                            "table_id": 12,
+                            "filterable": true,
+                            "type": "DOUBLE",
+                            "database_expression": null,
+                            "column_name": "dockerfile",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "is_active": true,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 60,
+                            "changed_by_fk": 1
+                        }
+                    }
+                ],
+                "metrics": [{
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "expression": "count(*)",
+                            "warning_text": null,
+                            "is_restricted": false,
+                            "metric_type": null,
+                            "verbose_name": null,
+                            "id": 12,
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "created_by_fk": 1,
+                            "table_id": 12,
+                            "d3format": null,
+                            "description": null,
+                            "metric_name": "count",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            }
+                        }
+                    },
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "expression": "(changelog + 3 * readme + 3 * notice + 3 * license + contributing + travis + ci + Dockerfile) / 14.0",
+                            "warning_text": null,
+                            "is_restricted": false,
+                            "metric_type": null,
+                            "verbose_name": "compliance",
+                            "id": 13,
+                            "created_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            },
+                            "created_by_fk": 1,
+                            "table_id": 12,
+                            "d3format": null,
+                            "description": null,
+                            "metric_name": "compliance",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T10:25:33"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "schema": "null",
+                "offset": 0,
+                "created_on": {
+                    "__datetime__": "2019-06-13T15:16:04"
+                },
+                "sql": "SELECT REPLACE(JSON_EXTRACT(SPLIT(committer_email, '@'), '$[1]'),'\"', '') as domain, COUNT(*) as n\nFROM commits\nWHERE committer_email LIKE '%%@%%' and committer_email NOT LIKE '%%@github.com'\nGROUP BY domain\nORDER BY n DESC",
+                "cache_timeout": null,
+                "changed_on": {
+                    "__datetime__": "2019-06-14T14:35:47"
+                },
+                "is_sqllab_view": true,
+                "params": "{\"remote_id\": 27, \"database_name\": \"gitbase\"}",
+                "id": 27,
+                "template_params": "{}",
+                "perm": "[gitbase].[admin admin-Untitled Query-tEO1Ih2Uu](id:27)",
+                "description": null,
+                "created_by_fk": 1,
+                "table_name": "admin admin-Untitled Query-tEO1Ih2Uu",
+                "default_endpoint": null,
+                "changed_by_fk": 1,
+                "main_dttm_col": null,
+                "is_featured": false,
+                "database_id": 2,
+                "filter_select_enabled": false,
+                "fetch_values_predicate": null,
+                "database": {
+                    "__Database__": {
+                        "allow_csv_upload": false,
+                        "verbose_name": null,
+                        "created_by_fk": null,
+                        "allow_ctas": false,
+                        "database_name": "gitbase",
+                        "changed_by_fk": null,
+                        "allow_dml": true,
+                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
+                        "force_ctas_schema": null,
+                        "password": null,
+                        "allow_multi_schema_metadata_fetch": false,
+                        "cache_timeout": null,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
+                        "select_as_create_table_as": false,
+                        "perm": "[gitbase].(id:2)",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "expose_in_sqllab": true,
+                        "id": 2,
+                        "impersonate_user": false,
+                        "allow_run_async": true
+                    }
+                },
+                "columns": [{
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T15:16:04"
+                            },
+                            "expression": "",
+                            "table_id": 27,
+                            "filterable": true,
+                            "type": "STRING",
+                            "database_expression": null,
+                            "column_name": "domain",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T15:26:10"
+                            },
+                            "is_active": null,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 105,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T15:16:04"
+                            },
+                            "expression": "",
+                            "table_id": 27,
+                            "filterable": true,
+                            "type": "LONGLONG",
+                            "database_expression": null,
+                            "column_name": "n",
+                            "changed_on": {
+                                "__datetime__": "2019-06-13T15:26:10"
+                            },
+                            "is_active": null,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 106,
+                            "changed_by_fk": 1
+                        }
+                    }
+                ],
+                "metrics": [{
+                    "__SqlMetric__": {
+                        "changed_by_fk": 1,
+                        "expression": "count(*)",
+                        "warning_text": null,
+                        "is_restricted": null,
+                        "metric_type": null,
+                        "verbose_name": null,
+                        "id": 28,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T15:16:04"
+                        },
+                        "created_by_fk": 1,
+                        "table_id": 27,
+                        "d3format": null,
+                        "description": null,
+                        "metric_name": "count",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T15:26:10"
+                        }
+                    }
+                }]
+            }
+        },
+        {
+            "__SqlaTable__": {
                 "schema": null,
                 "offset": 0,
                 "created_on": {
-                    "__datetime__": "2019-06-13T10:43:17"
+                    "__datetime__": "2019-06-13T10:16:00"
                 },
-                "sql": "SELECT commit_author_name\nFROM commits\nGROUP BY commit_author_name\nORDER BY commit_author_name",
+                "sql": "select * from repositories",
                 "cache_timeout": null,
                 "changed_on": {
-                    "__datetime__": "2019-06-13T10:43:17"
+                    "__datetime__": "2019-06-13T10:25:34"
                 },
-                "is_sqllab_view": true,
-                "params": "{\"remote_id\": 19, \"database_name\": \"gitbase\"}",
-                "id": 19,
-                "template_params": "{}",
-                "perm": "[None].[admin admin-Untitled Query-mW48VqXdL](id:19)",
+                "is_sqllab_view": false,
+                "params": "{\"remote_id\": 10, \"database_name\": \"gitbase\", \"import_time\": 1560421533}",
+                "id": 10,
+                "template_params": null,
+                "perm": "[gitbase].[gitbase.repositories](id:10)",
                 "description": null,
-                "created_by_fk": 1,
-                "table_name": "admin admin-Untitled Query-mW48VqXdL",
+                "created_by_fk": null,
+                "table_name": "gitbase.repositories",
                 "default_endpoint": null,
                 "changed_by_fk": 1,
                 "main_dttm_col": null,
@@ -3898,47 +3767,178 @@
                 "columns": [{
                     "__TableColumn__": {
                         "created_on": {
-                            "__datetime__": "2019-06-13T10:43:17"
+                            "__datetime__": "2019-06-13T10:16:00"
                         },
                         "expression": "",
-                        "table_id": 19,
-                        "filterable": true,
-                        "type": "BLOB",
+                        "table_id": 10,
+                        "filterable": false,
+                        "type": "TEXT",
                         "database_expression": null,
-                        "column_name": "commit_author_name",
+                        "column_name": "repository_id",
                         "changed_on": {
-                            "__datetime__": "2019-06-13T10:43:17"
+                            "__datetime__": "2019-06-13T10:16:06"
                         },
                         "is_active": true,
                         "python_date_format": null,
                         "is_dttm": false,
                         "description": null,
-                        "groupby": true,
-                        "created_by_fk": 1,
+                        "groupby": false,
+                        "created_by_fk": null,
                         "verbose_name": null,
-                        "id": 88,
-                        "changed_by_fk": 1
+                        "id": 47,
+                        "changed_by_fk": null
                     }
                 }],
+                "metrics": [{
+                    "__SqlMetric__": {
+                        "changed_by_fk": null,
+                        "expression": "COUNT(*)",
+                        "warning_text": null,
+                        "is_restricted": false,
+                        "metric_type": "count",
+                        "verbose_name": "COUNT(*)",
+                        "id": 10,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:16:00"
+                        },
+                        "created_by_fk": null,
+                        "table_id": 10,
+                        "d3format": null,
+                        "description": null,
+                        "metric_name": "count",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:16:00"
+                        }
+                    }
+                }]
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "schema": "null",
+                "offset": 0,
+                "created_on": {
+                    "__datetime__": "2019-06-13T15:35:41"
+                },
+                "sql": "SELECT committer_email, COUNT(*) as n\nFROM commits\nWHERE committer_email <> 'noreply@github.com'\nGROUP BY committer_email\nORDER BY n DESC",
+                "cache_timeout": null,
+                "changed_on": {
+                    "__datetime__": "2019-06-14T12:51:53"
+                },
+                "is_sqllab_view": true,
+                "params": "{\"remote_id\": 32, \"database_name\": \"gitbase\"}",
+                "id": 32,
+                "template_params": "{}",
+                "perm": "[gitbase].[admin admin-Untitled Query-JJ5b9O0Hc](id:32)",
+                "description": null,
+                "created_by_fk": 1,
+                "table_name": "admin admin-Untitled Query-JJ5b9O0Hc",
+                "default_endpoint": null,
+                "changed_by_fk": 1,
+                "main_dttm_col": null,
+                "is_featured": false,
+                "database_id": 2,
+                "filter_select_enabled": false,
+                "fetch_values_predicate": null,
+                "database": {
+                    "__Database__": {
+                        "allow_csv_upload": false,
+                        "verbose_name": null,
+                        "created_by_fk": null,
+                        "allow_ctas": false,
+                        "database_name": "gitbase",
+                        "changed_by_fk": null,
+                        "allow_dml": true,
+                        "sqlalchemy_uri": "mysql://root@gitbase:3306/gitbase",
+                        "force_ctas_schema": null,
+                        "password": null,
+                        "allow_multi_schema_metadata_fetch": false,
+                        "cache_timeout": null,
+                        "created_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
+                        "select_as_create_table_as": false,
+                        "perm": "[gitbase].(id:2)",
+                        "changed_on": {
+                            "__datetime__": "2019-06-13T10:15:58"
+                        },
+                        "expose_in_sqllab": true,
+                        "id": 2,
+                        "impersonate_user": false,
+                        "allow_run_async": true
+                    }
+                },
+                "columns": [{
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T15:35:41"
+                            },
+                            "expression": "",
+                            "table_id": 32,
+                            "filterable": true,
+                            "type": "BLOB",
+                            "database_expression": null,
+                            "column_name": "committer_email",
+                            "changed_on": {
+                                "__datetime__": "2019-06-14T12:51:53"
+                            },
+                            "is_active": null,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 115,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-13T15:35:41"
+                            },
+                            "expression": "",
+                            "table_id": 32,
+                            "filterable": true,
+                            "type": "LONGLONG",
+                            "database_expression": null,
+                            "column_name": "n",
+                            "changed_on": {
+                                "__datetime__": "2019-06-14T12:51:53"
+                            },
+                            "is_active": null,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "created_by_fk": 1,
+                            "verbose_name": null,
+                            "id": 116,
+                            "changed_by_fk": 1
+                        }
+                    }
+                ],
                 "metrics": [{
                     "__SqlMetric__": {
                         "changed_by_fk": 1,
                         "expression": "count(*)",
                         "warning_text": null,
-                        "is_restricted": false,
+                        "is_restricted": null,
                         "metric_type": null,
                         "verbose_name": null,
-                        "id": 20,
+                        "id": 33,
                         "created_on": {
-                            "__datetime__": "2019-06-13T10:43:17"
+                            "__datetime__": "2019-06-13T15:35:41"
                         },
                         "created_by_fk": 1,
-                        "table_id": 19,
+                        "table_id": 32,
                         "d3format": null,
                         "description": null,
                         "metric_name": "count",
                         "changed_on": {
-                            "__datetime__": "2019-06-13T10:43:17"
+                            "__datetime__": "2019-06-14T12:51:53"
                         }
                     }
                 }]
