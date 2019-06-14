@@ -67,6 +67,8 @@ RUN cd superset/assets \
 COPY contrib/docker/superset_config.py ./superset/
 COPY contrib/docker/docker-init.sh .
 COPY contrib/docker/add_gitbase.py .
+COPY contrib/docker/add_metadata_db.py .
+COPY contrib/docker/set_default_dashboard.py .
 COPY contrib/docker/docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 

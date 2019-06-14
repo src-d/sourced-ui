@@ -94,6 +94,17 @@ GITBASE_DATABASE_URI = '%s://%s%s:%s/%s' % (GITBASE_PREFIX,
 
 SQLLAB_DEFAULT_DBID = 2  # set gitbase as default DB in SQL Lab
 
+# Metadata db configuration, use the same db server as main db
+
+SYNC_MODE = get_env_variable('SYNC_MODE', False)
+if SYNC_MODE:
+    METADATA_DB = get_env_variable('METADATA_DB')
+    METADATA_DATABASE_URI = 'postgresql://%s:%s@%s:%s/%s' % (POSTGRES_USER,
+                                                             POSTGRES_PASSWORD,
+                                                             POSTGRES_HOST,
+                                                             POSTGRES_PORT,
+                                                             METADATA_DB)
+
 # Log Settings
 
 LOG_LEVEL = 'INFO'
@@ -104,6 +115,11 @@ BBLFSH_WEB_HOST = get_env_variable('BBLFSH_WEB_HOST')
 BBLFSH_WEB_PORT = get_env_variable('BBLFSH_WEB_PORT')
 BBLFSH_WEB_ADDRESS = 'http://%s:%s' % (BBLFSH_WEB_HOST, BBLFSH_WEB_PORT)
 WTF_CSRF_EXEMPT_LIST = ['superset.bblfsh.views.api']
+
+# Defaults configuration
+
+DEFAULT_DASHBOARD_ID = 2 if SYNC_MODE else 1
+DEFAULT_USERNAME = get_env_variable('ADMIN_LOGIN')
 
 
 # Alter flask application

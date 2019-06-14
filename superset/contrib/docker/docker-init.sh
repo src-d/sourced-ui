@@ -23,6 +23,11 @@ superset db upgrade
 # always gitbase script to update datasource if it was changed in env var
 python add_gitbase.py
 
+# add metadata data source only in sync mode
+if [ ! -z "$SYNC_MODE" ]; then
+    python add_metadata_db.py
+fi
+
 # initialize database if empty
 if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
     # Create an admin user
@@ -38,6 +43,12 @@ if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
     superset init
 
     # Add dashboards
-    superset import_dashboards --recursive --path /home/superset/dashboards
+    superset import_dashboards --recursive --path /home/superset/dashboards/gitbase
+
+    # Add metadata dashboards and set welcome dashboard as a default
+    if [ ! -z "$SYNC_MODE" ]; then
+        superset import_dashboards --recursive --path /home/superset/dashboards/metadata
+        python set_default_dashboard.py
+    fi
 fi
 
