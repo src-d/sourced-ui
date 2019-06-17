@@ -66,4 +66,4 @@ jobs:
       install: skip
       after_success: skip
       script:
-        - make superset-docker-push-latest-release
+        - make docker-push-latest-release
