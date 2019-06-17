@@ -28,6 +28,7 @@
 @gray: lighten(@gray-base, 33.5%);
 @gray-light: lighten(@gray-base, 70%);
 @gray-lighter: lighten(@gray-base, 95%);
+@brand-light-grey: #c9c9c9;
 
 @brand-primary: #00a699;
 @brand-success: #4ac15f;
@@ -55,7 +56,6 @@
 
 @brand-primary: #00b491;
 @brand-secondary: #8719cb;
-@brand-tertiary: #f89c30;
 
 //== Typography
 //
@@ -141,32 +141,12 @@ h2 {
   font-weight: 600;
 }
 
-h2:after {
-  content: "";
-  position: absolute;
-  width: 76px;
-  height: 1px;
-  bottom: -4px;
-  left: 10px;
-  border-bottom: 4px solid @brand-secondary;
-}
-
 h3 {
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: @font-size-h3;
   font-weight: 300;
   position: relative;
   margin-bottom: 22px;
-}
-
-h3:after {
-  content: "";
-  position: absolute;
-  width: 76px;
-  height: 1px;
-  bottom: -8px;
-  left: 1px;
-  border-bottom: 4px solid @brand-tertiary;
 }
 
 .panel-default .panel-title {
@@ -185,16 +165,6 @@ h3.panel-title {
   padding-left: 0;
 }
 
-h3.panel-title:after {
-  content: "";
-  position: absolute;
-  width: 76px;
-  height: 1px;
-  bottom: -4px;
-  left: 10px;
-  border-bottom: 4px solid @brand-secondary;
-}
-
 h4,
 h4.panel-title {
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
@@ -203,16 +173,7 @@ h4.panel-title {
   border: none !important;
   padding-left: 8px;
   position: relative;
-}
-
-h4:after {
-  content: "";
-  position: absolute;
-  width: 76px;
-  height: 1px;
-  bottom: -4px;
-  left: 10px;
-  border-bottom: 4px solid @brand-secondary;
+  width: 90%;
 }
 
 .dashboard-component-header {
@@ -233,16 +194,6 @@ h4:after {
   padding-top: 24px;
 }
 
-.dashboard-header .editable-title:after {
-  content: "";
-  position: absolute;
-  width: 76px;
-  height: 1px;
-  bottom: 9px;
-  left: 1px;
-  border-bottom: 4px solid @brand-secondary;
-}
-
 .chart-header .header .editable-title input[type="button"] {
   font-size: 22px;
   font-weight: 100;
@@ -251,16 +202,6 @@ h4:after {
 .chart-header span.editable-title {
   font-size: 26px;
   font-weight: 600;
-}
-
-.chart-header span.editable-title:after {
-  content: "";
-  position: absolute;
-  width: 76px;
-  height: 1px;
-  bottom: -7px;
-  left: 1px;
-  border-bottom: 4px solid @brand-tertiary;
 }
 
 .dashboard-header .dashboard-component-header {
@@ -273,6 +214,16 @@ h4:after {
   font-size: 14px !important;
 }
 
+.dashboard-header .editable-title:after {
+  content: "";
+  position: absolute;
+  width: 76px;
+  height: 1px;
+  bottom: 9px;
+  left: 1px;
+  border-bottom: 4px solid @brand-secondary;
+}
+
 .chart-header .header {
   margin-bottom: 20px;
 }
@@ -280,6 +231,18 @@ h4:after {
 .dropdown-menu {
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  min-width: 10rem;
+  padding: 1.25rem 0.75rem;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  li {
+    padding-bottom: 0.35rem;
+  }
 }
 
 .btn-primary,
@@ -314,34 +277,128 @@ h4:after {
   letter-spacing: 0 !important;
 }
 
-//== Soft-Branding
+//==Nav Bar
 
-.nav.navbar-nav .fa {
-  color: @brand-tertiary;
+.nav.navbar-nav .caret:before {
+  content: "\f0d7";
+  font-size: 14px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #000;
+
+  .fa {
+    color: @brand-light-grey;
+  }
+}
+
+.navbar b.caret {
+  vertical-align: -1px;
+}
+
+.navbar .f16 .flag {
+  vertical-align: -3px;
+}
+
+.dashboard .dashboard-header #save-dash-split-button {
+  height: 36px !important;
+  width: 34px !important;
+}
+
+.dashboard .dashboard-header #save-dash-split-button .caret {
+  padding-top: 4px;
+}
+
+.navbar-header {
+  padding: 6px 9px;
+}
+
+.navbar-collapse.collapse {
+  padding: 6px 9px;
 }
 
 .nav.navbar-nav.navbar-right .btn-primary .fa {
   color: #fff;
 }
 
-.navbar-inverse .navbar-nav > li > a:focus,
-.navbar-inverse .navbar-nav > li.active > a {
+.navbar-inverse .navbar-nav > li.dropdown > a,
+.navbar-inverse .navbar-nav > li > a {
+  margin-bottom: -16px;
+  padding-bottom: 23px;
+}
+
+.navbar-inverse .navbar-nav > li.active > a,
+.navbar-inverse .navbar-nav > li.active > a:hover {
   border-bottom: 3px solid @brand-secondary;
+  margin-bottom: -16px;
+  padding-bottom: 23px;
+
+  i {
+    color: @brand-secondary;
+  }
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  border-bottom: 3px solid @brand-primary;
+  margin-bottom: -16px;
+  padding-bottom: 24px;
+
+  i {
+    color: @brand-primary;
+  }
+}
+
+.navbar-inverse .navbar-nav > li > a.dropdown-toggle {
+  padding-bottom: 23px;
+}
+
+.navbar-inverse .navbar-nav > li.dropdown > a:focus {
+  border-bottom: 3px solid @brand-primary;
+  margin-bottom: -16px;
+  padding-bottom: 23px;
+}
+
+.navbar-inverse .navbar-nav > li.dropdown-menu.active > a.dropdown-toggle,
+.navbar-inverse .navbar-nav > li.dropdown.active > a.dropdown-toggle,
+.navbar-inverse .navbar-nav > li.dropdown-menu.active > a.dropdown-toggle:hover,
+.navbar-inverse .navbar-nav > li.dropdown.active > a.dropdown-toggle:hover,
+.navbar-inverse .navbar-nav > li.dropdown-menu.active > a.dropdown-toggle:focus,
+.navbar-inverse .navbar-nav > li.dropdown.active > a.dropdown-toggle:focus {
+  border-bottom: 3px solid @brand-secondary;
+  margin-bottom: -16px;
+  padding-bottom: 24px;
+
+  i {
+    color: @brand-secondary;
+  }
 }
 
 .nav.navbar-nav.navbar-right .btn-primary,
 .nav.navbar-nav.navbar-right .btn.btn-primary {
-  background-color: @brand-tertiary !important;
-  border-color: @brand-tertiary;
+  background-color: @brand-primary;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.35rem 4rem 0.35rem 2.25rem;
+  font-weight: 600;
+  font-size: 14px !important;
+
+  i:before {
+    content: "\F0D7";
+    font-size: 14px;
+    color: #fff;
+    position: relative;
+    left: 45px;
+  }
 }
 
 .nav.navbar-nav.navbar-right .btn-primary:hover,
 .nav.navbar-nav.navbar-right .btn.btn-primary:hover {
-  background-color: darken(@brand-tertiary, 5%);
+  background-color: darken(@brand-primary, 3%);
 }
 
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
-  border-top: 3px solid @brand-secondary;
+.table th a {
+  display: inline-block;
+  margin-right: 20px;
 }
