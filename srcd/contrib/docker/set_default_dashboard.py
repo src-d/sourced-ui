@@ -3,8 +3,9 @@ Superset allows to redirect user to a default dashboard
 but the only way to set this dashboard is by code
 """
 
-from superset import conf, db
 from flask_appbuilder.security.sqla.models import User
+
+from superset import conf, db
 from superset.models.core import Dashboard
 from superset.models.user_attributes import UserAttribute
 
