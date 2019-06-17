@@ -38,15 +38,20 @@ You can configure the Docker image using the following environment variables:
 | `GITBASE_DB`          | Database name for Gitbase                                       |
 | `GITBASE_USER`        | Username for Gitbase                                            |
 | `GITBASE_PASSWORD`    | Password for Gitbase                                            |
-| `POSTGRES_HOST`       | Hostname for PostgreSQL                                         |
-| `POSTGRES_PORT`       | Port for PostgreSQL                                             |
-| `POSTGRES_DB`         | Database for PostgreSQL                                         |
-| `POSTGRES_PASSWORD`   | Password for PostgreSQL                                         |
+| `POSTGRES_HOST`       | Hostname for Superset DB                                        |
+| `POSTGRES_PORT`       | Port for Superset DB                                            |
+| `POSTGRES_DB`         | Database for Superset DB                                        |
+| `POSTGRES_USER`       | Username for Superset DB                                        |
+| `POSTGRES_PASSWORD`   | Password for Superset DB                                        |
 | `REDIS_HOST`          | Hostname for Redis                                              |
 | `REDIS_PORT`          | Port for Redis                                                  |
 | `SUPERSET_ENV`        | Environment Superset runs in `production` or `development`      |
 | `SUPERSET_NO_INIT_DB` | Does not run the database init script if set to `true`          |
 | `SYNC_MODE`           | Adds metadata datasource and welcome dashboard if set to `true` |
+| `METADATA_HOST`       | Hostname for metadata DB (when `SYNC_MODE` is set to `true`)    |
+| `METADATA_PORT`       | Port for metadata DB (when `SYNC_MODE` is set to `true`)        |
+| `METADATA_USER`       | Username for metadata DB (when `SYNC_MODE` is set to `true`)    |
+| `METADATA_PASSWORD`   | Password for metadata DB (when `SYNC_MODE` is set to `true`)    |
 | `METADATA_DB`         | Database name for metadata (when `SYNC_MODE` is set to `true`)  |
 
 ## Development
