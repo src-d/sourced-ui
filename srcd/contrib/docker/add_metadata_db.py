@@ -1,5 +1,4 @@
 from superset import conf, db
-from superset.connectors.connector_registry import ConnectorRegistry
 from superset.models import core as models
 
 
