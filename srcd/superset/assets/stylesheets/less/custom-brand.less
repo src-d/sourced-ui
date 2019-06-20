@@ -56,6 +56,7 @@
 
 @brand-primary: #00b491;
 @brand-secondary: #8719cb;
+@brand-tertiary: #f89c30;
 
 //== Typography
 //
@@ -329,6 +330,7 @@ h4.panel-title {
   border-bottom: 3px solid @brand-primary;
   margin-bottom: -16px;
   padding-bottom: 24px;
+  background: transparent;
 
   i {
     color: @brand-primary;
@@ -343,6 +345,7 @@ h4.panel-title {
   border-bottom: 3px solid @brand-primary;
   margin-bottom: -16px;
   padding-bottom: 23px;
+  background: transparent;
 }
 
 .navbar-inverse .navbar-nav > li.dropdown-menu.active > a.dropdown-toggle,
@@ -354,6 +357,7 @@ h4.panel-title {
   border-bottom: 3px solid @brand-secondary;
   margin-bottom: -16px;
   padding-bottom: 24px;
+  background: transparent;
 
   i {
     color: @brand-secondary;
@@ -366,7 +370,7 @@ h4.panel-title {
   color: #fff;
   border: none;
   text-transform: uppercase;
-  padding: 0.35rem 4rem 0.35rem 2.25rem;
+  padding: 0.75rem 4rem 0.75rem 2.25rem;
   font-weight: 600;
   font-size: 14px !important;
 
@@ -387,4 +391,384 @@ h4.panel-title {
 .table th a {
   display: inline-block;
   margin-right: 20px;
+}
+
+//= UI Elements
+
+.panel-body .btn.btn-primary[type="button"] {
+  background-color: @brand-primary;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.75rem 3.25rem 0.75rem 3.25rem;
+  font-weight: 600;
+  font-size: 14px !important;
+  border-radius: 0.2rem;
+}
+
+.panel-body .btn.btn-primary[type="button"]:hover {
+  background-color: darken(@brand-primary, 3%);
+}
+
+.query-and-save.btn-group button:first-child {
+  background-color: @brand-primary;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.75rem 3.25rem;
+  font-weight: 600;
+  font-size: 14px !important;
+  border-radius: 0.2rem;
+
+  i {
+    display: none;
+  }
+}
+
+.query-and-save.btn-group button:first-child:hover {
+  background-color: darken(@brand-primary, 3%);
+}
+
+.query-and-save.btn-group button:nth-child(2) {
+  background-color: #fff;
+  color: @brand-primary;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.75rem 3.25rem;
+  font-weight: 600;
+  font-size: 14px !important;
+  margin-left: 12px;
+  border-radius: 0.2rem !important;
+  outline: 1px solid @brand-primary;
+  outline-offset: -1px;
+
+  i {
+    display: none;
+  }
+}
+
+.query-and-save.btn-group button:nth-child(2):hover {
+  background-color: darken(#fff, 1%);
+}
+
+#explore-container .text-muted i {
+  margin-left: 18px;
+}
+
+.explore-container .m-l-5.text-muted:hover {
+  background-color: darken(@brand-primary, 3%);
+}
+
+.btn-group.results .btn.btn-default.btn-sm {
+  background: #fff;
+  color: #989898;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  border: 1px solid #bcbcbc;
+}
+
+.btn-group.results .btn.btn-default.btn-sm:hover,
+.btn-group.results .btn.btn-default.btn-sm:focus {
+  background-color: darken(#fff, 7%);
+}
+
+.dashboard-header .button-container button {
+  border: none;
+  background-color: #fff;
+  color: @brand-tertiary;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  margin-left: 12px;
+  border-radius: 0.2rem !important;
+  outline: 1px solid @brand-tertiary;
+  outline-offset: -1px;
+  padding: 0.35rem 2rem;
+}
+
+.dashboard-header .button-container button:hover,
+.dashboard-header .button-container button:focus {
+  background: darken(#fff, 3%);
+  color: @brand-tertiary;
+}
+
+.dashboard-header .button-container #save-dash-split-button {
+  background-color: #fff;
+  color: @brand-tertiary;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  margin-left: 12px;
+  border-radius: 0.2rem !important;
+  outline: 1px solid @brand-tertiary;
+  outline-offset: -1px;
+  border-left: 1px solid #fff;
+
+  span.caret:before {
+    padding-top: 10px !important;
+    content: "\F0D7";
+    font-size: 14px;
+    left: -5px;
+    position: relative;
+    color: @brand-tertiary;
+  }
+}
+
+.dashboard-header .button-container #save-dash-split-button:hover,
+.dashboard-header .button-container #save-dash-split-button:focus {
+  background-color: darken(#fff, 3%);
+}
+
+.modal-footer #btn_modal_save_goto_dash {
+  background-color: @brand-primary;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.75rem 3.25rem;
+  font-weight: 600;
+  font-size: 14px !important;
+  border-radius: 0.2rem;
+}
+
+.modal-footer #btn_modal_save_goto_dash:hover,
+.modal-footer #btn_modal_save_goto_dash:focus {
+  background-color: darken(@brand-primary, 3%);
+}
+
+.modal-footer #btn_modal_save {
+  background-color: #fff;
+  color: @brand-primary;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.75rem 3.25rem;
+  font-weight: 600;
+  font-size: 14px !important;
+  margin-left: 12px;
+  border-radius: 0.2rem !important;
+  outline: 1px solid @brand-primary;
+  outline-offset: -1px;
+}
+
+.modal-footer #btn_modal_save:hover,
+.modal-footer #btn_modal_save:focus {
+  background-color: darken(#fff, 3%);
+}
+
+.sql-toolbar .form-inline .btn.btn-sm.btn-primary {
+  background-color: @brand-primary;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0.75rem 3.25rem;
+  font-weight: 600;
+  font-size: 14px !important;
+  border-radius: 0.2rem;
+  border: none;
+
+  i {
+    display: none;
+  }
+}
+
+.sql-toolbar .form-inline .btn.btn-sm.btn-primary:hover,
+.sql-toolbar .form-inline .btn.btn-sm.btn-primary:focus {
+  background-color: darken(@brand-primary, 3%);
+  border: none;
+}
+
+.sql-toolbar .form-inline .btn.btn-sm.btn-default {
+  background-color: #fff;
+  color: @brand-primary;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.85rem 3.25rem 0.75rem 3.25rem;
+  font-weight: 600;
+  font-size: 14px !important;
+  margin-left: 4px;
+  border-radius: 0.2rem !important;
+  outline: 1px solid @brand-primary;
+  outline-offset: -1px;
+
+  i {
+    display: none;
+  }
+}
+
+.sql-toolbar .form-inline .btn.btn-sm.btn-default:hover,
+.sql-toolbar .form-inline .btn.btn-sm.btn-default:focus {
+  background: darken(#fff, 3%);
+}
+
+.sql-toolbar .form-inline .inlineBlock .label.label-default {
+  padding: 0.85rem 3.25rem 0.85rem 3.25rem;
+  color: #989898;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  background: #fff;
+  border: 1px solid #b3b3b3;
+  vertical-align: -1px;
+}
+
+.panel-heading #slice-header .inlineBlock {
+  border-radius: 0;
+  padding: 0.6rem 1.5rem 0.62rem 1.5rem;
+  vertical-align: 0px;
+  margin-right: 14px;
+}
+
+.panel-heading #slice-header .label.label-default {
+  margin-right: 5px;
+  cursor: pointer;
+  background: #fff;
+  color: #989898;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  border: 1px solid #bcbcbc;
+  border-radius: 0;
+  padding: 0.6rem 1.5rem 0.62rem 1.5rem;
+}
+
+.panel-heading #slice-header .label.label-default:hover,
+.panel-heading #slice-header .label.label-default:focus,
+.panel-heading #slice-header .pull-right span:nth-child(2):hover,
+.panel-heading #slice-header .pull-right span:nth-child(2):focus {
+  background: darken(#fff, 3%);
+  color: #989898;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  border: 1px solid #bcbcbc;
+  border-radius: 0;
+  padding: 0.6rem 1.5rem 0.62rem 1.5rem;
+}
+
+.panel-heading #slice-header .btn.btn-default.btn-sm:hover,
+.panel-heading #slice-header .btn.btn-default.btn-sm:focus {
+  padding: 5px 10px;
+}
+
+.sql-toolbar .form-inline .inlineBlock .label.label-default:hover,
+.sql-toolbar .form-inline .inlineBlock .label.label-default:focus {
+  background: darken(#fff, 3%);
+}
+
+.sql-toolbar span[role="button"] button {
+  padding: 0.75rem 3.25rem 0.75rem 3.25rem;
+  height: 36px;
+  color: #989898;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+}
+
+.sql-toolbar span[role="button"] button:hover,
+.sql-toolbar span[role="button"] button:focus {
+  background: darken(#fff, 3%);
+}
+
+.ResultSetControls .btn.btn-sm.btn-default {
+  background-color: #fff;
+  color: @brand-tertiary;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.85rem 3.25rem 0.75rem 3.25rem;
+  font-weight: 700;
+  font-size: 14px !important;
+  margin-right: 10px;
+  border-radius: 0.2rem !important;
+  outline: 1px solid @brand-tertiary;
+  outline-offset: -1px;
+
+  i {
+    display: none;
+  }
+}
+
+.ResultSetControls .btn.btn-sm.btn-default:hover,
+.ResultSetControls .btn.btn-sm.btn-default:focus {
+  background: darken(#fff, 3%);
+  color: @brand-tertiary;
+}
+
+.ResultSetControls .btn.btn-sm.btn-default:first-child {
+  background-color: @brand-tertiary;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0.85rem 3.25rem 0.75rem 3.25rem;
+  font-weight: 600;
+  font-size: 14px !important;
+  border-radius: 0.2rem;
+  border: none;
+  margin-right: 10px;
+
+  i {
+    display: none;
+  }
+}
+
+.ResultSetControls .btn.btn-sm.btn-default:first-child:hover,
+.ResultSetControls .btn.btn-sm.btn-default:first-child:focus {
+  background: darken(@brand-tertiary, 7%);
+  color: #fff;
+}
+
+.panel-body .form-actions-container button.dropdown-toggle {
+  background-color: @brand-primary;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.75rem 3rem;
+  font-weight: 600;
+  font-size: 14px !important;
+
+  span:before {
+    vertical-align: 1px;
+    color: #fff;
+    content: "\F0D7";
+    font-size: 14px;
+  }
+}
+
+.panel-body .form-actions-container button.dropdown-toggle:hover,
+.panel-body .form-actions-container button.dropdown-toggle:focus {
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.SqlEditor .sql-toolbar span.inlineBlock.label {
+  padding: 0.75rem 3.25rem 1rem 3.25rem;
+  vertical-align: -1px;
+}
+
+#uncontrolled-tab-example li.active a,
+#controlSections li.active a,
+.SqlEditor .SouthPane li.active a {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+//= Alerts, Success & Error Mesages
+
+.label-success {
+  background-color: #00cdbd;
+}
+
+//= Layout Adjustments
+
+.SqlEditor .SouthPane {
+  margin-top: 20px;
+
+  .tab-content {
+    margin-top: 12px;
+  }
+
+  .ResultSetControls {
+    margin-bottom: 12px;
+  }
 }
