@@ -3,8 +3,14 @@
 ## [Unreleased]
 <details>
   <summary>
-    Changes that have landed in master but are not yet released.
-    Click to see more.
+    - Add a dashboard with charts making use of gitbase data (#105, #110).
+    - Add a dashboard based on metadata (#137).
+    - Add welcome dashboard for orgs sync mode (#112).
+    - Create metadata db datasources on bootstrap (#112).
+    - Use welcome dashboard as a default page in orgs sync mode (#112).
+    - Environment variable SUPERSET_NO_DB_INIT (#99).
+    - Gitbase datasource is now updated if we restart sourced-ui with a changed GITBASE_* env variable (#96).
+    - Remove dependency on src-d/ci (#100).
   </summary>
 
 </details>
