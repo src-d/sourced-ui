@@ -103,7 +103,7 @@ make diff
 
 ## Contribute
 
-[Contributions](https://github.com/src-d/sourced-ce/issues) are more than welcome, if you are interested please take a look to
+[Contributions](https://github.com/src-d/sourced-ui/issues) are more than welcome, if you are interested please take a look to
 our [source{d} Contributing Guidelines](https://github.com/src-d/guide/blob/master/engineering/documents/CONTRIBUTING.md).
 
 
