@@ -1,25 +1,562 @@
 {
   "dashboards": [
-    {
-      "__Dashboard__": {
-        "position_json": "{\"DASHBOARD_VERSION_KEY\": \"v2\", \"GRID_ID\": {\"children\": [\"ROW-xWkd3z2SiP\"], \"id\": \"GRID_ID\", \"parents\": [\"ROOT_ID\"], \"type\": \"GRID\"}, \"HEADER_ID\": {\"id\": \"HEADER_ID\", \"meta\": {\"text\": \"Welcome\"}, \"type\": \"HEADER\"}, \"MARKDOWN-MIE5EqOv00\": {\"children\": [], \"id\": \"MARKDOWN-MIE5EqOv00\", \"meta\": {\"code\": \"# \\u2728Placeholder\\n\\nDescription how everything works and a progress bar.\", \"height\": 48, \"width\": 12}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-xWkd3z2SiP\"], \"type\": \"MARKDOWN\"}, \"ROOT_ID\": {\"children\": [\"GRID_ID\"], \"id\": \"ROOT_ID\", \"type\": \"ROOT\"}, \"ROW-xWkd3z2SiP\": {\"children\": [\"MARKDOWN-MIE5EqOv00\"], \"id\": \"ROW-xWkd3z2SiP\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}}",
-        "id": 2,
-        "created_on": {
-          "__datetime__": "2019-06-18T15:22:06"
-        },
-        "created_by_fk": null,
-        "json_metadata": "{\"filter_immune_slices\": [], \"timed_refresh_immune_slices\": [], \"filter_immune_slice_fields\": {}, \"expanded_slices\": {}, \"refresh_frequency\": 0, \"default_filters\": \"{}\", \"remote_id\": 2, \"import_time\": 1560871326}",
-        "description": null,
-        "dashboard_title": "Welcome",
-        "changed_on": {
-          "__datetime__": "2019-06-18T15:22:06"
-        },
-        "changed_by_fk": null,
-        "slug": null,
-        "css": "",
-        "slices": []
-      }
-    }
+        {
+            "__Dashboard__": {
+                "css": "",
+                "position_json": "{\"CHART-Gsonj5e205\":{\"children\":[],\"id\":\"CHART-Gsonj5e205\",\"meta\":{\"chartId\":30,\"height\":50,\"sliceName\":\"Collector status\",\"width\":6},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-6AX2fnJiWO\"],\"type\":\"CHART\"},\"CHART-mw3sO7UGCe\":{\"children\":[],\"id\":\"CHART-mw3sO7UGCe\",\"meta\":{\"chartId\":29,\"height\":50,\"sliceName\":\"Sync status\",\"width\":6},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-6AX2fnJiWO\"],\"type\":\"CHART\"},\"DASHBOARD_VERSION_KEY\":\"v2\",\"GRID_ID\":{\"children\":[\"ROW-xWkd3z2SiP\",\"ROW-6AX2fnJiWO\"],\"id\":\"GRID_ID\",\"parents\":[\"ROOT_ID\"],\"type\":\"GRID\"},\"HEADER_ID\":{\"id\":\"HEADER_ID\",\"meta\":{\"text\":\"Welcome\"},\"type\":\"HEADER\"},\"MARKDOWN-MIE5EqOv00\":{\"children\":[],\"id\":\"MARKDOWN-MIE5EqOv00\",\"meta\":{\"code\":\"# \\u2728Placeholder\\n\\nDescription how everything works and a progress bar.\",\"height\":48,\"width\":12},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-xWkd3z2SiP\"],\"type\":\"MARKDOWN\"},\"ROOT_ID\":{\"children\":[\"GRID_ID\"],\"id\":\"ROOT_ID\",\"type\":\"ROOT\"},\"ROW-6AX2fnJiWO\":{\"children\":[\"CHART-mw3sO7UGCe\",\"CHART-Gsonj5e205\"],\"id\":\"ROW-6AX2fnJiWO\",\"meta\":{\"background\":\"BACKGROUND_TRANSPARENT\"},\"parents\":[\"ROOT_ID\",\"GRID_ID\"],\"type\":\"ROW\"},\"ROW-xWkd3z2SiP\":{\"children\":[\"MARKDOWN-MIE5EqOv00\"],\"id\":\"ROW-xWkd3z2SiP\",\"meta\":{\"background\":\"BACKGROUND_TRANSPARENT\"},\"parents\":[\"ROOT_ID\",\"GRID_ID\"],\"type\":\"ROW\"}}",
+                "id": 2,
+                "created_on": {
+                    "__datetime__": "2019-06-21T12:07:53"
+                },
+                "created_by_fk": null,
+                "description": null,
+                "dashboard_title": "Welcome",
+                "changed_on": {
+                    "__datetime__": "2019-06-21T13:27:53"
+                },
+                "json_metadata": "{\"filter_immune_slices\": [], \"timed_refresh_immune_slices\": [], \"filter_immune_slice_fields\": {}, \"expanded_slices\": {}, \"refresh_frequency\": 0, \"default_filters\": \"{}\", \"remote_id\": 2, \"import_time\": 1561118873}",
+                "changed_by_fk": 1,
+                "slug": null,
+                "slices": [
+                    {
+                        "__Slice__": {
+                            "datasource_id": 39,
+                            "id": 29,
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:07:47"
+                            },
+                            "created_by_fk": 1,
+                            "perm": "[None].[Untitled Query-yRPMUzfQC](id:39)",
+                            "description": null,
+                            "viz_type": "table",
+                            "datasource_type": "table",
+                            "slice_name": "Sync status",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:36:34"
+                            },
+                            "changed_by_fk": null,
+                            "cache_timeout": 1,
+                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"org\", \"entity\", \"done\", \"total\", \"progress\", \"status\"], \"color_pn\": true, \"datasource\": \"39__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": true, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [\"[\\\"org\\\", true]\", \"[\\\"entity\\\", true]\"], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": null, \"slice_id\": 29, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": 29, \"datasource_name\": \"Untitled Query-yRPMUzfQC\", \"schema\": \"Untitled Query-yRPMUzfQC\", \"database_name\": \"metadata\"}",
+                            "datasource_name": "Untitled Query-yRPMUzfQC",
+                            "owners": [
+                                {
+                                    "__User__": {
+                                        "changed_by_fk": null,
+                                        "active": true,
+                                        "email": "admin@example.com",
+                                        "last_login": null,
+                                        "id": 1,
+                                        "login_count": null,
+                                        "first_name": "admin",
+                                        "fail_login_count": null,
+                                        "last_name": "admin",
+                                        "created_on": {
+                                            "__datetime__": "2019-06-21T12:07:02"
+                                        },
+                                        "username": "admin",
+                                        "changed_on": {
+                                            "__datetime__": "2019-06-21T12:07:02"
+                                        },
+                                        "password": "pbkdf2:sha256:50000$fYCL7eUv$53302bddedc4fb7379518fa5c603ac1b323aeb2d0ecaa47f06ac3d34b2e85682",
+                                        "created_by_fk": null
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "datasource_id": 40,
+                            "id": 30,
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:27:21"
+                            },
+                            "created_by_fk": 1,
+                            "perm": "[None].[Untitled Query-Xwa4Amapg](id:40)",
+                            "description": null,
+                            "viz_type": "table",
+                            "datasource_type": "table",
+                            "slice_name": "Collector status",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:36:34"
+                            },
+                            "changed_by_fk": null,
+                            "cache_timeout": 1,
+                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"org\", \"discovered\", \"downloaded\", \"updated\", \"failed\"], \"color_pn\": true, \"datasource\": \"40__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": true, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": 1000, \"slice_id\": 30, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": 30, \"datasource_name\": \"public.Untitled Query-Xwa4Amapg\", \"schema\": \"public.Untitled Query-Xwa4Amapg\", \"database_name\": \"main\"}",
+                            "datasource_name": "public.Untitled Query-Xwa4Amapg",
+                            "owners": [
+                                {
+                                    "__User__": {
+                                        "changed_by_fk": null,
+                                        "active": true,
+                                        "email": "admin@example.com",
+                                        "last_login": null,
+                                        "id": 1,
+                                        "login_count": null,
+                                        "first_name": "admin",
+                                        "fail_login_count": null,
+                                        "last_name": "admin",
+                                        "created_on": {
+                                            "__datetime__": "2019-06-21T12:07:02"
+                                        },
+                                        "username": "admin",
+                                        "changed_on": {
+                                            "__datetime__": "2019-06-21T12:07:02"
+                                        },
+                                        "password": "pbkdf2:sha256:50000$fYCL7eUv$53302bddedc4fb7379518fa5c603ac1b323aeb2d0ecaa47f06ac3d34b2e85682",
+                                        "created_by_fk": null
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
   ],
-  "datasources": []
+  "datasources": [
+        {
+            "__SqlaTable__": {
+                "schema": null,
+                "offset": 0,
+                "created_on": {
+                    "__datetime__": "2019-06-21T13:03:25"
+                },
+                "sql": "SELECT\n    org,\n    entity,\n    done,\n    total,\n    CASE\n        WHEN total IS NULL THEN 0\n        WHEN total = 0 THEN 100\n        ELSE done / total::decimal * 100\n    END AS progress,\n    CASE\n        WHEN total IS NULL THEN 'Pending'\n        WHEN failed > 0 THEN 'Error'\n        WHEN done = total THEN 'Done'\n        ELSE 'In progress'\n    END AS status\nFROM\n    status",
+                "cache_timeout": null,
+                "changed_on": {
+                    "__datetime__": "2019-06-21T13:03:25"
+                },
+                "is_sqllab_view": true,
+                "params": "{\"remote_id\": 39, \"database_name\": \"metadata\"}",
+                "id": 39,
+                "template_params": "{}",
+                "perm": "[None].[Untitled Query-yRPMUzfQC](id:39)",
+                "description": null,
+                "created_by_fk": 1,
+                "table_name": "Untitled Query-yRPMUzfQC",
+                "default_endpoint": null,
+                "changed_by_fk": 1,
+                "main_dttm_col": null,
+                "is_featured": false,
+                "database_id": 2,
+                "filter_select_enabled": false,
+                "fetch_values_predicate": null,
+                "database": {
+                    "__Database__": {
+                        "allow_csv_upload": false,
+                        "verbose_name": null,
+                        "created_by_fk": null,
+                        "allow_ctas": false,
+                        "database_name": "metadata",
+                        "changed_by_fk": null,
+                        "allow_dml": false,
+                        "sqlalchemy_uri": "postgresql://metadata:XXXXXXXXXX@metadatadb:5432/metadata",
+                        "force_ctas_schema": null,
+                        "password": "metadata",
+                        "allow_multi_schema_metadata_fetch": false,
+                        "cache_timeout": null,
+                        "created_on": {
+                            "__datetime__": "2019-06-21T12:06:45"
+                        },
+                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
+                        "select_as_create_table_as": false,
+                        "perm": "[metadata].(id:2)",
+                        "changed_on": {
+                            "__datetime__": "2019-06-21T12:06:46"
+                        },
+                        "expose_in_sqllab": true,
+                        "impersonate_user": false,
+                        "id": 2,
+                        "allow_run_async": false
+                    }
+                },
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "expression": "",
+                            "table_id": 39,
+                            "filterable": true,
+                            "type": "STRING",
+                            "database_expression": null,
+                            "is_active": true,
+                            "column_name": "org",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "created_by_fk": 1,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "verbose_name": null,
+                            "id": 144,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "expression": "",
+                            "table_id": 39,
+                            "filterable": true,
+                            "type": "STRING",
+                            "database_expression": null,
+                            "is_active": true,
+                            "column_name": "entity",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "created_by_fk": 1,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "verbose_name": null,
+                            "id": 145,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "expression": "",
+                            "table_id": 39,
+                            "filterable": true,
+                            "type": "INT",
+                            "database_expression": null,
+                            "is_active": true,
+                            "column_name": "done",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "created_by_fk": 1,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "verbose_name": null,
+                            "id": 146,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "expression": "",
+                            "table_id": 39,
+                            "filterable": true,
+                            "type": "INT",
+                            "database_expression": null,
+                            "is_active": true,
+                            "column_name": "total",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "created_by_fk": 1,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "verbose_name": null,
+                            "id": 147,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "expression": "",
+                            "table_id": 39,
+                            "filterable": true,
+                            "type": "OBJECT",
+                            "database_expression": null,
+                            "is_active": true,
+                            "column_name": "progress",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "created_by_fk": 1,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "verbose_name": null,
+                            "id": 148,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "expression": "",
+                            "table_id": 39,
+                            "filterable": true,
+                            "type": "STRING",
+                            "database_expression": null,
+                            "is_active": true,
+                            "column_name": "status",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "created_by_fk": 1,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "verbose_name": null,
+                            "id": 149,
+                            "changed_by_fk": 1
+                        }
+                    }
+                ],
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "expression": "count(*)",
+                            "warning_text": null,
+                            "is_restricted": false,
+                            "metric_type": null,
+                            "verbose_name": null,
+                            "id": 40,
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            },
+                            "created_by_fk": 1,
+                            "table_id": 39,
+                            "d3format": null,
+                            "description": null,
+                            "metric_name": "count",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:03:25"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "schema": "public",
+                "offset": 0,
+                "created_on": {
+                    "__datetime__": "2019-06-21T13:27:11"
+                },
+                "sql": "SELECT * FROM gitcollector_metrics",
+                "cache_timeout": null,
+                "changed_on": {
+                    "__datetime__": "2019-06-21T13:27:11"
+                },
+                "is_sqllab_view": true,
+                "params": "{\"remote_id\": 40, \"database_name\": \"main\"}",
+                "id": 40,
+                "template_params": "{}",
+                "perm": "[None].[Untitled Query-Xwa4Amapg](id:40)",
+                "description": null,
+                "created_by_fk": 1,
+                "table_name": "Untitled Query-Xwa4Amapg",
+                "default_endpoint": null,
+                "changed_by_fk": 1,
+                "main_dttm_col": null,
+                "is_featured": false,
+                "database_id": 3,
+                "filter_select_enabled": false,
+                "fetch_values_predicate": null,
+                "database": {
+                    "__Database__": {
+                        "allow_csv_upload": true,
+                        "verbose_name": null,
+                        "created_by_fk": null,
+                        "allow_ctas": false,
+                        "database_name": "main",
+                        "changed_by_fk": null,
+                        "allow_dml": false,
+                        "sqlalchemy_uri": "postgresql://superset:XXXXXXXXXX@postgres:5432/superset",
+                        "force_ctas_schema": null,
+                        "password": "superset",
+                        "allow_multi_schema_metadata_fetch": false,
+                        "cache_timeout": null,
+                        "created_on": {
+                            "__datetime__": "2019-06-21T12:07:10"
+                        },
+                        "extra": "{\n    \"metadata_params\": {},\n    \"engine_params\": {},\n    \"metadata_cache_timeout\": {},\n    \"schemas_allowed_for_csv_upload\": []\n}\n",
+                        "select_as_create_table_as": false,
+                        "perm": "[main].(id:3)",
+                        "changed_on": {
+                            "__datetime__": "2019-06-21T12:07:10"
+                        },
+                        "expose_in_sqllab": true,
+                        "impersonate_user": false,
+                        "id": 3,
+                        "allow_run_async": false
+                    }
+                },
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            },
+                            "expression": "",
+                            "table_id": 40,
+                            "filterable": true,
+                            "type": "STRING",
+                            "database_expression": null,
+                            "is_active": true,
+                            "column_name": "org",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            },
+                            "created_by_fk": 1,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "verbose_name": null,
+                            "id": 150,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            },
+                            "expression": "",
+                            "table_id": 40,
+                            "filterable": true,
+                            "type": "INT",
+                            "database_expression": null,
+                            "is_active": true,
+                            "column_name": "discovered",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            },
+                            "created_by_fk": 1,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "verbose_name": null,
+                            "id": 151,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            },
+                            "expression": "",
+                            "table_id": 40,
+                            "filterable": true,
+                            "type": "INT",
+                            "database_expression": null,
+                            "is_active": true,
+                            "column_name": "downloaded",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            },
+                            "created_by_fk": 1,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "verbose_name": null,
+                            "id": 152,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            },
+                            "expression": "",
+                            "table_id": 40,
+                            "filterable": true,
+                            "type": "INT",
+                            "database_expression": null,
+                            "is_active": true,
+                            "column_name": "updated",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            },
+                            "created_by_fk": 1,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "verbose_name": null,
+                            "id": 153,
+                            "changed_by_fk": 1
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            },
+                            "expression": "",
+                            "table_id": 40,
+                            "filterable": true,
+                            "type": "INT",
+                            "database_expression": null,
+                            "is_active": true,
+                            "column_name": "failed",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            },
+                            "created_by_fk": 1,
+                            "python_date_format": null,
+                            "is_dttm": false,
+                            "description": null,
+                            "groupby": true,
+                            "verbose_name": null,
+                            "id": 154,
+                            "changed_by_fk": 1
+                        }
+                    }
+                ],
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "expression": "count(*)",
+                            "warning_text": null,
+                            "is_restricted": false,
+                            "metric_type": null,
+                            "verbose_name": null,
+                            "id": 41,
+                            "created_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            },
+                            "created_by_fk": 1,
+                            "table_id": 40,
+                            "d3format": null,
+                            "description": null,
+                            "metric_name": "count",
+                            "changed_on": {
+                                "__datetime__": "2019-06-21T13:27:12"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+  ]
 }
