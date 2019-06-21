@@ -18,7 +18,7 @@
 set -ex
 
 if [ "$SUPERSET_NO_DB_INIT" != "true" ]; then
-    source "/home/superset/docker-init.sh"
+    python bootstrap.py
 fi
 
 if [ "$#" -ne 0 ]; then
