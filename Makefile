@@ -77,7 +77,7 @@ docker-push: docker-login build
 		exit 1; \
 	fi; \
 	docker push $(DOCKER_IMAGE_NAME):$(VERSION); \
-	if [ -n "$(DOCKER_IMAGE_NAME)" ]; then \
+	if [ -n "$(DOCKER_PUSH_LATEST)" ]; then \
 		docker tag $(DOCKER_IMAGE_NAME):$(VERSION) \
 			$(DOCKER_IMAGE_NAME):latest; \
 		docker push $(DOCKER_IMAGE_NAME):latest; \
