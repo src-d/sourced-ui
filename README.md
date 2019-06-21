@@ -100,3 +100,19 @@ To see diff with upstream, run:
 ```
 make diff
 ```
+
+## Contribute
+
+[Contributions](https://github.com/src-d/sourced-ui/issues) are more than welcome, if you are interested please take a look to
+our [source{d} Contributing Guidelines](https://github.com/src-d/guide/blob/master/engineering/documents/CONTRIBUTING.md).
+
+
+## Code of Conduct
+
+All activities under source{d} projects are governed by the
+[source{d} code of conduct](https://github.com/src-d/guide/blob/master/.github/CODE_OF_CONDUCT.md).
+
+
+## License
+
+Apache License Version 2.0, see [LICENSE](LICENSE.md).
