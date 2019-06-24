@@ -43,7 +43,7 @@ if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
     superset init
 
     # Add dashboards
-    superset import_dashboards --path /home/superset/dashboards/gitbase/welcome.json
+    superset import_dashboards --path /home/superset/dashboards/gitbase/overview.json
 
     # Add metadata dashboards and set welcome dashboard as a default
     if [ ! -z "$SYNC_MODE" ]; then
