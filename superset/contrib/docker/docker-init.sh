@@ -51,7 +51,7 @@ if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
         superset import_dashboards --path /home/superset/dashboards/gitbase/welcome.json
     else
         sleep 2s
-        superset import_dashboards --path /home/superset/dashboards/metadata/placeholder.json
+        superset import_dashboards --path /home/superset/dashboards/metadata/welcome.json
 
         sleep 2s
         superset import_dashboards --path /home/superset/dashboards/metadata/collaboration.json
