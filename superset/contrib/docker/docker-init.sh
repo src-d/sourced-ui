@@ -45,15 +45,19 @@ if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
     # Add dashboards
     superset import_dashboards --path /home/superset/dashboards/gitbase/overview.json
 
-    # Add metadata dashboards and set welcome dashboard as a default
-    if [ ! -z "$SYNC_MODE" ]; then
+    # Add local or organization dashboards
+    if [ -z "$SYNC_MODE" ]; then
+        sleep 2s
+        superset import_dashboards --path /home/superset/dashboards/gitbase/welcome.json
+    else
         sleep 2s
         superset import_dashboards --path /home/superset/dashboards/metadata/placeholder.json
 
         sleep 2s
         superset import_dashboards --path /home/superset/dashboards/metadata/collaboration.json
-
-        python set_default_dashboard.py
     fi
+
+    # set welcome dashboard as a default
+    python set_default_dashboard.py
 fi
 
