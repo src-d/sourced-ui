@@ -50,4 +50,4 @@ class Bblfsh(BaseSupersetView):
 
 
 appbuilder.add_view(Bblfsh, 'UAST', label=_('UAST'),
-                    category_icon='fa-steam', icon='fa-steam')
+                    category_icon='fa-tree', icon='fa-tree')
