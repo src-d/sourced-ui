@@ -762,7 +762,7 @@
         "created_on": {
           "__datetime__": "2019-06-24T12:33:52"
         },
-        "sql": "SELECT repository_id, COUNT(file_path) as files_count\r\nFROM refs\r\nNATURAL JOIN commit_files\r\nWHERE ref_name = 'HEAD'\r\nGROUP BY repository_id\r\nORDER BY files_count DESC",
+        "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repository_id, COUNT(file_path) as files_count\r\nFROM refs\r\nNATURAL JOIN commit_files\r\nWHERE ref_name = 'HEAD'\r\nGROUP BY repository_id\r\nORDER BY files_count DESC",
         "cache_timeout": null,
         "changed_on": {
           "__datetime__": "2019-06-24T12:33:52"
@@ -1030,7 +1030,7 @@
         "created_on": {
           "__datetime__": "2019-06-24T12:33:53"
         },
-        "sql": "SELECT repository_id, lang\r\nFROM (\r\n    SELECT\r\n        repository_id,\r\n        LANGUAGE(file_path) as lang\r\n    FROM refs\r\n    NATURAL JOIN commit_files\r\n    WHERE ref_name = 'HEAD'\r\n) AS q\r\nWHERE lang NOT IN ('', 'Ignore List')",
+        "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repository_id, lang\r\nFROM (\r\n    SELECT\r\n        repository_id,\r\n        LANGUAGE(file_path) as lang\r\n    FROM refs\r\n    NATURAL JOIN commit_files\r\n    WHERE ref_name = 'HEAD'\r\n) AS q\r\nWHERE lang NOT IN ('', 'Ignore List')",
         "cache_timeout": null,
         "changed_on": {
           "__datetime__": "2019-06-24T12:33:53"
@@ -1407,7 +1407,7 @@
         "created_on": {
           "__datetime__": "2019-06-24T12:33:53"
         },
-        "sql": "SELECT repository_id,\n         commit_author_when as date_release,\n         COUNT(*) as n\n  FROM refs\n  NATURAL JOIN commits\n  WHERE ref_name LIKE 'refs/tags/v%.%.0' OR ref_name LIKE 'refs/tags/%.%.0'\n  GROUP BY repository_id, date_release\n  ORDER BY repository_id, date_release",
+        "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repository_id,\n         commit_author_when as date_release,\n         COUNT(*) as n\n  FROM refs\n  NATURAL JOIN commits\n  WHERE ref_name LIKE 'refs/tags/v%.%.0' OR ref_name LIKE 'refs/tags/%.%.0'\n  GROUP BY repository_id, date_release\n  ORDER BY repository_id, date_release",
         "cache_timeout": null,
         "changed_on": {
           "__datetime__": "2019-06-24T12:33:53"
@@ -1700,7 +1700,7 @@
         "created_on": {
           "__datetime__": "2019-06-24T12:33:53"
         },
-        "sql": "SELECT repository_id as repo,\ncommit_author_when commit_date,\nCOUNT(*) as n\nFROM commits\nWHERE commit_author_when <= now()\nGROUP BY repo, commit_date\nORDER BY repo, commit_date",
+        "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repo,\ncommit_author_when commit_date,\nCOUNT(*) as n\nFROM commits\nWHERE commit_author_when <= now()\nGROUP BY repo, commit_date\nORDER BY repo, commit_date",
         "cache_timeout": null,
         "changed_on": {
           "__datetime__": "2019-06-24T12:33:53"
@@ -2018,7 +2018,7 @@
         "created_on": {
           "__datetime__": "2019-06-24T12:33:52"
         },
-        "sql": "SELECT \r\n    repository_id, \r\n    CASE WHEN MAX(changelog) = 0 THEN 'missing' ELSE '' END as changelog, \r\n    CASE WHEN MAX(readme) = 0 THEN 'missing' ELSE '' END as readme, \r\n    CASE WHEN MAX(notice) = 0 THEN 'missing' ELSE '' END as notice, \r\n    CASE WHEN MAX(license) = 0 THEN 'missing' ELSE '' END as license,\r\n    CASE WHEN MAX(contributing) = 0 THEN 'missing' ELSE '' END as contributing,\r\n    CASE WHEN MAX(travis) = 0 THEN 'missing' ELSE '' END as travis, \r\n    CASE WHEN MAX(ci) = 0 THEN 'missing' ELSE '' END as ci, \r\n    CASE WHEN MAX(dockerfile) = 0 THEN 'missing' ELSE '' END as dockerfile\r\nFROM (\r\n    SELECT \r\n        refs.repository_id, \r\n        CASE WHEN file_path REGEXP '(?i)^CHANGELOG(|\\.MD)' THEN 1 ELSE 0 END AS changelog,\r\n        CASE WHEN file_path REGEXP '(?i)^README(|\\.MD)' THEN 1 ELSE 0 END AS readme,\r\n        CASE WHEN file_path REGEXP '(?i)^NOTICE(|\\.MD)' THEN 1 ELSE 0 END AS notice,\r\n        CASE WHEN file_path REGEXP '(?i)^LICENSE(|\\.MD)' THEN 1 ELSE 0 END AS license,\r\n        CASE WHEN file_path REGEXP '(?i)^CONTRIBUTING(|\\.MD)' THEN 1 ELSE 0 END AS contributing,\r\n        CASE WHEN file_path REGEXP '(?i)^\\.TRAVIS\\.YML' THEN 1 ELSE 0 END AS travis,\r\n        CASE WHEN file_path REGEXP '(?i)^CI' THEN 1 ELSE 0 END AS ci,\r\n        CASE WHEN file_path REGEXP '(?i)^DOCKERFILE$' THEN 1 ELSE 0 END AS dockerfile\r\n    FROM refs\r\n    JOIN commit_files \r\n    ON refs.commit_hash = commit_files.commit_hash \r\n    WHERE ref_name = \"refs/heads/master\" \r\n) q\r\nGROUP BY repository_id",
+        "sql": "SELECT \r\n    REPLACE(repository_id, 'github.com/', '') as repository_id, \r\n    CASE WHEN MAX(changelog) = 0 THEN 'missing' ELSE '' END as changelog, \r\n    CASE WHEN MAX(readme) = 0 THEN 'missing' ELSE '' END as readme, \r\n    CASE WHEN MAX(notice) = 0 THEN 'missing' ELSE '' END as notice, \r\n    CASE WHEN MAX(license) = 0 THEN 'missing' ELSE '' END as license,\r\n    CASE WHEN MAX(contributing) = 0 THEN 'missing' ELSE '' END as contributing,\r\n    CASE WHEN MAX(travis) = 0 THEN 'missing' ELSE '' END as travis, \r\n    CASE WHEN MAX(ci) = 0 THEN 'missing' ELSE '' END as ci, \r\n    CASE WHEN MAX(dockerfile) = 0 THEN 'missing' ELSE '' END as dockerfile\r\nFROM (\r\n    SELECT \r\n        refs.repository_id, \r\n        CASE WHEN file_path REGEXP '(?i)^CHANGELOG(|\\.MD)' THEN 1 ELSE 0 END AS changelog,\r\n        CASE WHEN file_path REGEXP '(?i)^README(|\\.MD)' THEN 1 ELSE 0 END AS readme,\r\n        CASE WHEN file_path REGEXP '(?i)^NOTICE(|\\.MD)' THEN 1 ELSE 0 END AS notice,\r\n        CASE WHEN file_path REGEXP '(?i)^LICENSE(|\\.MD)' THEN 1 ELSE 0 END AS license,\r\n        CASE WHEN file_path REGEXP '(?i)^CONTRIBUTING(|\\.MD)' THEN 1 ELSE 0 END AS contributing,\r\n        CASE WHEN file_path REGEXP '(?i)^\\.TRAVIS\\.YML' THEN 1 ELSE 0 END AS travis,\r\n        CASE WHEN file_path REGEXP '(?i)^CI' THEN 1 ELSE 0 END AS ci,\r\n        CASE WHEN file_path REGEXP '(?i)^DOCKERFILE$' THEN 1 ELSE 0 END AS dockerfile\r\n    FROM refs\r\n    JOIN commit_files \r\n    ON refs.commit_hash = commit_files.commit_hash \r\n    WHERE ref_name = \"refs/heads/master\" \r\n) q\r\nGROUP BY repository_id",
         "cache_timeout": null,
         "changed_on": {
           "__datetime__": "2019-06-24T12:33:52"
@@ -2754,7 +2754,7 @@
         "created_on": {
           "__datetime__": "2019-06-24T12:33:53"
         },
-        "sql": "SELECT repository_id, COUNT(*) as n\nFROM ref_commits\nWHERE ref_name = 'HEAD'\nGROUP BY repository_id\nORDER BY n DESC\nLIMIT 20",
+        "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repository_id, COUNT(*) as n\nFROM ref_commits\nWHERE ref_name = 'HEAD'\nGROUP BY repository_id\nORDER BY n DESC\nLIMIT 20",
         "cache_timeout": null,
         "changed_on": {
           "__datetime__": "2019-06-24T12:33:53"
@@ -3172,7 +3172,7 @@
         "created_on": {
           "__datetime__": "2019-06-24T12:33:53"
         },
-        "sql": "SELECT repository_id, COUNT(commit_author_name) as collaborators_count FROM (\nSELECT DISTINCT commit_author_name, repository_id\nFROM commits\n) q1\nGROUP BY repository_id\nORDER BY collaborators_count DESC",
+        "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repository_id, COUNT(commit_author_name) as collaborators_count FROM (\nSELECT DISTINCT commit_author_name, repository_id\nFROM commits\n) q1\nGROUP BY repository_id\nORDER BY collaborators_count DESC",
         "cache_timeout": null,
         "changed_on": {
           "__datetime__": "2019-06-24T12:33:53"
