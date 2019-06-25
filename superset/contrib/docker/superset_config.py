@@ -122,7 +122,7 @@ WTF_CSRF_EXEMPT_LIST = ['superset.bblfsh.views.api']
 
 # Defaults configuration
 
-DEFAULT_DASHBOARD_ID = 2 if SYNC_MODE else 1
+DEFAULT_DASHBOARD_ID = 2 if SYNC_MODE else 2
 DEFAULT_USERNAME = get_env_variable('ADMIN_LOGIN')
 
 
