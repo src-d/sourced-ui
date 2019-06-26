@@ -83,6 +83,7 @@ def bootstrap():
     if conf.get('SYNC_MODE'):
         dbobj = get_or_create_datasource(
             'metadata', conf.get('METADATA_DATABASE_URI'))
+        create_datasource_tables(dbobj, conf.get('METADATA_DB'))
 
     # initialize database if empty
     users = [u.username for u in security_manager.get_all_users()]
