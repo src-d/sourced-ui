@@ -23,6 +23,7 @@ import functools
 import json
 import logging
 import textwrap
+import uuid
 
 from flask import escape, g, Markup, request
 from flask_appbuilder import Model
@@ -374,6 +375,15 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
 
 sqla.event.listen(Slice, 'before_insert', set_related_perm)
 sqla.event.listen(Slice, 'before_update', set_related_perm)
+# set remote_id to unique value for export/import
+def set_remote_id(mapper, connection, target):
+    # use get instead of has to check for empty value as well
+    if target.params_dict.get('remote_id', None):
+        return
+    target.alter_params(remote_id=str(uuid.uuid4()))
+
+
+sqla.event.listen(Slice, 'before_insert', set_remote_id)
 
 
 dashboard_slices = Table(
