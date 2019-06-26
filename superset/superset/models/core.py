@@ -648,7 +648,6 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
                 eager_datasource = ConnectorRegistry.get_eager_datasource(
                     db.session, dashboard_type, dashboard_id)
                 eager_datasource.alter_params(
-                    remote_id=eager_datasource.id,
                     database_name=eager_datasource.database.name,
                 )
                 make_transient(eager_datasource)
