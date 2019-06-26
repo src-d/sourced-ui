@@ -348,9 +348,6 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
         session = db.session
         make_transient(slc_to_import)
         slc_to_import.dashboards = []
-        slc_to_import.alter_params(
-            remote_id=slc_to_import.id, import_time=import_time)
-
         slc_to_import = slc_to_import.copy()
         params = slc_to_import.params_dict
         slc_to_import.datasource_id = ConnectorRegistry.get_datasource_by_name(
