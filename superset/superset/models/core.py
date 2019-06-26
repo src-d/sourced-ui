@@ -76,11 +76,29 @@ def set_related_perm(mapper, connection, target):  # noqa
 
 
 # set remote_id to unique value for export/import
-def set_remote_id(mapper, connection, target):
-    # use get instead of has to check for empty value as well
-    if target.params_dict.get('remote_id', None):
-        return
-    target.alter_params(remote_id=str(uuid.uuid4()))
+def set_remote_id(json_field_name):
+    def wrapper(mapper, connection, target):
+        # use get instead of has to check for empty value as well
+        if target.params_dict.get('remote_id', None):
+            return
+
+        # try to get previous value if exists
+        remote_id = None
+        state = sqla.inspect(target)
+        history = state.get_history(json_field_name, True)
+        if history.has_changes():
+            for v in history.deleted:
+                remote_id = json.loads(v).get('remote_id', None)
+                if remote_id:
+                    break
+
+        # only on creation or update of an object which was created without orm
+        if not remote_id:
+            remote_id = str(uuid.uuid4())
+
+        target.alter_params(remote_id=remote_id)
+
+    return wrapper
 
 
 def copy_dashboard(mapper, connection, target):
@@ -379,8 +397,9 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
 
 
 sqla.event.listen(Slice, 'before_insert', set_related_perm)
-sqla.event.listen(Slice, 'before_insert', set_remote_id)
+sqla.event.listen(Slice, 'before_insert', set_remote_id('params'))
 sqla.event.listen(Slice, 'before_update', set_related_perm)
+sqla.event.listen(Slice, 'before_update', set_remote_id('params'))
 
 
 dashboard_slices = Table(
@@ -659,7 +678,8 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
         }, cls=utils.DashboardEncoder, indent=4)
 
 
-sqla.event.listen(Dashboard, 'before_insert', set_remote_id)
+sqla.event.listen(Dashboard, 'before_insert', set_remote_id('json_metadata'))
+sqla.event.listen(Dashboard, 'before_update', set_remote_id('json_metadata'))
 
 
 class Database(Model, AuditMixinNullable, ImportMixin):
