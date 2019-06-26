@@ -75,6 +75,14 @@ def set_related_perm(mapper, connection, target):  # noqa
             target.perm = ds.perm
 
 
+# set remote_id to unique value for export/import
+def set_remote_id(mapper, connection, target):
+    # use get instead of has to check for empty value as well
+    if target.params_dict.get('remote_id', None):
+        return
+    target.alter_params(remote_id=str(uuid.uuid4()))
+
+
 def copy_dashboard(mapper, connection, target):
     dashboard_id = config.get('DASHBOARD_TEMPLATE_ID')
     if dashboard_id is None:
@@ -371,16 +379,8 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
 
 
 sqla.event.listen(Slice, 'before_insert', set_related_perm)
-sqla.event.listen(Slice, 'before_update', set_related_perm)
-# set remote_id to unique value for export/import
-def set_remote_id(mapper, connection, target):
-    # use get instead of has to check for empty value as well
-    if target.params_dict.get('remote_id', None):
-        return
-    target.alter_params(remote_id=str(uuid.uuid4()))
-
-
 sqla.event.listen(Slice, 'before_insert', set_remote_id)
+sqla.event.listen(Slice, 'before_update', set_related_perm)
 
 
 dashboard_slices = Table(
@@ -586,7 +586,7 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
         for dash in session.query(Dashboard).all():
             if ('remote_id' in dash.params_dict and
                     dash.params_dict['remote_id'] ==
-                    dashboard_to_import.id):
+                    dashboard_to_import.params_dict['remote_id']):
                 existing_dashboard = dash
 
         dashboard_to_import.id = None
@@ -637,12 +637,10 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
                 datasource_ids.add((slc.datasource_id, slc.datasource_type))
                 # add extra params for the import
                 slc.alter_params(
-                    remote_id=slc.id,
                     datasource_name=slc.datasource.name,
                     schema=slc.datasource.name,
                     database_name=slc.datasource.database.name,
                 )
-            copied_dashboard.alter_params(remote_id=dashboard_id)
             copied_dashboards.append(copied_dashboard)
 
             eager_datasources = []
@@ -660,6 +658,9 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
             'dashboards': copied_dashboards,
             'datasources': eager_datasources,
         }, cls=utils.DashboardEncoder, indent=4)
+
+
+sqla.event.listen(Dashboard, 'before_insert', set_remote_id)
 
 
 class Database(Model, AuditMixinNullable, ImportMixin):
