@@ -3,17 +3,20 @@
 ## [Unreleased]
 <details>
   <summary>
-    - Add a dashboard with charts making use of gitbase data (#105, #110).
-    - Add a dashboard based on metadata (#137).
-    - Add welcome dashboard for orgs sync mode (#112).
-    - Create metadata db datasources on bootstrap (#112).
-    - Use welcome dashboard as a default page in orgs sync mode (#112).
-    - Environment variable SUPERSET_NO_DB_INIT (#99).
-    - Gitbase datasource is now updated if we restart sourced-ui with a changed GITBASE_* env variable (#96).
-    - Remove dependency on src-d/ci (#100).
-  </summary>
 
+  </summary>
 </details>
+
+## [v0.3.0](https://github.com/src-d/sourced-ui/releases/tag/v0.3.0) - 2019-06-27
+
+- New default dashboards
+  - Add welcome dashboards with documentation.
+  - Add a dashboard with charts making use of gitbase data (https://github.com/src-d/sourced-ui/issues/105, https://github.com/src-d/sourced-ui/issues/110).
+  - Add a dashboard based on metadata (https://github.com/src-d/sourced-ui/issues/137).
+- Create metadata DB datasources on bootstrap (https://github.com/src-d/sourced-ui/issues/112).
+- Environment variable `SUPERSET_NO_DB_INIT` (https://github.com/src-d/sourced-ui/issues/99).
+- Gitbase datasource is now updated if we restart sourced-ui with a changed GITBASE_* env variable (https://github.com/src-d/sourced-ui/issues/96).
+- Remove dependency on src-d/ci (https://github.com/src-d/sourced-ui/issues/100).
 
 ## [v0.2.0](https://github.com/src-d/sourced-ui/releases/tag/v0.2.0) - 2019-06-07
 
