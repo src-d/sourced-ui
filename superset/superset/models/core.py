@@ -359,10 +359,10 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
         """
 
     @classmethod
-    def import_obj(cls, slc_to_import, slc_to_override, import_time=None):
+    def import_obj(cls, slc_to_import, slc_to_override):
         """Inserts or overrides slc in the database.
 
-        remote_id and import_time fields in params_dict are set to track the
+        remote_id field in params_dict is set to track the
         slice origin and ensure correct overrides for multiple imports.
         Slice.perm is used to find the datasources and connect them.
 
@@ -510,11 +510,11 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
         return {}
 
     @classmethod
-    def import_obj(cls, dashboard_to_import, import_time=None):
+    def import_obj(cls, dashboard_to_import):
         """Imports the dashboard from the object to the database.
 
          Once dashboard is imported, json_metadata field is extended and stores
-         remote_id and import_time. It helps to decide if the dashboard has to
+         remote_id. It helps to decide if the dashboard has to
          be overridden or just copies over. Slices that belong to this
          dashboard will be wired to existing tables. This function can be used
          to import/export dashboards between multiple superset instances.
@@ -583,7 +583,7 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
             logging.info('Importing slice {} from the dashboard: {}'.format(
                 slc.to_json(), dashboard_to_import.dashboard_title))
             remote_slc = remote_id_slice_map.get(slc.id)
-            new_slc_id = Slice.import_obj(slc, remote_slc, import_time=import_time)
+            new_slc_id = Slice.import_obj(slc, remote_slc)
             old_to_new_slc_id_dict[slc.id] = new_slc_id
             # update json metadata that deals with slice ids
             new_slc_id_str = '{}'.format(new_slc_id)
@@ -610,7 +610,6 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
 
         dashboard_to_import.id = None
         alter_positions(dashboard_to_import, old_to_new_slc_id_dict)
-        dashboard_to_import.alter_params(import_time=import_time)
         if new_expanded_slices:
             dashboard_to_import.alter_params(
                 expanded_slices=new_expanded_slices)

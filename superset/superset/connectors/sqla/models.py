@@ -930,7 +930,7 @@ class SqlaTable(Model, BaseDatasource):
         db.session.commit()
 
     @classmethod
-    def import_obj(cls, i_datasource, import_time=None):
+    def import_obj(cls, i_datasource):
         """Imports the datasource from the object to the database.
 
          Metrics and columns and datasource will be overrided if exists.
@@ -948,8 +948,7 @@ class SqlaTable(Model, BaseDatasource):
             return db.session.query(Database).filter_by(
                 database_name=table.params_dict['database_name']).one()
         return import_datasource.import_datasource(
-            db.session, i_datasource, lookup_database, lookup_sqlatable,
-            import_time)
+            db.session, i_datasource, lookup_database, lookup_sqlatable)
 
     @classmethod
     def query_datasources_by_name(

@@ -24,8 +24,7 @@ def import_datasource(
         session,
         i_datasource,
         lookup_database,
-        lookup_datasource,
-        import_time):
+        lookup_datasource):
     """Imports the datasource from the object to the database.
 
      Metrics and columns and datasource will be overrided if exists.
@@ -38,7 +37,6 @@ def import_datasource(
 
     i_datasource.id = None
     i_datasource.database_id = lookup_database(i_datasource).id
-    i_datasource.alter_params(import_time=import_time)
 
     # override the datasource
     datasource = lookup_datasource(i_datasource)
