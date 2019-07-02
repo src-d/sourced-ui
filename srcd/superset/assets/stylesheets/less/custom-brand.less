@@ -18,37 +18,373 @@
  */
 // Forked Cosmo 3.3.7
 
-@brand-primary:         #00b491;
-@brand-secondary:       #8719cb;
-@brand-tertiary:       	#f89c30;
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
 
+@gray-base: #000;
+@gray-darker: lighten(@gray-base, 13.5%);
+@gray-dark: lighten(@gray-base, 20%);
+@gray: lighten(@gray-base, 33.5%);
+@gray-light: lighten(@gray-base, 70%);
+@gray-lighter: lighten(@gray-base, 95%);
+@brand-light-grey: #c9c9c9;
 
-.nav.navbar-nav .fa {
-	color: @brand-tertiary;
+@brand-primary: #00a699;
+@brand-success: #4ac15f;
+@brand-info: lighten(#2ab7ca, 15%);
+@brand-warning: #fed766;
+@brand-danger: #fe4a49;
+
+//== Scaffolding
+//
+//## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+@body-bg: #f5f5f5;
+//** Global text color on `<body>`.
+@text-color: @gray-dark;
+
+//** Global textual link color.
+@link-color: @brand-primary;
+//** Link hover color set via `darken()` function.
+@link-hover-color: darken(@link-color, 15%);
+//** Link hover decoration.
+@link-hover-decoration: underline;
+
+//== Soft-Branding
+
+@brand-primary: #00b491;
+@brand-secondary: #8719cb;
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("../fonts/SourceSansPro-Black.otf.woff2") format("woff2");
+  src: url("../fonts/SourceSansPro-BlackIt.otf.woff2") format("woff2");
+  src: url("../fonts/SourceSansPro-Bold.otf.woff2") format("woff2");
+  src: url("../fonts/SourceSansPro-BoldIt.otf.woff2") format("woff2");
+  src: url("../fonts/SourceSansPro-ExtraLight.otf.woff2") format("woff2");
+  src: url("../fonts/SourceSansPro-ExtraLightIt.otf.woff2") format("woff2");
+  src: url("../fonts/SourceSansPro-It.otf.woff2") format("woff2");
+  src: url("../fonts/SourceSansPro-Light.otf.woff2") format("woff2");
+  src: url("../fonts/SourceSansPro-LightIt.otf.woff2") format("woff2");
+  src: url("../fonts/SourceSansPro-Semibold.otf.woff2") format("woff2");
+  src: url("../fonts/SourceSansPro-SemiboldIt.otf.woff2") format("woff2");
+  src: url("../fonts/SourceSansPro-Regular.otf.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  src: url("../fonts/SourceCodePro-Medium.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-Black.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-Bold.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-LightIt.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-Semibold.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-BoldIt.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-It.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-BlackIt.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-MediumIt.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-ExtraLight.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-ExtraLightIt.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-Light.otf.woff2") format("woff2");
+  src: url("../fonts/SourceCodePro-Regular.otf.woff2") format("woff2");
+}
+
+@font-family-sans-serif: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+
+@font-family-serif: Georgia, "Times New Roman", Times, serif;
+//** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+@font-family-monospace: Menlo, Monaco, Consolas, "Courier New", monospace;
+@font-family-base: @font-family-sans-serif;
+
+@font-size-base: 16px;
+@font-size-large: ceil((@font-size-base * 1.25)); // ~18px
+@font-size-small: ceil((@font-size-base * 0.85)); // ~12px
+
+@font-size-h1: floor((@font-size-base * 2.6)); // ~36px
+@font-size-h2: floor((@font-size-base * 2.15)); // ~30px
+@font-size-h3: ceil((@font-size-base * 1.7)); // ~24px
+@font-size-h4: ceil((@font-size-base * 1.25)); // ~18px
+@font-size-h5: @font-size-base;
+@font-size-h6: ceil((@font-size-base * 0.85)); // ~12px
+
+//** Unit-less `line-height` for use in components like buttons.
+@line-height-base: 1.428571429; // 20/14
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed: floor((@font-size-base * @line-height-base)); // ~20px
+
+//** By default, this inherits from the `<body>`.
+@headings-font-family: @font-family-base;
+@headings-font-weight: 300;
+@headings-line-height: 1.1;
+@headings-color: inherit;
+
+//== Typography overwrite
+
+body {
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+}
+
+.table-condensed,
+.filterable-table-container * {
+  font-size: 14px !important;
+}
+
+h2 {
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: @font-size-h2;
+  font-weight: 600;
+}
+
+h3 {
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: @font-size-h3;
+  font-weight: 300;
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.panel-default .panel-title {
+  border: none;
+  position: relative;
+}
+
+h3.panel-title {
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: @font-size-h2;
+  font-weight: 600;
+  border: none !important;
+  width: auto;
+  margin-bottom: 42px;
+  padding-left: 8px;
+  padding-left: 0;
+}
+
+h4,
+h4.panel-title {
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: @font-size-h2;
+  font-weight: 600;
+  border: none !important;
+  padding-left: 8px;
+  position: relative;
+  width: 90%;
+}
+
+.dashboard-component-header {
+  position: relative;
+  padding: 26px 0;
+
+  .fave-unfave-icon .fa-star,
+  .fave-unfave-icon .fa-star-o,
+  .fave-unfave-icon .fa-star-o:active,
+  .fave-unfave-icon .fa-star-o:hover,
+  .fave-unfave-icon .fa-star:active,
+  .fave-unfave-icon .fa-star:hover {
+    color: @brand-primary;
+  }
+}
+
+.dashboard-header {
+  padding-top: 24px;
+}
+
+.chart-header .header .editable-title input[type="button"] {
+  font-size: 22px;
+  font-weight: 100;
+}
+
+.chart-header span.editable-title {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.dashboard-header .dashboard-component-header {
+  font-weight: 600 !important;
+}
+
+.ace_editor {
+  font: 14px "Source Code Pro", Monaco, Consolas, "Courier New", monospace !important;
+  font-family: "Source Code Pro", Monaco, Consolas, "Courier New", monospace;
+  font-size: 14px !important;
+}
+
+.dropdown-menu {
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  min-width: 10rem;
+  padding: 1.25rem 0.75rem;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+
+  li {
+    padding-bottom: 0.35rem;
+  }
+}
+
+.btn-primary,
+.btn-default,
+.form-control,
+.select2-container .select2-choice,
+.select2-container-multi .select2-choices .select2-search-field input,
+.button-container button,
+.button-container .menu li a,
+.form-actions-container button,
+.form-actions-container .menu li a,
+.dropdown-menu li a,
+.dashboard .chart-header .dropdown-menu li a,
+.dashboard .dashboard-header .dropdown-menu li a {
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px !important;
+  font-weight: 300;
+  letter-spacing: 0 !important;
+}
+
+.panel.panel-primary .panel-title {
+  margin-bottom: 32px;
+}
+
+.label,
+.label[style] {
+  font-size: 16px !important;
+}
+
+.dashboard .chart-header .dropdown-menu li a span,
+.dashboard .dashboard-header .dropdown-menu li a span {
+  letter-spacing: 0 !important;
+}
+
+//==Nav Bar
+
+.nav.navbar-nav .caret:before {
+  content: "\f0d7";
+  font-size: 14px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #000;
+
+  .fa {
+    color: @brand-light-grey;
+  }
+}
+
+.navbar b.caret {
+  vertical-align: -1px;
+}
+
+.navbar .f16 .flag {
+  vertical-align: -3px;
+}
+
+.dashboard .dashboard-header #save-dash-split-button {
+  height: 36px !important;
+  width: 34px !important;
+}
+
+.dashboard .dashboard-header #save-dash-split-button .caret {
+  padding-top: 4px;
+}
+
+.navbar-header {
+  padding: 6px 9px;
+}
+
+.navbar-collapse.collapse {
+  padding: 6px 9px;
 }
 
 .nav.navbar-nav.navbar-right .btn-primary .fa {
-	color: #fff;
+  color: #fff;
 }
 
-.navbar-inverse .navbar-nav > li > a:focus,
-.navbar-inverse .navbar-nav > li.active > a {
+.navbar-inverse .navbar-nav > li.dropdown > a,
+.navbar-inverse .navbar-nav > li > a {
+  margin-bottom: -16px;
+  padding-bottom: 23px;
+}
+
+.navbar-inverse .navbar-nav > li.active > a,
+.navbar-inverse .navbar-nav > li.active > a:hover {
   border-bottom: 3px solid @brand-secondary;
- }
+  margin-bottom: -16px;
+  padding-bottom: 23px;
+
+  i {
+    color: @brand-secondary;
+  }
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  border-bottom: 3px solid @brand-primary;
+  margin-bottom: -16px;
+  padding-bottom: 24px;
+
+  i {
+    color: @brand-primary;
+  }
+}
+
+.navbar-inverse .navbar-nav > li > a.dropdown-toggle {
+  padding-bottom: 23px;
+}
+
+.navbar-inverse .navbar-nav > li.dropdown > a:focus {
+  border-bottom: 3px solid @brand-primary;
+  margin-bottom: -16px;
+  padding-bottom: 23px;
+}
+
+.navbar-inverse .navbar-nav > li.dropdown-menu.active > a.dropdown-toggle,
+.navbar-inverse .navbar-nav > li.dropdown.active > a.dropdown-toggle,
+.navbar-inverse .navbar-nav > li.dropdown-menu.active > a.dropdown-toggle:hover,
+.navbar-inverse .navbar-nav > li.dropdown.active > a.dropdown-toggle:hover,
+.navbar-inverse .navbar-nav > li.dropdown-menu.active > a.dropdown-toggle:focus,
+.navbar-inverse .navbar-nav > li.dropdown.active > a.dropdown-toggle:focus {
+  border-bottom: 3px solid @brand-secondary;
+  margin-bottom: -16px;
+  padding-bottom: 24px;
+
+  i {
+    color: @brand-secondary;
+  }
+}
 
 .nav.navbar-nav.navbar-right .btn-primary,
 .nav.navbar-nav.navbar-right .btn.btn-primary {
-  background-color: @brand-tertiary !important;
-  border-color: @brand-tertiary;
+  background-color: @brand-primary;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.35rem 4rem 0.35rem 2.25rem;
+  font-weight: 600;
+  font-size: 14px !important;
+
+  i:before {
+    content: "\F0D7";
+    font-size: 14px;
+    color: #fff;
+    position: relative;
+    left: 45px;
+  }
 }
 
 .nav.navbar-nav.navbar-right .btn-primary:hover,
 .nav.navbar-nav.navbar-right .btn.btn-primary:hover {
-  background-color: darken(@brand-tertiary, 5%);
+  background-color: darken(@brand-primary, 3%);
 }
 
-
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-  border-top: 3px solid @brand-secondary;
+.table th a {
+  display: inline-block;
+  margin-right: 20px;
 }
- 
