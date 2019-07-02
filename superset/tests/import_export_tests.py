@@ -61,10 +61,11 @@ class ImportExportTests(SupersetTestCase):
         cls.delete_imports()
 
     def create_slice(self, name, ds_id=None, id=None, db_name='main',
-                     table_name='wb_health_population'):
+                     table_name='wb_health_population', remote_id=None):
+        remote_id = remote_id or id
         params = {
             'num_period_compare': '10',
-            'remote_id': id,
+            'remote_id': remote_id,
             'datasource_name': table_name,
             'database_name': db_name,
             'schema': '',
@@ -89,8 +90,9 @@ class ImportExportTests(SupersetTestCase):
             id=id,
         )
 
-    def create_dashboard(self, title, id=0, slcs=[]):
-        json_metadata = {'remote_id': id}
+    def create_dashboard(self, title, id=0, slcs=[], remote_id=None):
+        remote_id = remote_id or id
+        json_metadata = {'remote_id': remote_id}
         return models.Dashboard(
             id=id,
             dashboard_title=title,
@@ -226,12 +228,6 @@ class ImportExportTests(SupersetTestCase):
 
         birth_dash = self.get_dash_by_slug('births')
         self.assert_dash_equals(birth_dash, exported_dashboards[0])
-        self.assertEquals(
-            birth_dash.id,
-            json.loads(
-                exported_dashboards[0].json_metadata,
-                object_hook=utils.decode_dashboards,
-            )['remote_id'])
 
         exported_tables = json.loads(
             resp.data.decode('utf-8'),
@@ -259,17 +255,9 @@ class ImportExportTests(SupersetTestCase):
 
         birth_dash = self.get_dash_by_slug('births')
         self.assert_dash_equals(birth_dash, exported_dashboards[0])
-        self.assertEquals(
-            birth_dash.id,
-            json.loads(exported_dashboards[0].json_metadata)['remote_id'],
-        )
 
         world_health_dash = self.get_dash_by_slug('world_health')
         self.assert_dash_equals(world_health_dash, exported_dashboards[1])
-        self.assertEquals(
-            world_health_dash.id,
-            json.loads(exported_dashboards[1].json_metadata)['remote_id'],
-        )
 
         exported_tables = sorted(
             json.loads(
@@ -284,7 +272,8 @@ class ImportExportTests(SupersetTestCase):
 
     def test_import_1_slice(self):
         expected_slice = self.create_slice('Import Me', id=10001)
-        slc_id = models.Slice.import_obj(expected_slice, None, import_time=1989)
+        slc_id = models.Slice.import_obj(
+            expected_slice, None, import_time=1989)
         slc = self.get_slice(slc_id)
         self.assertEquals(slc.datasource.perm, slc.perm)
         self.assert_slice_equals(expected_slice, slc)
@@ -316,11 +305,16 @@ class ImportExportTests(SupersetTestCase):
                 'Import Me 3', id=10004, table_name='non_existent'), None)
 
     def test_import_slices_override(self):
-        slc = self.create_slice('Import Me New', id=10005)
+        """
+        id of the slice might be different on different instances
+        user remote_id as unique identifier that allows to override slices
+        as long as the origin of the slice is the same
+        """
+        slc = self.create_slice('Import Me New', id=10005, remote_id='same')
         slc_1_id = models.Slice.import_obj(slc, None, import_time=1990)
         slc.slice_name = 'Import Me New'
         imported_slc_1 = self.get_slice(slc_1_id)
-        slc_2 = self.create_slice('Import Me New', id=10005)
+        slc_2 = self.create_slice('Import Me New', id=10006, remote_id='same')
         slc_2_id = models.Slice.import_obj(
             slc_2, imported_slc_1, import_time=1990)
         self.assertEquals(slc_1_id, slc_2_id)
@@ -414,13 +408,15 @@ class ImportExportTests(SupersetTestCase):
             dash_to_import, import_time=1992)
 
         # create new instances of the slices
+        # ids may differer but remote_ids must be the same
         e_slc = self.create_slice(
-            'e_slc', id=10009, table_name='energy_usage')
+            'e_slc', id=10010, table_name='energy_usage', remote_id=10009)
         b_slc = self.create_slice(
-            'b_slc', id=10010, table_name='birth_names')
-        c_slc = self.create_slice('c_slc', id=10011, table_name='birth_names')
+            'b_slc', id=10011, table_name='birth_names', remote_id=100010)
+        c_slc = self.create_slice('c_slc', id=10012, table_name='birth_names')
         dash_to_import_override = self.create_dashboard(
-            'override_dashboard_new', slcs=[e_slc, b_slc, c_slc], id=10004)
+            'override_dashboard_new', slcs=[e_slc, b_slc, c_slc],
+            id=10005, remote_id=10004)
         imported_dash_id_2 = models.Dashboard.import_obj(
             dash_to_import_override, import_time=1992)
 
