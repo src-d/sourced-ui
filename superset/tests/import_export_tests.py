@@ -38,16 +38,16 @@ class ImportExportTests(SupersetTestCase):
         # Imported data clean up
         session = db.session
         for slc in session.query(models.Slice):
-            if 'remote_id' in slc.params_dict:
+            if 'import-export-test' in slc.params_dict:
                 session.delete(slc)
         for dash in session.query(models.Dashboard):
-            if 'remote_id' in dash.params_dict:
+            if 'import-export-test' in dash.params_dict:
                 session.delete(dash)
         for table in session.query(SqlaTable):
-            if 'remote_id' in table.params_dict:
+            if 'import-export-test' in table.params_dict:
                 session.delete(table)
         for datasource in session.query(DruidDatasource):
-            if 'remote_id' in datasource.params_dict:
+            if 'import-export-test' in datasource.params_dict:
                 session.delete(datasource)
         session.commit()
 
@@ -64,6 +64,7 @@ class ImportExportTests(SupersetTestCase):
                      table_name='wb_health_population', remote_id=None):
         remote_id = remote_id or id
         params = {
+            'import-export-test': True,
             'num_period_compare': '10',
             'remote_id': remote_id,
             'datasource_name': table_name,
@@ -92,7 +93,7 @@ class ImportExportTests(SupersetTestCase):
 
     def create_dashboard(self, title, id=0, slcs=[], remote_id=None):
         remote_id = remote_id or id
-        json_metadata = {'remote_id': remote_id}
+        json_metadata = {'remote_id': remote_id, 'import-export-test': True}
         return models.Dashboard(
             id=id,
             dashboard_title=title,
@@ -104,7 +105,8 @@ class ImportExportTests(SupersetTestCase):
 
     def create_table(
             self, name, schema='', id=0, cols_names=[], metric_names=[]):
-        params = {'remote_id': id, 'database_name': 'main'}
+        params = {'remote_id': id, 'database_name': 'main',
+                  'import-export-test': True}
         table = SqlaTable(
             id=id,
             schema=schema,
@@ -120,7 +122,8 @@ class ImportExportTests(SupersetTestCase):
 
     def create_druid_datasource(
             self, name, id=0, cols_names=[], metric_names=[]):
-        params = {'remote_id': id, 'database_name': 'druid_test'}
+        params = {'remote_id': id, 'database_name': 'druid_test',
+                  'import-export-test': True}
         datasource = DruidDatasource(
             id=id,
             datasource_name=name,
@@ -352,7 +355,7 @@ class ImportExportTests(SupersetTestCase):
         make_transient(expected_dash)
         self.assert_dash_equals(
             expected_dash, imported_dash, check_position=False)
-        self.assertEquals({'remote_id': 10002},
+        self.assertEquals({'import-export-test': True, 'remote_id': 10002},
                           json.loads(imported_dash.json_metadata))
 
         expected_position = dash_with_1_slice.position
@@ -421,7 +424,7 @@ class ImportExportTests(SupersetTestCase):
         imported_dash = self.get_dash(imported_dash_id_2)
         self.assert_dash_equals(
             expected_dash, imported_dash, check_position=False)
-        self.assertEquals({'remote_id': 10004},
+        self.assertEquals({'remote_id': 10004, 'import-export-test': True},
                           json.loads(imported_dash.json_metadata))
 
     def test_import_table_no_metadata(self):
@@ -438,7 +441,7 @@ class ImportExportTests(SupersetTestCase):
         imported = self.get_table(imported_id)
         self.assert_table_equals(table, imported)
         self.assertEquals(
-            {'remote_id': 10002, 'database_name': 'main'},
+            {'remote_id': 10002, 'database_name': 'main', 'import-export-test': True},
             json.loads(imported.params))
 
     def test_import_table_2_col_2_met(self):
@@ -496,7 +499,8 @@ class ImportExportTests(SupersetTestCase):
         imported = self.get_datasource(imported_id)
         self.assert_datasource_equals(datasource, imported)
         self.assertEquals(
-            {'remote_id': 10002, 'database_name': 'druid_test'},
+            {'remote_id': 10002, 'import-export-test': True,
+                'database_name': 'druid_test'},
             json.loads(imported.params))
 
     def test_import_druid_2_col_2_met(self):
