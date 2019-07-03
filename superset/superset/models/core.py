@@ -23,6 +23,7 @@ import functools
 import json
 import logging
 import textwrap
+import uuid
 
 from flask import escape, g, Markup, request
 from flask_appbuilder import Model
@@ -72,6 +73,32 @@ def set_related_perm(mapper, connection, target):  # noqa
         ds = db.session.query(src_class).filter_by(id=int(id_)).first()
         if ds:
             target.perm = ds.perm
+
+
+# set remote_id to unique value for export/import
+def set_remote_id(json_field_name):
+    def wrapper(mapper, connection, target):
+        # use get instead of has to check for empty value as well
+        if target.params_dict.get('remote_id', None):
+            return
+
+        # try to get previous value if exists
+        remote_id = None
+        state = sqla.inspect(target)
+        history = state.get_history(json_field_name, True)
+        if history.has_changes():
+            for v in history.deleted:
+                remote_id = json.loads(v).get('remote_id', None)
+                if remote_id:
+                    break
+
+        # only on creation or update of an object which was created without orm
+        if not remote_id:
+            remote_id = str(uuid.uuid4())
+
+        target.alter_params(remote_id=remote_id)
+
+    return wrapper
 
 
 def copy_dashboard(mapper, connection, target):
@@ -332,10 +359,10 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
         """
 
     @classmethod
-    def import_obj(cls, slc_to_import, slc_to_override, import_time=None):
+    def import_obj(cls, slc_to_import, slc_to_override):
         """Inserts or overrides slc in the database.
 
-        remote_id and import_time fields in params_dict are set to track the
+        remote_id field in params_dict is set to track the
         slice origin and ensure correct overrides for multiple imports.
         Slice.perm is used to find the datasources and connect them.
 
@@ -347,9 +374,6 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
         session = db.session
         make_transient(slc_to_import)
         slc_to_import.dashboards = []
-        slc_to_import.alter_params(
-            remote_id=slc_to_import.id, import_time=import_time)
-
         slc_to_import = slc_to_import.copy()
         params = slc_to_import.params_dict
         slc_to_import.datasource_id = ConnectorRegistry.get_datasource_by_name(
@@ -373,7 +397,9 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
 
 
 sqla.event.listen(Slice, 'before_insert', set_related_perm)
+sqla.event.listen(Slice, 'before_insert', set_remote_id('params'))
 sqla.event.listen(Slice, 'before_update', set_related_perm)
+sqla.event.listen(Slice, 'before_update', set_remote_id('params'))
 
 
 dashboard_slices = Table(
@@ -484,11 +510,11 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
         return {}
 
     @classmethod
-    def import_obj(cls, dashboard_to_import, import_time=None):
+    def import_obj(cls, dashboard_to_import):
         """Imports the dashboard from the object to the database.
 
          Once dashboard is imported, json_metadata field is extended and stores
-         remote_id and import_time. It helps to decide if the dashboard has to
+         remote_id. It helps to decide if the dashboard has to
          be overridden or just copies over. Slices that belong to this
          dashboard will be wired to existing tables. This function can be used
          to import/export dashboards between multiple superset instances.
@@ -557,7 +583,7 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
             logging.info('Importing slice {} from the dashboard: {}'.format(
                 slc.to_json(), dashboard_to_import.dashboard_title))
             remote_slc = remote_id_slice_map.get(slc.id)
-            new_slc_id = Slice.import_obj(slc, remote_slc, import_time=import_time)
+            new_slc_id = Slice.import_obj(slc, remote_slc)
             old_to_new_slc_id_dict[slc.id] = new_slc_id
             # update json metadata that deals with slice ids
             new_slc_id_str = '{}'.format(new_slc_id)
@@ -579,12 +605,14 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
         for dash in session.query(Dashboard).all():
             if ('remote_id' in dash.params_dict and
                     dash.params_dict['remote_id'] ==
-                    dashboard_to_import.id):
+                    dashboard_to_import.params_dict['remote_id']):
                 existing_dashboard = dash
 
         dashboard_to_import.id = None
-        alter_positions(dashboard_to_import, old_to_new_slc_id_dict)
-        dashboard_to_import.alter_params(import_time=import_time)
+        # position_json can be empty for dashboards
+        # with charts added from chart-edit page and without re-arranging
+        if dashboard_to_import.position_json:
+            alter_positions(dashboard_to_import, old_to_new_slc_id_dict)
         if new_expanded_slices:
             dashboard_to_import.alter_params(
                 expanded_slices=new_expanded_slices)
@@ -630,12 +658,10 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
                 datasource_ids.add((slc.datasource_id, slc.datasource_type))
                 # add extra params for the import
                 slc.alter_params(
-                    remote_id=slc.id,
                     datasource_name=slc.datasource.name,
                     schema=slc.datasource.name,
                     database_name=slc.datasource.database.name,
                 )
-            copied_dashboard.alter_params(remote_id=dashboard_id)
             copied_dashboards.append(copied_dashboard)
 
             eager_datasources = []
@@ -643,7 +669,6 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
                 eager_datasource = ConnectorRegistry.get_eager_datasource(
                     db.session, dashboard_type, dashboard_id)
                 eager_datasource.alter_params(
-                    remote_id=eager_datasource.id,
                     database_name=eager_datasource.database.name,
                 )
                 make_transient(eager_datasource)
@@ -653,6 +678,10 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
             'dashboards': copied_dashboards,
             'datasources': eager_datasources,
         }, cls=utils.DashboardEncoder, indent=4)
+
+
+sqla.event.listen(Dashboard, 'before_insert', set_remote_id('json_metadata'))
+sqla.event.listen(Dashboard, 'before_update', set_remote_id('json_metadata'))
 
 
 class Database(Model, AuditMixinNullable, ImportMixin):

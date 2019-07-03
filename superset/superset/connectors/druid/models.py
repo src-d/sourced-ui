@@ -515,7 +515,7 @@ class DruidDatasource(Model, BaseDatasource):
         ][0]
 
     @classmethod
-    def import_obj(cls, i_datasource, import_time=None):
+    def import_obj(cls, i_datasource):
         """Imports the datasource from the object to the database.
 
          Metrics and columns and datasource will be overridden if exists.
@@ -532,8 +532,7 @@ class DruidDatasource(Model, BaseDatasource):
             return db.session.query(DruidCluster).filter_by(
                 cluster_name=d.cluster_name).one()
         return import_datasource.import_datasource(
-            db.session, i_datasource, lookup_cluster, lookup_datasource,
-            import_time)
+            db.session, i_datasource, lookup_cluster, lookup_datasource)
 
     def latest_metadata(self):
         """Returns segment metadata from the latest segment"""
