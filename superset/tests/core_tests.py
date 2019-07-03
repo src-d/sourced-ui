@@ -250,7 +250,11 @@ class CoreTests(SupersetTestCase):
         )
         slc = db.session.query(models.Slice).filter_by(id=new_slice_id).first()
         assert slc.slice_name == new_slice_name
-        assert slc.viz.form_data == form_data
+        saved_form_data = slc.viz.form_data
+        # remote_id is an uuid
+        assert 'remote_id' in saved_form_data
+        del saved_form_data['remote_id']
+        assert saved_form_data == form_data
         db.session.delete(slc)
 
     def test_filter_endpoint(self):
