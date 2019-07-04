@@ -375,6 +375,7 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
         make_transient(slc_to_import)
         slc_to_import.dashboards = []
         slc_to_import = slc_to_import.copy()
+        slc_to_import.id = None
         params = slc_to_import.params_dict
         slc_to_import.datasource_id = ConnectorRegistry.get_datasource_by_name(
             session, slc_to_import.datasource_type, params['datasource_name'],
@@ -582,7 +583,9 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
         for slc in slices:
             logging.info('Importing slice {} from the dashboard: {}'.format(
                 slc.to_json(), dashboard_to_import.dashboard_title))
-            remote_slc = remote_id_slice_map.get(slc.id)
+            remote_slc = None
+            if 'remote_id' in slc.params_dict:
+                remote_slc = remote_id_slice_map.get(slc.params_dict['remote_id'])
             new_slc_id = Slice.import_obj(slc, remote_slc)
             old_to_new_slc_id_dict[slc.id] = new_slc_id
             # update json metadata that deals with slice ids
