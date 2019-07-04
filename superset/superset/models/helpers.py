@@ -21,7 +21,7 @@ import json
 import logging
 import re
 
-from flask import escape, Markup
+from flask import escape, g, Markup
 from flask_appbuilder.models.decorators import renders
 from flask_appbuilder.models.mixins import AuditMixin
 import humanize
@@ -231,6 +231,16 @@ class ImportMixin(object):
         d = self.params_dict
         d.update(kwargs)
         self.params = json.dumps(d)
+
+    def reset_ownership(self):
+        """
+        remove ownership
+        object will belong to the user that makes the import
+        """
+        self.created_by = None
+        self.changed_by = None
+        if g.user:
+            self.owners = [g.user]
 
     @property
     def params_dict(self):

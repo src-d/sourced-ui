@@ -376,6 +376,7 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
         slc_to_import.dashboards = []
         slc_to_import = slc_to_import.copy()
         slc_to_import.id = None
+        slc_to_import.reset_ownership()
         params = slc_to_import.params_dict
         slc_to_import.datasource_id = ConnectorRegistry.get_datasource_by_name(
             session, slc_to_import.datasource_type, params['datasource_name'],
@@ -612,6 +613,7 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
                 existing_dashboard = dash
 
         dashboard_to_import.id = None
+        dashboard_to_import.reset_ownership()
         # position_json can be empty for dashboards
         # with charts added from chart-edit page and without re-arranging
         if dashboard_to_import.position_json:
