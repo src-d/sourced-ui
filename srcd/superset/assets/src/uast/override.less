@@ -97,3 +97,33 @@ body {
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
 }
+
+//= Header Primary CTA
+
+.nav.navbar-nav.navbar-right .btn-primary,
+.nav.navbar-nav.navbar-right .btn.btn-primary {
+  background-color: @brand-primary;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.45rem 2.65rem 0.45rem 1.35rem;
+  font-weight: 600;
+  font-size: 14px !important;
+
+  i:before {
+    content: "\F0D7";
+    font-size: 14px;
+    color: #fff;
+    position: relative;
+    left: 45px;
+  }
+}
+
+.nav.navbar-nav.navbar-right .btn-primary:hover,
+.nav.navbar-nav.navbar-right .btn.btn-primary:hover {
+  background-color: darken(@brand-primary, 3%);
+}
+
+.nav.navbar-nav.navbar-right .btn-primary .fa {
+  color: #fff;
+}
