@@ -239,8 +239,12 @@ class ImportMixin(object):
         """
         self.created_by = None
         self.changed_by = None
-        if g.user:
-            self.owners = [g.user]
+        # flask global context might not exist (in cli or tests for example)
+        try:
+            if g.user:
+                self.owners = [g.user]
+        except Exception:
+            self.owners = []
 
     @property
     def params_dict(self):
