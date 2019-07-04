@@ -419,6 +419,7 @@ h4.panel-title {
   font-weight: 600;
   font-size: 14px !important;
   border-radius: 0.2rem;
+  width: 135px;
 
   i {
     display: none;
@@ -751,6 +752,52 @@ h4.panel-title {
 .SqlEditor .SouthPane li.active a {
   padding-left: 32px;
   padding-right: 32px;
+}
+
+.ReactVirtualized__Table__Grid .ReactVirtualized__Table__rowColumn button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 2px 16px;
+  background-color: #fff;
+  color: #f89c30;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  border-radius: 0.2rem !important;
+  outline: 1px solid #f89c30;
+  outline-offset: -1px;
+
+  &:hover,
+  &:focus {
+    color: #f89c30;
+    background: darken(#fff, 3%);
+  }
+  i {
+    color: #f89c30;
+  }
+}
+
+//= Charts
+
+.superset-legacy-chart-sunburst svg g text.step-label {
+  transform: translate(0, -10px);
+}
+
+//= Tables
+
+.ReactVirtualized__Table
+  .ReactVirtualized__Grid.ReactVirtualized__Table__Grid
+  .ReactVirtualized__Grid__innerScrollContainer[style] {
+  height: 1260px !important;
+  max-height: 1260px !important;
+}
+
+.queryPane .SouthPane {
+  height: 100% !important;
+  .tab-pane {
+    overflow-y: visible;
+  }
 }
 
 //= Alerts, Success & Error Mesages
