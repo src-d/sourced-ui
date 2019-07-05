@@ -419,6 +419,7 @@ h4.panel-title {
   font-weight: 600;
   font-size: 14px !important;
   border-radius: 0.2rem;
+  min-width: 135px;
 
   i {
     display: none;
@@ -557,8 +558,31 @@ h4.panel-title {
   background-color: darken(#fff, 3%);
 }
 
-.sql-toolbar .form-inline .btn.btn-sm.btn-primary {
+.sql-toolbar .form-inline .btn.btn-sm.btn-primary,
+.sql-toolbar .form-inline .btn.btn-sm.btn-warning {
   background-color: @brand-primary;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0.75rem 3.25rem;
+  font-weight: 600;
+  font-size: 14px !important;
+  border-radius: 0.2rem;
+  border: none;
+  min-width: 124px;
+
+  i {
+    display: none;
+  }
+}
+
+.sql-toolbar .form-inline .btn.btn-sm.btn-warning {
+  min-width: 191px;
+}
+
+.sql-toolbar .form-inline .btn.btn-sm.btn-primary:hover,
+.sql-toolbar .form-inline .btn.btn-sm.btn-primary:focus,
+.sql-toolbar .form-inline .btn.btn-sm.btn-primary:active {
+  background-color: darken(@brand-primary, 3%);
   color: #fff;
   text-transform: uppercase;
   padding: 0.75rem 3.25rem;
@@ -570,12 +594,6 @@ h4.panel-title {
   i {
     display: none;
   }
-}
-
-.sql-toolbar .form-inline .btn.btn-sm.btn-primary:hover,
-.sql-toolbar .form-inline .btn.btn-sm.btn-primary:focus {
-  background-color: darken(@brand-primary, 3%);
-  border: none;
 }
 
 .sql-toolbar .form-inline .btn.btn-sm.btn-default {
@@ -751,6 +769,36 @@ h4.panel-title {
 .SqlEditor .SouthPane li.active a {
   padding-left: 32px;
   padding-right: 32px;
+}
+
+.ReactVirtualized__Table__Grid .ReactVirtualized__Table__rowColumn button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 2px 16px;
+  background-color: #fff;
+  color: #f89c30;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  border-radius: 0.2rem !important;
+  outline: 1px solid #f89c30;
+  outline-offset: -1px;
+
+  &:hover,
+  &:focus {
+    color: #f89c30;
+    background: darken(#fff, 3%);
+  }
+  i {
+    color: #f89c30;
+  }
+}
+
+//= Charts
+
+.superset-legacy-chart-sunburst svg g text.step-label {
+  transform: translate(0, -10px);
 }
 
 //= Alerts, Success & Error Mesages
