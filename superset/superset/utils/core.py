@@ -241,6 +241,7 @@ def decode_dashboards(o):
     Recreates the dashboard object from a json representation.
     """
     import superset.models.core as models
+    from superset import security_manager
     from superset.connectors.sqla.models import (
         SqlaTable, SqlMetric, TableColumn,
     )
@@ -257,6 +258,14 @@ def decode_dashboards(o):
         return SqlMetric(**o['__SqlMetric__'])
     elif '__Database__' in o:
         return models.Database(**o['__Database__'])
+    elif '__User__' in o:
+        return security_manager.user_model(**o['__User__'])
+    elif '__Role__' in o:
+        return security_manager.role_model(**o['__Role__'])
+    elif '__ViewMenu__' in o:
+        return security_manager.viewmenu_model(**o['__ViewMenu__'])
+    elif '__PermissionView__' in o:
+        return security_manager.permissionview_model(**o['__PermissionView__'])
     elif '__datetime__' in o:
         return datetime.strptime(o['__datetime__'], '%Y-%m-%dT%H:%M:%S')
     else:
