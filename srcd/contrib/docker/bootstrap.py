@@ -1,6 +1,6 @@
 import os
 
-from flask_appbuilder.security.sqla.models import User
+from flask import g
 from flask_migrate import upgrade as db_upgrade
 
 from superset import app, conf, db, security_manager
@@ -48,10 +48,7 @@ def create_datasource_tables(dbobj, schema):
         db.session.commit()
 
 
-def set_welcome_dashboard(id, username):
-    # Get default user
-    user = db.session.query(User).filter_by(username=username).first()
-
+def set_welcome_dashboard(id, user):
     # Make sure welcome dashboard exists
     dashboard = db.session.query(models.Dashboard).filter_by(id=id).first()
 
@@ -91,15 +88,18 @@ def bootstrap():
         # Create an admin user
         role_admin = security_manager.find_role(
             security_manager.auth_role_admin)
-        security_manager.add_user(conf.get('DEFAULT_USERNAME'),
-                                  os.environ['ADMIN_FIRST_NAME'],
-                                  os.environ['ADMIN_LAST_NAME'],
-                                  os.environ['ADMIN_EMAIL'],
-                                  role_admin,
-                                  os.environ['ADMIN_PASSWORD'])
+        admin_user = security_manager.add_user(conf.get('DEFAULT_USERNAME'),
+                                               os.environ['ADMIN_FIRST_NAME'],
+                                               os.environ['ADMIN_LAST_NAME'],
+                                               os.environ['ADMIN_EMAIL'],
+                                               role_admin,
+                                               os.environ['ADMIN_PASSWORD'])
         # Create default roles and permissions
         utils.get_or_create_main_db()
         security_manager.sync_role_definitions()
+
+        # set admin user as a current user
+        g.user = admin_user
 
         # Add dashboards
         dashboards_root = '/home/superset/dashboards'
@@ -111,8 +111,7 @@ def bootstrap():
             import_dashboard(dashboards_root + '/gitbase/welcome.json')
 
         # set welcome dashboard as a default
-        set_welcome_dashboard(conf.get('DEFAULT_DASHBOARD_ID'),
-                              conf.get('DEFAULT_USERNAME'))
+        set_welcome_dashboard(conf.get('DEFAULT_DASHBOARD_ID'), admin_user)
 
 
 if __name__ == '__main__':

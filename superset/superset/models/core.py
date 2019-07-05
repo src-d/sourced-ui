@@ -375,6 +375,8 @@ class Slice(Model, AuditMixinNullable, ImportMixin):
         make_transient(slc_to_import)
         slc_to_import.dashboards = []
         slc_to_import = slc_to_import.copy()
+        slc_to_import.id = None
+        slc_to_import.reset_ownership()
         params = slc_to_import.params_dict
         slc_to_import.datasource_id = ConnectorRegistry.get_datasource_by_name(
             session, slc_to_import.datasource_type, params['datasource_name'],
@@ -582,7 +584,9 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
         for slc in slices:
             logging.info('Importing slice {} from the dashboard: {}'.format(
                 slc.to_json(), dashboard_to_import.dashboard_title))
-            remote_slc = remote_id_slice_map.get(slc.id)
+            remote_slc = None
+            if 'remote_id' in slc.params_dict:
+                remote_slc = remote_id_slice_map.get(slc.params_dict['remote_id'])
             new_slc_id = Slice.import_obj(slc, remote_slc)
             old_to_new_slc_id_dict[slc.id] = new_slc_id
             # update json metadata that deals with slice ids
@@ -608,7 +612,9 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
                     dashboard_to_import.params_dict['remote_id']):
                 existing_dashboard = dash
 
+        dashboard_to_import = dashboard_to_import.copy()
         dashboard_to_import.id = None
+        dashboard_to_import.reset_ownership()
         # position_json can be empty for dashboards
         # with charts added from chart-edit page and without re-arranging
         if dashboard_to_import.position_json:
@@ -632,14 +638,10 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
             session.flush()
             return existing_dashboard.id
         else:
-            # session.add(dashboard_to_import) causes sqlachemy failures
-            # related to the attached users / slices. Creating new object
-            # allows to avoid conflicts in the sql alchemy state.
-            copied_dash = dashboard_to_import.copy()
-            copied_dash.slices = new_slices
-            session.add(copied_dash)
+            dashboard_to_import.slices = new_slices
+            session.add(dashboard_to_import)
             session.flush()
-            return copied_dash.id
+            return dashboard_to_import.id
 
     @classmethod
     def export_dashboards(cls, dashboard_ids):
