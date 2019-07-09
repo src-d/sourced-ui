@@ -2,399 +2,399 @@
     "dashboards": [
         {
             "__Dashboard__": {
-                "dashboard_title": "Welcome",
-                "position_json": "{\"CHART-Gsonj5e205\": {\"children\": [], \"id\": \"CHART-Gsonj5e205\", \"meta\": {\"chartId\": 22, \"height\": 50, \"sliceName\": \"Repository collection progress\", \"width\": 6}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-6AX2fnJiWO\"], \"type\": \"CHART\"}, \"CHART-mw3sO7UGCe\": {\"children\": [], \"id\": \"CHART-mw3sO7UGCe\", \"meta\": {\"chartId\": 21, \"height\": 50, \"sliceName\": \"Metadata collection progress\", \"width\": 6}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-6AX2fnJiWO\"], \"type\": \"CHART\"}, \"DASHBOARD_VERSION_KEY\": \"v2\", \"GRID_ID\": {\"children\": [\"ROW-bEmhe7RJW\", \"ROW-6AX2fnJiWO\"], \"id\": \"GRID_ID\", \"parents\": [\"ROOT_ID\"], \"type\": \"GRID\"}, \"HEADER_ID\": {\"id\": \"HEADER_ID\", \"meta\": {\"text\": \"Welcome\"}, \"type\": \"HEADER\"}, \"MARKDOWN-MIE5EqOv00\": {\"children\": [], \"id\": \"MARKDOWN-MIE5EqOv00\", \"meta\": {\"code\": \"<style>\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder div { max-width: 40em; display: block; overflow: auto; margin: auto; margin-top: 12px; margin-bottom: 24px; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder div { line-height: 1.6; font-size: 16px; font-weight: normal; color: #000; }\\n\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder h1  { margin-top: 24px; margin-bottom: 24px; line-height: 1.6; font-size: 30px; font-weight: bold; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder h2  { margin-top: 24px; margin-bottom: 12px; line-height: 1.6; font-size: 24px; font-weight: bold; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder h3  { margin-top: 24px; margin-bottom: 12px; line-height: 1.6; font-size: 20px; font-weight: bold; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder h4  { margin-top: 18px; margin-bottom: 12px; line-height: 1.6; font-size: 16px; font-weight: bold; }\\n\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder ul  { margin-top: 06px; margin-bottom: 12px; line-height: 1.6; font-size: 16px; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder p   { margin-top: 06px; margin-bottom: 12px; line-height: 1.6; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder em  { font-size: 16px; color: #6d6e71; }\\n</style>\\n\\n# source{d} Community Edition\\n\\n**Welcome to source{d} Community Edition (CE), the data platform for your software development life cycle (SDLC).**\\n\\nsource{d} CE enables quick discovery, retrieval, parsing, querying and visualization of source code and other SDLC data.\\n\\nsource{d} CE is powered by a powerful SQL interface for Git, and language-agnostic semantic concepts via Universal ASTs;\\nsource{d} CE also brings in GitHub metadata such as pull requests, issues, comments, users, as well as allows you to import your own data tables.\\n\\nBuilt-in source{d} dashboards abstract away the complexity of analyzing SDLC data history at scale and automatically suggest metrics to look at while giving you the freedom to build your own.\\n\\n## Quick-start guide\\n\\n### Before you get started\\n\\nYou can come back to this Welcome dashboard at any point for references and information:\\nvia browser navigation, [URL](http://127.0.0.1:8088/superset/welcome) or in the [list of dashboards](http://127.0.0.1:8088/dashboard/list/).\\n\\nYou can refer to the [source{d} CE full documentation](https://docs.sourced.tech/community-edition/) for more in-depth content.\\n\\n### Load your dataset from organizations\\n\\n- **You fetched a Github organization repository & metadata:** depending on the size of the datasets, the network and your system, it may take some time to fetch the full data. You can check the progress at the bottom of this page: click **[\\u2026]** then _force refresh_ to update. Meanwhile, you can analyze the partial dataset available, refreshing the data from charts for the latest results.\\n\\n_Note: You may also [initialize source{d} CE in the local mode](https://docs.sourced.tech/community-edition/quickstart/3-init-sourced) to load local repository data instantaneously._\\n\\n### Visualize your data on dashboards\\n\\n- **[Explore source code-related use cases & metrics](http://127.0.0.1:8088/superset/dashboard/1/)**\\n- **[Explore Github metadata-related use cases & metrics](http://127.0.0.1:8088/superset/dashboard/3/)**\\n\\n_Note: You may also create your own metrics, charts & dashboards._\\n\\n_Note: Very large datasets may eventually cause timeouts loading charts. If this happens, refresh a few at a time._\\n\\n### Explore your data, create queries, charts & dashboards\\n\\n- [Create metrics, query code and metadata](http://127.0.0.1:8088/superset/sqllab)\\n- [List and create charts](http://127.0.0.1:8088/chart/list/)\\n- [List and create dashboards](http://127.0.0.1:8088/dashboard/list/)\\n- [Explore Universal ASTs](http://127.0.0.1:8088/bblfsh/explore/)\\n\\n_Note: You may also use the \\\"New\\\" button on the top right of the interface._\\n\\n### Check examples for inspiration on new use cases and metrics\\n\\n- [SQL query examples](https://docs.sourced.tech/community-edition/usage/examples)\\n- [Universal AST query examples](https://docs.sourced.tech/babelfish/using-babelfish/uast-querying)\\n\\n### Read the documentation for detailed information\\n\\n- [Introduction: overview & index](https://docs.sourced.tech/community-edition/)\\n- [Quick-start: dependencies, installation, initialization & exploration of datasets](https://docs.sourced.tech/community-edition/quickstart)\\n- [Usage: query examples, working with multiple datasets, CLI commands, Universal ASTs](https://docs.sourced.tech/community-edition/usage)\\n\\n### Contribute with the community, share use cases, ask questions, report issues\\n\\n- [source{d} CE project](https://github.com/src-d/sourced-ce/)\\n- [Community Forum](https://forum.sourced.tech)\\n- [Slack Community](http://bit.ly/src-d-community)\\n- [GitHub](https://github.com/src-d/)\\n\\n## Further references\\n\\nIn the following places you can find further information:\\n\\n- [source{d} website](https://www.sourced.tech/)\\n  - [source{d} Community Edition](https://sourced.tech/products/community-edition)\\n  - [source{d} Enterprise Edition](https://sourced.tech/products/enterprise-edition)\\n  - [Company](https://sourced.tech/company)\\n  - [Blog](https://blog.sourced.tech/)\\n- [Documentation](https://docs.sourced.tech/)\\n  - [Babelfish/UASTs](https://docs.sourced.tech/babelfish/)\\n  - [Apache Superset (external)](https://superset.incubator.apache.org/)\\n- [Open Source](https://github.com/src-d/)\\n  - [source{d} CE project](https://github.com/src-d/sourced-ce/)\\n  - [Machine Learning on Code](https://github.com/src-d/awesome-machine-learning-on-source-code)\\n  - [Datasets](https://github.com/src-d/datasets)\\n  - [gitbase](https://github.com/src-d/gitbase)\\n- [Community](https://sourced.tech/community)\\n  - [Newsletter](https://go.sourced.tech/newsletter)\\n  - [Slack Community](http://bit.ly/src-d-community)\\n  - [Forum](https://forum.sourced.tech)\\n  - [Twitter](https://twitter.com/sourcedtech)\\n  - [YouTube](https://www.youtube.com/sourced/)\\n  - [Email](mailto:hello@sourced.tech)\", \"height\": 325, \"width\": 12}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-bEmhe7RJW\"], \"type\": \"MARKDOWN\"}, \"ROOT_ID\": {\"children\": [\"GRID_ID\"], \"id\": \"ROOT_ID\", \"type\": \"ROOT\"}, \"ROW-6AX2fnJiWO\": {\"children\": [\"CHART-mw3sO7UGCe\", \"CHART-Gsonj5e205\"], \"id\": \"ROW-6AX2fnJiWO\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}, \"ROW-bEmhe7RJW\": {\"children\": [\"MARKDOWN-MIE5EqOv00\"], \"id\": \"ROW-bEmhe7RJW\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}}",
-                "json_metadata": "{\"filter_immune_slices\": [], \"timed_refresh_immune_slices\": [], \"filter_immune_slice_fields\": {}, \"expanded_slices\": {}, \"refresh_frequency\": 0, \"default_filters\": \"{}\", \"remote_id\": \"87bcdb2d-64e4-473c-8524-c53443a5a64a\"}",
-                "description": null,
                 "css": "",
-                "slug": null,
+                "dashboard_title": "Welcome",
+                "description": null,
+                "json_metadata": "{\"filter_immune_slices\": [], \"timed_refresh_immune_slices\": [], \"filter_immune_slice_fields\": {}, \"expanded_slices\": {}, \"refresh_frequency\": 0, \"default_filters\": \"{}\", \"remote_id\": \"87bcdb2d-64e4-473c-8524-c53443a5a64a\"}",
+                "position_json": "{\"CHART-Gsonj5e205\": {\"children\": [], \"id\": \"CHART-Gsonj5e205\", \"meta\": {\"chartId\": 22, \"height\": 50, \"sliceName\": \"Repository collection progress\", \"width\": 6}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-6AX2fnJiWO\"], \"type\": \"CHART\"}, \"CHART-mw3sO7UGCe\": {\"children\": [], \"id\": \"CHART-mw3sO7UGCe\", \"meta\": {\"chartId\": 21, \"height\": 50, \"sliceName\": \"Metadata collection progress\", \"width\": 6}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-6AX2fnJiWO\"], \"type\": \"CHART\"}, \"DASHBOARD_VERSION_KEY\": \"v2\", \"GRID_ID\": {\"children\": [\"ROW-bEmhe7RJW\", \"ROW-6AX2fnJiWO\"], \"id\": \"GRID_ID\", \"parents\": [\"ROOT_ID\"], \"type\": \"GRID\"}, \"HEADER_ID\": {\"id\": \"HEADER_ID\", \"meta\": {\"text\": \"Welcome\"}, \"type\": \"HEADER\"}, \"MARKDOWN-MIE5EqOv00\": {\"children\": [], \"id\": \"MARKDOWN-MIE5EqOv00\", \"meta\": {\"code\": \"<style>\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder div { max-width: 40em; display: block; overflow: auto; margin: auto; margin-top: 12px; margin-bottom: 24px; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder div { line-height: 1.6; font-size: 16px; font-weight: normal; color: #000; }\\n\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder h1  { margin-top: 24px; margin-bottom: 24px; line-height: 1.6; font-size: 30px; font-weight: bold; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder h2  { margin-top: 24px; margin-bottom: 12px; line-height: 1.6; font-size: 24px; font-weight: bold; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder h3  { margin-top: 24px; margin-bottom: 12px; line-height: 1.6; font-size: 20px; font-weight: bold; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder h4  { margin-top: 18px; margin-bottom: 12px; line-height: 1.6; font-size: 16px; font-weight: bold; }\\n\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder ul  { margin-top: 06px; margin-bottom: 12px; line-height: 1.6; font-size: 16px; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder p   { margin-top: 06px; margin-bottom: 12px; line-height: 1.6; }\\n.dashboard-markdown .dashboard-component.dashboard-component-chart-holder em  { font-size: 16px; color: #6d6e71; }\\n</style>\\n\\n# source{d} Community Edition\\n\\n**Welcome to source{d} Community Edition (CE), the data platform for your software development life cycle (SDLC).**\\n\\nsource{d} CE enables quick discovery, retrieval, parsing, querying and visualization of source code and other SDLC data.\\n\\nsource{d} CE is powered by a powerful SQL interface for Git, and language-agnostic semantic concepts via Universal ASTs;\\nsource{d} CE also brings in GitHub metadata such as pull requests, issues, comments, users, as well as allows you to import your own data tables.\\n\\nBuilt-in source{d} dashboards abstract away the complexity of analyzing SDLC data history at scale and automatically suggest metrics to look at while giving you the freedom to build your own.\\n\\n## Quick-start guide\\n\\n### Before you get started\\n\\nYou can come back to this Welcome dashboard at any point for references and information:\\nvia browser navigation, [URL](http://127.0.0.1:8088/superset/welcome) or in the [list of dashboards](http://127.0.0.1:8088/dashboard/list/).\\n\\nYou can refer to the [source{d} CE full documentation](https://docs.sourced.tech/community-edition/) for more in-depth content.\\n\\n### Load your dataset from organizations\\n\\n- **You fetched a Github organization repository & metadata:** depending on the size of the datasets, the network and your system, it may take some time to fetch the full data. You can check the progress at the bottom of this page: click **[\\u2026]** then _force refresh_ to update. Meanwhile, you can analyze the partial dataset available, refreshing the data from charts for the latest results.\\n\\n_Note: You may also [initialize source{d} CE in the local mode](https://docs.sourced.tech/community-edition/quickstart/3-init-sourced) to load local repository data instantaneously._\\n\\n### Visualize your data on dashboards\\n\\n- **[Explore source code-related use cases & metrics](http://127.0.0.1:8088/superset/dashboard/1/)**\\n- **[Explore Github metadata-related use cases & metrics](http://127.0.0.1:8088/superset/dashboard/3/)**\\n\\n_Note: You may also create your own metrics, charts & dashboards._\\n\\n_Note: Very large datasets may eventually cause timeouts loading charts. If this happens, refresh a few at a time._\\n\\n### Explore your data, create queries, charts & dashboards\\n\\n- [Create metrics, query code and metadata](http://127.0.0.1:8088/superset/sqllab)\\n- [List and create charts](http://127.0.0.1:8088/chart/list/)\\n- [List and create dashboards](http://127.0.0.1:8088/dashboard/list/)\\n- [Explore Universal ASTs](http://127.0.0.1:8088/bblfsh/explore/)\\n\\n_Note: You may also use the \\\"New\\\" button on the top right of the interface._\\n\\n### Check examples for inspiration on new use cases and metrics\\n\\n- [SQL query examples](https://docs.sourced.tech/community-edition/usage/examples)\\n- [Universal AST query examples](https://docs.sourced.tech/babelfish/using-babelfish/uast-querying)\\n\\n### Read the documentation for detailed information\\n\\n- [Introduction: overview & index](https://docs.sourced.tech/community-edition/)\\n- [Quick-start: dependencies, installation, initialization & exploration of datasets](https://docs.sourced.tech/community-edition/quickstart)\\n- [Usage: query examples, working with multiple datasets, CLI commands, Universal ASTs](https://docs.sourced.tech/community-edition/usage)\\n\\n### Contribute with the community, share use cases, ask questions, report issues\\n\\n- [source{d} CE project](https://github.com/src-d/sourced-ce/)\\n- [Community Forum](https://forum.sourced.tech)\\n- [Slack Community](http://bit.ly/src-d-community)\\n- [GitHub](https://github.com/src-d/)\\n\\n## Further references\\n\\nIn the following places you can find further information:\\n\\n- [source{d} website](https://www.sourced.tech/)\\n  - [source{d} Community Edition](https://sourced.tech/products/community-edition)\\n  - [source{d} Enterprise Edition](https://sourced.tech/products/enterprise-edition)\\n  - [Company](https://sourced.tech/company)\\n  - [Blog](https://blog.sourced.tech/)\\n- [Documentation](https://docs.sourced.tech/)\\n  - [Babelfish/UASTs](https://docs.sourced.tech/babelfish/)\\n  - [Apache Superset (external)](https://superset.incubator.apache.org/)\\n- [Open Source](https://github.com/src-d/)\\n  - [source{d} CE project](https://github.com/src-d/sourced-ce/)\\n  - [Machine Learning on Code](https://github.com/src-d/awesome-machine-learning-on-source-code)\\n  - [Datasets](https://github.com/src-d/datasets)\\n  - [gitbase](https://github.com/src-d/gitbase)\\n- [Community](https://sourced.tech/community)\\n  - [Newsletter](https://go.sourced.tech/newsletter)\\n  - [Slack Community](http://bit.ly/src-d-community)\\n  - [Forum](https://forum.sourced.tech)\\n  - [Twitter](https://twitter.com/sourcedtech)\\n  - [YouTube](https://www.youtube.com/sourced/)\\n  - [Email](mailto:hello@sourced.tech)\", \"height\": 325, \"width\": 12}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-bEmhe7RJW\"], \"type\": \"MARKDOWN\"}, \"ROOT_ID\": {\"children\": [\"GRID_ID\"], \"id\": \"ROOT_ID\", \"type\": \"ROOT\"}, \"ROW-6AX2fnJiWO\": {\"children\": [\"CHART-mw3sO7UGCe\", \"CHART-Gsonj5e205\"], \"id\": \"ROW-6AX2fnJiWO\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}, \"ROW-bEmhe7RJW\": {\"children\": [\"MARKDOWN-MIE5EqOv00\"], \"id\": \"ROW-bEmhe7RJW\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}}",
                 "slices": [
                     {
                         "__Slice__": {
-                            "slice_name": "Metadata collection progress",
-                            "datasource_type": "table",
-                            "datasource_name": "Untitled Query-yRPMUzfQC",
-                            "viz_type": "table",
-                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"org\", \"entity\", \"done\", \"total\", \"progress\", \"status\"], \"color_pn\": true, \"datasource\": \"39__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": true, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [\"[\\\"org\\\", true]\", \"[\\\"entity\\\", true]\"], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": null, \"slice_id\": 29, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"144a891f-282f-42ca-99f1-8437e1aeb8d9\", \"datasource_name\": \"Untitled Query-yRPMUzfQC\", \"schema\": \"Untitled Query-yRPMUzfQC\", \"database_name\": \"metadata\"}",
                             "cache_timeout": 1,
-                            "id": 21
+                            "datasource_name": "Untitled Query-yRPMUzfQC",
+                            "datasource_type": "table",
+                            "id": 21,
+                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"org\", \"entity\", \"done\", \"total\", \"progress\", \"status\"], \"color_pn\": true, \"datasource\": \"39__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": true, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [\"[\\\"org\\\", true]\", \"[\\\"entity\\\", true]\"], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": null, \"slice_id\": 29, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"144a891f-282f-42ca-99f1-8437e1aeb8d9\", \"datasource_name\": \"Untitled Query-yRPMUzfQC\", \"schema\": \"Untitled Query-yRPMUzfQC\", \"database_name\": \"metadata\"}",
+                            "slice_name": "Metadata collection progress",
+                            "viz_type": "table"
                         }
                     },
                     {
                         "__Slice__": {
-                            "slice_name": "Repository collection progress",
-                            "datasource_type": "table",
-                            "datasource_name": "public.Untitled Query-Xwa4Amapg",
-                            "viz_type": "table",
-                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"org\", \"discovered\", \"downloaded\", \"updated\", \"failed\"], \"color_pn\": true, \"datasource\": \"40__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": true, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": 1000, \"slice_id\": 30, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"77406f30-3421-4d90-94e1-d8056b56bed7\", \"datasource_name\": \"public.Untitled Query-Xwa4Amapg\", \"schema\": \"public.Untitled Query-Xwa4Amapg\", \"database_name\": \"main\"}",
                             "cache_timeout": 1,
-                            "id": 22
+                            "datasource_name": "public.Untitled Query-Xwa4Amapg",
+                            "datasource_type": "table",
+                            "id": 22,
+                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"org\", \"discovered\", \"downloaded\", \"updated\", \"failed\"], \"color_pn\": true, \"datasource\": \"40__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": true, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": 1000, \"slice_id\": 30, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"77406f30-3421-4d90-94e1-d8056b56bed7\", \"datasource_name\": \"public.Untitled Query-Xwa4Amapg\", \"schema\": \"public.Untitled Query-Xwa4Amapg\", \"database_name\": \"main\"}",
+                            "slice_name": "Repository collection progress",
+                            "viz_type": "table"
                         }
                     }
-                ]
+                ],
+                "slug": null
             }
         }
     ],
     "datasources": [
         {
             "__SqlaTable__": {
-                "table_name": "Untitled Query-Xwa4Amapg",
-                "main_dttm_col": null,
-                "description": null,
-                "default_endpoint": null,
-                "database_id": 3,
-                "offset": 0,
                 "cache_timeout": null,
-                "schema": "public",
-                "sql": "SELECT * FROM gitcollector_metrics",
-                "params": "{\"remote_id\": 40, \"database_name\": \"main\"}",
-                "template_params": "{}",
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "metrics": [
-                    {
-                        "__SqlMetric__": {
-                            "created_by_fk": 1,
-                            "table_id": 31,
-                            "d3format": null,
-                            "description": null,
-                            "metric_type": null,
-                            "metric_name": "count",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "changed_by_fk": 1,
-                            "expression": "count(*)",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "verbose_name": null,
-                            "id": 32,
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    }
-                ],
                 "columns": [
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 113,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 31,
-                            "filterable": true,
-                            "database_expression": null,
                             "changed_by_fk": 1,
-                            "is_active": true,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
                             "column_name": "org",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 118,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 32,
+                            "type": "STRING",
+                            "verbose_name": null
                         }
                     },
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 114,
-                            "type": "INT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 31,
-                            "filterable": true,
-                            "database_expression": null,
                             "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "discovered",
                             "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "entity",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 119,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 32,
+                            "type": "STRING",
+                            "verbose_name": null
                         }
                     },
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 115,
-                            "type": "INT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 31,
-                            "filterable": true,
-                            "database_expression": null,
                             "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "downloaded",
                             "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "done",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 120,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 32,
+                            "type": "INT",
+                            "verbose_name": null
                         }
                     },
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 116,
-                            "type": "INT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 31,
-                            "filterable": true,
-                            "database_expression": null,
                             "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "updated",
                             "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "total",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 121,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 32,
+                            "type": "INT",
+                            "verbose_name": null
                         }
                     },
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 117,
-                            "type": "INT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 31,
-                            "filterable": true,
-                            "database_expression": null,
                             "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "failed",
                             "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "progress",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 122,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 32,
+                            "type": "OBJECT",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "status",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 123,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 32,
+                            "type": "STRING",
+                            "verbose_name": null
                         }
                     }
-                ]
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "id": 33,
+                            "is_restricted": false,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 32,
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 39, \"database_name\": \"metadata\"}",
+                "schema": null,
+                "sql": "SELECT\n    org,\n    entity,\n    done,\n    total,\n    CASE\n        WHEN total IS NULL THEN 0\n        WHEN total = 0 THEN 100\n        ELSE done / total::decimal * 100\n    END AS progress,\n    CASE\n        WHEN total IS NULL THEN 'Pending'\n        WHEN failed > 0 THEN 'Error'\n        WHEN done = total THEN 'Done'\n        ELSE 'In progress'\n    END AS status\nFROM\n    status",
+                "table_name": "Untitled Query-yRPMUzfQC",
+                "template_params": "{}"
             }
         },
         {
             "__SqlaTable__": {
-                "table_name": "Untitled Query-yRPMUzfQC",
-                "main_dttm_col": null,
-                "description": null,
-                "default_endpoint": null,
-                "database_id": 2,
-                "offset": 0,
                 "cache_timeout": null,
-                "schema": null,
-                "sql": "SELECT\n    org,\n    entity,\n    done,\n    total,\n    CASE\n        WHEN total IS NULL THEN 0\n        WHEN total = 0 THEN 100\n        ELSE done / total::decimal * 100\n    END AS progress,\n    CASE\n        WHEN total IS NULL THEN 'Pending'\n        WHEN failed > 0 THEN 'Error'\n        WHEN done = total THEN 'Done'\n        ELSE 'In progress'\n    END AS status\nFROM\n    status",
-                "params": "{\"remote_id\": 39, \"database_name\": \"metadata\"}",
-                "template_params": "{}",
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "metrics": [
-                    {
-                        "__SqlMetric__": {
-                            "created_by_fk": 1,
-                            "table_id": 32,
-                            "d3format": null,
-                            "description": null,
-                            "metric_type": null,
-                            "metric_name": "count",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "changed_by_fk": 1,
-                            "expression": "count(*)",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "verbose_name": null,
-                            "id": 33,
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    }
-                ],
                 "columns": [
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 118,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 32,
-                            "filterable": true,
-                            "database_expression": null,
                             "changed_by_fk": 1,
-                            "is_active": true,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
                             "column_name": "org",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
                             "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
                             "description": null,
+                            "expression": "",
+                            "filterable": true,
                             "groupby": true,
-                            "verbose_name": null,
-                            "id": 119,
+                            "id": 113,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 31,
                             "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 32,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "entity",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                            "verbose_name": null
                         }
                     },
                     {
                         "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "discovered",
                             "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
                             "description": null,
+                            "expression": "",
+                            "filterable": true,
                             "groupby": true,
-                            "verbose_name": null,
-                            "id": 120,
+                            "id": 114,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 31,
                             "type": "INT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 32,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "done",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                            "verbose_name": null
                         }
                     },
                     {
                         "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "downloaded",
                             "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
                             "description": null,
+                            "expression": "",
+                            "filterable": true,
                             "groupby": true,
-                            "verbose_name": null,
-                            "id": 121,
+                            "id": 115,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 31,
                             "type": "INT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 32,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "total",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                            "verbose_name": null
                         }
                     },
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 122,
-                            "type": "OBJECT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 32,
-                            "filterable": true,
-                            "database_expression": null,
                             "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "progress",
                             "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "updated",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 116,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 31,
+                            "type": "INT",
+                            "verbose_name": null
                         }
                     },
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 123,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 32,
-                            "filterable": true,
-                            "database_expression": null,
                             "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "status",
                             "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "failed",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 117,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 31,
+                            "type": "INT",
+                            "verbose_name": null
                         }
                     }
-                ]
+                ],
+                "database_id": 3,
+                "default_endpoint": null,
+                "description": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "id": 32,
+                            "is_restricted": false,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 31,
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 40, \"database_name\": \"main\"}",
+                "schema": "public",
+                "sql": "SELECT * FROM gitcollector_metrics",
+                "table_name": "Untitled Query-Xwa4Amapg",
+                "template_params": "{}"
             }
         }
     ]

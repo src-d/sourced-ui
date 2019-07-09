@@ -2,1223 +2,1223 @@
     "dashboards": [
         {
             "__Dashboard__": {
-                "dashboard_title": "Collaboration",
-                "position_json": "{\"CHART-3F9wGa1nVe\": {\"children\": [], \"id\": \"CHART-3F9wGa1nVe\", \"meta\": {\"chartId\": 25, \"height\": 49, \"sliceName\": \"Most Active Repositories\", \"width\": 12}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-Ixfutv2rRl\"], \"type\": \"CHART\"}, \"CHART-5FbG_o7Awy\": {\"children\": [], \"id\": \"CHART-5FbG_o7Awy\", \"meta\": {\"chartId\": 29, \"height\": 48, \"sliceName\": \"Time to Merge Change Over Time\", \"width\": 6}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-Re8r7jF5U\"], \"type\": \"CHART\"}, \"CHART-CxhPIuq8WU\": {\"children\": [], \"id\": \"CHART-CxhPIuq8WU\", \"meta\": {\"chartId\": 26, \"height\": 50, \"sliceName\": \"Breakdown by Pull Request Outcome\", \"width\": 6}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-Re8r7jF5U\"], \"type\": \"CHART\"}, \"CHART-H_hOSBOPpo\": {\"children\": [], \"id\": \"CHART-H_hOSBOPpo\", \"meta\": {\"chartId\": 30, \"height\": 81, \"sliceName\": \"Pull Requests Workflow\", \"width\": 12}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-vMR1OCiTh\"], \"type\": \"CHART\"}, \"CHART-P3ebofatqz\": {\"children\": [], \"id\": \"CHART-P3ebofatqz\", \"meta\": {\"chartId\": 24, \"height\": 45, \"sliceName\": \"# of pull requests created\", \"width\": 12}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-FTyrflnSnH\"], \"type\": \"CHART\"}, \"CHART-VN6sVVMmGQ\": {\"children\": [], \"id\": \"CHART-VN6sVVMmGQ\", \"meta\": {\"chartId\": 27, \"height\": 50, \"sliceName\": \"Avg. Time to Merge\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-BFazKQCAx\"], \"type\": \"CHART\"}, \"CHART-oaC094q3qs\": {\"children\": [], \"id\": \"CHART-oaC094q3qs\", \"meta\": {\"chartId\": 23, \"height\": 50, \"sliceName\": \"Not Merged Pull Requests\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-BFazKQCAx\"], \"type\": \"CHART\"}, \"CHART-v08M9Dd851\": {\"children\": [], \"id\": \"CHART-v08M9Dd851\", \"meta\": {\"chartId\": 28, \"height\": 50, \"sliceName\": \"Median Time to Merge\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-BFazKQCAx\"], \"type\": \"CHART\"}, \"DASHBOARD_VERSION_KEY\": \"v2\", \"GRID_ID\": {\"children\": [\"ROW-BFazKQCAx\", \"ROW-Ixfutv2rRl\", \"ROW-FTyrflnSnH\", \"ROW-Re8r7jF5U\", \"ROW-vMR1OCiTh\"], \"id\": \"GRID_ID\", \"parents\": [\"ROOT_ID\"], \"type\": \"GRID\"}, \"HEADER_ID\": {\"id\": \"HEADER_ID\", \"meta\": {\"text\": \"Collaboration\"}, \"type\": \"HEADER\"}, \"ROOT_ID\": {\"children\": [\"GRID_ID\"], \"id\": \"ROOT_ID\", \"type\": \"ROOT\"}, \"ROW-BFazKQCAx\": {\"children\": [\"CHART-oaC094q3qs\", \"CHART-VN6sVVMmGQ\", \"CHART-v08M9Dd851\"], \"id\": \"ROW-BFazKQCAx\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}, \"ROW-FTyrflnSnH\": {\"children\": [\"CHART-P3ebofatqz\"], \"id\": \"ROW-FTyrflnSnH\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}, \"ROW-Ixfutv2rRl\": {\"children\": [\"CHART-3F9wGa1nVe\"], \"id\": \"ROW-Ixfutv2rRl\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}, \"ROW-Re8r7jF5U\": {\"children\": [\"CHART-5FbG_o7Awy\", \"CHART-CxhPIuq8WU\"], \"id\": \"ROW-Re8r7jF5U\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}, \"ROW-vMR1OCiTh\": {\"children\": [\"CHART-H_hOSBOPpo\"], \"id\": \"ROW-vMR1OCiTh\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}}",
-                "json_metadata": "{\"filter_immune_slices\": [], \"timed_refresh_immune_slices\": [], \"filter_immune_slice_fields\": {}, \"expanded_slices\": {}, \"refresh_frequency\": 0, \"default_filters\": \"{}\", \"remote_id\": \"89a7262e-fad6-4dd1-bc4e-9f583376e510\"}",
-                "description": null,
                 "css": "",
-                "slug": null,
+                "dashboard_title": "Collaboration",
+                "description": null,
+                "json_metadata": "{\"filter_immune_slices\": [], \"timed_refresh_immune_slices\": [], \"filter_immune_slice_fields\": {}, \"expanded_slices\": {}, \"refresh_frequency\": 0, \"default_filters\": \"{}\", \"remote_id\": \"89a7262e-fad6-4dd1-bc4e-9f583376e510\"}",
+                "position_json": "{\"CHART-3F9wGa1nVe\": {\"children\": [], \"id\": \"CHART-3F9wGa1nVe\", \"meta\": {\"chartId\": 25, \"height\": 49, \"sliceName\": \"Most Active Repositories\", \"width\": 12}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-Ixfutv2rRl\"], \"type\": \"CHART\"}, \"CHART-5FbG_o7Awy\": {\"children\": [], \"id\": \"CHART-5FbG_o7Awy\", \"meta\": {\"chartId\": 29, \"height\": 48, \"sliceName\": \"Time to Merge Change Over Time\", \"width\": 6}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-Re8r7jF5U\"], \"type\": \"CHART\"}, \"CHART-CxhPIuq8WU\": {\"children\": [], \"id\": \"CHART-CxhPIuq8WU\", \"meta\": {\"chartId\": 26, \"height\": 50, \"sliceName\": \"Breakdown by Pull Request Outcome\", \"width\": 6}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-Re8r7jF5U\"], \"type\": \"CHART\"}, \"CHART-H_hOSBOPpo\": {\"children\": [], \"id\": \"CHART-H_hOSBOPpo\", \"meta\": {\"chartId\": 30, \"height\": 81, \"sliceName\": \"Pull Requests Workflow\", \"width\": 12}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-vMR1OCiTh\"], \"type\": \"CHART\"}, \"CHART-P3ebofatqz\": {\"children\": [], \"id\": \"CHART-P3ebofatqz\", \"meta\": {\"chartId\": 24, \"height\": 45, \"sliceName\": \"# of pull requests created\", \"width\": 12}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-FTyrflnSnH\"], \"type\": \"CHART\"}, \"CHART-VN6sVVMmGQ\": {\"children\": [], \"id\": \"CHART-VN6sVVMmGQ\", \"meta\": {\"chartId\": 27, \"height\": 50, \"sliceName\": \"Avg. Time to Merge\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-BFazKQCAx\"], \"type\": \"CHART\"}, \"CHART-oaC094q3qs\": {\"children\": [], \"id\": \"CHART-oaC094q3qs\", \"meta\": {\"chartId\": 23, \"height\": 50, \"sliceName\": \"Not Merged Pull Requests\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-BFazKQCAx\"], \"type\": \"CHART\"}, \"CHART-v08M9Dd851\": {\"children\": [], \"id\": \"CHART-v08M9Dd851\", \"meta\": {\"chartId\": 28, \"height\": 50, \"sliceName\": \"Median Time to Merge\", \"width\": 4}, \"parents\": [\"ROOT_ID\", \"GRID_ID\", \"ROW-BFazKQCAx\"], \"type\": \"CHART\"}, \"DASHBOARD_VERSION_KEY\": \"v2\", \"GRID_ID\": {\"children\": [\"ROW-BFazKQCAx\", \"ROW-Ixfutv2rRl\", \"ROW-FTyrflnSnH\", \"ROW-Re8r7jF5U\", \"ROW-vMR1OCiTh\"], \"id\": \"GRID_ID\", \"parents\": [\"ROOT_ID\"], \"type\": \"GRID\"}, \"HEADER_ID\": {\"id\": \"HEADER_ID\", \"meta\": {\"text\": \"Collaboration\"}, \"type\": \"HEADER\"}, \"ROOT_ID\": {\"children\": [\"GRID_ID\"], \"id\": \"ROOT_ID\", \"type\": \"ROOT\"}, \"ROW-BFazKQCAx\": {\"children\": [\"CHART-oaC094q3qs\", \"CHART-VN6sVVMmGQ\", \"CHART-v08M9Dd851\"], \"id\": \"ROW-BFazKQCAx\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}, \"ROW-FTyrflnSnH\": {\"children\": [\"CHART-P3ebofatqz\"], \"id\": \"ROW-FTyrflnSnH\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}, \"ROW-Ixfutv2rRl\": {\"children\": [\"CHART-3F9wGa1nVe\"], \"id\": \"ROW-Ixfutv2rRl\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}, \"ROW-Re8r7jF5U\": {\"children\": [\"CHART-5FbG_o7Awy\", \"CHART-CxhPIuq8WU\"], \"id\": \"ROW-Re8r7jF5U\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}, \"ROW-vMR1OCiTh\": {\"children\": [\"CHART-H_hOSBOPpo\"], \"id\": \"ROW-vMR1OCiTh\", \"meta\": {\"background\": \"BACKGROUND_TRANSPARENT\"}, \"parents\": [\"ROOT_ID\", \"GRID_ID\"], \"type\": \"ROW\"}}",
                 "slices": [
                     {
                         "__Slice__": {
-                            "slice_name": "Not Merged Pull Requests",
-                            "datasource_type": "table",
+                            "cache_timeout": null,
                             "datasource_name": "public.pr_status-8jUyYteDu",
-                            "viz_type": "big_number_total",
+                            "datasource_type": "table",
+                            "id": 23,
                             "params": "{\"adhoc_filters\": [], \"datasource\": \"31__table\", \"granularity_sqla\": null, \"metric\": {\"aggregate\": null, \"column\": null, \"expressionType\": \"SQL\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"SUM(closed)*1.0/(SUM(merged)+SUM(closed))\", \"optionName\": \"metric_0q0ckjqq7qoa_9awq4k5lq6v\", \"sqlExpression\": \"SUM(closed)*1.0/(SUM(merged)+SUM(closed))\"}, \"slice_id\": 21, \"time_grain_sqla\": \"P1D\", \"time_range\": \"No filter\", \"viz_type\": \"big_number_total\", \"y_axis_format\": \",.1%\", \"remote_id\": \"391e939b-39dc-4bc0-b3dd-faa449191f91\", \"datasource_name\": \"public.pr_status-8jUyYteDu\", \"schema\": \"public.pr_status-8jUyYteDu\", \"database_name\": \"metadata\"}",
-                            "cache_timeout": null,
-                            "id": 23
+                            "slice_name": "Not Merged Pull Requests",
+                            "viz_type": "big_number_total"
                         }
                     },
                     {
                         "__Slice__": {
-                            "slice_name": "# of pull requests created",
-                            "datasource_type": "table",
+                            "cache_timeout": null,
                             "datasource_name": "public.pr_created_at-RVVRcORPF",
-                            "viz_type": "area",
+                            "datasource_type": "table",
+                            "id": 24,
                             "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bottom_margin\": \"auto\", \"color_scheme\": \"bnbColors\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"32__table\", \"granularity_sqla\": \"created_at\", \"groupby\": [], \"line_interpolation\": \"linear\", \"metrics\": [\"count\"], \"order_desc\": true, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 1000, \"show_brush\": \"auto\", \"show_controls\": false, \"show_legend\": true, \"slice_id\": 22, \"stacked_style\": \"stack\", \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"area\", \"x_axis_format\": \"%b/%y\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \".3s\", \"y_log_scale\": false, \"remote_id\": \"df9b4ac0-ac5c-4004-b85f-fddbfa0065f2\", \"datasource_name\": \"public.pr_created_at-RVVRcORPF\", \"schema\": \"public.pr_created_at-RVVRcORPF\", \"database_name\": \"metadata\"}",
-                            "cache_timeout": null,
-                            "id": 24
+                            "slice_name": "# of pull requests created",
+                            "viz_type": "area"
                         }
                     },
                     {
                         "__Slice__": {
-                            "slice_name": "Most Active Repositories",
-                            "datasource_type": "table",
+                            "cache_timeout": null,
                             "datasource_name": "public.admin admin-pr_dates-4xBftRm5b",
-                            "viz_type": "dist_bar",
+                            "datasource_type": "table",
+                            "id": 25,
                             "params": "{\"adhoc_filters\": [], \"bar_stacked\": true, \"bottom_margin\": \"auto\", \"color_scheme\": \"bnbColors\", \"columns\": [], \"contribution\": false, \"datasource\": \"33__table\", \"granularity_sqla\": \"created_at\", \"groupby\": [\"repository\"], \"metrics\": [{\"aggregate\": \"COUNT\", \"column\": {\"column_name\": \"merged_at\", \"database_expression\": null, \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 121, \"is_dttm\": true, \"optionName\": \"_col_merged_at\", \"python_date_format\": null, \"type\": \"DATETIME\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": true, \"label\": \"Merged\", \"optionName\": \"metric_jxumwoerhhf_6h4frowknyp\", \"sqlExpression\": null}, {\"aggregate\": null, \"column\": null, \"expressionType\": \"SQL\", \"fromFormData\": true, \"hasCustomLabel\": true, \"label\": \"Closed\", \"optionName\": \"metric_ub9fmazo6sg_kfzd36b2uv\", \"sqlExpression\": \"COUNT(closed_at)-COUNT(merged_at)\"}, {\"aggregate\": null, \"column\": null, \"expressionType\": \"SQL\", \"fromFormData\": true, \"hasCustomLabel\": true, \"label\": \"Open\", \"optionName\": \"metric_0bzo6iod7vl6_oxnj5hz10m\", \"sqlExpression\": \"COUNT(*)-COUNT(closed_at)\"}], \"order_bars\": false, \"reduce_x_ticks\": false, \"row_limit\": 1000, \"show_bar_value\": false, \"show_controls\": false, \"show_legend\": true, \"slice_id\": 23, \"time_grain_sqla\": \"P1D\", \"time_range\": \"Last 30 days\", \"viz_type\": \"dist_bar\", \"x_axis_label\": \"\", \"x_ticks_layout\": \"auto\", \"y_axis_format\": null, \"y_axis_label\": \"\", \"remote_id\": \"090f84ba-0c13-47d8-9661-75fc0b65dd5f\", \"datasource_name\": \"public.admin admin-pr_dates-4xBftRm5b\", \"schema\": \"public.admin admin-pr_dates-4xBftRm5b\", \"database_name\": \"metadata\"}",
-                            "cache_timeout": null,
-                            "id": 25
+                            "slice_name": "Most Active Repositories",
+                            "viz_type": "dist_bar"
                         }
                     },
                     {
                         "__Slice__": {
-                            "slice_name": "Breakdown by Pull Request Outcome",
-                            "datasource_type": "table",
+                            "cache_timeout": null,
                             "datasource_name": "public.pr_resolution-c5KRWDa_V",
-                            "viz_type": "sunburst",
+                            "datasource_type": "table",
+                            "id": 26,
                             "params": "{\"adhoc_filters\": [], \"color_scheme\": \"bnbColors\", \"datasource\": \"34__table\", \"granularity_sqla\": null, \"groupby\": [\"repository\", \"resolution_type\"], \"metric\": \"count\", \"row_limit\": 1000, \"secondary_metric\": null, \"slice_id\": 24, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"sunburst\", \"remote_id\": \"009d992c-b750-4886-8193-ed2f5f0e68c8\", \"datasource_name\": \"public.pr_resolution-c5KRWDa_V\", \"schema\": \"public.pr_resolution-c5KRWDa_V\", \"database_name\": \"metadata\"}",
-                            "cache_timeout": null,
-                            "id": 26
+                            "slice_name": "Breakdown by Pull Request Outcome",
+                            "viz_type": "sunburst"
                         }
                     },
                     {
                         "__Slice__": {
-                            "slice_name": "Avg. Time to Merge",
-                            "datasource_type": "table",
+                            "cache_timeout": null,
                             "datasource_name": "public.pr_time_to_merge-ejLXE2oaX",
-                            "viz_type": "big_number_total",
+                            "datasource_type": "table",
+                            "id": 27,
                             "params": "{\"adhoc_filters\": [], \"datasource\": \"35__table\", \"granularity_sqla\": \"created_at\", \"metric\": {\"aggregate\": \"AVG\", \"column\": {\"column_name\": \"days\", \"database_expression\": null, \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 129, \"is_dttm\": false, \"optionName\": \"_col_days\", \"python_date_format\": null, \"type\": \"FLOAT\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"AVG(days)\", \"optionName\": \"metric_qd4g8quql4_o3a11vjb6ci\", \"sqlExpression\": null}, \"slice_id\": 25, \"subheader\": \"Average number of days before merge\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"big_number_total\", \"y_axis_format\": \".3s\", \"remote_id\": \"dbe9a2c3-541b-48f0-bfa0-ac0dfe1efdcc\", \"datasource_name\": \"public.pr_time_to_merge-ejLXE2oaX\", \"schema\": \"public.pr_time_to_merge-ejLXE2oaX\", \"database_name\": \"metadata\"}",
-                            "cache_timeout": null,
-                            "id": 27
+                            "slice_name": "Avg. Time to Merge",
+                            "viz_type": "big_number_total"
                         }
                     },
                     {
                         "__Slice__": {
-                            "slice_name": "Median Time to Merge",
-                            "datasource_type": "table",
+                            "cache_timeout": null,
                             "datasource_name": "public.pr_time_to_merge_median-_4s5FrIrI",
-                            "viz_type": "big_number_total",
+                            "datasource_type": "table",
+                            "id": 28,
                             "params": "{\"adhoc_filters\": [], \"datasource\": \"36__table\", \"granularity_sqla\": \"created_at\", \"metric\": {\"aggregate\": null, \"column\": null, \"expressionType\": \"SQL\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"percentile_disc(0.5) WITHIN GROUP (ORDER...\", \"optionName\": \"metric_gzz9981bhx4_681hslzi1z\", \"sqlExpression\": \"percentile_disc(0.5) WITHIN GROUP (ORDER BY extract(epoch from time_to_merge) / 3600.00)\"}, \"slice_id\": 26, \"subheader\": \"Median number of hours before merge\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"big_number_total\", \"y_axis_format\": \".3s\", \"remote_id\": \"a5294cf9-8287-49e8-bb3a-26879b78a740\", \"datasource_name\": \"public.pr_time_to_merge_median-_4s5FrIrI\", \"schema\": \"public.pr_time_to_merge_median-_4s5FrIrI\", \"database_name\": \"metadata\"}",
-                            "cache_timeout": null,
-                            "id": 28
+                            "slice_name": "Median Time to Merge",
+                            "viz_type": "big_number_total"
                         }
                     },
                     {
                         "__Slice__": {
-                            "slice_name": "Time to Merge Change Over Time",
-                            "datasource_type": "table",
+                            "cache_timeout": null,
                             "datasource_name": "public.admin admin-pr_by_days-XSb1QtdX4",
-                            "viz_type": "line",
+                            "datasource_type": "table",
+                            "id": 29,
                             "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bottom_margin\": \"auto\", \"color_scheme\": \"bnbColors\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"37__table\", \"granularity_sqla\": \"created_at\", \"groupby\": [], \"left_margin\": \"auto\", \"line_interpolation\": \"cardinal\", \"metrics\": [{\"aggregate\": \"AVG\", \"column\": {\"column_name\": \"days\", \"database_expression\": null, \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 138, \"is_dttm\": false, \"optionName\": \"_col_days\", \"python_date_format\": null, \"type\": \"FLOAT\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": true, \"label\": \"Average\", \"optionName\": \"metric_v6tqzr5nihp_l7qb802z3jo\", \"sqlExpression\": null}], \"order_desc\": true, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 1000, \"send_time_range\": false, \"show_brush\": \"auto\", \"show_legend\": true, \"show_markers\": true, \"slice_id\": 27, \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"line\", \"x_axis_format\": \"%b/%y\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \".3s\", \"y_axis_label\": \"avg. # of days\", \"y_axis_showminmax\": false, \"y_log_scale\": false, \"remote_id\": \"459f2caf-abe7-4efc-90c0-b89c1c0b2561\", \"datasource_name\": \"public.admin admin-pr_by_days-XSb1QtdX4\", \"schema\": \"public.admin admin-pr_by_days-XSb1QtdX4\", \"database_name\": \"metadata\"}",
-                            "cache_timeout": null,
-                            "id": 29
+                            "slice_name": "Time to Merge Change Over Time",
+                            "viz_type": "line"
                         }
                     },
                     {
                         "__Slice__": {
-                            "slice_name": "Pull Requests Workflow",
-                            "datasource_type": "table",
-                            "datasource_name": "public.pr_workflow-6tUyZn8RC",
-                            "viz_type": "event_flow",
-                            "params": "{\"adhoc_filters\": [], \"all_columns\": [\"repository\", \"number\", \"label\", \"event\", \"time\"], \"all_columns_x\": \"event\", \"datasource\": \"38__table\", \"entity\": \"label\", \"granularity_sqla\": \"time\", \"min_leaf_node_event_count\": 1, \"order_by_entity\": true, \"row_limit\": 10000, \"slice_id\": 28, \"time_grain_sqla\": \"PT1S\", \"time_range\": \"Last 30 days\", \"viz_type\": \"event_flow\", \"remote_id\": \"b0810a78-4130-4bcb-b3f2-8d5fd9dfe7f6\", \"datasource_name\": \"public.pr_workflow-6tUyZn8RC\", \"schema\": \"public.pr_workflow-6tUyZn8RC\", \"database_name\": \"metadata\"}",
                             "cache_timeout": null,
-                            "id": 30
+                            "datasource_name": "public.pr_workflow-6tUyZn8RC",
+                            "datasource_type": "table",
+                            "id": 30,
+                            "params": "{\"adhoc_filters\": [], \"all_columns\": [\"repository\", \"number\", \"label\", \"event\", \"time\"], \"all_columns_x\": \"event\", \"datasource\": \"38__table\", \"entity\": \"label\", \"granularity_sqla\": \"time\", \"min_leaf_node_event_count\": 1, \"order_by_entity\": true, \"row_limit\": 10000, \"slice_id\": 28, \"time_grain_sqla\": \"PT1S\", \"time_range\": \"Last 30 days\", \"viz_type\": \"event_flow\", \"remote_id\": \"b0810a78-4130-4bcb-b3f2-8d5fd9dfe7f6\", \"datasource_name\": \"public.pr_workflow-6tUyZn8RC\", \"schema\": \"public.pr_workflow-6tUyZn8RC\", \"database_name\": \"metadata\"}",
+                            "slice_name": "Pull Requests Workflow",
+                            "viz_type": "event_flow"
                         }
                     }
-                ]
+                ],
+                "slug": null
             }
         }
     ],
     "datasources": [
         {
             "__SqlaTable__": {
-                "table_name": "pr_resolution-c5KRWDa_V",
-                "main_dttm_col": null,
-                "description": null,
-                "default_endpoint": null,
-                "database_id": 2,
-                "offset": 0,
                 "cache_timeout": null,
-                "schema": "public",
-                "sql": "SELECT CONCAT(repository_owner, '/', repository_name) AS repository,\n    CASE WHEN merged_at IS NOT NULL THEN 'merged'\n        WHEN closed_at IS NOT NULL THEN 'closed'\n    END AS resolution_type\nFROM pull_requests\nWHERE state <> 'open'",
-                "params": "{\"remote_id\": 34, \"database_name\": \"metadata\"}",
-                "template_params": "{}",
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "metrics": [
-                    {
-                        "__SqlMetric__": {
-                            "created_by_fk": 1,
-                            "table_id": 37,
-                            "d3format": null,
-                            "description": null,
-                            "metric_type": null,
-                            "metric_name": "count",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "changed_by_fk": 1,
-                            "expression": "count(*)",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "verbose_name": null,
-                            "id": 38,
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    }
-                ],
                 "columns": [
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 141,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
                             },
-                            "expression": "",
-                            "table_id": 37,
-                            "filterable": true,
+                            "column_name": "id",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
                             "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "repository",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
                             "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 142,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
                             "expression": "",
-                            "table_id": 37,
                             "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "resolution_type",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "table_name": "pr_workflow-6tUyZn8RC",
-                "main_dttm_col": null,
-                "description": null,
-                "default_endpoint": null,
-                "database_id": 2,
-                "offset": 0,
-                "cache_timeout": null,
-                "schema": "public",
-                "sql": "SELECT\n    repository,\n    number,\n    CONCAT(repository, '/pull/', number) AS label,\n    event,\n    time\n    FROM (\n        SELECT\n        CONCAT(repository_owner, '/', repository_name) AS repository,\n        number,\n        created_at AS created_datetime,\n        merged_at AS merged_datetime,\n        CASE\n            WHEN merged_at IS NOT NULL THEN NULL\n            ELSE closed_at\n        END AS closed_datetime,\n        closed_at,\n        merged_at\n        FROM pull_requests) t\n    JOIN LATERAL (\n        VALUES('created', t.created_datetime), ('closed', t.closed_datetime), ('merged', t.merged_datetime)) s(event, time) ON TRUE",
-                "params": "{\"remote_id\": 38, \"database_name\": \"metadata\"}",
-                "template_params": "{}",
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "metrics": [
-                    {
-                        "__SqlMetric__": {
-                            "created_by_fk": 1,
-                            "table_id": 34,
-                            "d3format": null,
-                            "description": null,
-                            "metric_type": null,
-                            "metric_name": "count",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "changed_by_fk": 1,
-                            "expression": "count(*)",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "verbose_name": null,
-                            "id": 35,
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    }
-                ],
-                "columns": [
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
                             "groupby": true,
-                            "verbose_name": null,
-                            "id": 129,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 34,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "repository",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 130,
-                            "type": "INT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 34,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "number",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
                             "id": 131,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 34,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
                             "is_active": true,
-                            "column_name": "label",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
                             "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 132,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 34,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "event",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                            "python_date_format": null,
+                            "table_id": 35,
+                            "type": "INT",
+                            "verbose_name": null
                         }
                     },
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 133,
-                            "type": "DATETIME",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 34,
-                            "filterable": true,
-                            "database_expression": null,
                             "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "time",
                             "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "repository",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 132,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 35,
+                            "type": "STRING",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "created_at",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 133,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 35,
+                            "type": "DATETIME",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "merged_at",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 134,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 35,
+                            "type": "DATETIME",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "time_to_merge",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 135,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 35,
+                            "type": null,
+                            "verbose_name": null
                         }
                     }
-                ]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "table_name": "pr_time_to_merge_median-_4s5FrIrI",
-                "main_dttm_col": null,
-                "description": null,
-                "default_endpoint": null,
+                ],
                 "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "id": 36,
+                            "is_restricted": false,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 35,
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
                 "offset": 0,
-                "cache_timeout": null,
+                "params": "{\"remote_id\": 36, \"database_name\": \"metadata\"}",
                 "schema": "public",
                 "sql": "SELECT id, CONCAT(repository_owner, '/', repository_name) AS repository, created_at, merged_at, merged_at - created_at as time_to_merge\r\nFROM pull_requests \r\nWHERE merged_at IS NOT NULL",
-                "params": "{\"remote_id\": 36, \"database_name\": \"metadata\"}",
-                "template_params": "{}",
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "metrics": [
-                    {
-                        "__SqlMetric__": {
-                            "created_by_fk": 1,
-                            "table_id": 38,
-                            "d3format": null,
-                            "description": null,
-                            "metric_type": null,
-                            "metric_name": "count",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "changed_by_fk": 1,
-                            "expression": "count(*)",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "verbose_name": null,
-                            "id": 39,
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    }
-                ],
+                "table_name": "pr_time_to_merge_median-_4s5FrIrI",
+                "template_params": "{}"
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
                 "columns": [
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 143,
-                            "type": "INT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 38,
-                            "filterable": true,
-                            "database_expression": null,
                             "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "repository",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 124,
                             "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 33,
+                            "type": "STRING",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "resolution_type",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 125,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 33,
+                            "type": "STRING",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "id": 34,
+                            "is_restricted": false,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 33,
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 34, \"database_name\": \"metadata\"}",
+                "schema": "public",
+                "sql": "SELECT CONCAT(repository_owner, '/', repository_name) AS repository,\n    CASE WHEN merged_at IS NOT NULL THEN 'merged'\n        WHEN closed_at IS NOT NULL THEN 'closed'\n    END AS resolution_type\nFROM pull_requests\nWHERE state <> 'open'",
+                "table_name": "pr_resolution-c5KRWDa_V",
+                "template_params": "{}"
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:29"
+                            },
                             "column_name": "id",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
                             "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 144,
-                            "type": "STRING",
                             "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
+                                "__datetime__": "2019-07-09T14:00:28"
                             },
-                            "expression": "",
-                            "table_id": 38,
-                            "filterable": true,
                             "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "repository",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
                             "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 145,
-                            "type": "DATETIME",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
                             "expression": "",
-                            "table_id": 38,
                             "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "created_at",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
                             "groupby": true,
-                            "verbose_name": null,
-                            "id": 146,
-                            "type": "DATETIME",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 38,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "merged_at",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 147,
-                            "type": null,
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 38,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "time_to_merge",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "table_name": "admin admin-pr_dates-4xBftRm5b",
-                "main_dttm_col": null,
-                "description": null,
-                "default_endpoint": null,
-                "database_id": 2,
-                "offset": 0,
-                "cache_timeout": null,
-                "schema": "public",
-                "sql": "SELECT CONCAT(repository_owner, '/', repository_name) AS repository, created_at, merged_at, closed_at \nFROM pull_requests",
-                "params": "{\"remote_id\": 33, \"database_name\": \"metadata\"}",
-                "template_params": "{}",
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "metrics": [
-                    {
-                        "__SqlMetric__": {
-                            "created_by_fk": 1,
-                            "table_id": 40,
-                            "d3format": null,
-                            "description": null,
-                            "metric_type": null,
-                            "metric_name": "count",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            },
-                            "changed_by_fk": 1,
-                            "expression": "count(*)",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "verbose_name": null,
-                            "id": 41,
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            }
-                        }
-                    }
-                ],
-                "columns": [
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 151,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            },
-                            "expression": "",
-                            "table_id": 40,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "repository",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 152,
-                            "type": "DATETIME",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            },
-                            "expression": "",
-                            "table_id": 40,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "created_at",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 153,
-                            "type": "DATETIME",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            },
-                            "expression": "",
-                            "table_id": 40,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "merged_at",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 154,
-                            "type": "DATETIME",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            },
-                            "expression": "",
-                            "table_id": 40,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "closed_at",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "table_name": "admin admin-pr_by_days-XSb1QtdX4",
-                "main_dttm_col": null,
-                "description": null,
-                "default_endpoint": null,
-                "database_id": 2,
-                "offset": 0,
-                "cache_timeout": null,
-                "schema": "public",
-                "sql": "SELECT\r\n    CONCAT(repository_owner, '/', repository_name) AS repository,\r\n    created_at,\r\n    merged_at, \r\n    extract(epoch from (merged_at - created_at)) / (3600.00 *24) as days\r\nFROM pull_requests \r\nWHERE merged_at IS NOT NULL",
-                "params": "{\"remote_id\": 37, \"database_name\": \"metadata\"}",
-                "template_params": "{}",
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "metrics": [
-                    {
-                        "__SqlMetric__": {
-                            "created_by_fk": 1,
-                            "table_id": 35,
-                            "d3format": null,
-                            "description": null,
-                            "metric_type": null,
-                            "metric_name": "count",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "changed_by_fk": 1,
-                            "expression": "count(*)",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "verbose_name": null,
-                            "id": 36,
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    }
-                ],
-                "columns": [
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 134,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 35,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "repository",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 135,
-                            "type": "DATETIME",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 35,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "created_at",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 136,
-                            "type": "DATETIME",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 35,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "merged_at",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 137,
-                            "type": "FLOAT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 35,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "days",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "table_name": "pr_created_at-RVVRcORPF",
-                "main_dttm_col": null,
-                "description": null,
-                "default_endpoint": null,
-                "database_id": 2,
-                "offset": 0,
-                "cache_timeout": null,
-                "schema": "public",
-                "sql": "SELECT id, created_at, to_char(date_trunc('month', created_at), 'YYYY-MM')\nFROM pull_requests",
-                "params": "{\"remote_id\": 32, \"database_name\": \"metadata\"}",
-                "template_params": "{}",
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "metrics": [
-                    {
-                        "__SqlMetric__": {
-                            "created_by_fk": 1,
-                            "table_id": 39,
-                            "d3format": null,
-                            "description": null,
-                            "metric_type": null,
-                            "metric_name": "count",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "changed_by_fk": 1,
-                            "expression": "count(*)",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "verbose_name": null,
-                            "id": 40,
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    }
-                ],
-                "columns": [
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 148,
-                            "type": "INT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 39,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "id",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 149,
-                            "type": "DATETIME",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 39,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "created_at",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
                             "id": 150,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            },
-                            "expression": "",
-                            "table_id": 39,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
                             "is_active": true,
-                            "column_name": "to_char",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:42"
-                            }
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 40,
+                            "type": "INT",
+                            "verbose_name": null
                         }
-                    }
-                ]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "table_name": "pr_status-8jUyYteDu",
-                "main_dttm_col": null,
-                "description": null,
-                "default_endpoint": null,
-                "database_id": 2,
-                "offset": 0,
-                "cache_timeout": null,
-                "schema": "public",
-                "sql": "SELECT CONCAT(repository_owner, '/', repository_name) AS repository, COUNT(merged_at) AS merged, (COUNT(closed_at) - COUNT(merged_at)) AS closed\nFROM pull_requests\nWHERE state <> 'open'\nGROUP BY repository",
-                "params": "{\"remote_id\": 31, \"database_name\": \"metadata\"}",
-                "template_params": "{}",
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "metrics": [
+                    },
                     {
-                        "__SqlMetric__": {
-                            "created_by_fk": 1,
-                            "table_id": 36,
-                            "d3format": null,
-                            "description": null,
-                            "metric_type": null,
-                            "metric_name": "count",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
+                        "__TableColumn__": {
                             "changed_by_fk": 1,
-                            "expression": "count(*)",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "verbose_name": null,
-                            "id": 37,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:29"
+                            },
+                            "column_name": "repository",
+                            "created_by_fk": 1,
                             "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                                "__datetime__": "2019-07-09T14:00:29"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 151,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 40,
+                            "type": "STRING",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:29"
+                            },
+                            "column_name": "created_at",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:29"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 152,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 40,
+                            "type": "DATETIME",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:29"
+                            },
+                            "column_name": "merged_at",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:29"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 153,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 40,
+                            "type": "DATETIME",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:29"
+                            },
+                            "column_name": "days",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:29"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 154,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 40,
+                            "type": "FLOAT",
+                            "verbose_name": null
                         }
                     }
                 ],
-                "columns": [
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
                     {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 138,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 36,
-                            "filterable": true,
-                            "database_expression": null,
+                        "__SqlMetric__": {
                             "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "repository",
                             "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 139,
-                            "type": "INT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
+                                "__datetime__": "2019-07-09T14:00:28"
                             },
-                            "expression": "",
-                            "table_id": 36,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "merged",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
                             "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 140,
-                            "type": "INT",
                             "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
+                                "__datetime__": "2019-07-09T14:00:28"
                             },
-                            "expression": "",
-                            "table_id": 36,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "closed",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "id": 41,
+                            "is_restricted": false,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 40,
+                            "verbose_name": null,
+                            "warning_text": null
                         }
                     }
-                ]
-            }
-        },
-        {
-            "__SqlaTable__": {
-                "table_name": "pr_time_to_merge-ejLXE2oaX",
-                "main_dttm_col": null,
-                "description": null,
-                "default_endpoint": null,
-                "database_id": 2,
+                ],
                 "offset": 0,
-                "cache_timeout": null,
+                "params": "{\"remote_id\": 35, \"database_name\": \"metadata\"}",
                 "schema": "public",
                 "sql": "SELECT\r\n    id,\r\n    CONCAT(repository_owner, '/', repository_name) AS repository,\r\n    created_at,\r\n    merged_at, \r\n    extract(epoch from (merged_at - created_at)) / (3600.00 *24) as days\r\nFROM pull_requests \r\nWHERE merged_at IS NOT NULL",
-                "params": "{\"remote_id\": 35, \"database_name\": \"metadata\"}",
-                "template_params": "{}",
-                "filter_select_enabled": false,
-                "fetch_values_predicate": null,
-                "metrics": [
-                    {
-                        "__SqlMetric__": {
-                            "created_by_fk": 1,
-                            "table_id": 33,
-                            "d3format": null,
-                            "description": null,
-                            "metric_type": null,
-                            "metric_name": "count",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "changed_by_fk": 1,
-                            "expression": "count(*)",
-                            "warning_text": null,
-                            "is_restricted": false,
-                            "verbose_name": null,
-                            "id": 34,
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    }
-                ],
+                "table_name": "pr_time_to_merge-ejLXE2oaX",
+                "template_params": "{}"
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
                 "columns": [
                     {
                         "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 124,
-                            "type": "INT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 33,
-                            "filterable": true,
-                            "database_expression": null,
                             "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "id",
                             "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 125,
-                            "type": "STRING",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
+                                "__datetime__": "2019-07-09T14:00:28"
                             },
-                            "expression": "",
-                            "table_id": 33,
-                            "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
                             "column_name": "repository",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
                             "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 126,
-                            "type": "DATETIME",
                             "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
+                                "__datetime__": "2019-07-09T14:00:28"
                             },
-                            "expression": "",
-                            "table_id": 33,
-                            "filterable": true,
                             "database_expression": null,
-                            "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "created_at",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
-                            "is_dttm": true,
                             "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 127,
-                            "type": "DATETIME",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
                             "expression": "",
-                            "table_id": 33,
                             "filterable": true,
-                            "database_expression": null,
-                            "changed_by_fk": 1,
+                            "groupby": true,
+                            "id": 147,
                             "is_active": true,
-                            "column_name": "merged_at",
-                            "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
-                        }
-                    },
-                    {
-                        "__TableColumn__": {
-                            "created_by_fk": 1,
-                            "python_date_format": null,
                             "is_dttm": false,
-                            "description": null,
-                            "groupby": true,
-                            "verbose_name": null,
-                            "id": 128,
-                            "type": "FLOAT",
-                            "created_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            },
-                            "expression": "",
-                            "table_id": 33,
-                            "filterable": true,
-                            "database_expression": null,
+                            "python_date_format": null,
+                            "table_id": 39,
+                            "type": "STRING",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
                             "changed_by_fk": 1,
-                            "is_active": true,
-                            "column_name": "days",
                             "changed_on": {
-                                "__datetime__": "2019-07-08T18:15:41"
-                            }
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "merged",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 148,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 39,
+                            "type": "INT",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "closed",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 149,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 39,
+                            "type": "INT",
+                            "verbose_name": null
                         }
                     }
-                ]
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "id": 40,
+                            "is_restricted": false,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 39,
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 31, \"database_name\": \"metadata\"}",
+                "schema": "public",
+                "sql": "SELECT CONCAT(repository_owner, '/', repository_name) AS repository, COUNT(merged_at) AS merged, (COUNT(closed_at) - COUNT(merged_at)) AS closed\nFROM pull_requests\nWHERE state <> 'open'\nGROUP BY repository",
+                "table_name": "pr_status-8jUyYteDu",
+                "template_params": "{}"
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "repository",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 140,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 37,
+                            "type": "STRING",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "created_at",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 141,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 37,
+                            "type": "DATETIME",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "merged_at",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 142,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 37,
+                            "type": "DATETIME",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "days",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 143,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 37,
+                            "type": "FLOAT",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "id": 38,
+                            "is_restricted": false,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 37,
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 37, \"database_name\": \"metadata\"}",
+                "schema": "public",
+                "sql": "SELECT\r\n    CONCAT(repository_owner, '/', repository_name) AS repository,\r\n    created_at,\r\n    merged_at, \r\n    extract(epoch from (merged_at - created_at)) / (3600.00 *24) as days\r\nFROM pull_requests \r\nWHERE merged_at IS NOT NULL",
+                "table_name": "admin admin-pr_by_days-XSb1QtdX4",
+                "template_params": "{}"
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "id",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 144,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 38,
+                            "type": "INT",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "created_at",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 145,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 38,
+                            "type": "DATETIME",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "to_char",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 146,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 38,
+                            "type": "STRING",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "id": 39,
+                            "is_restricted": false,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 38,
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 32, \"database_name\": \"metadata\"}",
+                "schema": "public",
+                "sql": "SELECT id, created_at, to_char(date_trunc('month', created_at), 'YYYY-MM')\nFROM pull_requests",
+                "table_name": "pr_created_at-RVVRcORPF",
+                "template_params": "{}"
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "repository",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 136,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 36,
+                            "type": "STRING",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "created_at",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 137,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 36,
+                            "type": "DATETIME",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "merged_at",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 138,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 36,
+                            "type": "DATETIME",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "closed_at",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 139,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 36,
+                            "type": "DATETIME",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "id": 37,
+                            "is_restricted": false,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 36,
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 33, \"database_name\": \"metadata\"}",
+                "schema": "public",
+                "sql": "SELECT CONCAT(repository_owner, '/', repository_name) AS repository, created_at, merged_at, closed_at \nFROM pull_requests",
+                "table_name": "admin admin-pr_dates-4xBftRm5b",
+                "template_params": "{}"
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "repository",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 126,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 34,
+                            "type": "STRING",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "number",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 127,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 34,
+                            "type": "INT",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "label",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 128,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 34,
+                            "type": "STRING",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "event",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 129,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 34,
+                            "type": "STRING",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "column_name": "time",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "database_expression": null,
+                            "description": null,
+                            "expression": "",
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 130,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 34,
+                            "type": "DATETIME",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 2,
+                "default_endpoint": null,
+                "description": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2019-07-09T14:00:28"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "id": 35,
+                            "is_restricted": false,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 34,
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 38, \"database_name\": \"metadata\"}",
+                "schema": "public",
+                "sql": "SELECT\n    repository,\n    number,\n    CONCAT(repository, '/pull/', number) AS label,\n    event,\n    time\n    FROM (\n        SELECT\n        CONCAT(repository_owner, '/', repository_name) AS repository,\n        number,\n        created_at AS created_datetime,\n        merged_at AS merged_datetime,\n        CASE\n            WHEN merged_at IS NOT NULL THEN NULL\n            ELSE closed_at\n        END AS closed_datetime,\n        closed_at,\n        merged_at\n        FROM pull_requests) t\n    JOIN LATERAL (\n        VALUES('created', t.created_datetime), ('closed', t.closed_datetime), ('merged', t.merged_datetime)) s(event, time) ON TRUE",
+                "table_name": "pr_workflow-6tUyZn8RC",
+                "template_params": "{}"
             }
         }
     ]
