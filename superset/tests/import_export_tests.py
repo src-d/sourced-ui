@@ -217,6 +217,26 @@ class ImportExportTests(SupersetTestCase):
         self.assertEquals(
             json.loads(expected_slc.params), json.loads(actual_slc.params))
 
+    def assert_only_exported_slc_fields(self, expected_dash, actual_dash):
+        """ only exported json has this params
+            imported/created dashboard has relationships to other models instead
+        """
+        expected_slices = sorted(expected_dash.slices,
+                                 key=lambda s: s.slice_name or '')
+        actual_slices = sorted(
+            actual_dash.slices, key=lambda s: s.slice_name or '')
+        for e_slc, a_slc in zip(expected_slices, actual_slices):
+            params = a_slc.params_dict
+            self.assertEqual(e_slc.datasource.name, params['datasource_name'])
+            self.assertEqual(e_slc.datasource.name, params['schema'])
+            self.assertEqual(e_slc.datasource.database.name,
+                             params['database_name'])
+            # remove the fields to allow to assert dashboards equals
+            del params['datasource_name']
+            del params['schema']
+            del params['database_name']
+            a_slc.params = json.dumps(params)
+
     def test_export_1_dashboard(self):
         self.login('admin')
         birth_dash = self.get_dash_by_slug('births')
@@ -231,6 +251,8 @@ class ImportExportTests(SupersetTestCase):
         )['dashboards']
 
         birth_dash = self.get_dash_by_slug('births')
+        self.assert_only_exported_slc_fields(
+            birth_dash, exported_dashboards[0])
         self.assert_dash_equals(birth_dash, exported_dashboards[0])
 
         exported_tables = json.loads(
@@ -258,9 +280,11 @@ class ImportExportTests(SupersetTestCase):
         self.assertEquals(2, len(exported_dashboards))
 
         birth_dash = self.get_dash_by_slug('births')
+        self.assert_only_exported_slc_fields(birth_dash, exported_dashboards[0])
         self.assert_dash_equals(birth_dash, exported_dashboards[0])
 
         world_health_dash = self.get_dash_by_slug('world_health')
+        self.assert_only_exported_slc_fields(world_health_dash, exported_dashboards[1])
         self.assert_dash_equals(world_health_dash, exported_dashboards[1])
 
         exported_tables = sorted(
