@@ -98,13 +98,13 @@ body {
   font-size: 16px;
 }
 
-//= Header Primary CTA
+//== UI Elements
 
 .nav.navbar-nav.navbar-right .btn-primary,
 .nav.navbar-nav.navbar-right .btn.btn-primary {
-  background-color: @brand-primary;
-  color: #fff;
-  border: none;
+  background-color: #fff;
+  color: @brand-primary;
+  border: 1px solid @brand-primary;
   text-transform: uppercase;
   padding: 0.45rem 2.65rem 0.45rem 1.35rem;
   font-weight: 600;
@@ -113,7 +113,7 @@ body {
   i:before {
     content: "\F0D7";
     font-size: 14px;
-    color: #fff;
+    color: @brand-primary;
     position: relative;
     left: 45px;
   }
@@ -121,9 +121,146 @@ body {
 
 .nav.navbar-nav.navbar-right .btn-primary:hover,
 .nav.navbar-nav.navbar-right .btn.btn-primary:hover {
-  background-color: darken(@brand-primary, 3%);
+  background-color: darken(#fff, 3%);
 }
 
 .nav.navbar-nav.navbar-right .btn-primary .fa {
   color: #fff;
+}
+
+.bblfsh-header__input-group button.bblfsh-header__button {
+  padding: 0.75rem 3.25rem;
+  height: 36px;
+  color: @brand-primary;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  background: #fff;
+  font-family: Source Sans Pro;
+  border: 1px solid @brand-primary;
+  letter-spacing: 0;
+  opacity: 1;
+  padding-top: 8px;
+}
+
+.bblfsh-header__input-group button.bblfsh-header__button:hover,
+.bblfsh-header__input-group button.bblfsh-header__button:focus,
+.bblfsh-header__input-group button.bblfsh-header__button:active {
+  background: darken(#fff, 3%);
+  min-width: 121px;
+  box-shadow: none;
+}
+
+.bblfsh-header__input-group button.bblfsh-header__button:first-of-type {
+  color: #989898;
+  border: 1px solid #b3b3b3;
+  padding: 0.75rem 3.25rem;
+  height: 36px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  background: #fff;
+  font-family: Source Sans Pro;
+  letter-spacing: 0;
+  opacity: 1;
+  padding-top: 8px;
+}
+
+.bblfsh-header__input-group button.bblfsh-header__button:first-of-type:hover {
+  background: darken(#fff, 3%);
+  box-shadow: none;
+}
+
+.bblfsh-header__input-group input.bblfsh-header__input {
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  color: #636262;
+  font-weight: 300;
+}
+
+button.bblfsh-header__button:disabled,
+input.bblfsh-search-panel__button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+  background: #fff !important;
+}
+
+.bblfsh-header__input-group.right button.bblfsh-header__run-button {
+  background-color: @brand-primary;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px !important;
+  margin-left: 12px;
+  border-radius: 0.2rem !important;
+  outline: 1px solid @brand-primary;
+  outline-offset: -1px;
+  padding: 0.45rem 1.45rem 0.45rem 1.45rem;
+  letter-spacing: 0;
+}
+
+.bblfsh-header__input-group.right button.bblfsh-header__run-button:hover,
+.bblfsh-header__input-group.right button.bblfsh-header__run-button:focus {
+  background: darken(@brand-primary, 3%);
+  box-shadow: none;
+}
+
+.bblfsh-header__input[type="url"]::placeholder {
+  font-weight: 100;
+  text-transform: capitalize;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  color: #aaa;
+}
+
+.nav.navbar-nav.navbar-right .btn-primary .fa {
+  color: #fff;
+}
+
+.bblfsh-header__select {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  height: 38px;
+  width: 122px;
+}
+
+.bblfsh-header__label {
+  font-size: 16px;
+  font-weight: 100;
+  text-transform: none;
+}
+
+.bblfsh-options__label {
+  font-size: 16px;
+  font-weight: 100;
+  color: #636262;
+}
+
+.bblfsh-search-panel__text-input {
+  font-weight: 100;
+  text-transform: capitalize;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  color: #aaa;
+}
+
+.bblfsh-search-panel__button {
+  border-radius: 3px;
+  border: 1px solid @brand-primary;
+  color: @brand-primary;
+  background: #fff;
+  padding: 8px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12.8px;
+  padding: 6px 30px;
+}
+
+.bblfsh-search-panel__button:hover,
+.bblfsh-search-panel__button:focus {
+  background: darken(#fff, 3%);
+  transition: none;
+  box-shadow: none;
 }
