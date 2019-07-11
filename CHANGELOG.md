@@ -3,20 +3,27 @@
 ## [Unreleased]
 <details>
   <summary>
-
+    Changes that have landed in master but are not yet released.
+    Click to see more.
   </summary>
+
+### Changed
+
+- New styling that follows the source{d} branding ([#139](https://github.com/src-d/sourced-ui/issues/139), [#142](https://github.com/src-d/sourced-ui/issues/142), [#204](https://github.com/src-d/sourced-ui/pull/204).)
+- Improved method to export and import dashboards as JSON ([#165](https://github.com/src-d/sourced-ui/issues/165)).
+
 </details>
 
 ## [v0.3.0](https://github.com/src-d/sourced-ui/releases/tag/v0.3.0) - 2019-06-27
 
 - New default dashboards
   - Add welcome dashboards with documentation.
-  - Add a dashboard with charts making use of gitbase data (https://github.com/src-d/sourced-ui/issues/105, https://github.com/src-d/sourced-ui/issues/110).
-  - Add a dashboard based on metadata (https://github.com/src-d/sourced-ui/issues/137).
-- Create metadata DB datasources on bootstrap (https://github.com/src-d/sourced-ui/issues/112).
-- Environment variable `SUPERSET_NO_DB_INIT` (https://github.com/src-d/sourced-ui/issues/99).
-- Gitbase datasource is now updated if we restart sourced-ui with a changed GITBASE_* env variable (https://github.com/src-d/sourced-ui/issues/96).
-- Remove dependency on src-d/ci (https://github.com/src-d/sourced-ui/issues/100).
+  - Add a dashboard with charts making use of gitbase data ([#105](https://github.com/src-d/sourced-ui/issues/105), [#110](https://github.com/src-d/sourced-ui/issues/110)).
+  - Add a dashboard based on metadata ([#137](https://github.com/src-d/sourced-ui/issues/137)).
+- Create metadata DB datasources on bootstrap ([#112](https://github.com/src-d/sourced-ui/issues/112)).
+- Environment variable `SUPERSET_NO_DB_INIT` ([#99](https://github.com/src-d/sourced-ui/issues/99)).
+- Gitbase datasource is now updated if we restart sourced-ui with a changed GITBASE_* env variable ([#96](https://github.com/src-d/sourced-ui/issues/96)).
+- Remove dependency on src-d/ci ([#100](https://github.com/src-d/sourced-ui/issues/100)).
 
 ## [v0.2.0](https://github.com/src-d/sourced-ui/releases/tag/v0.2.0) - 2019-06-07
 
