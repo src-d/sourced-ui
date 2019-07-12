@@ -809,14 +809,34 @@ h4.panel-title {
 
 //= Layout Adjustments
 
-.SqlEditor .SouthPane {
-  margin-top: 20px;
-
-  .tab-content {
-    margin-top: 12px;
+.SqlEditor {
+  .gutter {
+    margin: 15px auto 7px !important;
   }
 
-  .ResultSetControls {
-    margin-bottom: 12px;
+  .SouthPane {
+    padding-bottom: 15px;
+
+    .tab-content > .tab-pane {
+      padding-top: 12px;
+    }
+
+    .filterable-table-container {
+      height: auto !important;
+      position: absolute;
+      top: 76px;
+      bottom: 0px;
+      left: 0;
+      right: 0;
+      overflow: auto hidden;
+
+      .ReactVirtualized__Table__Grid{
+        height: auto !important;
+        position: absolute !important;
+        top: 32px;
+        bottom: 0;
+        left: 0;
+      }
+    }
   }
 }
