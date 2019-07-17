@@ -11,6 +11,9 @@
 
 - New styling that follows the source{d} branding ([#139](https://github.com/src-d/sourced-ui/issues/139), [#142](https://github.com/src-d/sourced-ui/issues/142), [#204](https://github.com/src-d/sourced-ui/pull/204).)
 - Improved method to export and import dashboards as JSON ([#165](https://github.com/src-d/sourced-ui/issues/165)).
+- Added a development mode to run source{d} in a hot reloading way, so every change in `srcd` or `superset`
+will trigger a refresh in the rowser [[see docs](./CONTRIBUTING.md#run-sourced-ce-for-development-with-hot-reloading)].
+
 
 </details>
 
