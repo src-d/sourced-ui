@@ -12,6 +12,8 @@ this project follows the following guidelines.
 **Content:**
 
 - [Changelog](#changelog)
+- [Work With Superset Upstream](#work-with-superset-upstream)
+- [Build Docker Image](#build-docker-image)
 - [Run source{d} CE For Development With Hot Reloading](#run-source-d-ce-for-development-with-hot-reloading)
 
 
@@ -23,6 +25,42 @@ This project lists the important changes between releases in the
 If you open a PR, you should also add a brief summary in the `CHANGELOG.md`
 mentioning the new feature, change or bugfix that you proposed.
 
+
+## Work With Superset Upstream
+
+Superset version which we are based on is defined in `Makefile`.
+
+To see which files are patched compare to upstream, run:
+
+```shell
+$ make diff-stat
+```
+
+To see diff with upstream, run:
+
+```shell
+$ make diff
+```
+
+
+## Build Docker Image
+
+The official Docker images of sourced-ui, used by **source{d} CE** are released at
+[hub.docker.com/r/srcd/sourced-ui](https://hub.docker.com/r/srcd/sourced-ui). You
+can also build yours running:
+
+```shell
+$ make build
+```
+
+The docker image name and tag are defined by the [`Makefile`](Makefile) and can
+be overridden passing environment variables to the `build` target, example:
+
+```shell
+$ DOCKER_IMAGE_NAME=my/sourced-ui VERSION=local make build
+```
+
+will locally build an image called `my/sourced-ui:local`
 
 ## Run source{d} CE For Development With Hot Reloading
 

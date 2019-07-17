@@ -2,10 +2,6 @@
 
 Web UI for [source{d} Community Edition (CE)](https://github.com/src-d/sourced-ce).
 
-## Contents
-
-- [Description](#description)
-- [Development](#development)
 
 ## Description
 
@@ -22,6 +18,7 @@ This repository contains the code for the [`srcd/sourced-ui`](https://hub.docker
 
 
 ### Environment Variables
+
 You can configure the Docker image using the following environment variables:
 
 | Environment Variable  | Description                                                     |
@@ -54,52 +51,6 @@ You can configure the Docker image using the following environment variables:
 | `METADATA_PASSWORD`   | Password for metadata DB (when `SYNC_MODE` is set to `true`)    |
 | `METADATA_DB`         | Database name for metadata (when `SYNC_MODE` is set to `true`)  |
 
-## Development
-
-### Setup local environment
-
-Download the `docker-compose.yml` file from [`src-d/sourced-ce`](https://github.com/src-d/sourced-ce), and run the dependencies:
-```
-docker-compose up gitbase bblfsh-web
-```
-
-Update superset directory:
-
-```
-make patch-dev
-```
-
-Enter into `superset` directory:
-```
-cd superset
-```
-
-Follow original superset instructions for [Flask server](https://github.com/apache/incubator-superset/blob/release--0.32/CONTRIBUTING.md#flask-server) and [Frontend assets](https://github.com/apache/incubator-superset/blob/release--0.32/CONTRIBUTING.md#frontend-assets)
-
-
-### Build docker image
-
-```
-make build
-```
-
-The image name is defined in the `Makefile`.
-
-### Work with superset upstream
-
-Superset version which we are based on is defined in `Makefile`.
-
-To see which files are patched compare to upstream, run:
-
-```
-make diff-stat
-```
-
-To see diff with upstream, run:
-
-```
-make diff
-```
 
 ## Contribute
 
