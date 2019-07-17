@@ -72,17 +72,6 @@ patch: clean apply-patch
 apply-patch:
 	cp -r $(PATCH_SOURCE_DIR)/* $(SUPERSET_DIR)/
 
-# Copy src-d files in the superset repository using symlinks. it's useful for development.
-# Allows to run flask locally and work only inside superset directory.
-.PHONY: patch-dev
-patch-dev: clean
-	@diff=`diff -r $(PATCH_SOURCE_DIR) $(SUPERSET_DIR) | grep "$(PATCH_SOURCE_DIR)" | awk '{gsub(/: /,"/");print $$3}'`; \
-	for file in $${diff}; do \
-		to=`echo $${file} | cut -d'/' -f2-`; \
-		ln -s "$(PWD)/$${file}" "$(SUPERSET_DIR)/$${to}"; \
-	done; \
-	ln -s "$(PWD)/$(PATCH_SOURCE_DIR)/superset/superset_config_dev.py" "$(SUPERSET_DIR)/superset_config.py"; \
-
 # Start a watcher that will run 'make apply-patch' automatically when 'srcd' changes
 # It will require either inotify or fswatch. More info in CONTRIBUTING.md
 .PHONY: watch
