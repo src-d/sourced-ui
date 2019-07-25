@@ -358,6 +358,7 @@ class BaseColumn(AuditMixinNullable, ImportMixin):
 
     # [optional] Set this to support import/export functionality
     export_fields = []
+    export_ordering = 'column_name'
 
     def __repr__(self):
         return self.column_name
@@ -418,6 +419,8 @@ class BaseMetric(AuditMixinNullable, ImportMixin):
     is_restricted = Column(Boolean, default=False, nullable=True)
     d3format = Column(String(128))
     warning_text = Column(Text)
+
+    export_ordering = 'metric_name'
 
     """
     The interface should also declare a datasource relationship pointing
