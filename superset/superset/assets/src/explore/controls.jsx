@@ -70,6 +70,8 @@ import { defaultViewport } from '../modules/geo';
 import ColumnOption from '../components/ColumnOption';
 import OptionDescription from '../components/OptionDescription';
 
+import { defaultScheme } from '../customization';
+
 const categoricalSchemeRegistry = getCategoricalSchemeRegistry();
 const sequentialSchemeRegistry = getSequentialSchemeRegistry();
 
@@ -2021,7 +2023,7 @@ export const controls = {
   color_scheme: {
     type: 'ColorSchemeControl',
     label: t('Color Scheme'),
-    default: 'bnbColors',
+    default: defaultScheme,
     renderTrigger: true,
     choices: () => categoricalSchemeRegistry.keys().map(s => ([s, s])),
     description: t('The color scheme for rendering chart'),
