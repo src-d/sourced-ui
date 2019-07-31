@@ -14,8 +14,7 @@ this project follows the following guidelines.
 - [Changelog](#changelog)
 - [Work With Superset Upstream](#work-with-superset-upstream)
 - [Build Docker Image](#build-docker-image)
-- [Run source{d} CE For Development With Hot Reloading](#run-source-d-ce-for-development-with-hot-reloading)
-
+- [Run source{d} CE For Development With Hot Reloading](#run-sourced-ce-for-development-with-hot-reloading)
 
 ## Changelog
 
