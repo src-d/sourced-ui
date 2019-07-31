@@ -86,11 +86,11 @@ if GITBASE_USER:
     if GITBASE_PASSWORD:
         GITBASE_AUTH += ':%s' % GITBASE_PASSWORD
     GITBASE_AUTH += '@'
-GITBASE_DATABASE_URI = '%s://%s%s:%s/%s' % (GITBASE_PREFIX,
-                                            GITBASE_AUTH,
-                                            GITBASE_HOST,
-                                            GITBASE_PORT,
-                                            GITBASE_DB)
+GITBASE_DATABASE_URI = '%s://%s%s:%s/%s?charset=utf8' % (GITBASE_PREFIX,
+                                                         GITBASE_AUTH,
+                                                         GITBASE_HOST,
+                                                         GITBASE_PORT,
+                                                         GITBASE_DB)
 
 SQLLAB_DEFAULT_DBID = 2  # set gitbase as default DB in SQL Lab
 
