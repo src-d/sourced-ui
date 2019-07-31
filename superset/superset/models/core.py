@@ -657,7 +657,8 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
             )
             # remove ids and relations (like owners, created by, slices, ...)
             copied_dashboard = dashboard.copy()
-            for slc in dashboard.slices:
+            sorted_slices = sorted(dashboard.slices, key=lambda x: (x.slice_name or ''))
+            for slc in sorted_slices:
                 datasource_ids.add((slc.datasource_id, slc.datasource_type))
                 copied_slc = slc.copy()
                 # save original id into json
@@ -685,6 +686,11 @@ class Dashboard(Model, AuditMixinNullable, ImportMixin):
                 datasource_class = copied_datasource.__class__
                 for field_name in datasource_class.export_children:
                     field_val = getattr(eager_datasource, field_name).copy()
+                    sort_by = None
+                    if len(field_val) > 0:
+                        sort_by = field_val[0].export_ordering
+                    if sort_by:
+                        field_val = sorted(field_val, key=lambda x: getattr(x, sort_by))
                     # set children without creating ORM relations
                     copied_datasource.__dict__[field_name] = field_val
                 eager_datasources.append(copied_datasource)

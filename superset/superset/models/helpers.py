@@ -56,6 +56,11 @@ class ImportMixin(object):
     # The names of the attributes
     # that are available for import and export
 
+    # If a collection is exported, this str represents by which argument
+    # to sort the collection achieve a deterministic order.
+    # Deterministic ordering is useful for diffing and unit tests
+    export_ordering = None
+
     @classmethod
     def _parent_foreign_key_mappings(cls):
         """Get a mapping of foreign name to the local name of foreign keys"""
@@ -203,16 +208,22 @@ class ImportMixin(object):
                     }
         if recursive:
             for c in self.export_children:
-                # sorting to make lists of children stable
-                dict_rep[c] = sorted(
-                    [
+                sort_by = None
+                orm_children = getattr(self, c)
+                children = []
+                if orm_children:
+                    children = [
                         child.export_to_dict(
                             recursive=recursive,
                             include_parent_ref=include_parent_ref,
                             include_defaults=include_defaults,
-                        ) for child in getattr(self, c)
-                    ],
-                    key=lambda k: sorted(k.items()))
+                        ) for child in orm_children
+                    ]
+                    sort_by = orm_children[0].export_ordering
+                # sorting to make lists of children stable
+                if sort_by:
+                    children = sorted(children, key=lambda x: x.get(sort_by))
+                dict_rep[c] = children
 
         return dict_rep
 

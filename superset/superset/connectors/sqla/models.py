@@ -289,6 +289,7 @@ class SqlaTable(Model, BaseDatasource):
         f for f in export_fields if f not in ('table_name', 'database_id')]
     export_parent = 'database'
     export_children = ['metrics', 'columns']
+    export_ordering = 'table_name'
 
     sqla_aggregations = {
         'COUNT_DISTINCT': lambda column_name: sa.func.COUNT(sa.distinct(column_name)),
