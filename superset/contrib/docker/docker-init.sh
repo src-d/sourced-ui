@@ -17,47 +17,16 @@
 #
 set -ex
 
-# always run migrations
+# Create an admin user (you will be prompted to set username, first and last name before setting a password)
+fabmanager create-admin --app superset
+
+# Initialize the database
 superset db upgrade
 
-# always gitbase script to update datasource if it was changed in env var
-python add_gitbase.py
-
-# add metadata data source only in sync mode
-if [ ! -z "$SYNC_MODE" ]; then
-    python add_metadata_db.py
+if [ "$SUPERSET_LOAD_EXAMPLES" = "yes" ]; then
+    # Load some data to play with
+    superset load_examples
 fi
 
-# initialize database if empty
-if ! fabmanager list-users --app superset | grep -q $ADMIN_LOGIN; then
-    # Create an admin user
-    fabmanager create-admin \
-        --app superset \
-        --username $ADMIN_LOGIN \
-        --firstname $ADMIN_FIRST_NAME \
-        --lastname $ADMIN_LAST_NAME \
-        --email $ADMIN_EMAIL \
-        --password $ADMIN_PASSWORD
-    
-    # Create default roles and permissions
-    superset init
-
-    # Add dashboards
-    superset import_dashboards --path /home/superset/dashboards/gitbase/overview.json
-
-    # Add local or organization dashboards
-    if [ -z "$SYNC_MODE" ]; then
-        sleep 2s
-        superset import_dashboards --path /home/superset/dashboards/gitbase/welcome.json
-    else
-        sleep 2s
-        superset import_dashboards --path /home/superset/dashboards/metadata/welcome.json
-
-        sleep 2s
-        superset import_dashboards --path /home/superset/dashboards/metadata/collaboration.json
-    fi
-
-    # set welcome dashboard as a default
-    python set_default_dashboard.py
-fi
-
+# Create default roles and permissions
+superset init
