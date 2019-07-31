@@ -22,6 +22,8 @@ import setupClient from './setup/setupClient';
 import setupColors from './setup/setupColors';
 import setupFormatters from './setup/setupFormatters';
 
+import { customize } from './customization';
+
 // Configure translation
 if (typeof window !== 'undefined') {
   const root = document.getElementById('app');
@@ -44,3 +46,6 @@ setupColors();
 
 // Setup number formatters
 setupFormatters();
+
+// source{d} CE customizations
+customize();
