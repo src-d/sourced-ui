@@ -1,6 +1,16 @@
+from collections import OrderedDict
 import os
 
 from werkzeug.contrib.cache import RedisCache
+
+
+# Disable druid
+
+DRUID_IS_ACTIVE = False
+
+DEFAULT_MODULE_DS_MAP = OrderedDict([
+    ('superset.connectors.sqla.models', ['SqlaTable']),
+])
 
 
 # Helper functions
