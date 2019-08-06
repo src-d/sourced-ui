@@ -7,15 +7,26 @@
     Click to see more.
   </summary>
 
+</details>
+
+## [v0.4.0](https://github.com/src-d/sourced-ui/releases/tag/v0.4.0) - 2019-08-06
+
 ### Changed
 
 - New styling that follows the source{d} branding ([#139](https://github.com/src-d/sourced-ui/issues/139), [#142](https://github.com/src-d/sourced-ui/issues/142), [#204](https://github.com/src-d/sourced-ui/pull/204).)
 - Improved method to export and import dashboards as JSON ([#165](https://github.com/src-d/sourced-ui/issues/165)).
-- Added a development mode to run source{d} in a hot reloading way, so every change in `srcd` or `superset`
-will trigger a refresh in the rowser [[see docs](./CONTRIBUTING.md#run-sourced-ce-for-development-with-hot-reloading)].
+- Allow users to re-order top level tabs ([#234](https://github.com/src-d/sourced-ui/pull/234)).
+- Disable Druid clusters as datasources ([#238](https://github.com/src-d/sourced-ui/pull/238)).
 
+### Fixed
 
-</details>
+- Use utf8 encoding for gitbase connection ([#233](https://github.com/src-d/sourced-ui/issues/233)).
+- Fixes and improvements in the charts of the default dashboards ([#237](https://github.com/src-d/sourced-ui/issues/237), [#236](https://github.com/src-d/sourced-ui/issues/236)).
+
+### Internal
+
+- Added a development mode to run source{d} with hot reloading. Every change in `srcd` or `superset`
+will trigger a refresh in the browser ([see docs](./CONTRIBUTING.md#run-sourced-ce-for-development-with-hot-reloading)).
 
 ## [v0.3.0](https://github.com/src-d/sourced-ui/releases/tag/v0.3.0) - 2019-06-27
 
