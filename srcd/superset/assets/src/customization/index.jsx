@@ -15,6 +15,8 @@ function setupColors() {
       }
     });
   });
+
+  categoricalSchemeRegistry.setDefaultKey(defaultScheme);
 }
 
 export function customize() {
