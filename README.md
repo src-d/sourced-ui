@@ -54,8 +54,7 @@ You can configure the Docker image using the following environment variables:
 
 ## Contribute
 
-[Contributions](https://github.com/src-d/sourced-ui/issues) are more than welcome, if you are interested please take a look to
-our [source{d} Contributing Guidelines](https://github.com/src-d/guide/blob/master/engineering/documents/CONTRIBUTING.md).
+[Contributions](https://github.com/src-d/sourced-ui/issues) are more than welcome. In the [Contributing Guidelines](./CONTRIBUTING.md) you will find more info about how to contribute, build the ui, or run it for development with hot reloading. 
 
 
 ## Code of Conduct
