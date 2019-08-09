@@ -7,6 +7,7 @@
 ### Fixed
 
 - Timestamp type not mapped correctly from Spark SQL to Hive ([#227](https://github.com/src-d/sourced-ui/issues/227))
+- Fix tables' preview in SQL Lab for SparkSQL engine ([#246](https://github.com/src-d/sourced-ui/pull/246))
 
   </summary>
 
