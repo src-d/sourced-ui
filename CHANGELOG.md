@@ -4,6 +4,10 @@
 <details>
   <summary>
 
+### Changed
+
+- Speed-up stopping of container by using `tini` to handle `SIGTERM` ([#239](https://github.com/src-d/sourced-ui/issues/239))
+
 ### Fixed
 
 - Timestamp type not mapped correctly from Spark SQL to Hive ([#227](https://github.com/src-d/sourced-ui/issues/227))
