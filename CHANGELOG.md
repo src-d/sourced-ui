@@ -3,8 +3,11 @@
 ## [Unreleased]
 <details>
   <summary>
-    Changes that have landed in master but are not yet released.
-    Click to see more.
+
+### Fixed
+
+- Timestamp type not mapped correctly from Spark SQL to Hive ([#227](https://github.com/src-d/sourced-ui/issues/227))
+
   </summary>
 
 </details>
