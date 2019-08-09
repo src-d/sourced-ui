@@ -39,7 +39,12 @@ RUN apt-get install -y vim less postgresql-client redis-tools
 # https://superset.incubator.apache.org/installation.html#making-your-own-build
 # https://nodejs.org/en/download/package-manager/
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-    && apt-get install -y nodejs
+        && apt-get install -y nodejs
+
+# Install tini to ensure default signal handlers for the application
+ENV TINI_VERSION v0.18.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
 
 WORKDIR /home/superset
 
@@ -67,7 +72,8 @@ RUN cd superset/assets \
 COPY contrib/docker/superset_config.py ./superset/
 COPY contrib/docker/bootstrap.py .
 COPY contrib/docker/docker-entrypoint.sh /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+# Remap exit code 143 (= 128 + 15 [SIGTERM]) to 0
+ENTRYPOINT ["/tini", "-e", "143", "--", "/entrypoint.sh"]
 
 HEALTHCHECK CMD ["curl", "-f", "http://localhost:8088/health"]
 
