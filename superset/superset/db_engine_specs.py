@@ -1420,6 +1420,17 @@ class SparkSQLEngineSpec(HiveEngineSpec):
     def get_view_names(cls, inspector, schema):
         return BaseEngineSpec.get_view_names(inspector, schema)
 
+    @classmethod
+    def select_star(cls, my_db, table_name, engine, schema=None, limit=100,
+                    show_cols=False, indent=True, latest_partition=True,
+                    cols=None):
+        schema = None if schema == 'default' else schema
+        return super(SparkSQLEngineSpec, cls).select_star(
+            my_db, table_name, engine, schema=schema, limit=limit,
+            show_cols=show_cols, indent=indent, latest_partition=latest_partition,
+            cols=cols
+        )
+
 
 class MssqlEngineSpec(BaseEngineSpec):
     engine = 'mssql'
