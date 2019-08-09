@@ -1411,6 +1411,16 @@ class HiveEngineSpec(PrestoEngineSpec):
         cursor.execute(query, **kwargs)
 
 
+class SparkSQLEngineSpec(HiveEngineSpec):
+    """Reuses HiveEngineSpec functionality."""
+
+    engine = 'sparksql'
+
+    @classmethod
+    def get_view_names(cls, inspector, schema):
+        return BaseEngineSpec.get_view_names(inspector, schema)
+
+
 class MssqlEngineSpec(BaseEngineSpec):
     engine = 'mssql'
     epoch_to_dttm = "dateadd(S, {col}, '1970-01-01')"
