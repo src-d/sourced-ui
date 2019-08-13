@@ -266,6 +266,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -350,6 +351,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -456,6 +458,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -518,6 +521,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": false,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -602,6 +606,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -818,6 +823,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -902,6 +908,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -986,6 +993,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -1202,6 +1210,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -1305,6 +1314,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -1411,6 +1421,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -1495,6 +1506,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -1601,6 +1613,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -1685,6 +1698,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -1769,6 +1783,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -1853,6 +1868,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -1959,6 +1975,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -2043,6 +2060,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -2281,6 +2299,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {
@@ -2365,6 +2384,7 @@
                 "description": null,
                 "fetch_values_predicate": null,
                 "filter_select_enabled": false,
+                "is_sqllab_view": true,
                 "main_dttm_col": null,
                 "metrics": [
                     {

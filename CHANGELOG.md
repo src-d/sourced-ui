@@ -4,6 +4,11 @@
 <details>
   <summary>
 
+### Changed
+
+- Add `is_sqllab_view` into dashboard export [#243]
+- Tables created for default charts are hidden by default now [#243]
+
 ### Fixed
 
 - Timestamp type not mapped correctly from Spark SQL to Hive ([#227](https://github.com/src-d/sourced-ui/issues/227))

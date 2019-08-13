@@ -283,7 +283,7 @@ class SqlaTable(Model, BaseDatasource):
         'table_name', 'main_dttm_col', 'description', 'default_endpoint',
         'database_id', 'offset', 'cache_timeout', 'schema',
         'sql', 'params', 'template_params', 'filter_select_enabled',
-        'fetch_values_predicate',
+        'fetch_values_predicate', 'is_sqllab_view',
     )
     update_from_object_fields = [
         f for f in export_fields if f not in ('table_name', 'database_id')]
