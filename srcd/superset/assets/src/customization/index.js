@@ -3,17 +3,29 @@ import {
   getSequentialSchemeRegistry,
 } from '@superset-ui/color';
 
+import {
+  defaultPalette as srcdCategoricalDefault,
+  scheme as srcdCategoricalPalettes,
+} from './srcdColorsCategorical';
+import {
+  defaultPalette as srcdSequentialDefault,
+  scheme as srcdSequentialPalettes,
+} from './srcdColorsSequential';
+
 export const defaultScheme = 'SUPERSET_DEFAULT';
 
-const srcdCategoricalDefault = 'bnbColors';
-const srcdSequentialDefault = 'blue_white_yellow';
+function setupPalette(palettes, colorRegistry, defaultKey) {
+  [palettes].forEach((group) => {
+    group.forEach((scheme) => {
+      colorRegistry.registerValue(scheme.id, scheme);
+    });
+  });
 
-function setupPalette(colorRegistry, defaultKey) {
   colorRegistry.setDefaultKey(defaultScheme);
   colorRegistry.registerValue(defaultScheme, colorRegistry.get(defaultKey));
 }
 
 export function customize() {
-  setupPalette(getCategoricalSchemeRegistry(), srcdCategoricalDefault);
-  setupPalette(getSequentialSchemeRegistry(), srcdSequentialDefault);
+  setupPalette(srcdCategoricalPalettes, getCategoricalSchemeRegistry(), srcdCategoricalDefault);
+  setupPalette(srcdSequentialPalettes, getSequentialSchemeRegistry(), srcdSequentialDefault);
 }
