@@ -70,10 +70,14 @@ import { defaultViewport } from '../modules/geo';
 import ColumnOption from '../components/ColumnOption';
 import OptionDescription from '../components/OptionDescription';
 
+import { defaultScheme } from '../customization/index';
+import colors from '../customization/colors';
+
+
 const categoricalSchemeRegistry = getCategoricalSchemeRegistry();
 const sequentialSchemeRegistry = getSequentialSchemeRegistry();
 
-const PRIMARY_COLOR = { r: 0, g: 122, b: 135, a: 1 };
+const PRIMARY_COLOR = colors.mainSpecs;
 
 const D3_FORMAT_DOCS = 'D3 format syntax: https://github.com/d3/d3-format';
 
@@ -358,10 +362,8 @@ export const controls = {
   linear_color_scheme: {
     type: 'ColorSchemeControl',
     label: t('Linear Color Scheme'),
-    choices: () => sequentialSchemeRegistry
-      .values()
-      .map(value => [value.id, value.label]),
-    default: 'blue_white_yellow',
+    choices: () => sequentialSchemeRegistry.keys().map(s => ([s, s])),
+    default: defaultScheme,
     clearable: false,
     description: '',
     renderTrigger: true,
@@ -1892,14 +1894,10 @@ export const controls = {
     type: 'SelectControl',
     freeForm: true,
     label: t('RGB Color'),
-    default: 'rgb(0, 122, 135)',
+    default: colors.main,
     choices: [
-      ['rgb(0, 139, 139)', 'Dark Cyan'],
-      ['rgb(128, 0, 128)', 'Purple'],
-      ['rgb(255, 215, 0)', 'Gold'],
-      ['rgb(69, 69, 69)', 'Dim Gray'],
-      ['rgb(220, 20, 60)', 'Crimson'],
-      ['rgb(34, 139, 34)', 'Forest Green'],
+      [colors.main, 'main'],
+      ...Object.keys(colors.palette).map(name => [colors.palette[name], name]),
     ],
     description: t('The color for points and clusters in RGB'),
   },
@@ -2021,7 +2019,7 @@ export const controls = {
   color_scheme: {
     type: 'ColorSchemeControl',
     label: t('Color Scheme'),
-    default: 'bnbColors',
+    default: defaultScheme,
     renderTrigger: true,
     choices: () => categoricalSchemeRegistry.keys().map(s => ([s, s])),
     description: t('The color scheme for rendering chart'),
