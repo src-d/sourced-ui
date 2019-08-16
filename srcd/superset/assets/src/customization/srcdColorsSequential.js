@@ -1,8 +1,13 @@
+
 /* eslint-disable sort-keys */
 
 import { SequentialScheme } from '@superset-ui/color';
 
-export const defaultPalette = 'blue_white_yellow';
+import colors from './colors';
+
+const palette = colors.palette;
+
+export const defaultPalette = 'lime_white_royal';
 
 // Sequential palettes use to be:
 // - diverging palettes: having three different colors (or more, but keeping the
@@ -11,18 +16,16 @@ export const defaultPalette = 'blue_white_yellow';
 // - not diverging palettes: having two colors (or more, but being a hue transition
 //   between the first and the last).
 export const scheme = [
-  /* Example
   {
-    id: 'blue_white_yellow',
-    label: 'blue/white/yellow',
+    id: 'lime_white_royal',
+    label: 'lime/white/royal',
     isDiverging: true,
-    colors: ['blue', 'white', 'yellow'],
+    colors: [palette.lime, 'white', palette.royal],
   },
   {
-    id: 'kazan_white',
-    label: 'kazan/white',
+    id: 'royal_white',
+    label: 'royal/white',
     isDiverging: false,
-    colors: ['white', palette.kazan],
+    colors: ['white', palette.royal],
   },
-  */
 ].map(s => new SequentialScheme(s));
