@@ -71,11 +71,13 @@ import ColumnOption from '../components/ColumnOption';
 import OptionDescription from '../components/OptionDescription';
 
 import { defaultScheme } from '../customization/index';
+import colors from '../customization/colors';
+
 
 const categoricalSchemeRegistry = getCategoricalSchemeRegistry();
 const sequentialSchemeRegistry = getSequentialSchemeRegistry();
 
-const PRIMARY_COLOR = { r: 0, g: 122, b: 135, a: 1 };
+const PRIMARY_COLOR = colors.mainSpecs;
 
 const D3_FORMAT_DOCS = 'D3 format syntax: https://github.com/d3/d3-format';
 
@@ -1892,14 +1894,10 @@ export const controls = {
     type: 'SelectControl',
     freeForm: true,
     label: t('RGB Color'),
-    default: 'rgb(0, 122, 135)',
+    default: colors.main,
     choices: [
-      ['rgb(0, 139, 139)', 'Dark Cyan'],
-      ['rgb(128, 0, 128)', 'Purple'],
-      ['rgb(255, 215, 0)', 'Gold'],
-      ['rgb(69, 69, 69)', 'Dim Gray'],
-      ['rgb(220, 20, 60)', 'Crimson'],
-      ['rgb(34, 139, 34)', 'Forest Green'],
+      [colors.main, 'main'],
+      ...Object.keys(colors.palette).map(name => [colors.palette[name], name]),
     ],
     description: t('The color for points and clusters in RGB'),
   },
