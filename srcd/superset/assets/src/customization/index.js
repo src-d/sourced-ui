@@ -3,7 +3,7 @@ import {
   getSequentialSchemeRegistry,
 } from '@superset-ui/color';
 
-const defaultScheme = 'SUPERSET_DEFAULT';
+export const defaultScheme = 'SUPERSET_DEFAULT';
 
 const srcdCategoricalDefault = 'bnbColors';
 const srcdSequentialDefault = 'blue_white_yellow';

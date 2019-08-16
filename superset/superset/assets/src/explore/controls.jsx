@@ -70,6 +70,8 @@ import { defaultViewport } from '../modules/geo';
 import ColumnOption from '../components/ColumnOption';
 import OptionDescription from '../components/OptionDescription';
 
+import { defaultScheme } from '../customization/index';
+
 const categoricalSchemeRegistry = getCategoricalSchemeRegistry();
 const sequentialSchemeRegistry = getSequentialSchemeRegistry();
 
@@ -358,10 +360,8 @@ export const controls = {
   linear_color_scheme: {
     type: 'ColorSchemeControl',
     label: t('Linear Color Scheme'),
-    choices: () => sequentialSchemeRegistry
-      .values()
-      .map(value => [value.id, value.label]),
-    default: 'blue_white_yellow',
+    choices: () => sequentialSchemeRegistry.keys().map(s => ([s, s])),
+    default: defaultScheme,
     clearable: false,
     description: '',
     renderTrigger: true,
@@ -2021,7 +2021,7 @@ export const controls = {
   color_scheme: {
     type: 'ColorSchemeControl',
     label: t('Color Scheme'),
-    default: 'bnbColors',
+    default: defaultScheme,
     renderTrigger: true,
     choices: () => categoricalSchemeRegistry.keys().map(s => ([s, s])),
     description: t('The color scheme for rendering chart'),
