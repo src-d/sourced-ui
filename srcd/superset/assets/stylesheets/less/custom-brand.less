@@ -1,25 +1,23 @@
 @import "./cosmo/variables.less";
 
-//== Typography overwrite
+//== Typography
 
 body {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: @font-family-sans-serif;
   font-size: @font-size-base;
 }
 
-.table-condensed,
-.filterable-table-container * {
-  font-size: 14px !important;
+.filterable-table-container *,
+.table-condensed * {
+  font-size: @font-size-small;
 }
 
 h2 {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: @font-size-h2;
   font-weight: 600;
 }
 
 h3 {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: @font-size-h3;
   font-weight: 300;
   position: relative;
@@ -32,7 +30,6 @@ h3 {
 }
 
 h3.panel-title {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: @font-size-h2;
   font-weight: 600;
   border: none !important;
@@ -44,7 +41,6 @@ h3.panel-title {
 
 h4,
 h4.panel-title {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
   font-size: @font-size-h2;
   font-weight: 600;
   border: none !important;
@@ -72,12 +68,12 @@ h4.panel-title {
 }
 
 .chart-header .header .editable-title input[type="button"] {
-  font-size: 22px;
+  font-size: @font-size-h4;
   font-weight: 100;
 }
 
 .chart-header span.editable-title {
-  font-size: 26px;
+  font-size: @font-size-h2;
   font-weight: 600;
 }
 
@@ -88,12 +84,12 @@ h4.panel-title {
 .ace_editor {
   font: 14px "Source Code Pro", Monaco, Consolas, "Courier New", monospace !important;
   font-family: "Source Code Pro", Monaco, Consolas, "Courier New", monospace;
-  font-size: 14px !important;
+  font-size: @font-size-small;
 }
 
 .dropdown-menu {
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
+  font-size: @font-size-base;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -121,7 +117,7 @@ h4.panel-title {
 .dashboard .chart-header .dropdown-menu li a,
 .dashboard .dashboard-header .dropdown-menu li a {
   font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px !important;
+  font-size: @font-size-base;
   font-weight: 300;
   letter-spacing: 0 !important;
 }
@@ -132,7 +128,7 @@ h4.panel-title {
 
 .label,
 .label[style] {
-  font-size: 16px !important;
+  font-size: @font-size-base;
 }
 
 .dashboard .chart-header .dropdown-menu li a span,
@@ -144,7 +140,7 @@ h4.panel-title {
 
 .nav.navbar-nav .caret:before {
   content: "\f0d7";
-  font-size: 14px;
+  font-size: @font-size-small;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -240,19 +236,68 @@ h4.panel-title {
   }
 }
 
-.nav.navbar-nav.navbar-right .btn-primary,
-.nav.navbar-nav.navbar-right .btn.btn-primary {
+.table th a {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+//= UI Elements
+
+// Buttons ====================================================================
+
+.btn-brand-primary {
   background-color: @brand-primary;
   color: #fff;
-  border: none;
+  border: 1px solid @brand-primary;
   text-transform: uppercase;
-  padding: 0.75rem 4rem 0.75rem 2.25rem;
+  border-radius: 0.2rem;
   font-weight: 600;
-  font-size: 14px !important;
+  font-size: @font-size-small;
+}
+
+.btn-brand-primary-secondary {
+  background-color: #fff;
+  color: @brand-primary;
+  text-transform: uppercase;
+  font-size: @font-size-small;
+  font-weight: 600;
+  border-radius: 0.2rem;
+  border: 1px solid @brand-primary;
+}
+
+.btn-brand-primary-tertiary {
+  background-color: @brand-tertiary;
+  color: #fff;
+  border: 1px solid @brand-tertiary;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: @font-size-small;
+  border-radius: 0.2rem;
+}
+
+.btn-brand-secondary-tertiary {
+  background-color: #fff;
+  color: @brand-tertiary;
+  border: 1px solid @brand-tertiary;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: @font-size-small;
+  border-radius: 0.2rem;
+}
+
+.label-brand-primary {
+  color: #2a7b38;
+  background-color: #bce9c4;
+}
+
+.nav.navbar-nav.navbar-right .btn-primary,
+.nav.navbar-nav.navbar-right .btn.btn-primary {
+  .btn-brand-primary();
+  padding: 0.65rem 4rem 0.65rem 2.25rem;
 
   i:before {
     content: "\F0D7";
-    font-size: 14px;
+    font-size: @font-size-small;
     color: #fff;
     position: relative;
     left: 45px;
@@ -261,40 +306,21 @@ h4.panel-title {
 
 .nav.navbar-nav.navbar-right .btn-primary:hover,
 .nav.navbar-nav.navbar-right .btn.btn-primary:hover {
-  background-color: darken(@brand-primary, 3%);
+  background-color: @brand-primary-hover-color;
 }
-
-.table th a {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-//= UI Elements
 
 .panel-body .btn.btn-primary[type="button"] {
-  background-color: @brand-primary;
-  color: #fff;
-  border: none;
-  text-transform: uppercase;
+  .btn-brand-primary();
   padding: 0.75rem 3.25rem 0.75rem 3.25rem;
-  font-weight: 600;
-  font-size: 14px !important;
-  border-radius: 0.2rem;
 }
 
 .panel-body .btn.btn-primary[type="button"]:hover {
-  background-color: darken(@brand-primary, 3%);
+  background-color: @brand-primary-hover-color;
 }
 
 .query-and-save.btn-group button:first-child {
-  background-color: @brand-primary;
-  color: #fff;
-  border: none;
-  text-transform: uppercase;
+  .btn-brand-primary();
   padding: 0.75rem 3.25rem;
-  font-weight: 600;
-  font-size: 14px !important;
-  border-radius: 0.2rem;
   min-width: 135px;
 
   i {
@@ -302,22 +328,19 @@ h4.panel-title {
   }
 }
 
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+}
+
 .query-and-save.btn-group button:first-child:hover {
-  background-color: darken(@brand-primary, 3%);
+  background-color: @brand-primary-hover-color;
 }
 
 .query-and-save.btn-group button:nth-child(2) {
-  background-color: #fff;
-  color: @brand-primary;
-  border: none;
-  text-transform: uppercase;
-  padding: 0.75rem 3.25rem;
-  font-weight: 600;
-  font-size: 14px !important;
+  .btn-brand-primary-secondary();
+  padding: 0.8rem 3.25rem;
   margin-left: 12px;
-  border-radius: 0.2rem !important;
-  outline: 1px solid @brand-primary;
-  outline-offset: -1px;
 
   i {
     display: none;
@@ -333,7 +356,7 @@ h4.panel-title {
 }
 
 .explore-container .m-l-5.text-muted:hover {
-  background-color: darken(@brand-primary, 3%);
+  background-color: @brand-primary-hover-color;
 }
 
 .btn-group.results .btn.btn-default.btn-sm {
@@ -341,7 +364,7 @@ h4.panel-title {
   color: #989898;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 14px !important;
+  font-size: @font-size-small;
   border: 1px solid #bcbcbc;
 }
 
@@ -357,7 +380,7 @@ h4.panel-title {
   border: none;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 14px !important;
+  font-size: @font-size-small;
   margin-left: 12px;
   border-radius: 0.2rem !important;
   outline: 1px solid @brand-tertiary;
@@ -377,7 +400,7 @@ h4.panel-title {
   border: none;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 14px !important;
+  font-size: @font-size-small;
   margin-left: 12px;
   border-radius: 0.2rem !important;
   outline: 1px solid @brand-tertiary;
@@ -387,7 +410,7 @@ h4.panel-title {
   span.caret:before {
     padding-top: 10px !important;
     content: "\F0D7";
-    font-size: 14px;
+    font-size: @font-size-small;
     left: -5px;
     position: relative;
     color: @brand-tertiary;
@@ -400,33 +423,20 @@ h4.panel-title {
 }
 
 .modal-footer #btn_modal_save_goto_dash {
-  background-color: @brand-primary;
-  color: #fff;
-  border: none;
-  text-transform: uppercase;
+  .btn-brand-primary();
   padding: 0.75rem 3.25rem;
-  font-weight: 600;
-  font-size: 14px !important;
-  border-radius: 0.2rem;
+  font-size: @font-size-small;
 }
 
 .modal-footer #btn_modal_save_goto_dash:hover,
 .modal-footer #btn_modal_save_goto_dash:focus {
-  background-color: darken(@brand-primary, 3%);
+  background-color: @brand-primary-hover-color;
 }
 
 .modal-footer #btn_modal_save {
-  background-color: #fff;
-  color: @brand-primary;
-  border: none;
-  text-transform: uppercase;
-  padding: 0.75rem 3.25rem;
-  font-weight: 600;
-  font-size: 14px !important;
+  .btn-brand-primary-secondary();
   margin-left: 12px;
-  border-radius: 0.2rem !important;
-  outline: 1px solid @brand-primary;
-  outline-offset: -1px;
+  padding: 0.75rem 3.25rem;
 }
 
 .modal-footer #btn_modal_save:hover,
@@ -436,14 +446,8 @@ h4.panel-title {
 
 .sql-toolbar .form-inline .btn.btn-sm.btn-primary,
 .sql-toolbar .form-inline .btn.btn-sm.btn-warning {
-  background-color: @brand-primary;
-  color: #fff;
-  text-transform: uppercase;
-  padding: 0.75rem 3.25rem;
-  font-weight: 600;
-  font-size: 14px !important;
-  border-radius: 0.2rem;
-  border: none;
+  .btn-brand-primary();
+  padding: 0.65rem 3.25rem;
   min-width: 124px;
 
   i {
@@ -458,14 +462,17 @@ h4.panel-title {
 .sql-toolbar .form-inline .btn.btn-sm.btn-primary:hover,
 .sql-toolbar .form-inline .btn.btn-sm.btn-primary:focus,
 .sql-toolbar .form-inline .btn.btn-sm.btn-primary:active {
-  background-color: darken(@brand-primary, 3%);
-  color: #fff;
-  text-transform: uppercase;
-  padding: 0.75rem 3.25rem;
-  font-weight: 600;
-  font-size: 14px !important;
-  border-radius: 0.2rem;
-  border: none;
+  background-color: @brand-primary-hover-color;
+
+  i {
+    display: none;
+  }
+}
+
+.sql-toolbar .form-inline .SaveQuery .btn.btn-sm.btn-default {
+  .btn-brand-primary-secondary();
+  padding: 0.65rem 3.25rem 0.75rem;
+  margin-left: 4px;
 
   i {
     display: none;
@@ -473,17 +480,9 @@ h4.panel-title {
 }
 
 .sql-toolbar .form-inline .btn.btn-sm.btn-default {
-  background-color: #fff;
-  color: @brand-primary;
-  border: none;
-  text-transform: uppercase;
-  padding: 0.85rem 3.25rem 0.75rem 3.25rem;
-  font-weight: 600;
-  font-size: 14px !important;
+  .btn-brand-primary-secondary();
+  padding: 0.65rem 3.25rem 0.65rem;
   margin-left: 4px;
-  border-radius: 0.2rem !important;
-  outline: 1px solid @brand-primary;
-  outline-offset: -1px;
 
   i {
     display: none;
@@ -500,7 +499,7 @@ h4.panel-title {
   color: #989898;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 14px !important;
+  font-size: @font-size-small;
   background: #fff;
   border: 1px solid #b3b3b3;
   vertical-align: -1px;
@@ -513,28 +512,42 @@ h4.panel-title {
   margin-right: 14px;
 }
 
-.panel-heading #slice-header .label.label-default {
+.panel-heading #slice-header .label.label-default[style] {
   margin-right: 5px;
   cursor: pointer;
   background: #fff;
   color: #989898;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 14px !important;
+  font-size: @font-size-small !important;
   border: 1px solid #bcbcbc;
   border-radius: 0;
-  padding: 0.6rem 1.5rem 0.62rem 1.5rem;
+  padding: 0.6rem 1.5rem;
+}
+.panel-heading #slice-header .label.label-success[style],
+.panel-heading #slice-header .label.label-warning[style] {
+  margin-right: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: @font-size-small !important;
+  padding: 0.7rem 1.5rem 0.7rem;
+  .label-brand-primary();
 }
 
-.panel-heading #slice-header .label.label-default:hover,
-.panel-heading #slice-header .label.label-default:focus,
-.panel-heading #slice-header .pull-right span:nth-child(2):hover,
-.panel-heading #slice-header .pull-right span:nth-child(2):focus {
+.panel-heading #slice-header .label.label-success[style]:hover,
+.panel-heading #slice-header .label.label-warning[style]:hover {
+  border: none;
+}
+
+.panel-heading #slice-header .label.label-default:hover[style],
+.panel-heading #slice-header .label.label-default:focus[style],
+.panel-heading #slice-header .pull-right span:nth-child(2):hover[style],
+.panel-heading #slice-header .pull-right span:nth-child(2):focus[style] {
   background: darken(#fff, 3%);
   color: #989898;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 14px !important;
+  font-size: @font-size-small !important;
   border: 1px solid #bcbcbc;
   border-radius: 0;
   padding: 0.6rem 1.5rem 0.62rem 1.5rem;
@@ -556,7 +569,7 @@ h4.panel-title {
   color: #989898;
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 14px !important;
+  font-size: @font-size-small;
 }
 
 .sql-toolbar span[role="button"] button:hover,
@@ -565,17 +578,9 @@ h4.panel-title {
 }
 
 .ResultSetControls .btn.btn-sm.btn-default {
-  background-color: #fff;
-  color: @brand-tertiary;
-  border: none;
-  text-transform: uppercase;
+  .btn-brand-secondary-tertiary();
   padding: 0.85rem 3.25rem 0.75rem 3.25rem;
-  font-weight: 700;
-  font-size: 14px !important;
   margin-right: 10px;
-  border-radius: 0.2rem !important;
-  outline: 1px solid @brand-tertiary;
-  outline-offset: -1px;
 
   i {
     display: none;
@@ -589,14 +594,8 @@ h4.panel-title {
 }
 
 .ResultSetControls .btn.btn-sm.btn-default:first-child {
-  background-color: @brand-tertiary;
-  color: #fff;
-  text-transform: uppercase;
+  .btn-brand-primary-tertiary();
   padding: 0.85rem 3.25rem 0.75rem 3.25rem;
-  font-weight: 600;
-  font-size: 14px !important;
-  border-radius: 0.2rem;
-  border: none;
   margin-right: 10px;
 
   i {
@@ -606,8 +605,12 @@ h4.panel-title {
 
 .ResultSetControls .btn.btn-sm.btn-default:first-child:hover,
 .ResultSetControls .btn.btn-sm.btn-default:first-child:focus {
-  background: darken(@brand-tertiary, 7%);
+  background-color: @brand-tertiary-hover-color;
   color: #fff;
+}
+
+.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0.2rem;
 }
 
 .panel-body .form-actions-container button.dropdown-toggle {
@@ -617,13 +620,13 @@ h4.panel-title {
   text-transform: uppercase;
   padding: 0.75rem 3rem;
   font-weight: 600;
-  font-size: 14px !important;
+  font-size: @font-size-small;
 
   span:before {
     vertical-align: 1px;
     color: #fff;
     content: "\F0D7";
-    font-size: 14px;
+    font-size: @font-size-small;
   }
 }
 
@@ -651,23 +654,15 @@ h4.panel-title {
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 2px 16px;
-  background-color: #fff;
-  color: #f89c30;
-  border: none;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 14px !important;
-  border-radius: 0.2rem !important;
-  outline: 1px solid #f89c30;
-  outline-offset: -1px;
+  .btn-brand-secondary-tertiary();
 
   &:hover,
   &:focus {
-    color: #f89c30;
+    color: @brand-tertiary;
     background: darken(#fff, 3%);
   }
   i {
-    color: #f89c30;
+    color: @brand-tertiary;
   }
 }
 
@@ -679,8 +674,8 @@ h4.panel-title {
 
 //= Alerts, Success & Error Mesages
 
-.label-success {
-  background-color: #00cdbd;
+.SqlEditor .queryPane span.label.label-success {
+  .label-brand-primary();
 }
 
 //= Layout Adjustments
@@ -706,12 +701,18 @@ h4.panel-title {
       right: 0;
       overflow: auto hidden;
 
-      .ReactVirtualized__Table__Grid{
+      .ReactVirtualized__Table__Grid {
         height: auto !important;
         position: absolute !important;
         top: 32px;
         bottom: 0;
         left: 0;
+
+        .ReactVirtualized__Table__headerColumn,
+        .ReactVirtualized__Table__rowColumn,
+        .ReactVirtualized__Table__row * {
+          font-size: @font-size-small;
+        }
       }
     }
   }
