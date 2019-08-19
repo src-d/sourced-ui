@@ -3,7 +3,7 @@
 //== Typography overwrite
 
 body {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: @font-family-sans-serif;
   font-size: @font-size-base;
 }
 
@@ -13,13 +13,13 @@ body {
 }
 
 h2 {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: @font-family-sans-serif;
   font-size: @font-size-h2;
   font-weight: 600;
 }
 
 h3 {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: @font-family-sans-serif;
   font-size: @font-size-h3;
   font-weight: 300;
   position: relative;
@@ -32,7 +32,7 @@ h3 {
 }
 
 h3.panel-title {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: @font-family-sans-serif;
   font-size: @font-size-h2;
   font-weight: 600;
   border: none !important;
@@ -44,7 +44,7 @@ h3.panel-title {
 
 h4,
 h4.panel-title {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: @font-family-sans-serif;
   font-size: @font-size-h2;
   font-weight: 600;
   border: none !important;
@@ -86,13 +86,13 @@ h4.panel-title {
 }
 
 .ace_editor {
-  font: 14px "Source Code Pro", Monaco, Consolas, "Courier New", monospace !important;
-  font-family: "Source Code Pro", Monaco, Consolas, "Courier New", monospace;
+  font: 14px @font-family-code;
+  font-family: @font-family-code;
   font-size: 14px !important;
 }
 
 .dropdown-menu {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: @font-family-sans-serif;
   font-size: 16px;
   background-color: #fff;
   background-clip: padding-box;
@@ -120,7 +120,7 @@ h4.panel-title {
 .dropdown-menu li a,
 .dashboard .chart-header .dropdown-menu li a,
 .dashboard .dashboard-header .dropdown-menu li a {
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+  font-family: @font-family-sans-serif;
   font-size: 16px !important;
   font-weight: 300;
   letter-spacing: 0 !important;
@@ -706,7 +706,7 @@ h4.panel-title {
       right: 0;
       overflow: auto hidden;
 
-      .ReactVirtualized__Table__Grid{
+      .ReactVirtualized__Table__Grid {
         height: auto !important;
         position: absolute !important;
         top: 32px;

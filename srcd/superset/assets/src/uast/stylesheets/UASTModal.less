@@ -1,3 +1,5 @@
+@import "../../../stylesheets/less/cosmo/variables.less";
+
 // make modal window "fullscreen"
 .modal-lg .modal-body {
   height: ~"calc(100vh - 150px)";
@@ -9,14 +11,14 @@
 }
 
 .modal-body {
-  font-family: Source Code Pro, Monaco, Consolas, Courier New, monospace;
+  font-family: @font-family-code;
 
   .uast-value.string {
-    color: #00a699;
+    color: @brand-primary;
   }
 
   .pg-uast-viewer .uast-item.highlighted,
   .pg-uast-viewer .uast-item.hovered {
-    background: #f4fffe;
+    background: @brand-primary-light;
   }
 }
