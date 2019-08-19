@@ -42,6 +42,8 @@ import PopoverSection from '../../../components/PopoverSection';
 import ControlHeader from '../ControlHeader';
 import { nonEmpty } from '../../validators';
 
+import { defaultScheme } from '../../../customization/index';
+
 const AUTOMATIC_COLOR = '';
 
 const propTypes = {
@@ -82,7 +84,7 @@ const defaultProps = {
   showMarkers: false,
   hideLine: false,
   overrides: {},
-  colorScheme: 'd3Category10',
+  colorScheme: defaultScheme,
   show: true,
   titleColumn: '',
   descriptionColumns: [],
