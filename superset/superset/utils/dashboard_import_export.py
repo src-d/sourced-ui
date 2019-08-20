@@ -26,17 +26,17 @@ def import_dashboards(session, data_stream):
     """Imports dashboards from a stream to databases"""
     data = json.loads(data_stream.read(), object_hook=decode_dashboards)
     # TODO: import DRUID datasources
-    for table in data['datasources']:
+    for table in data["datasources"]:
         type(table).import_obj(table)
     session.commit()
-    for dashboard in data['dashboards']:
+    for dashboard in data["dashboards"]:
         Dashboard.import_obj(dashboard)
     session.commit()
 
 
 def export_dashboards(session, id_=None):
     """Returns all dashboards metadata as a json dump"""
-    logging.info('Starting export')
+    logging.info("Starting export")
     dashboard_ids = []
     if id is None:
         dashboards = session.query(Dashboard)

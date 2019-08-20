@@ -122,6 +122,7 @@ const config = {
     welcome: addPreamble('/src/welcome/index.jsx'),
     profile: addPreamble('/src/profile/index.jsx'),
     uast: addPreamble('/src/uast/index.jsx'),
+    showSavedQuery: [path.join(APP_DIR, '/src/showSavedQuery/index.jsx')],
   },
   output,
   optimization: {

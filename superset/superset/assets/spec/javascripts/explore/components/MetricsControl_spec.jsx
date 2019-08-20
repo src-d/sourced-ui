@@ -85,6 +85,14 @@ describe('MetricsControl', () => {
       ]);
     });
 
+    it('does not show aggregates in options if no columns', () => {
+      const { wrapper } = setup({ columns: [] });
+      expect(wrapper.state('options')).toEqual([
+        { optionName: 'sum__value', metric_name: 'sum__value', expression: 'SUM(energy_usage.value)' },
+        { optionName: 'avg__value', metric_name: 'avg__value', expression: 'AVG(energy_usage.value)' },
+      ]);
+    });
+
     it('coerces Adhoc Metrics from form data into instances of the AdhocMetric class and leaves saved metrics', () => {
       const { wrapper } = setup({
         value: [
@@ -324,6 +332,41 @@ describe('MetricsControl', () => {
         { type: 'DOUBLE', column_name: 'value' },
         'SUM(',
       )).toBe(true);
+    });
+
+    it('Removes metrics if savedMetrics changes', () => {
+      const { props, wrapper, onChange } = setup({
+        value: [
+          {
+            expressionType: EXPRESSION_TYPES.SIMPLE,
+            column: { type: 'double', column_name: 'value' },
+            aggregate: AGGREGATES.SUM,
+            label: 'SUM(value)',
+            optionName: 'blahblahblah',
+          },
+        ],
+      });
+      expect(wrapper.state('value')).toHaveLength(1);
+
+      wrapper.setProps({ ...props, columns: [] });
+      expect(onChange.lastCall.args).toEqual([[]]);
+    });
+
+    it('Does not remove custom sql metric if savedMetrics changes', () => {
+      const { props, wrapper, onChange } = setup({
+        value: [
+          {
+            expressionType: EXPRESSION_TYPES.SQL,
+            sqlExpression: 'COUNT(*)',
+            label: 'old label',
+            hasCustomLabel: true,
+          },
+        ],
+      });
+      expect(wrapper.state('value')).toHaveLength(1);
+
+      wrapper.setProps({ ...props, columns: [] });
+      expect(onChange.calledOnce).toEqual(false);
     });
   });
 });
