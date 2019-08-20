@@ -2506,7 +2506,6 @@ class Superset(BaseSupersetView):
             )
             query.status = QueryStatus.STOPPED
             db.session.commit()
-            sql_lab.cancel_query(query, g.user.username if g.user else None)
         except Exception:
             pass
         return self.json_response('OK')

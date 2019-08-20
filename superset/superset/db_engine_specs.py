@@ -459,36 +459,6 @@ class BaseEngineSpec(object):
         """
         return label
 
-    @classmethod
-    def get_connection_id(cls, cursor):
-        """ Returns connection id for a cursor """
-        return None
-
-    @classmethod
-    def cancel_query(cls, cursor, query):
-        """ Cancels query in the underlying database """
-        pass
-
-    @classmethod
-    def truncate_label(cls, label):
-        """
-        In the case that a label exceeds the max length supported by the engine,
-        this method is used to construct a deterministic and unique label based on
-        an md5 hash.
-        """
-        label = hashlib.md5(label.encode('utf-8')).hexdigest()
-        # truncate hash if it exceeds max length
-        if cls.max_column_name_length and len(label) > cls.max_column_name_length:
-            label = label[:cls.max_column_name_length]
-        return label
-
-    @staticmethod
-    def get_timestamp_column(expression, column_name):
-        """Return the expression if defined, otherwise return column_name. Some
-        engines require forcing quotes around column name, in which case this method
-        can be overridden."""
-        return expression or column_name
-
 
 class PostgresBaseEngineSpec(BaseEngineSpec):
     """ Abstract class for Postgres 'like' databases """
@@ -791,17 +761,6 @@ class MySQLEngineSpec(BaseEngineSpec):
         except Exception:
             pass
         return message
-
-    @classmethod
-    def get_connection_id(cls, cursor):
-        cursor.execute('SELECT CONNECTION_ID()')
-        row = cursor.fetchone()
-        return row[0]
-
-    @classmethod
-    def cancel_query(cls, cursor, query):
-        if query.connection_id:
-            cursor.execute('KILL CONNECTION %d' % query.connection_id)
 
 
 class PrestoEngineSpec(BaseEngineSpec):
