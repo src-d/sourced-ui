@@ -22,8 +22,8 @@ from datetime import datetime
 import json
 import logging
 import textwrap
-import uuid
 from typing import List
+import uuid
 
 from flask import escape, g, Markup, request
 from flask_appbuilder import Model

@@ -214,23 +214,6 @@ class ImportExportTests(SupersetTestCase):
             self.assertEqual(e_slc.datasource.schema, params["schema"])
             self.assertEqual(e_slc.datasource.database.name, params["database_name"])
 
-    def assert_only_exported_slc_fields(self, expected_dash, actual_dash):
-        """ only exported json has this params
-            imported/created dashboard has relationships to other models instead
-        """
-        expected_slices = sorted(expected_dash.slices, key=lambda s: s.slice_name or "")
-        actual_slices = sorted(actual_dash.slices, key=lambda s: s.slice_name or "")
-        for e_slc, a_slc in zip(expected_slices, actual_slices):
-            params = a_slc.params_dict
-            self.assertEqual(e_slc.datasource.name, params["datasource_name"])
-            self.assertEqual(e_slc.datasource.name, params["schema"])
-            self.assertEqual(e_slc.datasource.database.name, params["database_name"])
-            # remove the fields to allow to assert dashboards equals
-            del params["datasource_name"]
-            del params["schema"]
-            del params["database_name"]
-            a_slc.params = json.dumps(params)
-
     def test_export_1_dashboard(self):
         self.login("admin")
         birth_dash = self.get_dash_by_slug("births")
@@ -469,93 +452,6 @@ class ImportExportTests(SupersetTestCase):
         imported_dash = self.get_dash(imported_dash_id_2)
         self.assert_dash_equals(expected_dash, imported_dash, check_position=False)
         self.assertEquals({"remote_id": 10004}, json.loads(imported_dash.json_metadata))
-
-    def test_import_new_dashboard_slice_reset_ownership(self):
-        app = Flask("test_import_dashboard_slice_set_user")
-        with app.app_context():
-            admin_user = security_manager.find_user(username="admin")
-            self.assertTrue(admin_user)
-            gamma_user = security_manager.find_user(username="gamma")
-            self.assertTrue(gamma_user)
-            g.user = gamma_user
-
-            dash_with_1_slice = self._create_dashboard_for_import(id_=10200)
-            # set another user as an owner of importing dashboard
-            dash_with_1_slice.created_by = admin_user
-            dash_with_1_slice.changed_by = admin_user
-            dash_with_1_slice.owners = [admin_user]
-
-            imported_dash_id = models.Dashboard.import_obj(dash_with_1_slice)
-            imported_dash = self.get_dash(imported_dash_id)
-            self.assertEqual(imported_dash.created_by, gamma_user)
-            self.assertEqual(imported_dash.changed_by, gamma_user)
-            self.assertEqual(imported_dash.owners, [gamma_user])
-
-            imported_slc = imported_dash.slices[0]
-            self.assertEqual(imported_slc.created_by, gamma_user)
-            self.assertEqual(imported_slc.changed_by, gamma_user)
-            self.assertEqual(imported_slc.owners, [gamma_user])
-
-    def test_import_override_dashboard_slice_reset_ownership(self):
-        app = Flask("test_import_dashboard_slice_set_user")
-        with app.app_context():
-            admin_user = security_manager.find_user(username="admin")
-            self.assertTrue(admin_user)
-            gamma_user = security_manager.find_user(username="gamma")
-            self.assertTrue(gamma_user)
-            g.user = gamma_user
-
-            dash_with_1_slice = self._create_dashboard_for_import(id_=10300)
-
-            imported_dash_id = models.Dashboard.import_obj(dash_with_1_slice)
-            imported_dash = self.get_dash(imported_dash_id)
-            self.assertEqual(imported_dash.created_by, gamma_user)
-            self.assertEqual(imported_dash.changed_by, gamma_user)
-            self.assertEqual(imported_dash.owners, [gamma_user])
-
-            imported_slc = imported_dash.slices[0]
-            self.assertEqual(imported_slc.created_by, gamma_user)
-            self.assertEqual(imported_slc.changed_by, gamma_user)
-            self.assertEqual(imported_slc.owners, [gamma_user])
-
-            # re-import with another user shouldn't change the permissions
-            g.user = admin_user
-
-            dash_with_1_slice = self._create_dashboard_for_import(id_=10300)
-
-            imported_dash_id = models.Dashboard.import_obj(dash_with_1_slice)
-            imported_dash = self.get_dash(imported_dash_id)
-            self.assertEqual(imported_dash.created_by, gamma_user)
-            self.assertEqual(imported_dash.changed_by, gamma_user)
-            self.assertEqual(imported_dash.owners, [gamma_user])
-
-            imported_slc = imported_dash.slices[0]
-            self.assertEqual(imported_slc.created_by, gamma_user)
-            self.assertEqual(imported_slc.changed_by, gamma_user)
-            self.assertEqual(imported_slc.owners, [gamma_user])
-
-    def _create_dashboard_for_import(self, id_=10100):
-        slc = self.create_slice("health_slc" + str(id_), id=id_ + 1)
-        dash_with_1_slice = self.create_dashboard(
-            "dash_with_1_slice" + str(id_), slcs=[slc], id=id_ + 2
-        )
-        dash_with_1_slice.position_json = """
-                {{"DASHBOARD_VERSION_KEY": "v2",
-                "DASHBOARD_CHART_TYPE-{0}": {{
-                    "type": "DASHBOARD_CHART_TYPE",
-                    "id": {0},
-                    "children": [],
-                    "meta": {{
-                    "width": 4,
-                    "height": 50,
-                    "chartId": {0}
-                    }}
-                }}
-                }}
-            """.format(
-            slc.id
-        )
-        return dash_with_1_slice
 
     def test_import_new_dashboard_slice_reset_ownership(self):
         app = Flask("test_import_dashboard_slice_set_user")
