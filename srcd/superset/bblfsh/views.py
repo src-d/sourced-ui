@@ -18,7 +18,7 @@ class Bblfsh(BaseSupersetView):
     @expose("/explore/")
     def explore(self):
         """UAST Viewer"""
-        d = {"common": self.common_bootsrap_payload()}
+        d = {"common": self.common_bootstrap_payload()}
         return self.render_template(
             "superset/basic.html", entry="uast", bootstrap_data=json.dumps(d)
         )
