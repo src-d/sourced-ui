@@ -16,28 +16,6 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-# Apache Releases
-
-To make a fresh tarball of a git reference on apache/incubator-superset
-(push your tag first!)
-
-```bash
-docker build -t make_tarball -f Dockerfile.make_tarball . --build-arg VERSION=0.33.0rc1
-docker run make_tarball -f Dockerfile.make_tarball --env VERSION=0.33.0rc1
-```
-
-To make a working build given a tarball
-```bash
-# Building a docker from a tarball
-VERSION=0.33.0rc2 && \
-docker build -t apache-superset:$VERSION -f Dockerfile.from_tarball . --build-arg VERSION=$VERSION
-
-# testing the resulting docker
-docker run -p 5001:8088 apache-superset:0.33.0rc2
-# you should be able to access localhost:5001 on your browser
-# login using admin/admin
-```
-
 ## Refresh documentation website
 
 Every once in a while we want to compile the documentation and publish it.
@@ -77,14 +55,14 @@ First you need to setup a few things. This is a one-off and doesn't
 need to be done at every release.
 
 ```bash
-    # Create PGP Key, and use your @apache.org email address
+    # Create PGP Key
     gpg --gen-key
      
     # Checkout ASF dist repo
 
     svn checkout https://dist.apache.org/repos/dist/dev/incubator/superset/ ~/svn/superset_dev
 
-    svn checkout https://dist.apache.org/repos/dist/release/incubator/superset/ ~/svn/superset
+    svn checkout https://dist.apache.org/repos/dist/incubator/superset/ ~/svn/superset
     cd ~/svn/superset
  
   
@@ -102,8 +80,6 @@ Now let's craft a source release
     # Assuming these commands are executed from the root of the repo
     # Setting a VERSION var will be useful
     export VERSION=0.31.0rc18
-    export RELEASE=apache-superset-incubating-${VERSION}
-    export RELEASE_TARBAL=${RELEASE}-source.tar.gz
 
     # Let's create a git tag
     git tag -f ${VERSION}
@@ -116,11 +92,10 @@ Now let's craft a source release
     git clean -fxd
     git archive \
         --format=tar.gz ${VERSION} \
-        --prefix=${RELEASE}/ \
-        -o ~/svn/superset_dev/${VERSION}/${RELEASE_TARBALL}
+        --prefix=apache-superset-${VERSION}/ \
+        -o apache-superset-${VERSION}-source.tar.gz
 
-    cd ~/svn/superset_dev/
-    scripts/sign.sh ${RELEASE}-source.tar.gz
+    scripts/sign.sh apache-superset-${VERSION}-source.tar.gz
 ```
 
 Now let's ship this RC into svn's dev folder
@@ -128,8 +103,8 @@ Now let's ship this RC into svn's dev folder
 ```bash
     # cp or mv the files over to the svn repo
     mkdir ~/svn/superset_dev/${VERSION}/
-    cp ${RELEASE_TARBALL} ~/svn/superset_dev/${VERSION}/
-    cd ~/svn/superset_dev/
+    cp apache-superset-${VERSION}* ~/svn/superset/${VERSION}/
+    cd ~/svn/superset/
     svn add ${VERSION}
     svn commit
 ```
