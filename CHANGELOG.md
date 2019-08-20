@@ -3,20 +3,27 @@
 ## [Unreleased]
 <details>
   <summary>
-
-### Changed
-
-- Add `is_sqllab_view` into dashboard export [#243]
-- Tables created for default charts are hidden by default now [#243]
-
-### Fixed
-
-- Timestamp type not mapped correctly from Spark SQL to Hive ([#227](https://github.com/src-d/sourced-ui/issues/227))
-- Fix tables' preview in SQL Lab for SparkSQL engine ([#246](https://github.com/src-d/sourced-ui/pull/246))
-
+    Changes that have landed in master but are not yet released.
+    Click to see more.
   </summary>
 
 </details>
+
+## [v0.5.0](https://github.com/src-d/sourced-ui/releases/tag/v0.5.0) - 2019-08-20
+
+### Added
+
+- Apply source{d} brand styling to the CodeMirror sourced code viewer ([#253](https://github.com/src-d/sourced-ui/issues/253), [#260](https://github.com/src-d/sourced-ui/issues/260)).
+
+### Changed
+
+- Improve the dashboard export mechanism, saving `is_sqllab_view` to correctly hide non-visible tables when the dashboard is imported. The tables created for the default charts are now hidden by default ([#243](https://github.com/src-d/sourced-ui/issues/243)).
+
+### Fixed
+
+- Fix sorting in most active repositories chart ([#251](https://github.com/src-d/sourced-ui/issues/251)).
+- Timestamp type not mapped correctly from Spark SQL to Hive ([#227](https://github.com/src-d/sourced-ui/issues/227)).
+- Fix tables' preview in SQL Lab for SparkSQL engine ([#246](https://github.com/src-d/sourced-ui/pull/246)).
 
 ## [v0.4.0](https://github.com/src-d/sourced-ui/releases/tag/v0.4.0) - 2019-08-06
 
