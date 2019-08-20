@@ -238,8 +238,8 @@ class CoreTests(SupersetTestCase):
         assert slc.slice_name == new_slice_name
         saved_form_data = slc.viz.form_data
         # remote_id is an uuid
-        assert 'remote_id' in saved_form_data
-        del saved_form_data['remote_id']
+        assert "remote_id" in saved_form_data
+        del saved_form_data["remote_id"]
         assert saved_form_data == form_data
         db.session.delete(slc)
 

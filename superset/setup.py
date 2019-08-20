@@ -65,7 +65,7 @@ setup(
     zip_safe=False,
     scripts=["superset/bin/superset"],
     install_requires=[
-        'bblfsh==3.0.4',
+        "bblfsh==3.0.4",
         "bleach>=3.0.2, <4.0.0",
         "celery>=4.3.0, <5.0.0",
         "click>=6.0, <7.0.0",  # `click`>=7 forces "-" instead of "_"

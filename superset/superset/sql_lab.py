@@ -322,9 +322,9 @@ def execute_sql_statements(
     # go over each row, find bytes columns that start with the magic UAST
     # sequence b'\x00bgr', and replace it with a string containing the
     # UAST in JSON
-    for row in payload['data']:
+    for row in payload["data"]:
         for k, v in row.items():
-            if isinstance(v, bytes) and len(v) > 4 and v[0:4] == b'\x00bgr':
+            if isinstance(v, bytes) and len(v) > 4 and v[0:4] == b"\x00bgr":
                 try:
                     ctx = decode(v, format=0)
                     row[k] = json.dumps(ctx.load())
