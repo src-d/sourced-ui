@@ -3,7 +3,7 @@ import os
 from flask import g
 from flask_migrate import upgrade as db_upgrade
 
-from superset import app, conf, db, security_manager
+from superset import app, appbuilder, conf, db, security_manager
 from superset.connectors.connector_registry import ConnectorRegistry
 from superset.models import core as models
 from superset.models.user_attributes import UserAttribute
@@ -98,6 +98,7 @@ def bootstrap():
                                                os.environ['ADMIN_PASSWORD'])
         # Create default roles and permissions
         utils.get_or_create_main_db()
+        appbuilder.add_permissions(update_perms=True)
         security_manager.sync_role_definitions()
 
         # set admin user as a current user
