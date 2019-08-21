@@ -25,7 +25,7 @@
                             "datasource_name": "public.admin admin-pr_dates-4xBftRm5b",
                             "datasource_type": "table",
                             "id": 27,
-                            "params": "{\"adhoc_filters\": [], \"bar_stacked\": true, \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"columns\": [\"mtype\"], \"contribution\": false, \"datasource\": \"35__table\", \"granularity_sqla\": \"created_at\", \"groupby\": [\"repository\"], \"metrics\": [{\"aggregate\": \"SUM\", \"column\": {\"column_name\": \"value\", \"database_expression\": null, \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 127, \"is_dttm\": false, \"optionName\": \"_col_value\", \"python_date_format\": null, \"type\": \"INT\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"SUM(value)\", \"optionName\": \"metric_1x1g4rg96kl_nouczym0pmc\", \"sqlExpression\": null}], \"order_bars\": false, \"reduce_x_ticks\": false, \"row_limit\": 5000, \"show_bar_value\": false, \"show_controls\": false, \"show_legend\": true, \"slice_id\": 27, \"time_grain_sqla\": \"P1D\", \"time_range\": \"Last 30 days\", \"url_params\": {}, \"viz_type\": \"dist_bar\", \"x_axis_label\": \"\", \"x_ticks_layout\": \"auto\", \"y_axis_format\": null, \"y_axis_label\": \"\", \"remote_id\": \"090f84ba-0c13-47d8-9661-75fc0b65dd5f\", \"datasource_name\": \"public.admin admin-pr_dates-4xBftRm5b\", \"schema\": \"public.admin admin-pr_dates-4xBftRm5b\", \"database_name\": \"metadata\"}",
+                            "params": "{\"adhoc_filters\": [], \"bar_stacked\": true, \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"columns\": [\"mtype\"], \"contribution\": false, \"datasource\": \"35__table\", \"granularity_sqla\": \"created_at\", \"groupby\": [\"repository\"], \"metrics\": [{\"aggregate\": \"SUM\", \"column\": {\"column_name\": \"value\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 127, \"is_dttm\": false, \"optionName\": \"_col_value\", \"python_date_format\": null, \"type\": \"INT\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"SUM(value)\", \"optionName\": \"metric_1x1g4rg96kl_nouczym0pmc\", \"sqlExpression\": null}], \"order_bars\": false, \"reduce_x_ticks\": false, \"row_limit\": 5000, \"show_bar_value\": false, \"show_controls\": false, \"show_legend\": true, \"slice_id\": 27, \"time_grain_sqla\": \"P1D\", \"time_range\": \"Last 30 days\", \"url_params\": {}, \"viz_type\": \"dist_bar\", \"x_axis_label\": \"\", \"x_ticks_layout\": \"auto\", \"y_axis_format\": null, \"y_axis_label\": \"\", \"remote_id\": \"090f84ba-0c13-47d8-9661-75fc0b65dd5f\", \"datasource_name\": \"public.admin admin-pr_dates-4xBftRm5b\", \"schema\": \"public.admin admin-pr_dates-4xBftRm5b\", \"database_name\": \"metadata\"}",
                             "slice_name": "30 Most Active Repositories (Last 30 Days)",
                             "viz_type": "dist_bar"
                         }
@@ -36,7 +36,7 @@
                             "datasource_name": "public.pr_time_to_merge-ejLXE2oaX",
                             "datasource_type": "table",
                             "id": 24,
-                            "params": "{\"adhoc_filters\": [], \"datasource\": \"35__table\", \"granularity_sqla\": \"created_at\", \"metric\": {\"aggregate\": \"AVG\", \"column\": {\"column_name\": \"days\", \"database_expression\": null, \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 129, \"is_dttm\": false, \"optionName\": \"_col_days\", \"python_date_format\": null, \"type\": \"FLOAT\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"AVG(days)\", \"optionName\": \"metric_qd4g8quql4_o3a11vjb6ci\", \"sqlExpression\": null}, \"slice_id\": 25, \"subheader\": \"Average number of days before merge\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"big_number_total\", \"y_axis_format\": \".3s\", \"remote_id\": \"dbe9a2c3-541b-48f0-bfa0-ac0dfe1efdcc\", \"datasource_name\": \"public.pr_time_to_merge-ejLXE2oaX\", \"schema\": \"public.pr_time_to_merge-ejLXE2oaX\", \"database_name\": \"metadata\"}",
+                            "params": "{\"adhoc_filters\": [], \"datasource\": \"35__table\", \"granularity_sqla\": \"created_at\", \"metric\": {\"aggregate\": \"AVG\", \"column\": {\"column_name\": \"days\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 129, \"is_dttm\": false, \"optionName\": \"_col_days\", \"python_date_format\": null, \"type\": \"FLOAT\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"AVG(days)\", \"optionName\": \"metric_qd4g8quql4_o3a11vjb6ci\", \"sqlExpression\": null}, \"slice_id\": 25, \"subheader\": \"Average number of days before merge\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"big_number_total\", \"y_axis_format\": \".3s\", \"remote_id\": \"dbe9a2c3-541b-48f0-bfa0-ac0dfe1efdcc\", \"datasource_name\": \"public.pr_time_to_merge-ejLXE2oaX\", \"schema\": \"public.pr_time_to_merge-ejLXE2oaX\", \"database_name\": \"metadata\"}",
                             "slice_name": "Avg. Time to Merge",
                             "viz_type": "big_number_total"
                         }
@@ -91,7 +91,7 @@
                             "datasource_name": "public.admin admin-pr_by_days-XSb1QtdX4",
                             "datasource_type": "table",
                             "id": 30,
-                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"37__table\", \"granularity_sqla\": \"created_at\", \"groupby\": [], \"left_margin\": \"auto\", \"line_interpolation\": \"cardinal\", \"metrics\": [{\"aggregate\": \"AVG\", \"column\": {\"column_name\": \"days\", \"database_expression\": null, \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 138, \"is_dttm\": false, \"optionName\": \"_col_days\", \"python_date_format\": null, \"type\": \"FLOAT\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": true, \"label\": \"Average\", \"optionName\": \"metric_v6tqzr5nihp_l7qb802z3jo\", \"sqlExpression\": null}], \"order_desc\": true, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 1000, \"send_time_range\": false, \"show_brush\": \"auto\", \"show_legend\": true, \"show_markers\": true, \"slice_id\": 27, \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"line\", \"x_axis_format\": \"%b/%y\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \".3s\", \"y_axis_label\": \"avg. # of days\", \"y_axis_showminmax\": false, \"y_log_scale\": false, \"remote_id\": \"459f2caf-abe7-4efc-90c0-b89c1c0b2561\", \"datasource_name\": \"public.admin admin-pr_by_days-XSb1QtdX4\", \"schema\": \"public.admin admin-pr_by_days-XSb1QtdX4\", \"database_name\": \"metadata\"}",
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"37__table\", \"granularity_sqla\": \"created_at\", \"groupby\": [], \"left_margin\": \"auto\", \"line_interpolation\": \"cardinal\", \"metrics\": [{\"aggregate\": \"AVG\", \"column\": {\"column_name\": \"days\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 138, \"is_dttm\": false, \"optionName\": \"_col_days\", \"python_date_format\": null, \"type\": \"FLOAT\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": true, \"label\": \"Average\", \"optionName\": \"metric_v6tqzr5nihp_l7qb802z3jo\", \"sqlExpression\": null}], \"order_desc\": true, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 1000, \"send_time_range\": false, \"show_brush\": \"auto\", \"show_legend\": true, \"show_markers\": true, \"slice_id\": 27, \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"line\", \"x_axis_format\": \"%b/%y\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \".3s\", \"y_axis_label\": \"avg. # of days\", \"y_axis_showminmax\": false, \"y_log_scale\": false, \"remote_id\": \"459f2caf-abe7-4efc-90c0-b89c1c0b2561\", \"datasource_name\": \"public.admin admin-pr_by_days-XSb1QtdX4\", \"schema\": \"public.admin admin-pr_by_days-XSb1QtdX4\", \"database_name\": \"metadata\"}",
                             "slice_name": "Time to Merge Change Over Time",
                             "viz_type": "line"
                         }
@@ -114,7 +114,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:30"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -136,7 +135,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:30"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -158,7 +156,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:30"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -221,7 +218,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -243,7 +239,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -265,7 +260,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -287,7 +281,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -350,7 +343,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -372,7 +364,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -394,7 +385,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -457,7 +447,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -479,7 +468,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -501,7 +489,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -523,7 +510,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -545,7 +531,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -608,7 +593,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -630,7 +614,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -652,7 +635,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -674,7 +656,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -737,7 +718,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -759,7 +739,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -781,7 +760,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -803,7 +781,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -825,7 +802,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -888,7 +864,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -910,7 +885,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -973,7 +947,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -995,7 +968,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -1017,7 +989,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -1039,7 +1010,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -1061,7 +1031,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-14T11:30:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,

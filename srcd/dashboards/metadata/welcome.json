@@ -48,7 +48,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-02T11:03:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -70,7 +69,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-02T11:03:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -92,7 +90,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-02T11:03:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -114,7 +111,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-02T11:03:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -136,7 +132,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-02T11:03:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -158,7 +153,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-02T11:03:31"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -221,7 +215,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-02T11:03:32"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -243,7 +236,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-02T11:03:32"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -265,7 +257,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-02T11:03:32"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -287,7 +278,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-02T11:03:32"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
@@ -309,7 +299,6 @@
                             "created_on": {
                                 "__datetime__": "2019-08-02T11:03:32"
                             },
-                            "database_expression": null,
                             "description": null,
                             "expression": "",
                             "filterable": true,
