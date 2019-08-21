@@ -27,7 +27,9 @@ def get_or_create_datasource(name, uri, **kwargs):
 
 def create_datasource_tables(dbobj, schema):
     TBL = ConnectorRegistry.sources['table']
-    for table in dbobj.all_table_names_in_schema(schema):
+    for ds in dbobj.get_all_table_names_in_schema(schema):
+        table = ds.table
+
         # table_name should match the one in the datasource for fetch_metadata to work
         if db.session.query(TBL).filter_by(table_name=table).first():
             continue
