@@ -63,6 +63,7 @@ def handle_query_error(msg, query, session, payload=None):
     troubleshooting_link = config["TROUBLESHOOTING_LINK"]
     query.error_message = msg
     query.status = QueryStatus.FAILED
+    query.connection_id = None
     query.tmp_table_name = None
     session.commit()
     payload.update({"status": query.status, "error": msg})
@@ -268,9 +269,15 @@ def execute_sql_statements(
     # execution of all statements (if many)
     with closing(engine.raw_connection()) as conn:
         with closing(conn.cursor()) as cursor:
+            query.connection_id = db_engine_spec.get_connection_id(cursor)
             statement_count = len(statements)
             for i, statement in enumerate(statements):
-                # TODO CHECK IF STOPPED
+                # check if the query was stopped
+                session.refresh(query)
+                if query.status == QueryStatus.STOPPED:
+                    payload.update({"status": query.status})
+                    return payload
+
                 msg = f"Running statement {i+1} out of {statement_count}"
                 logging.info(msg)
                 query.set_extra_json_key("progress", msg)
@@ -281,6 +288,14 @@ def execute_sql_statements(
                     )
                     msg = f"Running statement {i+1} out of {statement_count}"
                 except Exception as e:
+                    # query can be stopped in another thread/worker
+                    # but in synchronized mode it may lead to an error
+                    # skip error the error in such case
+                    session.refresh(query)
+                    if query.status == QueryStatus.STOPPED:
+                        payload.update({"status": query.status})
+                        return payload
+
                     msg = str(e)
                     if statement_count > 1:
                         msg = f"[Statement {i+1} out of {statement_count}] " + msg
@@ -291,6 +306,7 @@ def execute_sql_statements(
     query.rows = cdf.size
     query.progress = 100
     query.set_extra_json_key("progress", None)
+    query.connection_id = None
     if query.select_as_cta:
         query.select_sql = database.select_star(
             query.tmp_table_name,
@@ -349,3 +365,21 @@ def execute_sql_statements(
 
     if return_results:
         return payload
+
+
+def cancel_query(query, user_name):
+    if not query.connection_id:
+        return
+
+    database = query.database
+    engine = database.get_sqla_engine(
+        schema=query.schema,
+        nullpool=True,
+        user_name=user_name,
+        source=sources.get("sql_lab", None),
+    )
+    db_engine_spec = database.db_engine_spec
+
+    with closing(engine.raw_connection()) as conn:
+        with closing(conn.cursor()) as cursor:
+            db_engine_spec.cancel_query(cursor, query)

@@ -550,3 +550,13 @@ class BaseEngineSpec(object):
     @classmethod
     def column_datatype_to_string(cls, sqla_column_type, dialect):
         return sqla_column_type.compile(dialect=dialect).upper()
+
+    @classmethod
+    def get_connection_id(cls, cursor):
+        """ Returns connection id for a cursor """
+        return None
+
+    @classmethod
+    def cancel_query(cls, cursor, query):
+        """ Cancels query in the underlying database """
+        pass

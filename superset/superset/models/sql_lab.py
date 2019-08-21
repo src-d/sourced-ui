@@ -75,6 +75,8 @@ class Query(Model, ExtraJSONMixin):
     error_message = Column(Text)
     # key used to store the results in the results backend
     results_key = Column(String(64), index=True)
+    # connection_id stores id of an underlying connection to database
+    connection_id = Column(Integer, nullable=True)
 
     # Using Numeric in place of DateTime for sub-second precision
     # stored as seconds since epoch, allowing for milliseconds
