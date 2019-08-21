@@ -61,6 +61,9 @@ jobs:
     - language: python
       python: 3.6
       env: TOXENV=pylint
+    - language: python
+      python: 3.6
+      env: TOXENV=black
     - stage: release
       name: 'Release to Docker Hub'
       services:
