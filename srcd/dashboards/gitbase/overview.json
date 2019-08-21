@@ -14,7 +14,7 @@
                             "datasource_name": "gitbase.admin admin-commit_merges-8X2HBrQre",
                             "datasource_type": "table",
                             "id": 9,
-                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"14__table\", \"granularity_sqla\": \"commit_author_when\", \"groupby\": [\"commit_type\"], \"line_interpolation\": \"linear\", \"metrics\": [{\"aggregate\": null, \"column\": null, \"expressionType\": \"SQL\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"COUNT(*)\", \"optionName\": \"metric_n4xn9emh55_60hid92bszp\", \"sqlExpression\": \"COUNT(*)\"}], \"order_desc\": true, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 50000, \"show_brush\": \"auto\", \"show_controls\": false, \"show_legend\": true, \"slice_id\": 4, \"stacked_style\": \"stack\", \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"area\", \"x_axis_format\": \"smart_date\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \".3s\", \"y_log_scale\": false, \"remote_id\": \"be4154a6-726c-4dcc-bcff-da20558aaa55\", \"datasource_name\": \"gitbase.admin admin-commit_merges-8X2HBrQre\", \"schema\": \"gitbase.admin admin-commit_merges-8X2HBrQre\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"14__table\", \"granularity_sqla\": \"commit_author_when\", \"groupby\": [\"commit_type\"], \"line_interpolation\": \"linear\", \"metrics\": [{\"aggregate\": null, \"column\": null, \"expressionType\": \"SQL\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"COUNT(*)\", \"optionName\": \"metric_n4xn9emh55_60hid92bszp\", \"sqlExpression\": \"COUNT(*)\"}], \"order_desc\": true, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 50000, \"show_brush\": \"auto\", \"show_controls\": false, \"show_legend\": true, \"slice_id\": 4, \"stacked_style\": \"stack\", \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"area\", \"x_axis_format\": \"smart_date\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \".3s\", \"y_log_scale\": false, \"remote_id\": \"be4154a6-726c-4dcc-bcff-da20558aaa55\", \"datasource_name\": \"admin admin-commit_merges-8X2HBrQre\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Commits Evolution",
                             "viz_type": "area"
                         }
@@ -25,7 +25,7 @@
                             "datasource_name": "gitbase.admin admin-compliance_score-ReDkKHp6n",
                             "datasource_type": "table",
                             "id": 12,
-                            "params": "{\"adhoc_filters\": [], \"datasource\": \"17__table\", \"granularity_sqla\": null, \"metric\": \"compliance\", \"slice_id\": 7, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"big_number_total\", \"y_axis_format\": \",.1%\", \"remote_id\": \"e7249650-9f37-4a9c-80e9-89fbfcd55715\", \"datasource_name\": \"gitbase.admin admin-compliance_score-ReDkKHp6n\", \"schema\": \"gitbase.admin admin-compliance_score-ReDkKHp6n\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"datasource\": \"17__table\", \"granularity_sqla\": null, \"metric\": \"compliance\", \"slice_id\": 7, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"big_number_total\", \"y_axis_format\": \",.1%\", \"remote_id\": \"e7249650-9f37-4a9c-80e9-89fbfcd55715\", \"datasource_name\": \"admin admin-compliance_score-ReDkKHp6n\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Compliance score",
                             "viz_type": "big_number_total"
                         }
@@ -36,7 +36,7 @@
                             "datasource_name": "null.admin admin-Untitled Query-JJ5b9O0Hc",
                             "datasource_type": "table",
                             "id": 2,
-                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"30__table\", \"granularity_sqla\": null, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 116, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_ajg1mqrbzth_tmqjky93xdc\", \"sqlExpression\": null}, \"rotation\": \"square\", \"row_limit\": 1000, \"series\": \"commit_author_email\", \"size_from\": 16, \"size_to\": 50, \"slice_id\": 2, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"word_cloud\", \"remote_id\": \"02777224-3a25-4c10-8da4-442f377ea54d\", \"datasource_name\": \"null.admin admin-Untitled Query-JJ5b9O0Hc\", \"schema\": \"null.admin admin-Untitled Query-JJ5b9O0Hc\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"30__table\", \"granularity_sqla\": null, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 116, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_ajg1mqrbzth_tmqjky93xdc\", \"sqlExpression\": null}, \"rotation\": \"square\", \"row_limit\": 1000, \"series\": \"commit_author_email\", \"size_from\": 16, \"size_to\": 50, \"slice_id\": 2, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"word_cloud\", \"remote_id\": \"02777224-3a25-4c10-8da4-442f377ea54d\", \"datasource_name\": \"admin admin-Untitled Query-JJ5b9O0Hc\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Email wordcloud",
                             "viz_type": "word_cloud"
                         }
@@ -47,7 +47,7 @@
                             "datasource_name": "gitbase.admin admin-missing_files_summary-YqNVbLHqJ",
                             "datasource_type": "table",
                             "id": 14,
-                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"changelog\", \"readme\", \"notice\", \"license\", \"contributing\", \"travis\", \"ci\", \"dockerfile\"], \"color_pn\": true, \"datasource\": \"19__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": false, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": 1000, \"slice_id\": 9, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"326957c1-676b-47c3-8cd1-dce20b252458\", \"datasource_name\": \"gitbase.admin admin-missing_files_summary-YqNVbLHqJ\", \"schema\": \"gitbase.admin admin-missing_files_summary-YqNVbLHqJ\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"changelog\", \"readme\", \"notice\", \"license\", \"contributing\", \"travis\", \"ci\", \"dockerfile\"], \"color_pn\": true, \"datasource\": \"19__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": false, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": 1000, \"slice_id\": 9, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"326957c1-676b-47c3-8cd1-dce20b252458\", \"datasource_name\": \"admin admin-missing_files_summary-YqNVbLHqJ\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Files missing summary",
                             "viz_type": "table"
                         }
@@ -58,7 +58,7 @@
                             "datasource_name": "gitbase.admin admin-head_repo_languages-FJfWO1kQ4",
                             "datasource_type": "table",
                             "id": 5,
-                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"15__table\", \"donut\": true, \"granularity_sqla\": null, \"groupby\": [\"lang\"], \"labels_outside\": false, \"metric\": \"count\", \"number_format\": \".3s\", \"pie_label_type\": \"key\", \"row_limit\": 1000, \"show_labels\": true, \"show_legend\": false, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"pie\", \"remote_id\": \"6c8553f3-7524-4bd6-bba8-cd92fcee67d0\", \"datasource_name\": \"gitbase.admin admin-head_repo_languages-FJfWO1kQ4\", \"schema\": \"gitbase.admin admin-head_repo_languages-FJfWO1kQ4\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"15__table\", \"donut\": true, \"granularity_sqla\": null, \"groupby\": [\"lang\"], \"labels_outside\": false, \"metric\": \"count\", \"number_format\": \".3s\", \"pie_label_type\": \"key\", \"row_limit\": 1000, \"show_labels\": true, \"show_legend\": false, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"pie\", \"remote_id\": \"6c8553f3-7524-4bd6-bba8-cd92fcee67d0\", \"datasource_name\": \"admin admin-head_repo_languages-FJfWO1kQ4\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Languages",
                             "viz_type": "pie"
                         }
@@ -69,7 +69,7 @@
                             "datasource_name": "gitbase.admin admin-missing_files-Y0yDW8RN6",
                             "datasource_type": "table",
                             "id": 13,
-                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"repository_id\", \"changelog\", \"readme\", \"notice\", \"license\", \"contributing\", \"travis\", \"ci\", \"dockerfile\"], \"color_pn\": true, \"datasource\": \"18__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": false, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": 10000, \"slice_id\": 8, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"8705d80d-8550-4431-82bf-bfd09cdf7db0\", \"datasource_name\": \"gitbase.admin admin-missing_files-Y0yDW8RN6\", \"schema\": \"gitbase.admin admin-missing_files-Y0yDW8RN6\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"repository_id\", \"changelog\", \"readme\", \"notice\", \"license\", \"contributing\", \"travis\", \"ci\", \"dockerfile\"], \"color_pn\": true, \"datasource\": \"18__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": false, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": 10000, \"slice_id\": 8, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"8705d80d-8550-4431-82bf-bfd09cdf7db0\", \"datasource_name\": \"admin admin-missing_files-Y0yDW8RN6\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Missing files",
                             "viz_type": "table"
                         }
@@ -80,7 +80,7 @@
                             "datasource_name": "admin admin-Untitled Query-mW48VqXdL",
                             "datasource_type": "table",
                             "id": 7,
-                            "params": "{\"adhoc_filters\": [], \"datasource\": \"19__table\", \"granularity_sqla\": null, \"metric\": \"count\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"big_number_total\", \"y_axis_format\": null, \"remote_id\": \"fc0607b5-846c-471f-9acf-643ab160d619\", \"datasource_name\": \"admin admin-Untitled Query-mW48VqXdL\", \"schema\": \"admin admin-Untitled Query-mW48VqXdL\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"datasource\": \"19__table\", \"granularity_sqla\": null, \"metric\": \"count\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"big_number_total\", \"y_axis_format\": null, \"remote_id\": \"fc0607b5-846c-471f-9acf-643ab160d619\", \"datasource_name\": \"admin admin-Untitled Query-mW48VqXdL\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Number of collaborators",
                             "viz_type": "big_number_total"
                         }
@@ -91,7 +91,7 @@
                             "datasource_name": "gitbase.admin admin-commits_per_day-lGJ1u0Kbm",
                             "datasource_type": "table",
                             "id": 11,
-                            "params": "{\"adhoc_filters\": [], \"bar_stacked\": true, \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"columns\": [\"commit_type\"], \"contribution\": false, \"datasource\": \"16__table\", \"granularity_sqla\": null, \"groupby\": [\"day\"], \"metrics\": [\"count\"], \"order_bars\": true, \"reduce_x_ticks\": false, \"row_limit\": 50000, \"show_bar_value\": true, \"show_controls\": false, \"show_legend\": true, \"slice_id\": 6, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"dist_bar\", \"x_axis_label\": \"Day of the week\", \"x_ticks_layout\": \"auto\", \"y_axis_format\": \".3s\", \"y_axis_label\": \"Number of imports\", \"remote_id\": \"165563fc-6483-4c74-ad9b-13cba38c4752\", \"datasource_name\": \"gitbase.admin admin-commits_per_day-lGJ1u0Kbm\", \"schema\": \"gitbase.admin admin-commits_per_day-lGJ1u0Kbm\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"bar_stacked\": true, \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"columns\": [\"commit_type\"], \"contribution\": false, \"datasource\": \"16__table\", \"granularity_sqla\": null, \"groupby\": [\"day\"], \"metrics\": [\"count\"], \"order_bars\": true, \"reduce_x_ticks\": false, \"row_limit\": 50000, \"show_bar_value\": true, \"show_controls\": false, \"show_legend\": true, \"slice_id\": 6, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"dist_bar\", \"x_axis_label\": \"Day of the week\", \"x_ticks_layout\": \"auto\", \"y_axis_format\": \".3s\", \"y_axis_label\": \"Number of imports\", \"remote_id\": \"165563fc-6483-4c74-ad9b-13cba38c4752\", \"datasource_name\": \"admin admin-commits_per_day-lGJ1u0Kbm\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Number of commits per day of the week",
                             "viz_type": "dist_bar"
                         }
@@ -102,7 +102,7 @@
                             "datasource_name": "null.admin admin-Untitled Query-Wfqa9oVcQ",
                             "datasource_type": "table",
                             "id": 3,
-                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bar_stacked\": true, \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"27__table\", \"granularity_sqla\": \"commit_date\", \"groupby\": [\"repo\"], \"left_margin\": \"auto\", \"line_interpolation\": \"linear\", \"metrics\": [\"count\"], \"order_desc\": true, \"reduce_x_ticks\": true, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 1000, \"show_bar_value\": false, \"show_brush\": \"no\", \"show_controls\": false, \"show_legend\": false, \"slice_id\": 22, \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"url_params\": {}, \"viz_type\": \"bar\", \"x_axis_format\": \"%b/%y\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": null, \"y_axis_label\": \"\", \"y_axis_showminmax\": false, \"y_log_scale\": false, \"remote_id\": \"4619fa44-ebc4-441c-9392-28a9e95ab41e\", \"datasource_name\": \"null.admin admin-Untitled Query-Wfqa9oVcQ\", \"schema\": \"null.admin admin-Untitled Query-Wfqa9oVcQ\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bar_stacked\": true, \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"27__table\", \"granularity_sqla\": \"commit_date\", \"groupby\": [\"repo\"], \"left_margin\": \"auto\", \"line_interpolation\": \"linear\", \"metrics\": [\"count\"], \"order_desc\": true, \"reduce_x_ticks\": true, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 1000, \"show_bar_value\": false, \"show_brush\": \"no\", \"show_controls\": false, \"show_legend\": false, \"slice_id\": 22, \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"url_params\": {}, \"viz_type\": \"bar\", \"x_axis_format\": \"%b/%y\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": null, \"y_axis_label\": \"\", \"y_axis_showminmax\": false, \"y_log_scale\": false, \"remote_id\": \"4619fa44-ebc4-441c-9392-28a9e95ab41e\", \"datasource_name\": \"admin admin-Untitled Query-Wfqa9oVcQ\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Number of commits per month breakdown per repo",
                             "viz_type": "bar"
                         }
@@ -113,7 +113,7 @@
                             "datasource_name": "null.admin admin-Untitled Query-0scA3HaD5",
                             "datasource_type": "table",
                             "id": 8,
-                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bar_stacked\": true, \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"19__table\", \"granularity_sqla\": \"commit_author_when\", \"groupby\": [], \"left_margin\": \"auto\", \"line_interpolation\": \"linear\", \"metrics\": [\"count\"], \"order_desc\": true, \"reduce_x_ticks\": false, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 1000, \"show_bar_value\": false, \"show_brush\": \"auto\", \"show_controls\": false, \"show_legend\": false, \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"url_params\": {}, \"viz_type\": \"bar\", \"x_axis_format\": \"%b/%y\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": null, \"y_axis_label\": \"\", \"y_axis_showminmax\": false, \"y_log_scale\": false, \"remote_id\": \"8d4124f8-568d-4e51-abf3-0118cf5d381e\", \"datasource_name\": \"null.admin admin-Untitled Query-0scA3HaD5\", \"schema\": \"null.admin admin-Untitled Query-0scA3HaD5\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bar_stacked\": true, \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"19__table\", \"granularity_sqla\": \"commit_author_when\", \"groupby\": [], \"left_margin\": \"auto\", \"line_interpolation\": \"linear\", \"metrics\": [\"count\"], \"order_desc\": true, \"reduce_x_ticks\": false, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 1000, \"show_bar_value\": false, \"show_brush\": \"auto\", \"show_controls\": false, \"show_legend\": false, \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"url_params\": {}, \"viz_type\": \"bar\", \"x_axis_format\": \"%b/%y\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": null, \"y_axis_label\": \"\", \"y_axis_showminmax\": false, \"y_log_scale\": false, \"remote_id\": \"8d4124f8-568d-4e51-abf3-0118cf5d381e\", \"datasource_name\": \"admin admin-Untitled Query-0scA3HaD5\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Number of commits to HEAD per month",
                             "viz_type": "bar"
                         }
@@ -124,7 +124,7 @@
                             "datasource_name": "null.admin admin-Untitled Query-boJAIGUPS",
                             "datasource_type": "table",
                             "id": 20,
-                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"28__table\", \"donut\": false, \"granularity_sqla\": null, \"groupby\": [\"commit_author_email\"], \"labels_outside\": true, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 112, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_ph1p73w244_tswjzepbscl\", \"sqlExpression\": null}, \"number_format\": \".3s\", \"pie_label_type\": \"key\", \"row_limit\": 1000, \"show_labels\": true, \"show_legend\": false, \"slice_id\": 20, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"pie\", \"remote_id\": \"99605377-3d0f-4fae-8bb5-25cc1d1fdaa4\", \"datasource_name\": \"null.admin admin-Untitled Query-boJAIGUPS\", \"schema\": \"null.admin admin-Untitled Query-boJAIGUPS\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"28__table\", \"donut\": false, \"granularity_sqla\": null, \"groupby\": [\"commit_author_email\"], \"labels_outside\": true, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 112, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_ph1p73w244_tswjzepbscl\", \"sqlExpression\": null}, \"number_format\": \".3s\", \"pie_label_type\": \"key\", \"row_limit\": 1000, \"show_labels\": true, \"show_legend\": false, \"slice_id\": 20, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"pie\", \"remote_id\": \"99605377-3d0f-4fae-8bb5-25cc1d1fdaa4\", \"datasource_name\": \"admin admin-Untitled Query-boJAIGUPS\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Number of contributions per email",
                             "viz_type": "pie"
                         }
@@ -135,7 +135,7 @@
                             "datasource_name": "null.admin admin-Untitled Query-tEO1Ih2Uu",
                             "datasource_type": "table",
                             "id": 18,
-                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"27__table\", \"donut\": false, \"granularity_sqla\": null, \"groupby\": [\"domain\"], \"labels_outside\": true, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 106, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_g4rpo9wf9ew_ujjshbhz88\", \"sqlExpression\": null}, \"number_format\": \".3s\", \"pie_label_type\": \"key\", \"row_limit\": 1000, \"show_labels\": true, \"show_legend\": false, \"slice_id\": 18, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"pie\", \"remote_id\": \"f69e80ac-8e2a-43d3-80d2-219680364e40\", \"datasource_name\": \"null.admin admin-Untitled Query-tEO1Ih2Uu\", \"schema\": \"null.admin admin-Untitled Query-tEO1Ih2Uu\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"27__table\", \"donut\": false, \"granularity_sqla\": null, \"groupby\": [\"domain\"], \"labels_outside\": true, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 106, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_g4rpo9wf9ew_ujjshbhz88\", \"sqlExpression\": null}, \"number_format\": \".3s\", \"pie_label_type\": \"key\", \"row_limit\": 1000, \"show_labels\": true, \"show_legend\": false, \"slice_id\": 18, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"pie\", \"remote_id\": \"f69e80ac-8e2a-43d3-80d2-219680364e40\", \"datasource_name\": \"admin admin-Untitled Query-tEO1Ih2Uu\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Number of contributions per organization",
                             "viz_type": "pie"
                         }
@@ -146,7 +146,7 @@
                             "datasource_name": "null.admin admin-Untitled Query-Kmw5frZ_b",
                             "datasource_type": "table",
                             "id": 16,
-                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"24__table\", \"donut\": false, \"granularity_sqla\": null, \"groupby\": [\"lang\"], \"labels_outside\": true, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 100, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_fgo2qfox5ct_76gkjbqjn0l\", \"sqlExpression\": null}, \"number_format\": \".3s\", \"pie_label_type\": \"key\", \"row_limit\": 1000, \"show_labels\": true, \"show_legend\": false, \"slice_id\": 15, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"pie\", \"remote_id\": \"58b31a97-eabe-49f7-9ab3-4b95b1fba089\", \"datasource_name\": \"null.admin admin-Untitled Query-Kmw5frZ_b\", \"schema\": \"null.admin admin-Untitled Query-Kmw5frZ_b\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"24__table\", \"donut\": false, \"granularity_sqla\": null, \"groupby\": [\"lang\"], \"labels_outside\": true, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 100, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_fgo2qfox5ct_76gkjbqjn0l\", \"sqlExpression\": null}, \"number_format\": \".3s\", \"pie_label_type\": \"key\", \"row_limit\": 1000, \"show_labels\": true, \"show_legend\": false, \"slice_id\": 15, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"pie\", \"remote_id\": \"58b31a97-eabe-49f7-9ab3-4b95b1fba089\", \"datasource_name\": \"admin admin-Untitled Query-Kmw5frZ_b\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Number of files per languages",
                             "viz_type": "pie"
                         }
@@ -157,7 +157,7 @@
                             "datasource_name": "null.admin admin-Untitled Query-ykYJeoJJn",
                             "datasource_type": "table",
                             "id": 17,
-                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"26__table\", \"donut\": false, \"granularity_sqla\": null, \"groupby\": [\"lang\"], \"labels_outside\": true, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"sum_n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 104, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"DOUBLE\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"MAX(sum_n)\", \"optionName\": \"metric_9rbc46c8jz5_19sstwscubq\", \"sqlExpression\": null}, \"number_format\": \".3s\", \"pie_label_type\": \"key\", \"row_limit\": 1000, \"show_labels\": true, \"show_legend\": false, \"slice_id\": 17, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"pie\", \"remote_id\": \"cfdd34f8-4bee-4fc3-9120-ddbf840a8587\", \"datasource_name\": \"null.admin admin-Untitled Query-ykYJeoJJn\", \"schema\": \"null.admin admin-Untitled Query-ykYJeoJJn\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"26__table\", \"donut\": false, \"granularity_sqla\": null, \"groupby\": [\"lang\"], \"labels_outside\": true, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"sum_n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 104, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"DOUBLE\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"MAX(sum_n)\", \"optionName\": \"metric_9rbc46c8jz5_19sstwscubq\", \"sqlExpression\": null}, \"number_format\": \".3s\", \"pie_label_type\": \"key\", \"row_limit\": 1000, \"show_labels\": true, \"show_legend\": false, \"slice_id\": 17, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"viz_type\": \"pie\", \"remote_id\": \"cfdd34f8-4bee-4fc3-9120-ddbf840a8587\", \"datasource_name\": \"admin admin-Untitled Query-ykYJeoJJn\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Number of lines of code per language",
                             "viz_type": "pie"
                         }
@@ -168,7 +168,7 @@
                             "datasource_name": "null.admin admin-Untitled Query-aI5FBm-R2",
                             "datasource_type": "table",
                             "id": 6,
-                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bar_stacked\": true, \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"34__table\", \"granularity_sqla\": \"date_release\", \"groupby\": [\"repository_id\"], \"left_margin\": \"auto\", \"line_interpolation\": \"linear\", \"metrics\": [{\"aggregate\": \"SUM\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 124, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"SUM(n)\", \"optionName\": \"metric_uv459jfkfhb_jl45fbpfhpe\", \"sqlExpression\": null}], \"order_desc\": true, \"reduce_x_ticks\": false, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 1000, \"show_bar_value\": false, \"show_brush\": \"auto\", \"show_controls\": false, \"show_legend\": false, \"slice_id\": 21, \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"url_params\": {}, \"viz_type\": \"bar\", \"x_axis_format\": \"%b/%y\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": null, \"y_axis_label\": \"\", \"y_axis_showminmax\": false, \"y_log_scale\": false, \"remote_id\": \"20da1b7e-7da6-48a9-b506-494f6584b258\", \"datasource_name\": \"null.admin admin-Untitled Query-aI5FBm-R2\", \"schema\": \"null.admin admin-Untitled Query-aI5FBm-R2\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"bar_stacked\": true, \"bottom_margin\": \"auto\", \"color_scheme\": \"SUPERSET_DEFAULT\", \"comparison_type\": \"values\", \"contribution\": false, \"datasource\": \"34__table\", \"granularity_sqla\": \"date_release\", \"groupby\": [\"repository_id\"], \"left_margin\": \"auto\", \"line_interpolation\": \"linear\", \"metrics\": [{\"aggregate\": \"SUM\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 124, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"SUM(n)\", \"optionName\": \"metric_uv459jfkfhb_jl45fbpfhpe\", \"sqlExpression\": null}], \"order_desc\": true, \"reduce_x_ticks\": false, \"resample_fillmethod\": null, \"resample_how\": null, \"resample_rule\": null, \"rich_tooltip\": true, \"rolling_type\": \"None\", \"row_limit\": 1000, \"show_bar_value\": false, \"show_brush\": \"auto\", \"show_controls\": false, \"show_legend\": false, \"slice_id\": 21, \"time_grain_sqla\": \"P1M\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"url_params\": {}, \"viz_type\": \"bar\", \"x_axis_format\": \"%b/%y\", \"x_axis_label\": \"\", \"x_axis_showminmax\": false, \"x_ticks_layout\": \"auto\", \"y_axis_bounds\": [null, null], \"y_axis_format\": null, \"y_axis_label\": \"\", \"y_axis_showminmax\": false, \"y_log_scale\": false, \"remote_id\": \"20da1b7e-7da6-48a9-b506-494f6584b258\", \"datasource_name\": \"admin admin-Untitled Query-aI5FBm-R2\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Number of releases per month and repository",
                             "viz_type": "bar"
                         }
@@ -179,7 +179,7 @@
                             "datasource_name": "null.admin admin-Untitled Query-UnJl1GKQ8",
                             "datasource_type": "table",
                             "id": 19,
-                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"29__table\", \"granularity_sqla\": null, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 110, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_1yxqanppn5b_vz0jq5if73j\", \"sqlExpression\": null}, \"rotation\": \"square\", \"row_limit\": 250, \"series\": \"domain\", \"size_from\": 18, \"size_to\": 70, \"slice_id\": 19, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"word_cloud\", \"remote_id\": \"4cc846e3-c68e-474f-80a6-345600631c1d\", \"datasource_name\": \"null.admin admin-Untitled Query-UnJl1GKQ8\", \"schema\": \"null.admin admin-Untitled Query-UnJl1GKQ8\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"color_scheme\": \"SUPERSET_DEFAULT\", \"datasource\": \"29__table\", \"granularity_sqla\": null, \"metric\": {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 110, \"is_dttm\": false, \"optionName\": \"_col_n\", \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": false, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_1yxqanppn5b_vz0jq5if73j\", \"sqlExpression\": null}, \"rotation\": \"square\", \"row_limit\": 250, \"series\": \"domain\", \"size_from\": 18, \"size_to\": 70, \"slice_id\": 19, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"word_cloud\", \"remote_id\": \"4cc846e3-c68e-474f-80a6-345600631c1d\", \"datasource_name\": \"admin admin-Untitled Query-UnJl1GKQ8\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Organization wordcloud",
                             "viz_type": "word_cloud"
                         }
@@ -190,7 +190,7 @@
                             "datasource_name": "gitbase.admin admin-repo_files_count-XXcl9_d2Y",
                             "datasource_type": "table",
                             "id": 10,
-                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"repository_id\", \"files_count\"], \"color_pn\": true, \"datasource\": \"15__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": false, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": 10000, \"slice_id\": 5, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"7ef2e9ee-4073-4161-89b1-8f221afc4120\", \"datasource_name\": \"gitbase.admin admin-repo_files_count-XXcl9_d2Y\", \"schema\": \"gitbase.admin admin-repo_files_count-XXcl9_d2Y\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"repository_id\", \"files_count\"], \"color_pn\": true, \"datasource\": \"15__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": false, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": 10000, \"slice_id\": 5, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"7ef2e9ee-4073-4161-89b1-8f221afc4120\", \"datasource_name\": \"admin admin-repo_files_count-XXcl9_d2Y\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Repositories by number of files",
                             "viz_type": "table"
                         }
@@ -201,7 +201,7 @@
                             "datasource_name": "gitbase.repositories",
                             "datasource_type": "table",
                             "id": 4,
-                            "params": "{\"adhoc_filters\": [], \"datasource\": \"10__table\", \"granularity_sqla\": null, \"metric\": \"count\", \"slice_id\": 28, \"time_grain_sqla\": \"P1D\", \"time_range\": \"Last week\", \"url_params\": {}, \"viz_type\": \"big_number_total\", \"y_axis_format\": null, \"remote_id\": \"1fd90bb6-ef86-4e62-a86c-89049e0eabbe\", \"datasource_name\": \"gitbase.repositories\", \"schema\": \"gitbase.repositories\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"datasource\": \"10__table\", \"granularity_sqla\": null, \"metric\": \"count\", \"slice_id\": 28, \"time_grain_sqla\": \"P1D\", \"time_range\": \"Last week\", \"url_params\": {}, \"viz_type\": \"big_number_total\", \"y_axis_format\": null, \"remote_id\": \"1fd90bb6-ef86-4e62-a86c-89049e0eabbe\", \"datasource_name\": \"gitbase.repositories\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Repository Count",
                             "viz_type": "big_number_total"
                         }
@@ -212,7 +212,7 @@
                             "datasource_name": "null.admin admin-Untitled Query-CmGNVca6-",
                             "datasource_type": "table",
                             "id": 1,
-                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"repository_id\", \"collaborators_count\"], \"color_pn\": true, \"datasource\": \"33__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": false, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": 1000, \"slice_id\": 22, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"08ebe9fc-4e59-4615-9201-e89bb9994aa9\", \"datasource_name\": \"null.admin admin-Untitled Query-CmGNVca6-\", \"schema\": \"null.admin admin-Untitled Query-CmGNVca6-\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"align_pn\": false, \"all_columns\": [\"repository_id\", \"collaborators_count\"], \"color_pn\": true, \"datasource\": \"33__table\", \"granularity_sqla\": null, \"groupby\": [], \"include_search\": false, \"include_time\": false, \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"page_length\": 0, \"percent_metrics\": [], \"row_limit\": 1000, \"slice_id\": 22, \"table_filter\": false, \"table_timestamp_format\": \"%Y-%m-%d %H:%M:%S\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"timeseries_limit_metric\": null, \"viz_type\": \"table\", \"remote_id\": \"08ebe9fc-4e59-4615-9201-e89bb9994aa9\", \"datasource_name\": \"admin admin-Untitled Query-CmGNVca6-\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Repository by number of collaborators",
                             "viz_type": "table"
                         }
@@ -223,7 +223,7 @@
                             "datasource_name": "null.admin admin-Untitled Query-rpq4L7GFr",
                             "datasource_type": "table",
                             "id": 15,
-                            "params": "{\"adhoc_filters\": [], \"bar_stacked\": false, \"bottom_margin\": 100, \"color_scheme\": \"SUPERSET_DEFAULT\", \"columns\": [], \"contribution\": false, \"datasource\": \"23__table\", \"granularity_sqla\": null, \"groupby\": [\"repository_id\"], \"metrics\": [{\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 98, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_ozqrfezkw4o_zf5mkt49ns\", \"sqlExpression\": null}], \"order_bars\": false, \"reduce_x_ticks\": false, \"row_limit\": 1000, \"show_bar_value\": false, \"show_controls\": false, \"show_legend\": false, \"slice_id\": 14, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"dist_bar\", \"x_axis_label\": \"\", \"x_ticks_layout\": \"staggered\", \"y_axis_format\": null, \"y_axis_label\": \"\", \"remote_id\": \"bdceb4b8-808e-47cc-84a3-f497d31c0dbc\", \"datasource_name\": \"null.admin admin-Untitled Query-rpq4L7GFr\", \"schema\": \"null.admin admin-Untitled Query-rpq4L7GFr\", \"database_name\": \"gitbase\"}",
+                            "params": "{\"adhoc_filters\": [], \"bar_stacked\": false, \"bottom_margin\": 100, \"color_scheme\": \"SUPERSET_DEFAULT\", \"columns\": [], \"contribution\": false, \"datasource\": \"23__table\", \"granularity_sqla\": null, \"groupby\": [\"repository_id\"], \"metrics\": [{\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"n\", \"description\": null, \"expression\": \"\", \"filterable\": true, \"groupby\": true, \"id\": 98, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"LONGLONG\", \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"fromFormData\": true, \"hasCustomLabel\": false, \"label\": \"MAX(n)\", \"optionName\": \"metric_ozqrfezkw4o_zf5mkt49ns\", \"sqlExpression\": null}], \"order_bars\": false, \"reduce_x_ticks\": false, \"row_limit\": 1000, \"show_bar_value\": false, \"show_controls\": false, \"show_legend\": false, \"slice_id\": 14, \"time_grain_sqla\": \"P1D\", \"time_range\": \"100 years ago : \", \"url_params\": {}, \"viz_type\": \"dist_bar\", \"x_axis_label\": \"\", \"x_ticks_layout\": \"staggered\", \"y_axis_format\": null, \"y_axis_label\": \"\", \"remote_id\": \"bdceb4b8-808e-47cc-84a3-f497d31c0dbc\", \"datasource_name\": \"admin admin-Untitled Query-rpq4L7GFr\", \"schema\": null, \"database_name\": \"gitbase\"}",
                             "slice_name": "Total number of commits per repository",
                             "viz_type": "dist_bar"
                         }
@@ -373,7 +373,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 20, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "null",
+                "schema": null,
                 "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repository_id, COUNT(commit_author_name) as collaborators_count FROM (\nSELECT DISTINCT commit_author_name, repository_id\nFROM commits\n) q1\nGROUP BY repository_id\nORDER BY collaborators_count DESC",
                 "table_name": "admin admin-Untitled Query-CmGNVca6-",
                 "template_params": "{}"
@@ -477,7 +477,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 18, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "gitbase",
+                "schema": null,
                 "sql": "SELECT\r\n    repo,\r\n    CASE\r\n        WHEN day_index = 2 THEN '1 - Monday'\r\n        WHEN day_index = 3 THEN '2 - Tuesday'\r\n        WHEN day_index = 4 THEN '3 - Wednesday'\r\n        WHEN day_index = 5 THEN '4 - Thursday'\r\n        WHEN day_index = 6 THEN '5 - Friday'\r\n        WHEN day_index = 7 THEN '6 - Saturday'\r\n        ELSE '7 - Sunday'\r\n    END AS day,\r\n    CASE\r\n        WHEN n_parents > 1 THEN 'Merge commit'\r\n        ELSE 'Non-merge commit'\r\n    END AS commit_type\r\nFROM (\r\n    SELECT\r\n        repository_id AS repo,\r\n        DAYOFWEEK(committer_when) AS day_index,\r\n        ARRAY_LENGTH(commit_parents) AS n_parents\r\n    FROM commits\r\n) t",
                 "table_name": "admin admin-commits_per_day-lGJ1u0Kbm",
                 "template_params": "{}"
@@ -622,7 +622,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 16, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "null",
+                "schema": null,
                 "sql": "SELECT commit_author_email, COUNT(*) as n\nFROM commits\nWHERE ARRAY_LENGTH(commit_parents) < 2\nGROUP BY commit_author_email\nORDER BY n DESC",
                 "table_name": "admin admin-Untitled Query-boJAIGUPS",
                 "template_params": "{}"
@@ -831,7 +831,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 21, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "gitbase",
+                "schema": null,
                 "sql": "SELECT \r\n    SUM(1-changelog) as changelog, \r\n    SUM(1-readme) as readme, \r\n    SUM(1-notice) as notice, \r\n    SUM(1-license) as license,\r\n    SUM(1-contributing) as contributing,\r\n    SUM(1-travis) as travis,\r\n    SUM(1-ci) as ci,\r\n    SUM(1-dockerfile) as dockerfile\r\nFROM (\r\n\tSELECT \r\n\t    repository_id, \r\n\t    SUM(changelog) != 0 as changelog, \r\n        SUM(readme) != 0 as readme, \r\n        SUM(notice) != 0 as notice, \r\n        SUM(license) != 0 as license,\r\n        SUM(contributing) != 0 as contributing,\r\n        SUM(travis) != 0 as travis,\r\n        SUM(ci) != 0 as ci,\r\n    \tSUM(dockerfile) != 0 as dockerfile\r\n\tFROM (\r\n\t    SELECT \r\n\t        refs.repository_id, \r\n\t        CASE WHEN file_path REGEXP '(?i)^CHANGELOG(|\\.MD)' THEN 1 ELSE 0 END AS changelog,\r\n            CASE WHEN file_path REGEXP '(?i)^README(|\\.MD)' THEN 1 ELSE 0 END AS readme,\r\n            CASE WHEN file_path REGEXP '(?i)^NOTICE(|\\.MD)' THEN 1 ELSE 0 END AS notice,\r\n            CASE WHEN file_path REGEXP '(?i)^LICENSE(|\\.MD)' THEN 1 ELSE 0 END AS license,\r\n            CASE WHEN file_path REGEXP '(?i)^CONTRIBUTING(|\\.MD)' THEN 1 ELSE 0 END AS contributing,\r\n            CASE WHEN file_path REGEXP '(?i)^\\.TRAVIS\\.YML' THEN 1 ELSE 0 END AS travis,\r\n            CASE WHEN file_path REGEXP '(?i)^CI' THEN 1 ELSE 0 END AS ci,\r\n            CASE WHEN file_path REGEXP '(?i)^DOCKERFILE$' THEN 1 ELSE 0 END AS dockerfile\r\n\t    FROM refs\r\n\t    JOIN commit_files \r\n\t    ON refs.commit_hash = commit_files.commit_hash \r\n\t    WHERE ref_name = \"refs/heads/master\" \r\n\t) q\r\n\tGROUP BY repository_id\r\n) q2\r",
                 "table_name": "admin admin-missing_files_summary-YqNVbLHqJ",
                 "template_params": "{}"
@@ -914,7 +914,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 29, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "null",
+                "schema": null,
                 "sql": "SELECT REPLACE(JSON_EXTRACT(SPLIT(commit_author_email, '@'), '$[1]'),'\"', '') as domain, COUNT(*) as n\nFROM commits\nWHERE commit_author_email LIKE '%%@%%'\nAND ARRAY_LENGTH(commit_parents) < 2\nGROUP BY domain\nORDER BY n DESC",
                 "table_name": "admin admin-Untitled Query-UnJl1GKQ8",
                 "template_params": "{}"
@@ -997,7 +997,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 12, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "null",
+                "schema": null,
                 "sql": "SELECT REPLACE(JSON_EXTRACT(SPLIT(commit_author_email, '@'), '$[1]'),'\"', '') as domain, COUNT(*) as n\nFROM commits\nWHERE commit_author_email LIKE '%%@%%'\nAND ARRAY_LENGTH(commit_parents) < 2\nGROUP BY domain\nORDER BY n DESC",
                 "table_name": "admin admin-Untitled Query-tEO1Ih2Uu",
                 "template_params": "{}"
@@ -1225,7 +1225,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 17, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "gitbase",
+                "schema": null,
                 "sql": "SELECT \r\n    SUM(changelog != 0) / COUNT(changelog)  as changelog, \r\n    SUM(readme != 0)  / COUNT(changelog) as readme, \r\n    SUM(notice != 0)  / COUNT(changelog) as notice, \r\n    SUM(license != 0) / COUNT(changelog) as license,\r\n    SUM(contributing != 0) / COUNT(changelog) as contributing,\r\n    SUM(travis != 0) / COUNT(changelog) as travis, \r\n    SUM(ci != 0) / COUNT(changelog) as ci, \r\n    SUM(dockerfile != 0) / COUNT(changelog) as dockerfile \r\nFROM (\r\n    SELECT \r\n        SUM(changelog) as changelog, \r\n        SUM(readme) as readme, \r\n        SUM(notice) as notice, \r\n        SUM(license) as license,\r\n        SUM(contributing) as contributing,\r\n        SUM(travis) as travis,\r\n        SUM(ci) as ci,\r\n        SUM(dockerfile) as dockerfile\r\n    FROM (\r\n        SELECT \r\n            refs.repository_id, \r\n            CASE WHEN file_path REGEXP '(?i)^CHANGELOG(|\\.MD)' THEN 1 ELSE 0 END AS changelog,\r\n            CASE WHEN file_path REGEXP '(?i)^README(|\\.MD)' THEN 1 ELSE 0 END AS readme,\r\n            CASE WHEN file_path REGEXP '(?i)^NOTICE(|\\.MD)' THEN 1 ELSE 0 END AS notice,\r\n            CASE WHEN file_path REGEXP '(?i)^LICENSE(|\\.MD)' THEN 1 ELSE 0 END AS license,\r\n            CASE WHEN file_path REGEXP '(?i)^CONTRIBUTING(|\\.MD)' THEN 1 ELSE 0 END AS contributing,\r\n            CASE WHEN file_path REGEXP '(?i)^\\.TRAVIS\\.YML' THEN 1 ELSE 0 END AS travis,\r\n            CASE WHEN file_path REGEXP '(?i)^CI' THEN 1 ELSE 0 END AS ci,\r\n            CASE WHEN file_path REGEXP '(?i)^DOCKERFILE$' THEN 1 ELSE 0 END AS dockerfile\r\n        FROM refs\r\n        JOIN commit_files \r\n        ON refs.commit_hash = commit_files.commit_hash \r\n        WHERE ref_name = \"refs/heads/master\" \r\n    ) q\r\n    GROUP BY repository_id\r\n) q2",
                 "table_name": "admin admin-compliance_score-ReDkKHp6n",
                 "template_params": "{}"
@@ -1308,7 +1308,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 30, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "null",
+                "schema": null,
                 "sql": "SELECT commit_author_email, COUNT(*) as n\nFROM commits\nWHERE ARRAY_LENGTH(commit_parents) < 2\nGROUP BY commit_author_email\nORDER BY n DESC",
                 "table_name": "admin admin-Untitled Query-JJ5b9O0Hc",
                 "template_params": "{}"
@@ -1412,7 +1412,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 24, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "null",
+                "schema": null,
                 "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repository_id,\n         commit_author_when as date_release,\n         COUNT(*) as n\n  FROM refs\n  NATURAL JOIN commits\n  WHERE ref_name LIKE 'refs/tags/v%.%.0' OR ref_name LIKE 'refs/tags/%.%.0'\n  GROUP BY repository_id, date_release\n  ORDER BY repository_id, date_release",
                 "table_name": "admin admin-Untitled Query-aI5FBm-R2",
                 "template_params": "{}"
@@ -1495,7 +1495,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 14, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "gitbase",
+                "schema": null,
                 "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repository_id, COUNT(file_path) as files_count\r\nFROM refs\r\nNATURAL JOIN commit_files\r\nWHERE ref_name = 'HEAD'\r\nGROUP BY repository_id\r\nORDER BY files_count DESC",
                 "table_name": "admin admin-repo_files_count-XXcl9_d2Y",
                 "template_params": "{}"
@@ -1599,7 +1599,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 27, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "gitbase",
+                "schema": null,
                 "sql": "SELECT\r\n    repository_id,\r\n    commit_author_when,\r\n    CASE ARRAY_LENGTH(commit_parents) WHEN 0 THEN 'Commit' WHEN 1 THEN 'Commit' ELSE 'Merge' END AS commit_type\r\nFROM commits",
                 "table_name": "admin admin-commit_merges-8X2HBrQre",
                 "template_params": "{}"
@@ -1682,7 +1682,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 25, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "gitbase",
+                "schema": null,
                 "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repository_id, lang\r\nFROM (\r\n    SELECT\r\n        repository_id,\r\n        LANGUAGE(file_path) as lang\r\n    FROM refs\r\n    NATURAL JOIN commit_files\r\n    WHERE ref_name = 'HEAD'\r\n) AS q\r\nWHERE lang NOT IN ('', 'Ignore List')",
                 "table_name": "admin admin-head_repo_languages-FJfWO1kQ4",
                 "template_params": "{}"
@@ -1765,7 +1765,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 28, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "null",
+                "schema": null,
                 "sql": "SELECT lang, SUM(n) as sum_n\nFROM (\nSELECT lang, SUM(lines) as n\nFROM (\nSELECT f.repository_id, LANGUAGE(cf.file_path, f.blob_content) as lang,\nARRAY_LENGTH(SPLIT(f.blob_content, '\\n')) as lines\nFROM files AS f\nNATURAL JOIN commit_files cf\nNATURAL JOIN refs\nWHERE ref_name = 'HEAD'\nAND file_path NOT LIKE 'vendor/%%'\n) AS t\nWHERE lang IS NOT NULL\nGROUP BY repository_id, lang\n) AS t\nGROUP by lang\nORDER BY n DESC",
                 "table_name": "admin admin-Untitled Query-ykYJeoJJn",
                 "template_params": "{}"
@@ -1848,7 +1848,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 22, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "null",
+                "schema": null,
                 "sql": "SELECT lang, COUNT(*) as n\nFROM (\nSELECT LANGUAGE(cf.file_path, f.blob_content) as lang\nFROM files AS f\nNATURAL JOIN commit_files cf\nNATURAL JOIN refs\nWHERE ref_name = 'HEAD'\nAND file_path NOT LIKE 'vendor/%%'\n) AS t\nWHERE lang is not null\nGROUP BY lang\nORDER BY 2 DESC",
                 "table_name": "admin admin-Untitled Query-Kmw5frZ_b",
                 "template_params": "{}"
@@ -1952,7 +1952,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 19, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "null",
+                "schema": null,
                 "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repo,\ncommit_author_when commit_date,\nCOUNT(*) as n\nFROM commits\nWHERE commit_author_when <= now()\nGROUP BY repo, commit_date\nORDER BY repo, commit_date",
                 "table_name": "admin admin-Untitled Query-Wfqa9oVcQ",
                 "template_params": "{}"
@@ -2035,7 +2035,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 23, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "null",
+                "schema": null,
                 "sql": "SELECT commit_author_when,\nCOUNT(*) as n\nFROM ref_commits\nNATURAL JOIN commits\nWHERE ref_name = 'HEAD'\nGROUP BY commit_author_when\nORDER BY commit_author_when",
                 "table_name": "admin admin-Untitled Query-0scA3HaD5",
                 "template_params": "{}"
@@ -2265,7 +2265,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 13, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "gitbase",
+                "schema": null,
                 "sql": "SELECT \r\n    REPLACE(repository_id, 'github.com/', '') as repository_id, \r\n    CASE WHEN MAX(changelog) = 0 THEN 'missing' ELSE '' END as changelog, \r\n    CASE WHEN MAX(readme) = 0 THEN 'missing' ELSE '' END as readme, \r\n    CASE WHEN MAX(notice) = 0 THEN 'missing' ELSE '' END as notice, \r\n    CASE WHEN MAX(license) = 0 THEN 'missing' ELSE '' END as license,\r\n    CASE WHEN MAX(contributing) = 0 THEN 'missing' ELSE '' END as contributing,\r\n    CASE WHEN MAX(travis) = 0 THEN 'missing' ELSE '' END as travis, \r\n    CASE WHEN MAX(ci) = 0 THEN 'missing' ELSE '' END as ci, \r\n    CASE WHEN MAX(dockerfile) = 0 THEN 'missing' ELSE '' END as dockerfile\r\nFROM (\r\n    SELECT \r\n        refs.repository_id, \r\n        CASE WHEN file_path REGEXP '(?i)^CHANGELOG(|\\.MD)' THEN 1 ELSE 0 END AS changelog,\r\n        CASE WHEN file_path REGEXP '(?i)^README(|\\.MD)' THEN 1 ELSE 0 END AS readme,\r\n        CASE WHEN file_path REGEXP '(?i)^NOTICE(|\\.MD)' THEN 1 ELSE 0 END AS notice,\r\n        CASE WHEN file_path REGEXP '(?i)^LICENSE(|\\.MD)' THEN 1 ELSE 0 END AS license,\r\n        CASE WHEN file_path REGEXP '(?i)^CONTRIBUTING(|\\.MD)' THEN 1 ELSE 0 END AS contributing,\r\n        CASE WHEN file_path REGEXP '(?i)^\\.TRAVIS\\.YML' THEN 1 ELSE 0 END AS travis,\r\n        CASE WHEN file_path REGEXP '(?i)^CI' THEN 1 ELSE 0 END AS ci,\r\n        CASE WHEN file_path REGEXP '(?i)^DOCKERFILE$' THEN 1 ELSE 0 END AS dockerfile\r\n    FROM refs\r\n    JOIN commit_files \r\n    ON refs.commit_hash = commit_files.commit_hash \r\n    WHERE ref_name = \"refs/heads/master\" \r\n) q\r\nGROUP BY repository_id",
                 "table_name": "admin admin-missing_files-Y0yDW8RN6",
                 "template_params": "{}"
@@ -2348,7 +2348,7 @@
                 ],
                 "offset": 0,
                 "params": "{\"remote_id\": 26, \"database_name\": \"gitbase\", \"import_time\": 1561379632}",
-                "schema": "null",
+                "schema": null,
                 "sql": "SELECT REPLACE(repository_id, 'github.com/', '') as repository_id, COUNT(*) as n\nFROM ref_commits\nWHERE ref_name = 'HEAD'\nGROUP BY repository_id\nORDER BY n DESC\nLIMIT 20",
                 "table_name": "admin admin-Untitled Query-rpq4L7GFr",
                 "template_params": "{}"
