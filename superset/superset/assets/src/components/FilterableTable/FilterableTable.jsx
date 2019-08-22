@@ -36,7 +36,8 @@ import Button from '../Button';
 import CopyToClipboard from '../CopyToClipboard';
 import ModalTrigger from '../ModalTrigger';
 import TooltipWrapper from '../TooltipWrapper';
-import { cellRenderer, isUAST } from './CellRenderer';
+import isUAST from './isUAST';
+import UASTButton from './UASTButton';
 
 function getTextWidth(text, font = '12px Roboto') {
   return getTextDimension({ text, style: { font } }).width;
@@ -163,9 +164,10 @@ export default class FilterableTable extends PureComponent {
     this.props.orderedColumnKeys.forEach((key) => {
       const colWidths = this.list
         // get width for each value for a key
-        .map(d => {
+        .map((d) => {
+          const cellData = d[key];
           // TODO hardcoded, implement a better way
-          if (isUAST(d[key])) {
+          if (isUAST(cellData)) {
             return 150;
           }
 
@@ -370,6 +372,9 @@ export default class FilterableTable extends PureComponent {
     const cellNode = this.getCellContent({ cellData, columnKey });
     const jsonObject = safeJsonObjectParse(cellData);
     if (jsonObject) {
+      if (isUAST(cellData)) {
+        return (<UASTButton uast={cellData} />);
+      }
       return this.addJsonModal(cellNode, jsonObject, cellData);
     }
     return cellNode;
@@ -434,7 +439,6 @@ export default class FilterableTable extends PureComponent {
                 dataKey={columnKey}
                 disableSort={false}
                 headerRenderer={this.renderTableHeader}
-                cellRenderer={cellRenderer}
                 width={this.widthsForColumnsByKey[columnKey]}
                 label={columnKey}
                 key={columnKey}
