@@ -25,6 +25,7 @@ if [ "`whoami`" = "root" ] && [ -n "$LOCAL_USER" ]; then
     find . -group superset -exec chgrp $LOCAL_USER '{}' \;
     groupmod -g $LOCAL_USER superset
     usermod -u $LOCAL_USER superset
+    chown -R superset superset/assets/node_modules
 
     su -c "/entrypoint.sh" superset
     exit $?
@@ -42,7 +43,7 @@ elif [ "$SUPERSET_ENV" = "development" ]; then
     # `webpack-dev-server` will serve the UI from the port 8088, and it will proxy
     # non-asset requests to `Flask`, wich is listening at the port 8081
     # Doing so, updates to asset sources will be reflected in-browser without a refresh.
-    (cd superset/assets/ && npm ci)
+    (cd superset/assets/ && npm install)
     (cd superset/assets/ && npm run dev-server -- --host=0.0.0.0 --port=8088 --supersetPort=8081) &
     FLASK_ENV=development FLASK_APP=superset:app flask run -p 8081 --with-threads --reload --debugger --host=0.0.0.0
 elif [ "$SUPERSET_ENV" = "production" ]; then

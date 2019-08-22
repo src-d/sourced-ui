@@ -30,25 +30,18 @@ DOCKER_PUSH_LATEST ?=
 
 # Tools
 STAT := stat -c
-
-
-# Set the user as root inside of the container to have permissions to change
-# internal `superset` UID and GUID, and make it match the host user.
-# It will grant write access to the data from the volumes,
-# inside of the container and on host file system (see #221)
-LOGIN_USER := 0
 ifeq ($(shell uname),Darwin)
 	STAT := stat -f
-	# In OSX there's no problem if the host user and the internal user are
-	# different when reading and accessing data trough docker volumes.
-	LOGIN_USER := superset
 endif
 
 SOURCED_UI_ABS_PATH := $(shell pwd)
+# Get UID on host machine, it will be used inside a container to change
+# internal `superset` UID and GUID, and make it match the host user.
+# It will grant write access to the data from the volumes,
+# inside of the container and on host file system (see #221)
 LOCAL_USER := $(shell $(STAT) "%u" superset/superset)
 export SOURCED_UI_ABS_PATH
 export LOCAL_USER
-export LOGIN_USER
 
 
 # Build information
