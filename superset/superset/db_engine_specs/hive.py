@@ -440,3 +440,84 @@ class SparkSQLEngineSpec(HiveEngineSpec):
             latest_partition=latest_partition,
             cols=cols,
         )
+
+    @classmethod
+    def fetch_data(cls, cursor, limit):
+        import pyhive
+        from TCLIService import ttypes
+
+        try:
+            return super(SparkSQLEngineSpec, cls).fetch_data(cursor, limit)
+        except pyhive.exc.OperationalError as op_err:
+            # FIXME: The `pyhive.exc.OperationalError` exception is raised when
+            # a query is cancelled. This seems to happen because `gsc` expects
+            # the state to be `FINISHED` but got `CANCELED`. This has to be
+            # fixed once `gsc` correctly handles cancelation.
+            cancelation_error_msg = 'Expected state FINISHED, but found CANCELED'
+            if (
+                    len(op_err.args) > 0 and
+                    isinstance(op_err.args[0], ttypes.TFetchResultsResp) and
+                    op_err.args[0].status.errorMessage == cancelation_error_msg
+            ):
+                logging.warning("Query has been cancelled, returning empty result")
+                return []
+
+            raise op_err
+
+    @classmethod
+    def _dumps_operation_handle(cls, op_handle):
+        return dict(op_handle.__dict__, operationId={
+            "guid": op_handle.operationId.guid.decode("ISO-8859-1"),
+            "secret": op_handle.operationId.secret.decode("ISO-8859-1"),
+        })
+
+    @classmethod
+    def _loads_operation_handle(cls, op_handle):
+        from pyhive import hive
+
+        op_handle["operationId"] = hive.ttypes.THandleIdentifier(**{
+            k: v.encode("ISO-8859-1")
+            for k, v in op_handle["operationId"].items()
+        })
+
+        return hive.ttypes.TOperationHandle(**op_handle)
+
+    @classmethod
+    def get_connection_id(cls, cursor):
+        """Returns connection id for a cursor
+
+        Just uses a hard-coded dummy id. This is done because queries
+        corresponding to a cursor without a connection id are interpreted as
+        non-cancellable.
+
+        A more suitable value should be the session id of the underlying
+        connection of the cursor, but that"s not an integer, and here an
+        integer is required."""
+
+        return 1
+
+    @classmethod
+    def handle_cursor(cls, cursor, query, session):
+        """Handle a live cursor between the execute and fetchall calls
+
+        Adds the json dumps of the `pyhive.hive.ttypes.TOperationHandle`s
+        to the query object."""
+
+        operation_handles = query.extra.get("operation_handles", [])
+        operation_handles.append(cls._dumps_operation_handle(
+            cursor._operationHandle))
+        query.set_extra_json_key("operation_handles", operation_handles)
+        session.commit()
+        logging.info("Current operation handles: %s", operation_handles)
+
+        super(SparkSQLEngineSpec, cls).handle_cursor(cursor, query, session)
+
+    @classmethod
+    def cancel_query(cls, cursor, query):
+        """Cancels query in the underlying database"""
+
+        logging.info("Cancelling query with id: `%s`", query.id)
+        for op_handle in query.extra.get("operation_handles", []):
+            logging.info("Cancelling operation handle: `%s`", op_handle)
+            cursor.cancel(operation_handle=cls._loads_operation_handle(
+                op_handle))
