@@ -2428,11 +2428,14 @@ class Superset(BaseSupersetView):
         client_id = request.form.get("client_id")
         try:
             query = db.session.query(Query).filter_by(client_id=client_id).one()
+            logging.info("Query retrieved with id `%s`", query.id)
             query.status = QueryStatus.STOPPED
+
             db.session.commit()
+            logging.info("Committed status change for query with id `%s`", query.id)
             sql_lab.cancel_query(query, g.user.username if g.user else None)
-        except Exception:
-            pass
+        except Exception as e:
+            return json_error_response('{}'.format(e))
         return self.json_response("OK")
 
     @has_access_api
