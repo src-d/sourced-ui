@@ -142,3 +142,74 @@ if needed)
     ```shell
     $ sourced logs -f sourced-ui
     ```
+
+## Merging upstream
+
+We base sourced-ui on release tags of superset instead of master.
+
+### Revert release branch changes (optional)
+
+Release branches might contain cherry-picks or other commits that aren't presented in master branch or the next release branch.
+In such case it makes sense to revert them before applying changes from newer release.
+
+All the releases have a topic in [mailing list](https://lists.apache.org/list.html?dev@superset.apache.org) which contain common ancestor sha and list of commits for each release tag.
+
+1. Find common ancestor in the mailing list
+1. Find the last split commit
+    ```
+    $ git log | grep git-subtree-split
+    ```
+1. Checkout to split commit
+1. Revert commits
+    ```
+    $ git revert --no-commit <common ancestor sha>...<release tag>
+    ```
+1. Commit the revert as single commit
+    ```
+    $ git commit -s -m "revert to upstream master from <release tag>"
+    ```
+1. Merge revert into sourced-ui tree
+    ```
+    $ git co master
+    $ git subtree merge -P superset HEAD@{1} --squash
+    ```
+
+### Merge new release
+
+```
+$ git subtree merge -P superset <release-tag> --squash
+```
+
+### After merge checklist
+
+- Re-create venv and re-install dependencies
+- Run linters
+    ```
+    $ make patch
+    $ cd superset
+    $ TOXENV=black tox
+    $ TOXENV=flake8 tox
+    $ TOXENV=pylint tox
+    ```
+- Merge migrations (if needed)
+    ```
+    $ pip install -e .
+    $ superset db heads
+    $ superset db merge <head1> <head2>
+    ```
+- Run tests
+    ```
+    $ docker run --rm -p 6379:6379 redis
+    $ TOXENV=py36-sqlite tox
+    ```
+- Build & check it with srcd-ce
+    ```
+    $ make build
+    <run srcd-ce with this image>
+    ```
+- Check if some changes to configuration should be ported, files to check:
+  - superset/contib/docker
+  - superset/superset/config.py
+  - superset/.travis.yml
+- Update `Makefile`
+- Test upgrade

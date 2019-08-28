@@ -71,7 +71,7 @@ function columnsContainAllMetrics(value, nextProps) {
     .filter(metric => metric)
     // find column names
     .map(metric => metric.column ? metric.column.column_name : metric.column_name || metric)
-    .filter(name => name)
+    .filter(name => name && typeof name === 'string')
     .every(name => columnNames.has(name));
 }
 
@@ -238,10 +238,14 @@ export default class MetricsControl extends React.PureComponent {
   }
 
   optionsForSelect(props) {
+    const { columns, savedMetrics } = props;
+    const aggregates = columns && columns.length ?
+      Object.keys(AGGREGATES).map(aggregate => ({ aggregate_name: aggregate })) :
+      [];
     const options = [
-      ...props.columns,
-      ...Object.keys(AGGREGATES).map(aggregate => ({ aggregate_name: aggregate })),
-      ...props.savedMetrics,
+      ...columns,
+      ...aggregates,
+      ...(savedMetrics || []),
     ];
 
     return options.reduce((results, option) => {

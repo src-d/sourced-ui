@@ -15,24 +15,22 @@
 # specific language governing permissions and limitations
 # under the License.
 """add_connection_id_to_query_model
-
 Revision ID: dd907ff5ac79
 Revises: c82ee8a39623
 Create Date: 2019-05-17 15:39:05.611216
-
 """
 
 # revision identifiers, used by Alembic.
-revision = 'dd907ff5ac79'
-down_revision = 'c82ee8a39623'
+revision = "dd907ff5ac79"
+down_revision = "c82ee8a39623"
 
 from alembic import op
 import sqlalchemy as sa
 
 
 def upgrade():
-    op.add_column('query', sa.Column('connection_id', sa.Integer(), nullable=True))
+    op.add_column("query", sa.Column("connection_id", sa.Integer(), nullable=True))
 
 
 def downgrade():
-    op.drop_column('query', 'connection_id')
+    op.drop_column("query", "connection_id")
