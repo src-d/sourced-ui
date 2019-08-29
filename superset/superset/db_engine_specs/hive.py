@@ -407,6 +407,15 @@ class SparkSQLEngineSpec(HiveEngineSpec):
         return BaseEngineSpec.get_view_names(inspector, schema)
 
     @classmethod
+    def expand_data(cls, columns, data):
+        """
+        This method allows to display nested fields
+        Hive spec uses types defined in Presto for this
+        and they don't match values returned by SparkSQL
+        """
+        return BaseEngineSpec.expand_data(columns, data)
+
+    @classmethod
     def select_star(
         cls,
         my_db,
