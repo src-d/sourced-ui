@@ -453,11 +453,11 @@ class SparkSQLEngineSpec(HiveEngineSpec):
             # a query is cancelled. This seems to happen because `gsc` expects
             # the state to be `FINISHED` but got `CANCELED`. This has to be
             # fixed once `gsc` correctly handles cancelation.
-            cancelation_error_msg = 'Expected state FINISHED, but found CANCELED'
+            cancelation_error_msg = "Expected state FINISHED, but found CANCELED"
             if (
-                    len(op_err.args) > 0 and
-                    isinstance(op_err.args[0], ttypes.TFetchResultsResp) and
-                    op_err.args[0].status.errorMessage == cancelation_error_msg
+                len(op_err.args) > 0
+                and isinstance(op_err.args[0], ttypes.TFetchResultsResp)
+                and op_err.args[0].status.errorMessage == cancelation_error_msg
             ):
                 logging.warning("Query has been cancelled, returning empty result")
                 return []
@@ -466,19 +466,21 @@ class SparkSQLEngineSpec(HiveEngineSpec):
 
     @classmethod
     def _dumps_operation_handle(cls, op_handle):
-        return dict(op_handle.__dict__, operationId={
-            "guid": op_handle.operationId.guid.decode("ISO-8859-1"),
-            "secret": op_handle.operationId.secret.decode("ISO-8859-1"),
-        })
+        return dict(
+            op_handle.__dict__,
+            operationId={
+                "guid": op_handle.operationId.guid.decode("ISO-8859-1"),
+                "secret": op_handle.operationId.secret.decode("ISO-8859-1"),
+            },
+        )
 
     @classmethod
     def _loads_operation_handle(cls, op_handle):
         from pyhive import hive
 
-        op_handle["operationId"] = hive.ttypes.THandleIdentifier(**{
-            k: v.encode("ISO-8859-1")
-            for k, v in op_handle["operationId"].items()
-        })
+        op_handle["operationId"] = hive.ttypes.THandleIdentifier(
+            **{k: v.encode("ISO-8859-1") for k, v in op_handle["operationId"].items()}
+        )
 
         return hive.ttypes.TOperationHandle(**op_handle)
 
@@ -504,8 +506,7 @@ class SparkSQLEngineSpec(HiveEngineSpec):
         to the query object."""
 
         operation_handles = query.extra.get("operation_handles", [])
-        operation_handles.append(cls._dumps_operation_handle(
-            cursor._operationHandle))
+        operation_handles.append(cls._dumps_operation_handle(cursor._operationHandle))
         query.set_extra_json_key("operation_handles", operation_handles)
         session.commit()
         logging.info("Current operation handles: %s", operation_handles)
@@ -519,5 +520,4 @@ class SparkSQLEngineSpec(HiveEngineSpec):
         logging.info("Cancelling query with id: `%s`", query.id)
         for op_handle in query.extra.get("operation_handles", []):
             logging.info("Cancelling operation handle: `%s`", op_handle)
-            cursor.cancel(operation_handle=cls._loads_operation_handle(
-                op_handle))
+            cursor.cancel(operation_handle=cls._loads_operation_handle(op_handle))

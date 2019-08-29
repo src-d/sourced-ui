@@ -2435,7 +2435,7 @@ class Superset(BaseSupersetView):
             logging.info("Committed status change for query with id `%s`", query.id)
             sql_lab.cancel_query(query, g.user.username if g.user else None)
         except Exception as e:
-            return json_error_response('{}'.format(e))
+            return json_error_response("{}".format(e))
         return self.json_response("OK")
 
     @has_access_api
