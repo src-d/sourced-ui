@@ -270,6 +270,7 @@ def execute_sql_statements(
     with closing(engine.raw_connection()) as conn:
         with closing(conn.cursor()) as cursor:
             query.connection_id = db_engine_spec.get_connection_id(cursor)
+            session.commit()
             statement_count = len(statements)
             for i, statement in enumerate(statements):
                 # check if the query was stopped
