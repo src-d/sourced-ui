@@ -11,6 +11,10 @@
 
 - Superset updated to v0.34.0rc1 which brings many improvements and bug fixes ([#250](https://github.com/src-d/sourced-ui/issues/250))
 
+### Changed
+
+- Improve speed of development mode on macOs ([#266](https://github.com/src-d/sourced-ui/pull/266))
+
 </details>
 
 ## [v0.5.0](https://github.com/src-d/sourced-ui/releases/tag/v0.5.0) - 2019-08-20

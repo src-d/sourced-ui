@@ -1,13 +1,23 @@
 version: '3.2'
 services:
   sourced-ui:
-    user: ${LOGIN_USER:-superset}:${LOGIN_USER:-superset}
+    # run container as root instead of superset user defined in Dockerfile
+    user: 0:0
     volumes:
-      - ${SOURCED_UI_ABS_PATH}/superset/superset:/home/superset/superset
+      - type: bind
+        source: ${SOURCED_UI_ABS_PATH}/superset/superset
+        target: /home/superset/superset
+        consistency: delegated
       - ${SOURCED_UI_ABS_PATH}/superset/dashboards:/home/superset/dashboards
       - ${SOURCED_UI_ABS_PATH}/superset/contrib/docker/superset_config.py:/home/superset/superset/superset_config.py
-      - ${SOURCED_UI_ABS_PATH}/superset/contrib/docker/bootstrap.py:/home/superset/bootstrap.py
       - ${SOURCED_UI_ABS_PATH}/superset/contrib/docker/docker-entrypoint.sh:/entrypoint.sh
+      - type: volume
+        source: node_modules
+        target: /home/superset/superset/assets/node_modules
     environment:
       SUPERSET_ENV: development
       LOCAL_USER: ${LOCAL_USER:-}
+
+volumes:
+  node_modules:
+    external: false
