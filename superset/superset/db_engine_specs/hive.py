@@ -457,6 +457,7 @@ class SparkSQLEngineSpec(HiveEngineSpec):
             if (
                 len(op_err.args) > 0
                 and isinstance(op_err.args[0], ttypes.TFetchResultsResp)
+                # pylint: disable=no-member
                 and op_err.args[0].status.errorMessage == cancelation_error_msg
             ):
                 logging.warning("Query has been cancelled, returning empty result")
