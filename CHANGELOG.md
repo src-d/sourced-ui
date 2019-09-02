@@ -14,6 +14,7 @@
 ### Changed
 
 - Improve speed of development mode on macOs ([#266](https://github.com/src-d/sourced-ui/pull/266))
+- Make gunicorn to catch SIGTERM correctly which speed-ups stop command and makes container exit with correct exit code ([#239](https://github.com/src-d/sourced-ui/issues/239))
 
 </details>
 
