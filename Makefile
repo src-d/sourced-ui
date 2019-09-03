@@ -54,7 +54,7 @@ endif
 # IS_RELEASE is "true" if tag is semantic version and not a pre-release
 IS_RELEASE := $(shell echo $(VERSION) | grep -q -E '^v[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+$$' && echo "true" || true)
 
-all: build
+all: build build-dev
 
 # Clean, and copy src-d files in the superset repository
 .PHONY: patch
