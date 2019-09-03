@@ -93,6 +93,8 @@ dev-prepare: set-override watch
 .PHONY: patch
 build: patch
 	docker build -t $(DOCKER_IMAGE_NAME):$(VERSION) -f superset/contrib/docker/Dockerfile $(SUPERSET_DIR)
+build-dev: patch
+	docker build -t $(DOCKER_IMAGE_NAME):$(VERSION)-dev -f superset/contrib/docker/Dockerfile $(SUPERSET_DIR) --build-arg DEV_BUILD=true
 
 .PHONY: docker-validate
 docker-validate:
