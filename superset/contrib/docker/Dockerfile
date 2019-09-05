@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-FROM node:12 AS static
+FROM node:10 AS static
 
 WORKDIR /home/superset
 
