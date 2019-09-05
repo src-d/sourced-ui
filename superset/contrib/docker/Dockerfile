@@ -18,11 +18,13 @@ FROM node:12 AS static
 
 WORKDIR /home/superset
 
-COPY superset/assets superset/assets
+# Install deps and cache them
+COPY superset/assets/package*.json superset/assets/
+RUN cd superset/assets && npm ci
 
-RUN cd superset/assets \
-        && npm ci \
-        && npm run build
+# Build
+COPY superset/assets superset/assets
+RUN cd superset/assets && npm run build
 
 FROM python:3.6 AS wheels
 
