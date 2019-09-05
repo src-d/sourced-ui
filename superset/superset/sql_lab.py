@@ -270,6 +270,7 @@ def execute_sql_statements(
     with closing(engine.raw_connection()) as conn:
         with closing(conn.cursor()) as cursor:
             query.connection_id = db_engine_spec.get_connection_id(cursor)
+            session.commit()
             statement_count = len(statements)
             for i, statement in enumerate(statements):
                 # check if the query was stopped
@@ -368,7 +369,11 @@ def execute_sql_statements(
 
 
 def cancel_query(query, user_name):
+    logging.info(
+        "Query with id `%s` has connection id `%s`", query.id, query.connection_id
+    )
     if not query.connection_id:
+        logging.info("No connection id found, query cancellation skipped")
         return
 
     database = query.database
@@ -382,4 +387,5 @@ def cancel_query(query, user_name):
 
     with closing(engine.raw_connection()) as conn:
         with closing(conn.cursor()) as cursor:
+            logging.info("Calling `cancel_query` on db engine")
             db_engine_spec.cancel_query(cursor, query)

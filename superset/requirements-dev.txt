@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
--e git+https://github.com/src-d/PyHive.git@v0.7.0-srcd1#egg=PyHive
+-e git+https://github.com/src-d/PyHive.git@v0.7.0-srcd2#egg=PyHive
 black==19.3b0
 coverage==4.5.3
 flake8-import-order==0.18.1

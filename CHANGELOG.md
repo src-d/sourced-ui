@@ -10,6 +10,7 @@
 ### Added
 
 - Superset updated to v0.34.0rc1 which brings many improvements and bug fixes ([#250](https://github.com/src-d/sourced-ui/issues/250))
+- Add support for Spark query cancelation ([#223](https://github.com/src-d/sourced-ui/issues/223))
 
 ### Changed
 
