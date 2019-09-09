@@ -14,7 +14,36 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-FROM python:3.6-jessie
+FROM node:10 AS static
+
+WORKDIR /home/superset
+
+# Install deps and cache them
+COPY superset/assets/package*.json superset/assets/
+RUN cd superset/assets && npm ci
+
+# Build
+COPY superset/assets superset/assets
+RUN cd superset/assets && npm run build
+
+FROM python:3.6 AS wheels
+
+WORKDIR /home/superset
+
+RUN apt-get update -y
+RUN apt-get install -y libsasl2-dev
+
+COPY requirements.txt .
+COPY requirements-dev.txt .
+COPY contrib/docker/requirements-extra.txt .
+
+RUN pip install --upgrade setuptools pip \
+        && pip wheel --wheel-dir=/wheels \
+        -r requirements.txt -r requirements-dev.txt -r requirements-extra.txt
+
+FROM python:3.6-slim
+
+ARG DEV_BUILD
 
 RUN useradd --user-group --create-home --no-log-init --shell /bin/bash superset
 
@@ -24,48 +53,42 @@ ENV LANG=C.UTF-8 \
 
 RUN apt-get update -y
 
-# Install dependencies to fix `curl https support error` and `elaying package configuration warning`
-RUN apt-get install -y apt-transport-https apt-utils
-
+# Install git as it is used for requirements from Github
+RUN apt-get install -y git
 # Install superset dependencies
-# https://superset.incubator.apache.org/installation.html#os-dependencies
-RUN apt-get install -y build-essential libssl-dev \
-    libffi-dev python3-dev libsasl2-dev libldap2-dev libsasl2-2 libsasl2-modules-gssapi-mit libxi-dev
+RUN apt-get install -y libsasl2-dev libsasl2-2 libsasl2-modules-gssapi-mit
 
-# Install extra useful tool for development
-RUN apt-get install -y vim less postgresql-client redis-tools
-
-# Install nodejs for custom build
-# https://superset.incubator.apache.org/installation.html#making-your-own-build
-# https://nodejs.org/en/download/package-manager/
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-    && apt-get install -y nodejs
+RUN if [ "$DEV_BUILD" = "true" ]; \
+        then apt-get install -y curl && \
+        curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+        && apt-get install -y nodejs vim less postgresql-client redis-tools; fi
 
 WORKDIR /home/superset
+
+COPY --from=wheels /wheels /wheels
 
 COPY requirements.txt .
 COPY requirements-dev.txt .
 COPY contrib/docker/requirements-extra.txt .
 
 RUN pip install --upgrade setuptools pip \
-    && pip install -r requirements.txt -r requirements-dev.txt -r requirements-extra.txt \
-    && rm -rf /root/.cache/pip
+        && pip install --no-index --find-links=/wheels \
+        -r requirements.txt -r requirements-dev.txt -r requirements-extra.txt \
+        && rm -rf /wheels
 
-RUN pip install gevent
+RUN if [ "$DEV_BUILD" != "true" ]; \
+        then apt-get -y --purge autoremove git; fi
 
 COPY --chown=superset:superset superset superset
 COPY --chown=superset:superset dashboards dashboards
 
 ENV PATH=/home/superset/superset/bin:$PATH \
     PYTHONPATH=/home/superset/:$PYTHONPATH \
-    SUPERSET_CONFIG_PATH=/home/superset/superset/superset_config.py
+        SUPERSET_CONFIG_PATH=/home/superset/superset/superset_config.py
+
+COPY --chown=superset:superset --from=static /home/superset/superset/assets/dist superset/assets/dist
 
 USER superset
-
-RUN cd superset/assets \
-    && npm ci \
-    && npm run build \
-    && rm -rf node_modules
 
 COPY contrib/docker/superset_config.py ./superset/
 COPY contrib/docker/bootstrap.py .
