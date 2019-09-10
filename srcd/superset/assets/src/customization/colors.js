@@ -6,35 +6,35 @@ const rgba = color => `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
 const mainColorSpecs = { r: 135, g: 25, b: 203, a: 1 };
 
 const palette = {
-  royal: rgba(mainColorSpecs),
-  royalMiddle: '#651Ab1',
-  royalDeep: '#400d9a',
-  royalLight: '#e1c5f2',
-  royalLightDeep: '#cfc2e6',
+  royal: '#7015a8',
+  royalMiddle: rgba(mainColorSpecs),
+  royalDeep: '#591085',
+  royalLight: '#a438e7',
+  royalLightDeep: '#bc6ded',
 
-  lime: '#00b491',
-  limeMiddle: '#0e949f',
-  blueDeep: '#0174b0',
-  limeLight: '#bfece3',
-  blueLightDeep: '#bfdceb',
+  lime: '#008168',
+  limeMiddle: '#009b7c',
+  blueDeep: '#006853',
+  limeLight: '#00b491',
+  blueLightDeep: '#00c8a1',
 
-  coral: '#f89c30',
-  coralMiddle: '#f37a4a',
-  coralDeep: '#f15f5f',
-  coralLight: '#fde6cb',
-  coralLightDeep: '#fbd7d7',
+  coral: '#e5770a',
+  coralMiddle: '#f68b0c',
+  coralDeep: '#d66600',
+  coralLight: '#f89c30',
+  coralLightDeep: '#f9ae56',
 
   vanila: '#d024c6',
-  vanilaLight: '#f3c8f1',
+  vanilaLight: '#e981e3',
 
   navy: '#195dca',
-  navyLight: '#48B9FE',
+  navyLight: '#8fb5f1',
 
   sky: '#29bff2',
   skyLight: '#c9effc',
 
   gray: '#6d6e71',
-  grayLight: '#c9c9c9',
+  grayLight: '#c6c7c8',
 };
 
 const colors = {
