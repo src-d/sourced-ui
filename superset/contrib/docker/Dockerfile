@@ -56,7 +56,7 @@ RUN apt-get update -y
 # Install git as it is used for requirements from Github
 RUN apt-get install -y git
 # Install superset dependencies
-RUN apt-get install -y libsasl2-dev libsasl2-2 libsasl2-modules-gssapi-mit
+RUN apt-get install -y libsasl2-dev libsasl2-2 libsasl2-modules-gssapi-mit libmariadb3
 
 RUN if [ "$DEV_BUILD" = "true" ]; \
         then apt-get install -y curl && \
