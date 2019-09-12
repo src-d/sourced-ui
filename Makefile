@@ -133,7 +133,7 @@ docker-push-latest-release:
 .PHONY: clean
 clean:
 	rm -f "$(SUPERSET_DIR)/superset_config.py"
-	git clean -fd $(SUPERSET_DIR)
+	git clean -ffdx $(SUPERSET_DIR)
 	rm -f $(OVERRIDE_OUTPUT_PATH)
 	@if [ -f "$(OVERRIDE_BACKUP_PATH)" ]; then \
 		mv $(OVERRIDE_BACKUP_PATH) $(OVERRIDE_OUTPUT_PATH); \
