@@ -50,8 +50,6 @@ export const scheme = [
       palette.vanilaLight,
       palette.navy,
       palette.navyLight,
-      palette.sky,
-      palette.skyLight,
       palette.gray,
       palette.grayLight,
     ],
@@ -65,7 +63,7 @@ export const scheme = [
       palette.lime,
       palette.vanila,
       palette.navy,
-      palette.sky,
+      palette.gray,
     ],
   },
   {

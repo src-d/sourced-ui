@@ -30,9 +30,6 @@ const palette = {
   navy: '#195dca',
   navyLight: '#8fb5f1',
 
-  sky: '#29bff2',
-  skyLight: '#c9effc',
-
   gray: '#6d6e71',
   grayLight: '#c6c7c8',
 };
