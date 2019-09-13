@@ -7,18 +7,23 @@
     Click to see more.
   </summary>
 
+</details>
+
+## [v0.6.0](https://github.com/src-d/sourced-ui/releases/tag/v0.6.0) - 2019-09-16
+
 ### Added
 
-- Superset updated to v0.34.0rc1 which brings many improvements and bug fixes ([#250](https://github.com/src-d/sourced-ui/issues/250))
-- Add support for Spark query cancelation ([#223](https://github.com/src-d/sourced-ui/issues/223))
+- Superset was updated to v0.34.0rc1, which brings many improvements and bug fixes. See more details in [their changelog](https://github.com/apache/incubator-superset/blob/master/CHANGELOG.md#0340-20190809-0058-0000) ([#250](https://github.com/src-d/sourced-ui/issues/250)).
+- Add support for Spark query cancellation ([#223](https://github.com/src-d/sourced-ui/issues/223)).
+- Add new color palettes with source{d} brand colors ([#259](https://github.com/src-d/sourced-ui/issues/259)).
 
 ### Changed
 
-- Improve speed of development mode on macOs ([#266](https://github.com/src-d/sourced-ui/pull/266))
-- Make gunicorn to catch SIGTERM correctly which speed-ups stop command and makes container exit with correct exit code ([#239](https://github.com/src-d/sourced-ui/issues/239))
-- Optimize size of Docker image ([#275](https://github.com/src-d/sourced-ui/pull/275))
-
-</details>
+- Make source{d} brand the default color palette for charts ([#259](https://github.com/src-d/sourced-ui/pull/259)).
+- Assign simpler color palettes to some charts ([#258](https://github.com/src-d/sourced-ui/pull/258)).
+- Improve speed of development mode on macOS ([#266](https://github.com/src-d/sourced-ui/pull/266)).
+- Make gunicorn catch SIGTERM correctly which speeds up the `docker stop` command, and makes the container exit with the correct exit code ([#239](https://github.com/src-d/sourced-ui/issues/239)).
+- Optimize size of the published Docker image, decreasing it from 1.76GB to 945MB ([#275](https://github.com/src-d/sourced-ui/pull/275)).
 
 ## [v0.5.0](https://github.com/src-d/sourced-ui/releases/tag/v0.5.0) - 2019-08-20
 
