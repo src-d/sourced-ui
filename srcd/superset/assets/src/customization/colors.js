@@ -6,21 +6,21 @@ const rgba = color => `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
 const mainColorSpecs = { r: 135, g: 25, b: 203, a: 1 };
 
 const palette = {
+  royalDeep: '#591085',
   royal: '#7015a8',
   royalMiddle: rgba(mainColorSpecs),
-  royalDeep: '#591085',
   royalLight: '#a438e7',
   royalLightDeep: '#bc6ded',
 
+  blueDeep: '#006853',
   lime: '#008168',
   limeMiddle: '#009b7c',
-  blueDeep: '#006853',
   limeLight: '#00b491',
   blueLightDeep: '#00c8a1',
 
+  coralDeep: '#d66600',
   coral: '#e5770a',
   coralMiddle: '#f68b0c',
-  coralDeep: '#d66600',
   coralLight: '#f89c30',
   coralLightDeep: '#f9ae56',
 

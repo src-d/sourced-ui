@@ -26,6 +26,6 @@ export const scheme = [
     id: 'royal_white',
     label: 'royal/white',
     isDiverging: false,
-    colors: ['white', palette.royal],
+    colors: ['white', palette.royalDeep],
   },
 ].map(s => new SequentialScheme(s));
