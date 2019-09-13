@@ -12,17 +12,17 @@ const palette = {
   royalLight: '#a438e7',
   royalLightDeep: '#bc6ded',
 
-  blueDeep: '#006853',
-  lime: '#008168',
-  limeMiddle: '#009b7c',
-  limeLight: '#00b491',
-  blueLightDeep: '#00c8a1',
-
   coralDeep: '#d66600',
   coral: '#e5770a',
   coralMiddle: '#f68b0c',
   coralLight: '#f89c30',
   coralLightDeep: '#f9ae56',
+
+  blueDeep: '#006853',
+  lime: '#008168',
+  limeMiddle: '#009b7c',
+  limeLight: '#00b491',
+  blueLightDeep: '#00c8a1',
 
   vanila: '#d024c6',
   vanilaLight: '#e981e3',
