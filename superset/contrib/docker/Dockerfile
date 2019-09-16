@@ -26,7 +26,7 @@ RUN cd superset/assets && npm ci
 COPY superset/assets superset/assets
 RUN cd superset/assets && npm run build
 
-FROM python:3.6 AS wheels
+FROM python:3.6-buster AS wheels
 
 WORKDIR /home/superset
 
@@ -41,7 +41,7 @@ RUN pip install --upgrade setuptools pip \
         && pip wheel --wheel-dir=/wheels \
         -r requirements.txt -r requirements-dev.txt -r requirements-extra.txt
 
-FROM python:3.6-slim
+FROM python:3.6-slim-buster
 
 ARG DEV_BUILD
 
