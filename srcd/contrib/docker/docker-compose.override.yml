@@ -3,6 +3,7 @@ services:
   sourced-ui:
     # run container as root instead of superset user defined in Dockerfile
     user: 0:0
+    image: srcd/sourced-ui:latest-dev
     volumes:
       - type: bind
         source: ${SOURCED_UI_ABS_PATH}/superset/superset

@@ -1,13 +1,11 @@
 # Changelog
 
 ## [Unreleased]
-<details>
-  <summary>
-    Changes that have landed in master but are not yet released.
-    Click to see more.
-  </summary>
 
-</details>
+### Internal
+
+- Improve docs about development mode to [run source{d} with hot reloading](./CONTRIBUTING.md#run-sourced-ce-for-development-with-hot-reloading). Previous docs didn't explain how to build the `sourced-ui` development image.
+
 
 ## [v0.6.0](https://github.com/src-d/sourced-ui/releases/tag/v0.6.0) - 2019-09-16
 

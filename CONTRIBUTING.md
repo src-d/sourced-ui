@@ -71,6 +71,14 @@ directories will trigger a refresh in your browser with the new code.
 (see [installation guide](https://docs.sourced.tech/community-edition/quickstart/2-install-sourced)
 if needed)
 
+1. Build the `srcd/sourced-ui:latest-dev` development image, with the sources of `sourced-ui`:
+
+    ```shell
+    $ make build-dev
+    ```
+
+    It will take some time to be ready (~5min).
+
 1. Run the watcher.
 
     <details>
@@ -136,6 +144,11 @@ if needed)
 
     The first time you launch it, it will take some time to build all the UI assets,
     you can see the progress of the build from `sourced-ui` logs (see next step).
+
+    It may happen that the hot reloading stops working with an error message
+    `Failed to compile` that cannot be solved modifying the source code.
+    It usually happens when switching between branches or stopping the watcher.
+    To fix it, you only need to ensure the watcher is running, and `init` again.
 
 1. To see `sourced-ui` logs (with `npm` errors and such), run:
 
