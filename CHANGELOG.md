@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Make celery workers to run as separate containers ([#269](https://github.com/src-d/sourced-ui/issues/269))
+
 ### Internal
 
 - Improve docs about development mode to [run source{d} with hot reloading](./CONTRIBUTING.md#run-sourced-ce-for-development-with-hot-reloading). Previous docs didn't explain how to build the `sourced-ui` development image.
