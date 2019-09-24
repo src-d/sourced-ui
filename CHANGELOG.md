@@ -8,6 +8,7 @@
 
 ### Internal
 
+- Superset was updated to v0.34.0, the first official Apache release, with no special changes over the last used release candidate.
 - Improve docs about development mode to [run source{d} with hot reloading](./CONTRIBUTING.md#run-sourced-ce-for-development-with-hot-reloading). Previous docs didn't explain how to build the `sourced-ui` development image.
 
 
