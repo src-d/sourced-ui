@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Reduce the size of docker image ([#272](https://github.com/src-d/sourced-ui/issues/272))
+
 ## [v0.7.0](https://github.com/src-d/sourced-ui/releases/tag/v0.7.0) - 2019-09-26
 
 ### Changed
