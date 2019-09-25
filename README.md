@@ -16,6 +16,7 @@ This repository contains the code for the [`srcd/sourced-ui`](https://hub.docker
 - Cancel database queries on stop ([#35](https://github.com/src-d/sourced-ui/issues/35)).
 - Creates datasources for gitbase and metadata db on bootstrap
 
+The image is designed to be deployed as two containers, one with `SUPERSET_ENV=production` and the other one with `SUPERSET_ENV=celery`. Take a look at the docker-compose.yml file in the [src-d/sourced-ce](https://github.com/src-d/sourced-ce/blob/master/docker-compose.yml) repository for more details.
 
 ### Environment Variables
 
