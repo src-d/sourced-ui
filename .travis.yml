@@ -15,13 +15,11 @@ stages:
 
 install:
   - pip install --upgrade pip
-  - pip install codecov tox
+  - pip install tox
 script:
   - make patch
   - cd superset
   - tox
-after_success:
-  - codecov
 
 jobs:
   include:
