@@ -31,7 +31,7 @@ if [ "`whoami`" = "root" ] && [ -n "$LOCAL_USER" ]; then
     exit $?
 fi
 
-if [ "$SUPERSET_NO_DB_INIT" != "true" ]; then
+if [ "$SUPERSET_NO_DB_INIT" != "true" ] && [ "$SUPERSET_ENV" != "celery" ]; then
     python bootstrap.py
 fi
 
@@ -47,13 +47,14 @@ elif [ "$SUPERSET_ENV" = "development" ]; then
     (cd superset/assets/ && npm run dev-server -- --host=0.0.0.0 --port=8088 --supersetPort=8081) &
     FLASK_ENV=development FLASK_APP=superset:app flask run -p 8081 --with-threads --reload --debugger --host=0.0.0.0
 elif [ "$SUPERSET_ENV" = "production" ]; then
-    celery worker --app=superset.sql_lab:celery_app --pool=gevent -Ofair &
     exec gunicorn --bind 0.0.0.0:8088 \
         --workers $((2 * $(getconf _NPROCESSORS_ONLN) + 1)) \
         --timeout 300 \
         --limit-request-line 0 \
         --limit-request-field_size 0 \
         superset:app
+elif [ "$SUPERSET_ENV" = "celery" ]; then
+    exec celery worker --app=superset.sql_lab:celery_app --pool=gevent -Ofair
 else
     superset --help
 fi

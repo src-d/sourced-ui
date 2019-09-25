@@ -19,6 +19,12 @@ services:
       SUPERSET_ENV: development
       LOCAL_USER: ${LOCAL_USER:-}
 
+  sourced-ui-celery:
+    # disable separate celery container
+    image: tianon/true
+    entrypoint: 'true'
+    command: 'true'
+
 volumes:
   node_modules:
     external: false
