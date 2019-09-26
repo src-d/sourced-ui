@@ -25,9 +25,17 @@ def get_or_create_datasource(name, uri, **kwargs):
     return dbobj
 
 
-def create_datasource_tables(dbobj, schema):
+def create_datasource_tables(dbobj, schema,
+                             datasource_names_from_tables=True,
+                             datasource_names_from_views=True):
     TBL = ConnectorRegistry.sources['table']
-    for ds in dbobj.get_all_table_names_in_schema(schema):
+    datasource_names = []
+    if datasource_names_from_tables:
+        datasource_names += dbobj.get_all_table_names_in_schema(schema)
+    if datasource_names_from_views:
+        datasource_names += dbobj.get_all_view_names_in_schema(schema)
+
+    for ds in datasource_names:
         table = ds.table
 
         # table_name should match the one in the datasource for fetch_metadata to work
@@ -73,10 +81,11 @@ def bootstrap():
     # always run migrations first
     db_upgrade()
 
-    # always gitbase script to update datasource if it was changed in env var
-    dbobj = get_or_create_datasource('gitbase', conf.get('GITBASE_DATABASE_URI'),
+    # always gsc script to update datasource if it was changed in env var
+    dbobj = get_or_create_datasource('gsc', conf.get('GSC_DATABASE_URI'),
                                      allow_run_async=True, allow_dml=True)
-    create_datasource_tables(dbobj, conf.get('GITBASE_DB'))
+    create_datasource_tables(dbobj, conf.get('GSC_DB'),
+                             datasource_names_from_tables=False)
 
     # add metadata data source only in sync mode
     if conf.get('SYNC_MODE'):
@@ -106,12 +115,12 @@ def bootstrap():
 
         # Add dashboards
         dashboards_root = '/home/superset/dashboards'
-        import_dashboard(dashboards_root + '/gitbase/overview.json')
+        import_dashboard(dashboards_root + '/gsc/overview.json')
         if conf.get('SYNC_MODE'):
             import_dashboard(dashboards_root + '/metadata/welcome.json')
             import_dashboard(dashboards_root + '/metadata/collaboration.json')
         else:
-            import_dashboard(dashboards_root + '/gitbase/welcome.json')
+            import_dashboard(dashboards_root + '/gsc/welcome.json')
 
         # set welcome dashboard as a default
         set_welcome_dashboard(conf.get('DEFAULT_DASHBOARD_ID'), admin_user)
