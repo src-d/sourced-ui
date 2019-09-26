@@ -81,31 +81,26 @@ class CeleryConfig(object):
 
 CELERY_CONFIG = CeleryConfig
 
-# Gitbase configuration
+# GSC configuration
 
-IS_EE = get_env_variable('MODE', 'Community') == 'Enterprise'
-GITBASE_USER = get_env_variable('GITBASE_USER', '')
-GITBASE_PASSWORD = get_env_variable('GITBASE_PASSWORD', '')
-GITBASE_HOST = get_env_variable('GITBASE_HOST')
-GITBASE_PORT = get_env_variable('GITBASE_PORT')
-GITBASE_DB = get_env_variable('GITBASE_DB')
-GITBASE_PREFIX = 'sparksql' if IS_EE else 'mysql'
-GITBASE_AUTH = ''
-if GITBASE_USER:
-    GITBASE_AUTH = GITBASE_USER
-    if GITBASE_PASSWORD:
-        GITBASE_AUTH += ':%s' % GITBASE_PASSWORD
-    GITBASE_AUTH += '@'
+GSC_USER = get_env_variable('GSC_USER', '')
+GSC_PASSWORD = get_env_variable('GSC_PASSWORD', '')
+GSC_HOST = get_env_variable('GSC_HOST')
+GSC_PORT = get_env_variable('GSC_PORT')
+GSC_DB = get_env_variable('GSC_DB')
+GSC_AUTH = ''
+if GSC_USER:
+    GSC_AUTH = GSC_USER
+    if GSC_PASSWORD:
+        GSC_AUTH += ':%s' % GSC_PASSWORD
+    GSC_AUTH += '@'
 
-GITBASE_QUERY_PARAMS = ''
-if not IS_EE:
-    GITBASE_QUERY_PARAMS = '?charset=utf8'
-GITBASE_DATABASE_URI = '%s://%s%s:%s/%s%s' % (GITBASE_PREFIX,
-                                              GITBASE_AUTH,
-                                              GITBASE_HOST,
-                                              GITBASE_PORT,
-                                              GITBASE_DB,
-                                              GITBASE_QUERY_PARAMS)
+GSC_QUERY_PARAMS = ''
+GSC_DATABASE_URI = 'sparksql://%s%s:%s/%s%s' % (GSC_AUTH,
+                                                GSC_HOST,
+                                                GSC_PORT,
+                                                GSC_DB,
+                                                GSC_QUERY_PARAMS)
 
 SQLLAB_DEFAULT_DBID = 2  # set gitbase as default DB in SQL Lab
 
