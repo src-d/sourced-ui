@@ -2,14 +2,17 @@
 
 ## [Unreleased]
 
+## [v0.7.0](https://github.com/src-d/sourced-ui/releases/tag/v0.7.0) - 2019-09-26
+
 ### Changed
 
-- Make celery workers to run as separate containers ([#269](https://github.com/src-d/sourced-ui/issues/269))
+- Make celery workers run as separate containers ([#269](https://github.com/src-d/sourced-ui/issues/269)).
+
+  This is a breaking change in the way the container is deployed. Now it requires to be deployed as two containers, one with the environment `SUPERSET_ENV=production` and the other one with `SUPERSET_ENV=celery`.
 
 ### Internal
 
-- Improve docs about development mode to [run source{d} with hot reloading](./CONTRIBUTING.md#run-sourced-ce-for-development-with-hot-reloading). Previous docs didn't explain how to build the `sourced-ui` development image.
-
+- Improve documentation about development mode to [run source{d} with hot reloading](./CONTRIBUTING.md#run-sourced-ce-for-development-with-hot-reloading). Previous documentation didn't explain how to build the `sourced-ui` development image.
 
 ## [v0.6.0](https://github.com/src-d/sourced-ui/releases/tag/v0.6.0) - 2019-09-16
 
