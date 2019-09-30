@@ -28,6 +28,8 @@ RUN cd superset/assets && npm run build
 
 FROM python:3.6-buster AS wheels
 
+ARG DEV_BUILD
+
 WORKDIR /home/superset
 
 RUN apt-get update -y
@@ -39,7 +41,10 @@ COPY contrib/docker/requirements-extra.txt .
 
 RUN pip install --upgrade setuptools pip \
         && pip wheel --wheel-dir=/wheels \
-        -r requirements.txt -r requirements-dev.txt -r requirements-extra.txt
+        -r requirements.txt -r requirements-extra.txt
+
+RUN if [ "$DEV_BUILD" = "true" ]; \
+        then pip wheel --wheel-dir=/wheels -r requirements-dev.txt; fi
 
 FROM python:3.6-slim-buster
 
@@ -49,7 +54,7 @@ RUN useradd --user-group --create-home --no-log-init --shell /bin/bash superset
 
 # Configure environment
 ENV LANG=C.UTF-8 \
-    LC_ALL=C.UTF-8
+        LC_ALL=C.UTF-8
 
 RUN apt-get update -y
 
@@ -73,8 +78,12 @@ COPY contrib/docker/requirements-extra.txt .
 
 RUN pip install --upgrade setuptools pip \
         && pip install --no-index --find-links=/wheels \
-        -r requirements.txt -r requirements-dev.txt -r requirements-extra.txt \
-        && rm -rf /wheels
+        -r requirements.txt -r requirements-extra.txt
+
+RUN if [ "$DEV_BUILD" = "true" ]; \
+        then pip install --no-index --find-links=/wheels -r requirements-dev.txt; fi
+
+RUN rm -rf /wheels
 
 RUN if [ "$DEV_BUILD" != "true" ]; \
         then apt-get -y --purge autoremove git; fi
@@ -83,7 +92,7 @@ COPY --chown=superset:superset superset superset
 COPY --chown=superset:superset dashboards dashboards
 
 ENV PATH=/home/superset/superset/bin:$PATH \
-    PYTHONPATH=/home/superset/:$PYTHONPATH \
+        PYTHONPATH=/home/superset/:$PYTHONPATH \
         SUPERSET_CONFIG_PATH=/home/superset/superset/superset_config.py
 
 COPY --chown=superset:superset --from=static /home/superset/superset/assets/dist superset/assets/dist
