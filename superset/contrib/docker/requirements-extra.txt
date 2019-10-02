@@ -26,3 +26,5 @@ thrift==0.11.0
 -e git+https://github.com/src-d/PyHive.git@v0.7.0-srcd2#egg=PyHive
 # for cache and queue
 redis==3.2.1
+# for OAuth login
+Flask-OAuthlib==0.9.5
