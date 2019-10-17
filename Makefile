@@ -1,6 +1,6 @@
 # Superset upstream configuration
 SUPERSET_REPO = https://github.com/apache/incubator-superset.git
-SUPERSET_VERSION = 0.34.0rc1
+SUPERSET_VERSION = 0.34.1
 SUPERSET_REMOTE = superset
 # Directory to sync superset upstream with
 SUPERSET_DIR = superset
