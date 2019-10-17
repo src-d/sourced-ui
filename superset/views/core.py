@@ -2398,16 +2398,19 @@ class Superset(BaseSupersetView):
                 status=410,
             )
 
-        query = db.session.query(Query).filter_by(results_key=key).one()
+        query = db.session.query(Query).filter_by(results_key=key).one_or_none()
+        if query is None:
+            return json_error_response(
+                "Data could not be retrieved. You may want to re-run the query.",
+                status=404,
+            )
+
         rejected_tables = security_manager.rejected_tables(
             query.sql, query.database, query.schema
         )
         if rejected_tables:
             return json_error_response(
-                security_manager.get_table_access_error_msg(
-                    "{}".format(rejected_tables)
-                ),
-                status=403,
+                security_manager.get_table_access_error_msg(rejected_tables), status=403
             )
 
         payload = utils.zlib_decompress_to_string(blob)

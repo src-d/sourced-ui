@@ -305,6 +305,16 @@ export const controls = {
     renderTrigger: true,
   },
 
+  legend_format: {
+    label: t('Legend Format'),
+    description: t('Choose the format for legend values'),
+    type: 'SelectControl',
+    clearable: false,
+    default: D3_FORMAT_OPTIONS[0],
+    choices: D3_FORMAT_OPTIONS,
+    renderTrigger: true,
+  },
+
   fill_color_picker: {
     label: t('Fill Color'),
     description: t(' Set the opacity to 0 if you do not want to override the color specified in the GeoJSON'),
@@ -1470,7 +1480,7 @@ export const controls = {
     renderTrigger: true,
     default: true,
     description: (
-      'Whether to apply filters as they change, or wait for' +
+      'Whether to apply filters as they change, or wait for ' +
       'users to hit an [Apply] button'
     ),
   },
