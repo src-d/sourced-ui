@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 - Reduce the size of docker image ([#272](https://github.com/src-d/sourced-ui/issues/272))
+- Make the current source{d} palettes accessible for color blindness impairments ([#302](https://github.com/src-d/sourced-ui/issues/302))
 
 ## [v0.7.0](https://github.com/src-d/sourced-ui/releases/tag/v0.7.0) - 2019-09-26
 
