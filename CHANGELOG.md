@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Superset was updated to v0.34.1, which brings some bug fixes. See more details in [their changelog](https://github.com/apache/incubator-superset/blob/master/CHANGELOG.md#0341-20190927-1822-0000) ([#278](https://github.com/src-d/sourced-ui/issues/278)).
+
+### Internal
+
 - Reduce the size of docker image ([#272](https://github.com/src-d/sourced-ui/issues/272))
 
 ## [v0.7.0](https://github.com/src-d/sourced-ui/releases/tag/v0.7.0) - 2019-09-26
