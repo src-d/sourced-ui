@@ -10,6 +10,10 @@
 
 - Reduce the size of docker image ([#272](https://github.com/src-d/sourced-ui/issues/272))
 
+### Fixed
+
+- Update ids in dashboard metadata on import ([#288](https://github.com/src-d/sourced-ui/issues/288))
+
 ## [v0.7.0](https://github.com/src-d/sourced-ui/releases/tag/v0.7.0) - 2019-09-26
 
 ### Changed
