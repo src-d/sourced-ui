@@ -24,14 +24,14 @@ const palette = {
   limeLightDeep: '#00b491',
   limeLight: '#00c8a1',
 
-  vanila: '#d024c6',
-  vanilaLight: '#e981e3',
+  vanila: '#00d6d1',
+  vanilaLight: '#00eae4',
 
-  navy: '#195dca',
-  navyLight: '#8fb5f1',
+  navy: '#05d600',
+  navyLight: '#05ea00',
 
-  gray: '#6d6e71',
-  grayLight: '#c6c7c8',
+  gray: '#3d3d3d',
+  grayLight: '#565656',
 };
 
 const colors = {
