@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Support for Google OAuth authorization ([#293](https://github.com/src-d/sourced-ui/issues/293))
+
 ### Changed
 
 - Superset was updated to v0.34.1, which brings some bug fixes. See more details in [their changelog](https://github.com/apache/incubator-superset/blob/master/CHANGELOG.md#0341-20190927-1822-0000) ([#278](https://github.com/src-d/sourced-ui/issues/278)).
