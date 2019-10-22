@@ -22,36 +22,41 @@ The image is designed to be deployed as two containers, one with `SUPERSET_ENV=p
 
 You can configure the Docker image using the following environment variables:
 
-| Environment Variable  | Description                                                      |
-|-----------------------|------------------------------------------------------------------|
-| `ADMIN_LOGIN`         | Username for the admin user                                      |
-| `ADMIN_FIRST_NAME`    | First name of the admin user                                     |
-| `ADMIN_LAST_NAME`     | Last name of the admin user                                      |
-| `ADMIN_EMAIL`         | Email of the admin user                                          |
-| `ADMIN_PASSWORD`      | Password of the admin user                                       |
-| `BBLFSH_WEB_HOST`     | Hostname for bblfsh-web                                          |
-| `BBLFSH_WEB_PORT`     | Port for bblfsh-web                                              |
-| `GITBASE_HOST`        | Hostname for Gitbase                                             |
-| `GITBASE_PORT`        | Port for Gitbase                                                 |
-| `GITBASE_DB`          | Database name for Gitbase                                        |
-| `GITBASE_USER`        | Username for Gitbase                                             |
-| `GITBASE_PASSWORD`    | Password for Gitbase                                             |
-| `POSTGRES_HOST`       | Hostname for Superset DB                                         |
-| `POSTGRES_PORT`       | Port for Superset DB                                             |
-| `POSTGRES_DB`         | Database for Superset DB                                         |
-| `POSTGRES_USER`       | Username for Superset DB                                         |
-| `POSTGRES_PASSWORD`   | Password for Superset DB                                         |
-| `REDIS_HOST`          | Hostname for Redis                                               |
-| `REDIS_PORT`          | Port for Redis                                                   |
-| `SUPERSET_ENV`        | Environment Superset runs in `production`/`celery`/`development` |
-| `SUPERSET_NO_INIT_DB` | Does not run the database init script if set to `true`           |
-| `SYNC_MODE`           | Adds metadata datasource and welcome dashboard if set to `true`  |
-| `METADATA_HOST`       | Hostname for metadata DB (when `SYNC_MODE` is set to `true`)     |
-| `METADATA_PORT`       | Port for metadata DB (when `SYNC_MODE` is set to `true`)         |
-| `METADATA_USER`       | Username for metadata DB (when `SYNC_MODE` is set to `true`)     |
-| `METADATA_PASSWORD`   | Password for metadata DB (when `SYNC_MODE` is set to `true`)     |
-| `METADATA_DB`         | Database name for metadata (when `SYNC_MODE` is set to `true`)   |
+| Environment Variable      | Description                                                             |
+|---------------------------|-------------------------------------------------------------------------|
+| `ADMIN_LOGIN`             | Username for the admin user                                             |
+| `ADMIN_FIRST_NAME`        | First name of the admin user                                            |
+| `ADMIN_LAST_NAME`         | Last name of the admin user                                             |
+| `ADMIN_EMAIL`             | Email of the admin user                                                 |
+| `ADMIN_PASSWORD`          | Password of the admin user                                              |
+| `BBLFSH_WEB_HOST`         | Hostname for bblfsh-web                                                 |
+| `BBLFSH_WEB_PORT`         | Port for bblfsh-web                                                     |
+| `GITBASE_HOST`            | Hostname for Gitbase                                                    |
+| `GITBASE_PORT`            | Port for Gitbase                                                        |
+| `GITBASE_DB`              | Database name for Gitbase                                               |
+| `GITBASE_USER`            | Username for Gitbase                                                    |
+| `GITBASE_PASSWORD`        | Password for Gitbase                                                    |
+| `POSTGRES_HOST`           | Hostname for Superset DB                                                |
+| `POSTGRES_PORT`           | Port for Superset DB                                                    |
+| `POSTGRES_DB`             | Database for Superset DB                                                |
+| `POSTGRES_USER`           | Username for Superset DB                                                |
+| `POSTGRES_PASSWORD`       | Password for Superset DB                                                |
+| `REDIS_HOST`              | Hostname for Redis                                                      |
+| `REDIS_PORT`              | Port for Redis                                                          |
+| `SUPERSET_ENV`            | Environment Superset runs in `production`/`celery`/`development`        |
+| `SUPERSET_NO_INIT_DB`     | Does not run the database init script if set to `true`                  |
+| `SYNC_MODE`               | Adds metadata datasource and welcome dashboard if set to `true`         |
+| `METADATA_HOST`           | Hostname for metadata DB (when `SYNC_MODE` is set to `true`)            |
+| `METADATA_PORT`           | Port for metadata DB (when `SYNC_MODE` is set to `true`)                |
+| `METADATA_USER`           | Username for metadata DB (when `SYNC_MODE` is set to `true`)            |
+| `METADATA_PASSWORD`       | Password for metadata DB (when `SYNC_MODE` is set to `true`)            |
+| `METADATA_DB`             | Database name for metadata (when `SYNC_MODE` is set to `true`)          |
+| `OAUTH_PROVIDER`          | Use OAuth provider for authorization. Currently only `google`           |
+| `OAUTH_CONSUMER_KEY`      | OAuth provider consumer key (aka client_id)                             |
+| `OAUTH_CONSUMER_SECRET`   | OAuth provider consumer secret (aka client_secret)                      |
+| `OAUTH_REGISTRATION_ROLE` | The role for newly registered users using OAuth `Admin`/`Alpha`/`Gamma` |
 
+To see the differences between roles in `OAUTH_REGISTRATION_ROLE` variable consult [official superset documentation](https://superset.incubator.apache.org/security.html#provided-roles).
 
 ## Contribute
 
