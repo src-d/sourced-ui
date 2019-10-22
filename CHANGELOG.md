@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [v0.8.0](https://github.com/src-d/sourced-ui/releases/tag/v0.8.0) - 2019-10-22
+
 ### Added
 
 - Support for Google OAuth authorization ([#293](https://github.com/src-d/sourced-ui/issues/293))
@@ -11,14 +13,14 @@
 - Superset was updated to v0.34.1, which brings some bug fixes. See more details in [their changelog](https://github.com/apache/incubator-superset/blob/master/CHANGELOG.md#0341-20190927-1822-0000) ([#278](https://github.com/src-d/sourced-ui/issues/278)).
 - Remove markup charts ([#304](https://github.com/src-d/sourced-ui/issues/304))
 
+### Fixed
+
+- Update ids in dashboard metadata on import ([#288](https://github.com/src-d/sourced-ui/issues/288))
+
 ### Internal
 
 - Reduce the size of docker image ([#272](https://github.com/src-d/sourced-ui/issues/272))
 - Make the current source{d} palettes accessible for color blindness impairments ([#302](https://github.com/src-d/sourced-ui/issues/302))
-
-### Fixed
-
-- Update ids in dashboard metadata on import ([#288](https://github.com/src-d/sourced-ui/issues/288))
 
 ## [v0.7.0](https://github.com/src-d/sourced-ui/releases/tag/v0.7.0) - 2019-09-26
 
