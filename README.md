@@ -56,6 +56,8 @@ You can configure the Docker image using the following environment variables:
 | `OAUTH_CONSUMER_SECRET`   | OAuth provider consumer secret (aka client_secret)                      |
 | `OAUTH_REGISTRATION_ROLE` | The role for newly registered users using OAuth `Admin`/`Alpha`/`Gamma` |
 
+To see the differences between roles in `OAUTH_REGISTRATION_ROLE` variable consult [official superset documentation](https://superset.incubator.apache.org/security.html#provided-roles).
+
 ## Contribute
 
 [Contributions](https://github.com/src-d/sourced-ui/issues) are more than welcome. In the [Contributing Guidelines](./CONTRIBUTING.md) you will find more info about how to contribute, build the ui, or run it for development with hot reloading. 
