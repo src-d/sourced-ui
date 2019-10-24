@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- Container should be able to run without OAUTH variables
+- Container should be able to run without OAUTH variables ([#314](https://github.com/src-d/sourced-ui/pull/314)).
 
 ## [v0.8.0](https://github.com/src-d/sourced-ui/releases/tag/v0.8.0) - 2019-10-22
 
