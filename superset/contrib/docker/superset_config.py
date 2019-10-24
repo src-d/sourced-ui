@@ -156,26 +156,26 @@ SUPERSET_WEBSERVER_TIMEOUT = 300
 # Authorization configuration
 
 OAUTH_PROVIDER = get_env_variable('OAUTH_PROVIDER', False)
-OAUTH_PROVIDERS = [
-    {
-        'name': 'google',
-        'icon': 'fa-google',
-        'token_key': 'access_token',
-        'remote_app': {
-            'consumer_key': get_env_variable('OAUTH_CONSUMER_KEY'),
-            'consumer_secret': get_env_variable('OAUTH_CONSUMER_SECRET'),
-            'base_url': 'https://www.googleapis.com/oauth2/v2/',
-            'request_token_params': {
-                'scope': 'email profile'
-            },
-            'request_token_url': None,
-            'access_token_url': 'https://accounts.google.com/o/oauth2/token',
-            'authorize_url': 'https://accounts.google.com/o/oauth2/auth'
-        }
-    }
-]
-
 if OAUTH_PROVIDER:
+    OAUTH_PROVIDERS = [
+        {
+            'name': 'google',
+            'icon': 'fa-google',
+            'token_key': 'access_token',
+            'remote_app': {
+                'consumer_key': get_env_variable('OAUTH_CONSUMER_KEY'),
+                'consumer_secret': get_env_variable('OAUTH_CONSUMER_SECRET'),
+                'base_url': 'https://www.googleapis.com/oauth2/v2/',
+                'request_token_params': {
+                    'scope': 'email profile'
+                },
+                'request_token_url': None,
+                'access_token_url': 'https://accounts.google.com/o/oauth2/token',
+                'authorize_url': 'https://accounts.google.com/o/oauth2/auth'
+            }
+        }
+    ]
+
     if OAUTH_PROVIDER not in [p['name'] for p in OAUTH_PROVIDERS]:
         raise EnvironmentError(
             'Unknown OAuth provider {}'.format(OAUTH_PROVIDER))
