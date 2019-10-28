@@ -10,15 +10,37 @@ function ctrl_c {
 }
 
 function watch_inotify {
-  inotifywait --recursive \
-    --event modify,move,create,delete \
-    $DIRECTORY_TO_OBSERVE
+  inotifywait --recursive --monitor --quiet \
+    --event modify,move,create,delete,attrib \
+    ${DIRECTORY_TO_OBSERVE} | awk -v SRCD="^srcd" -v SUPERSET="$(pwd)/superset" '{ \
+      print $0; \
+      if ($2 ~ "DELETE" || $2 ~ "MOVED_FROM") { \
+        print "[deleted]: " $1$3; \
+        print "rm -rf " gensub(SRCD, SUPERSET, 1, $1$3); \
+        system("rm -rf " gensub(SRCD, SUPERSET, 1, $1$3)); \
+      } else { \
+        print "[modified]: " $1$3; \
+        system("make --no-print-directory apply-patch"); \
+      } \
+    }';
 }
 
 function watch_fswatch {
-  fswatch --recursive --one-event \
-    --event Created --event Updated --event Removed \
-    ${DIRECTORY_TO_OBSERVE}
+  fswatch --recursive --event-flags \
+    --event Created --event Updated --event Removed --event Renamed \
+    --event MovedFrom --event MovedTo \
+    --event OwnerModified --event AttributeModified \
+    ${DIRECTORY_TO_OBSERVE} | awk -v SRCD="$(pwd)/srcd" -v SUPERSET="$(pwd)/superset" '{ \
+      print $0; \
+      if ($2 ~ "Removed") { \
+        print "[deleted]: " $1; \
+        print "rm -rf " gensub(SRCD, SUPERSET, 1, $1); \
+        system("rm -rf " gensub(SRCD, SUPERSET, 1, $1)); \
+      } else { \
+        print "[modified]: " $1; \
+        system("make --no-print-directory apply-patch"); \
+      } \
+    }';
 }
 
 
@@ -43,6 +65,5 @@ fi
 
 make --no-print-directory apply-patch
 echo -e "\033[1;92mWatching for changes in 'srcd'; using '${whichWatcher}' ...\033[0m"
-while watcher; do
-  make --no-print-directory apply-patch
-done
+
+watcher
