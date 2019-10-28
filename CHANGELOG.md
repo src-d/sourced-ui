@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [v0.8.1](https://github.com/src-d/sourced-ui/releases/tag/v0.8.1) - 2019-10-28
 
 ### Fixed
 
