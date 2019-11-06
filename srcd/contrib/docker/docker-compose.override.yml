@@ -21,6 +21,7 @@ services:
 
   sourced-ui-celery:
     # disable separate celery container
+    restart: \"no\"
     image: tianon/true
     entrypoint: /true
 
