@@ -51,10 +51,12 @@ You can configure the Docker image using the following environment variables:
 | `METADATA_USER`           | Username for metadata DB (when `SYNC_MODE` is set to `true`)            |
 | `METADATA_PASSWORD`       | Password for metadata DB (when `SYNC_MODE` is set to `true`)            |
 | `METADATA_DB`             | Database name for metadata (when `SYNC_MODE` is set to `true`)          |
-| `OAUTH_PROVIDER`          | Use OAuth provider for authorization. Currently only `google`           |
-| `OAUTH_CONSUMER_KEY`      | OAuth provider consumer key (aka client_id)                             |
-| `OAUTH_CONSUMER_SECRET`   | OAuth provider consumer secret (aka client_secret)                      |
+| `OAUTH_ENABLED_PROVIDERS` | Comma separated list of available OAuth providers (eg: `github,google`) |
 | `OAUTH_REGISTRATION_ROLE` | The role for newly registered users using OAuth `Admin`/`Alpha`/`Gamma` |
+| `OAUTH_GITHUB_CONSUMER_KEY`    | GitHub OAuth provider consumer key (aka client_id)                 |
+| `OAUTH_GITHUB_CONSUMER_SECRET` | GitHub OAuth provider consumer secret (aka client_secret)          |
+| `OAUTH_GOOGLE_CONSUMER_KEY`    | Google OAuth provider consumer key (aka client_id)                 |
+| `OAUTH_GOOGLE_CONSUMER_SECRET` | Google OAuth provider consumer secret (aka client_secret)          |
 
 To see the differences between roles in `OAUTH_REGISTRATION_ROLE` variable consult [official superset documentation](https://superset.incubator.apache.org/security.html#provided-roles).
 
