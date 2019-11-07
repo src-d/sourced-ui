@@ -18,7 +18,11 @@ function watch_inotify {
         print "[deleted]: " $1$3; \
         print "rm -rf " gensub(SRCD, SUPERSET, 1, $1$3); \
         system("rm -rf " gensub(SRCD, SUPERSET, 1, $1$3)); \
-      } else { \
+      } else if ($1$3 ~ "docker-compose.override.yml") { \
+        print "[docker-compose.override]: updated " $1$3; \
+        system("cp -rf " $1$3 " ~/.sourced/compose-files/__active__/docker-compose.override.yml"); \
+      } \
+      else { \
         print "[modified]: " $1$3; \
         system("make --no-print-directory apply-patch"); \
       } \
@@ -36,7 +40,11 @@ function watch_fswatch {
         print "[deleted]: " $1; \
         print "rm -rf " gensub(SRCD, SUPERSET, 1, $1); \
         system("rm -rf " gensub(SRCD, SUPERSET, 1, $1)); \
-      } else { \
+      } else if ($1 ~ "docker-compose.override.yml") { \
+        print "[docker-compose.override]: updated " $1; \
+        system("cp -rf " $1 " ~/.sourced/compose-files/__active__/docker-compose.override.yml"); \
+      } \
+      else { \
         print "[modified]: " $1; \
         system("make --no-print-directory apply-patch"); \
       } \
