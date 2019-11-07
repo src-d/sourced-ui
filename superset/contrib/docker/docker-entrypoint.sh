@@ -23,6 +23,7 @@ if [ "`whoami`" = "root" ] && [ -n "$LOCAL_USER" ]; then
     # It will grant write access to the data from the volumes,
     # inside of the container and on host file system (see #221)
     find . -group superset -exec chgrp $LOCAL_USER '{}' \;
+    find . -group root -exec chgrp $LOCAL_USER '{}' \;
     groupmod -g $LOCAL_USER superset
     usermod -u $LOCAL_USER superset
     chown -R superset superset/assets/node_modules
