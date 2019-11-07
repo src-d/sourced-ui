@@ -45,7 +45,7 @@ elif [ "$SUPERSET_ENV" = "development" ]; then
     # non-asset requests to `Flask`, wich is listening at the port 8081
     # Doing so, updates to asset sources will be reflected in-browser without a refresh.
     (cd superset/assets/ && npm install)
-    (cd superset/assets/ && npm run dev-server -- --host=0.0.0.0 --port=8088 --supersetPort=8081) &
+    (cd superset/assets/ && npm run dev-server -- --host=0.0.0.0 --port=8088 --supersetPort=8081 --disable-host-check) &
     FLASK_ENV=development FLASK_APP=superset:app flask run -p 8081 --with-threads --reload --debugger --host=0.0.0.0
 elif [ "$SUPERSET_ENV" = "production" ]; then
     exec gunicorn --bind 0.0.0.0:8088 \
