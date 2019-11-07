@@ -154,31 +154,63 @@ FLASK_APP_MUTATOR = mutator
 SUPERSET_WEBSERVER_TIMEOUT = 300
 
 # Authorization configuration
+OAUTH_ENABLED_PROVIDERS = get_env_variable('OAUTH_ENABLED_PROVIDERS', False)
+OAUTH_GOOGLE_CONSUMER_KEY = get_env_variable('OAUTH_GOOGLE_CONSUMER_KEY', False)
+OAUTH_GOOGLE_CONSUMER_SECRET = get_env_variable('OAUTH_GOOGLE_CONSUMER_SECRET', False)
+OAUTH_GITHUB_CONSUMER_KEY = get_env_variable('OAUTH_GITHUB_CONSUMER_KEY', False)
+OAUTH_GITHUB_CONSUMER_SECRET = get_env_variable('OAUTH_GITHUB_CONSUMER_SECRET', False)
 
-OAUTH_PROVIDER = get_env_variable('OAUTH_PROVIDER', False)
-if OAUTH_PROVIDER:
-    OAUTH_PROVIDERS = [
-        {
-            'name': 'google',
-            'icon': 'fa-google',
-            'token_key': 'access_token',
-            'remote_app': {
-                'consumer_key': get_env_variable('OAUTH_CONSUMER_KEY'),
-                'consumer_secret': get_env_variable('OAUTH_CONSUMER_SECRET'),
-                'base_url': 'https://www.googleapis.com/oauth2/v2/',
-                'request_token_params': {
-                    'scope': 'email profile'
-                },
-                'request_token_url': None,
-                'access_token_url': 'https://accounts.google.com/o/oauth2/token',
-                'authorize_url': 'https://accounts.google.com/o/oauth2/auth'
-            }
+OAUTH_AVAILABLE_CONFIGS = {
+    'google': {
+        'name': 'google',
+        'icon': 'fa-google',
+        'token_key': 'access_token',
+        'remote_app': {
+            'consumer_key': OAUTH_GOOGLE_CONSUMER_KEY,
+            'consumer_secret': OAUTH_GOOGLE_CONSUMER_SECRET,
+            'base_url': 'https://www.googleapis.com/oauth2/v2/',
+            'request_token_params': {
+                'scope': 'email profile'
+            },
+            'request_token_url': None,
+            'access_token_url': 'https://accounts.google.com/o/oauth2/token',
+            'authorize_url': 'https://accounts.google.com/o/oauth2/auth'
         }
-    ]
+    },
+    'github': {
+        'name': 'github',
+        'icon': 'fa-github',
+        'token_key': 'access_token',
+        'remote_app': {
+            'consumer_key': OAUTH_GITHUB_CONSUMER_KEY,
+            'consumer_secret': OAUTH_GITHUB_CONSUMER_SECRET,
+            'base_url': 'https://api.github.com/',
+            'request_token_params': {
+                'scope': 'user' # read:user
+            },
+            'request_token_url': None,
+            'access_token_method': 'POST',
+            'access_token_url': 'https://github.com/login/oauth/access_token',
+            'authorize_url': 'https://github.com/login/oauth/authorize'
+        }
+    }
+}
 
-    if OAUTH_PROVIDER not in [p['name'] for p in OAUTH_PROVIDERS]:
-        raise EnvironmentError(
-            'Unknown OAuth provider {}'.format(OAUTH_PROVIDER))
+if OAUTH_ENABLED_PROVIDERS:
+    providers = []
+    provider_names = OAUTH_ENABLED_PROVIDERS.split(',')
+    for provider in provider_names:
+        if provider in OAUTH_AVAILABLE_CONFIGS:
+            if not OAUTH_AVAILABLE_CONFIGS[provider]['remote_app']['consumer_key']:
+                raise EnvironmentError('Not valid OAuth consumer_key provided for {}'.format(provider))
+            if not OAUTH_AVAILABLE_CONFIGS[provider]['remote_app']['consumer_secret']:
+                raise EnvironmentError('Not valid OAuth consumer_secret provided for {}'.format(provider))
+        else:
+            raise EnvironmentError('Unknown OAuth provider {}'.format(provider))
+
+        providers.append(OAUTH_AVAILABLE_CONFIGS[provider])
+
+    OAUTH_PROVIDERS = providers
 
     from flask_appbuilder.security.manager import AUTH_OAUTH
 

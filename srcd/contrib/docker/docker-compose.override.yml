@@ -12,6 +12,7 @@ services:
       - ${SOURCED_UI_ABS_PATH}/superset/dashboards:/home/superset/dashboards
       - ${SOURCED_UI_ABS_PATH}/superset/contrib/docker/superset_config.py:/home/superset/superset/superset_config.py
       - ${SOURCED_UI_ABS_PATH}/superset/contrib/docker/docker-entrypoint.sh:/entrypoint.sh
+      - ${SOURCED_UI_ABS_PATH}/superset/contrib/docker/bootstrap.py:/home/superset/bootstrap.py
       - type: volume
         source: node_modules
         target: /home/superset/superset/assets/node_modules
@@ -21,6 +22,7 @@ services:
 
   sourced-ui-celery:
     # disable separate celery container
+    restart: \"no\"
     image: tianon/true
     entrypoint: /true
 
